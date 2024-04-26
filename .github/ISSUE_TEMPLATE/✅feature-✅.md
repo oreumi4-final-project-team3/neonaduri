@@ -1,5 +1,5 @@
 ---
-name: Feature ✅추가
+name: "✅Feature ✅"
 about: Suggest an idea for this project
 title: ''
 labels: ''

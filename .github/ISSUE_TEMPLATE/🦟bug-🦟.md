@@ -1,5 +1,5 @@
 ---
-name: "Bug \U0001F99F추가"
+name: "\U0001F99FBug \U0001F99F"
 about: Create a report to help us improve
 title: ''
 labels: bug

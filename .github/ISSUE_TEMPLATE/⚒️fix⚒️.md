@@ -1,5 +1,5 @@
 ---
-name: Fix ⚒️추가
+name: "⚒️Fix⚒️"
 about: Describe this issue template's purpose here.
 title: ''
 labels: ''
