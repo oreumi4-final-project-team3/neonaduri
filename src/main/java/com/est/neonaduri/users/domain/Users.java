@@ -1,4 +1,4 @@
-package com.est.neonaduri.users;
+package com.est.neonaduri.users.domain;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 @Entity
 @Data
 @Table(name = "users")
-public class domain {
+public class Users {
     @Id
     @Column(name="USER_ID", updatable = false,length = 100)
     private String userId;
@@ -32,3 +32,9 @@ public class domain {
     private String userGender;
 
 }
+
+/*
+ * 사용자 세부정보(추가 기능) 엔터티 추가 예정
+ *
+ * @author : Lee Ha Young
+ * */
