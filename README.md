@@ -1,5 +1,5 @@
 # neonaduri - 너나들이
-## 대한민국 관광지 정보 제공 웹 포털 서비스 & 동행 매칭 서비스
+## 대한민국 관광지 정보 제공 서비스 & 동행 매칭 서비스
 [오르미 4기 Final 프로젝트]
 
 ![neonaduriLogo](https://github.com/oreumi4-final-project-team3/neonaduri/assets/128894133/deff7cc1-b052-4e01-b6d4-755e1c77260a)<br>
