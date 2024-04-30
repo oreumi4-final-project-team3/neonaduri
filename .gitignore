@@ -19,6 +19,7 @@ bin/
 
 ### IntelliJ IDEA ###
 application-private.properties
+config.properties
 
 .idea
 *.iws
