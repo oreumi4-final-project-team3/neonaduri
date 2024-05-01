@@ -27,4 +27,10 @@ public class ApiController {
         return ResponseEntity.ok(spots);
     }
 
+
+    @GetMapping("/areaBasedList")
+    public ResponseEntity<List<String>> findByLocationInfo(){
+        List<String> contentIdList = apiManager.fetchByAreaBased(10, 1, 12);
+        return ResponseEntity.ok(contentIdList);
+    }
 }

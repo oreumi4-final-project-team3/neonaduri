@@ -17,6 +17,7 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Component
@@ -38,7 +39,7 @@ public class ApiManager {
      * 조회 메서드
      */
 
-    // 위치 기반 조회
+    // 위치 기반 조회 -> 추후 필요 시 사용
     public List<TourApiDto> fetchByLocationInfo(double mapX,double mapY,int radius,int numOfRows){
         log.info("fetch메서드 정상 호출");
         String locationInfoUrl=createLocationInfoUrl(mapX,mapY,radius,numOfRows);
@@ -46,12 +47,25 @@ public class ApiManager {
         return fetch(locationInfoUrl);
     }
 
-    // 공통 정보 조회 -> contentId로 단건 조회만 가능
+    // 지역코드 기반 관광지 조회 -> contentId 추출용
+    public List<String> fetchByAreaBased(int numOfRows,int areaCode,int contentTypeCode){
+        String areaBasedUrl = createAreaBasedUrl(numOfRows, areaCode,contentTypeCode);
+        List<TourApiDto> fetchedList = fetch(areaBasedUrl);
+
+        return fetchedList.stream()
+                .map(TourApiDto::getContentId)
+                .collect(Collectors.toList());
+    }
+
+//
+//     공통 정보 조회 -> contentId로 단건 조회만 가능
 //    public List<TourApiDto> fetchByCommonInfo(){
 //
 //    }
-//
-//
+
+
+
+
 
     // contentId에 해당하는 이미지 조회
 
@@ -63,6 +77,9 @@ public class ApiManager {
     }
     private String createLocationInfoUrl(double mapX,double mapY,int radius,int numOfRows){
         return createBasedUrl(ApiConst.LOCATION_INFO_BASED)+setNumOfRows(numOfRows)+ApiConst.DEFAULT_QUERY_PARAMS+setPosition(mapX,mapY,radius)+setServiceKey(serviceKey);
+    }
+    private String createAreaBasedUrl(int numOfRows, int areaCode,int contentTypeCode){
+        return createBasedUrl(ApiConst.AREA_BASED)+setNumOfRows(numOfRows)+ApiConst.DEFAULT_QUERY_PARAMS+setContentTypeId(contentTypeCode)+setAreaCode(areaCode)+setServiceKey(serviceKey);
     }
 
 
