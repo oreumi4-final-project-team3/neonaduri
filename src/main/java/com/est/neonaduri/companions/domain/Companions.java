@@ -1,5 +1,6 @@
 package com.est.neonaduri.companions.domain;
 
+import com.est.neonaduri.config.BaseTimeEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -16,7 +17,7 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Companions {
+public class Companions extends BaseTimeEntity {
 
     @Id
     @Column(name = "COMPANION_ID", length = 100, nullable = false)

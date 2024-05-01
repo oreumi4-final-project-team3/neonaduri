@@ -1,9 +1,8 @@
 package com.est.neonaduri.spots.domain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.est.neonaduri.config.BaseTimeEntity;
+import com.est.neonaduri.utils.IdGenerator;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Builder
 @Table(name="SPOTS")
-public class Spots {
+public class Spots extends BaseTimeEntity {
 
 	@Id
 	@Column(name="SPOT_ID", length = 100 ,nullable = false)
@@ -44,5 +43,10 @@ public class Spots {
 
 	@Column(name="SPOT_ADDR", length = 50 ,nullable = false)
 	private String spotAddr;
+
+	@PrePersist
+	public void prePersist(){
+		this.spotId= IdGenerator.generateSpotId(getSpotId());
+	}
 
 }
