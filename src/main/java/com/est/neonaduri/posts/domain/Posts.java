@@ -1,7 +1,7 @@
 package com.est.neonaduri.posts.domain;
 
 import java.time.LocalDateTime;
-
+import com.est.neonaduri.users.domain.Users;
 import com.est.neonaduri.config.BaseTimeEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -24,9 +24,9 @@ public class Posts extends BaseTimeEntity {
 	@Column(name="POST_ID", length = 100 ,nullable = false)
 	private String postId;
 
-	// @ManyToOne
-	// @JoinColumn(name="WRITER_ID", referencedColumnName = "WRITER_ID")
-	// private Users users;
+	@ManyToOne
+	@JoinColumn(name="WRITER_ID", referencedColumnName = "USER_ID", nullable = false)
+	private Users users;
 
 	@Column(name="POST_TITLE",length = 50 ,nullable = false)
 	private String postTitle;
@@ -43,7 +43,7 @@ public class Posts extends BaseTimeEntity {
 	@Column(name="CREATED" ,nullable = false)
 	private LocalDateTime created;
 
-	@Column(name="MODIFIED" ,nullable = false)
+	@Column(name="MODIFIED")
 	private LocalDateTime modified;
 
 }
