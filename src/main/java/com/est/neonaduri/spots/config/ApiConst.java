@@ -9,6 +9,7 @@ public class ApiConst {
      */
     public static final String TOUR_API_ENDPOINT = "https://apis.data.go.kr/B551011/KorService1";
     public static final String DEFAULT_QUERY_PARAMS="&MobileOS=ETC&MobileApp=neonaduri&_type=json";
-    public static final String LOCATION_INFO_BASED="/locationBasedList1";
+    public static final String LOCATION_INFO_BASED = "/locationBasedList1";
+    public static final String AREA_BASED="/areaBasedList1";
     public static final String COMMON_INFO_BASED="/detailCommon1";
 }
