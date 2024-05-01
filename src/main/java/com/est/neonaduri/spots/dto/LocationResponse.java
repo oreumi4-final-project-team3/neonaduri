@@ -9,7 +9,7 @@ import lombok.Data;
 @Builder
 public class LocationResponse {
 
-
+    private String contentId;
     private String title;
     private String address;
     private String areaName;
