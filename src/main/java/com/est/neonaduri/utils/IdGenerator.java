@@ -7,8 +7,8 @@ public class IdGenerator {
         return "user_"+ UUID.randomUUID().toString();
     }
 
-    public static String generateSpotId() {
-        return "spot_"+ UUID.randomUUID().toString();
+    public static String generateSpotId(String spotId) {
+        return "spot_"+ spotId;
     }
     // 동행, 리뷰에 따라 달라지게
     public static String generatePostId(String category){
