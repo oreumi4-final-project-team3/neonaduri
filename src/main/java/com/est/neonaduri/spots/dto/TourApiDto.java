@@ -2,6 +2,7 @@ package com.est.neonaduri.spots.dto;
 
 import com.est.neonaduri.spots.config.AreaCode;
 import com.est.neonaduri.spots.config.ContentCode;
+import com.est.neonaduri.spots.domain.Spots;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,22 +18,24 @@ public class TourApiDto {
     private String contentId;
     private String title;
     private String address;
-    private Long areaCode;
+    private String overview;
+    private int areaCode;
     private Long contentTypeId;
     private String firstImage;
     private double mapX;
     private double mapY;
 
-    public LocationResponse toResponse() {
-        return LocationResponse.builder()
-                .contentId(contentId)
-                .title(title)
-                .address(address)
-                .areaName(AreaCode.getAreaName(areaCode))
-                .contentName(ContentCode.getContentName(contentTypeId))
-                .firstImage(firstImage)
+    public Spots toEntity() {
+        return Spots.builder()
+                .spotId(contentId)
+                .spotName(title)
+                .spotAddr(address)
+                .spotOverview(overview)
                 .mapX(mapX)
                 .mapY(mapY)
+                .spotImg(firstImage)
+                .spotType(contentTypeId)
+                .areaCode(areaCode)
                 .build();
     }
 }
