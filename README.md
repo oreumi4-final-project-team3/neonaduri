@@ -14,17 +14,14 @@
   <tr>
     <th>제목1</th>
     <th>제목2</th>
-    <th>제목3</th>
   </tr>
   <tr>
     <td>내용1-1</td>
     <td>내용1-2</td>
-    <td>내용1-3</td>
   </tr>
   <tr>
     <td>내용2-1</td>
     <td>내용2-2</td>
-    <td>내용2-3</td>
   </tr>
 </table>
 
@@ -32,17 +29,14 @@
   <tr>
     <th>제목1</th>
     <th>제목2</th>
-    <th>제목3</th>
   </tr>
   <tr>
     <td>내용2-1</td>
     <td>내용2-2</td>
-    <td>내용2-3</td>
   </tr>
   <tr>
     <td>내용3-1</td>
     <td>내용3-2</td>
-    <td>내용3-3</td>
   </tr>
 </table>
 
