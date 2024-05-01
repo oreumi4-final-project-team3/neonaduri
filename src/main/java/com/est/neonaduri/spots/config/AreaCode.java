@@ -13,6 +13,11 @@ public class AreaCode {
     public static final int JEONNAM = 38;
     public static final int JEJU = 39;
 
+    public static int[] getAllAreaCodes() {
+        return new int[]{SEOUL, GYEONGGI, INCHEON, GANGWON, CHUNGBUK, CHUNGNAM,
+                GYEOUNGBUK, GYEONGNAM, JEONBUK, JEONNAM, JEJU};
+    }
+
     public static String getAreaName(Long areaCode) {
         if (areaCode == AreaCode.SEOUL) return "서울";
         else if(areaCode== AreaCode.INCHEON) return "인천";

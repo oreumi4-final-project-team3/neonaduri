@@ -1,7 +1,7 @@
 package com.est.neonaduri.spots.config;
 
 public class ContentCode {
-    public static final int 관광지 = 12;
+    public static final int SPOT = 12;
 
     //확장성 고려 지역 별 컨텐츠 기반 정리
     public static final int 문화시설 = 14;
@@ -13,7 +13,7 @@ public class ContentCode {
     public static final int 음식점 = 39;
 
     public static String getContentName(Long contentCode) {
-        if (contentCode == ContentCode.관광지) return "관광지";
+        if (contentCode == ContentCode.SPOT) return "관광지";
         else return "기타";
     }
 }
