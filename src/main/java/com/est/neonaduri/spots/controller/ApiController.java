@@ -1,8 +1,8 @@
 package com.est.neonaduri.spots.controller;
 
-import com.est.neonaduri.spots.dto.LocationResponse;
 import com.est.neonaduri.spots.dto.TourApiDto;
 import com.est.neonaduri.spots.service.ApiManager;
+import com.est.neonaduri.spots.service.SpotsService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +19,7 @@ import java.util.List;
 @Slf4j
 public class ApiController {
     private final ApiManager apiManager;
+    private final SpotsService spotsService;
 
     @GetMapping("/locationInfo/{mapX}/{mapY}")
     public ResponseEntity<List<TourApiDto>> findByLocationInfo(@PathVariable double mapX,@PathVariable double mapY){
@@ -33,4 +34,12 @@ public class ApiController {
         List<String> contentIdList = apiManager.fetchByAreaBased(10, 1, 12);
         return ResponseEntity.ok(contentIdList);
     }
+
+    @GetMapping("/saveSpots")
+        public ResponseEntity<Void> saveSpots(){
+            spotsService.saveSpots();
+            return ResponseEntity.ok().build();
+    }
+
+
 }
