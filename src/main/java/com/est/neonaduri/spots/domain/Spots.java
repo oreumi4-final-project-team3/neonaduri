@@ -1,5 +1,6 @@
 package com.est.neonaduri.spots.domain;
 
+import com.est.neonaduri.config.BaseTimeEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -15,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Builder
 @Table(name="SPOTS")
-public class Spots {
+public class Spots extends BaseTimeEntity {
 
 	@Id
 	@Column(name="SPOT_ID", length = 100 ,nullable = false)

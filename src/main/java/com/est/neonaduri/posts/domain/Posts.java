@@ -2,6 +2,7 @@ package com.est.neonaduri.posts.domain;
 
 import java.time.LocalDateTime;
 
+import com.est.neonaduri.config.BaseTimeEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -17,7 +18,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name="POSTS")
-public class Posts {
+public class Posts extends BaseTimeEntity {
 
 	@Id
 	@Column(name="POST_ID", length = 100 ,nullable = false)

@@ -1,5 +1,6 @@
 package com.est.neonaduri.users.domain;
 
+import com.est.neonaduri.config.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -8,7 +9,7 @@ import java.time.LocalDateTime;
 @Entity
 @Data
 @Table(name = "users")
-public class Users {
+public class Users extends BaseTimeEntity {
     @Id
     @Column(name="USER_ID", updatable = false,length = 100)
     private String userId;
