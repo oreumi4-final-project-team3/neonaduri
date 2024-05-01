@@ -14,7 +14,7 @@ public class TourApiDto {
     /**
      * 오픈 API 서버에서 가져온 데이터를 우선적으로 받는 DTO
      */
-
+    private String contentId;
     private String title;
     private String address;
     private Long areaCode;
@@ -25,6 +25,7 @@ public class TourApiDto {
 
     public LocationResponse toResponse() {
         return LocationResponse.builder()
+                .contentId(contentId)
                 .title(title)
                 .address(address)
                 .areaName(AreaCode.getAreaName(areaCode))
