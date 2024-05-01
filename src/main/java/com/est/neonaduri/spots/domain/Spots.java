@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,6 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 @Table(name="SPOTS")
 public class Spots {
 
@@ -23,7 +25,7 @@ public class Spots {
 	private int areaCode;
 
 	@Column(name="SPOT_TYPE",nullable = false)
-	private int spotType;
+	private Long spotType;
 
 	@Column(name="SPOT_IMG", length = 255 ,nullable = false)
 	private String spotImg;
@@ -37,10 +39,7 @@ public class Spots {
 	@Column(name="SPOT_NAME", length = 255 ,nullable = false)
 	private String spotName;
 
-	@Column(name="DISTANCE",nullable = false)
-	private double distance;
-
-	@Column(name="SPOT_OVERVIEW", length = 500 ,nullable = false)
+	@Column(name="SPOT_OVERVIEW", length = 2000 ,nullable = false)
 	private String spotOverview;
 
 	@Column(name="SPOT_ADDR", length = 50 ,nullable = false)
