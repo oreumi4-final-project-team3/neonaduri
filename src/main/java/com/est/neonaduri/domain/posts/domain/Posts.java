@@ -6,6 +6,7 @@ import com.est.neonaduri.global.config.BaseTimeEntity;
 import com.est.neonaduri.global.utils.IdGenerator;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,6 +14,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 @Table(name="POSTS")
 public class Posts extends BaseTimeEntity {
 	@Id
@@ -44,11 +46,6 @@ public class Posts extends BaseTimeEntity {
 	@Column(name="ADDR", length = 50)
 	private String address;
 
-	@Column(name="CREATED" ,nullable = false)
-	private LocalDateTime created;
-
-	@Column(name="MODIFIED")
-	private LocalDateTime modified;
 
 	//Default 초기화
 	@PrePersist
