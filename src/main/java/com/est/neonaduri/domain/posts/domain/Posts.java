@@ -6,8 +6,10 @@ import com.est.neonaduri.global.config.BaseTimeEntity;
 import com.est.neonaduri.global.utils.IdGenerator;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
 
 @Data
 @AllArgsConstructor
@@ -44,6 +46,7 @@ public class Posts extends BaseTimeEntity {
 	@Column(name="ADDR", length = 50)
 	private String address;
 
+	@CreatedDate
 	@Column(name="CREATED" ,nullable = false)
 	private LocalDateTime created;
 
@@ -55,5 +58,15 @@ public class Posts extends BaseTimeEntity {
 	public void prePersist(){
 		this.postId = IdGenerator.generatePostId(this.postCategory);
 		this.postView = this.postView == null ? 0 : this.postView;
+	}
+
+	@Builder
+	public Posts(String postCategory, String postTitle, String postContent, String spotName, String address, Users users) {
+		this.postCategory = postCategory;
+		this.postTitle = postTitle;
+		this.postContent = postContent;
+		this.spotName = spotName;
+		this.address = address;
+		this.users = users;
 	}
 }
