@@ -1,14 +1,19 @@
-package com.est.neonaduri.domain.spots.service;
+package com.est.neonaduri.global.infra.tourapi.service;
 
+import com.est.neonaduri.domain.posts.domain.Posts;
+import com.est.neonaduri.domain.posts.repository.PostsRepository;
 import com.est.neonaduri.domain.spots.domain.Spots;
 import com.est.neonaduri.domain.spots.repository.SpotsRepository;
-import com.est.neonaduri.domain.spots.config.AreaCode;
-import com.est.neonaduri.domain.spots.config.ContentCode;
-import com.est.neonaduri.domain.spots.dto.TourApiDto;
+import com.est.neonaduri.domain.users.domain.Users;
+import com.est.neonaduri.domain.users.repository.UserRepository;
+import com.est.neonaduri.global.infra.tourapi.config.AreaCode;
+import com.est.neonaduri.global.infra.tourapi.config.ContentCode;
+import com.est.neonaduri.global.infra.tourapi.dto.TourApiDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,14 +23,17 @@ import java.util.List;
 @Slf4j
 public class TourApiCrawler {
     private final ApiManager apiManager;
-    private final SpotsRepository repository;
+    private final SpotsRepository spotsRepository;
+    private final PostsRepository postsRepository;
+    private final UserRepository userRepository;
+
     public static final int NUMBER_OF_ROWS=5;
 
     // 매달 1일 10시30분에 실행
-    @Scheduled(cron = "0 30 10 1 * *")
+//    @Scheduled(cron = "0 30 10 1 * *")
     //60초마다 갱신
 
-    //@Scheduled(fixedRate = 60000)
+    @Scheduled(fixedRate = 60000)
 
     public void performTourApiCrawler(){
         List<List<String>> contentIds = collectAreaBasedContentId();
@@ -40,31 +48,37 @@ public class TourApiCrawler {
         }
         return areaBasedContentIds;
     }
+    @Transactional
     public void saveSpots(List<List<String>> areaBasedContentIds){
         for(List<String> areaList:areaBasedContentIds){
             for(String contentId:areaList){
                 try {
-                    if(!existsWithPrefix(contentId)){
+                    if(!existsWithPrefixSpotId(contentId)){
                         List<TourApiDto> commonInfoList = apiManager.fetchByCommonInfo(contentId, ContentCode.SPOT);
                         for(TourApiDto dto:commonInfoList){
-                            Spots spot = dto.toEntity();
-                            repository.save(spot);
-                            log.info("최신 데이터 저장 완료={}",spot);
+                            Posts postsEntity = dto.toPostsEntity(findAdminUser());
+                            Spots spotsEntity = dto.toSpotsEntity(postsEntity);
+                            postsRepository.save(postsEntity);
+                            spotsRepository.save(spotsEntity);
+                            log.info("최신 데이터 저장 완료={}",postsEntity,spotsEntity);
                         }
                     }else{
                         log.info("최신화할 데이터가 없습니다.");
                     }
                 }catch (Exception e){
-                    log.error("처리중 에러 발생",contentId);
+                    log.error("처리중 에러 발생"+e.getMessage());
                 }
             }
         }
     }
 
-    public boolean existsWithPrefix(String contentId){
+    public boolean existsWithPrefixSpotId(String contentId){
         String prefixedContentId="spot_"+contentId;
-        return repository.existsById(prefixedContentId);
+        return spotsRepository.existsById(prefixedContentId);
     }
 
+    public Users findAdminUser(){
+        return userRepository.findByUserId("admin_id");
+    }
 
 }
