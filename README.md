@@ -13,8 +13,8 @@
 ## 팀원 소개
 <table>
   <tr>
-    <th>제목1</th>
-    <th>제목2</th>
+    <th>최재원(팀장)</th>
+    <th>김의찬</th>
   </tr>
   <tr>
     <td>내용1-1</td>
@@ -28,9 +28,9 @@
 
 <table>
   <tr>
-    <th>제목1</th>
-    <th>제목2</th>
-    <th>제목3</th>
+    <th>이하영</th>
+    <th>임성현</th>
+    <th>지윤호</th>
   </tr>
   <tr>
     <td>내용2-1</td>
@@ -45,13 +45,24 @@
 </table>
 
 ## 목차
-<ol>
-  <li>기능</li>
-</ol>
+[0. neonaduri - 너나들이](#neonaduri-너나들이)<br>
+[1. 기능](#기능)<br>
+[2. 기술 스택](#기술스택)<br>
+[3. 개발 일정](#개발일정)<br>
 
 ## 1. 기능
 - 국내 관광지 정보에 대한 지역별 상세 제공
 - 동행 그룹을 모집하여 관광지를 함께 여행할 수 있는 매칭 시스템 제공
 - 여행 후기에 대한 커뮤니티 게시판 제공
 
-## 2. 
+## 2. 기술 스택
+### 2-1. 프론트
+### 2-2. 백
+[![Java](https://img.shields.io/badge/Java-orange?style=flat&logo=java)](https://www.java.com)
+[![Spring Boot](https://img.shields.io/badge/Spring_Boot-LimeGreen?style=flat&logo=spring)](https://spring.io/projects/spring-boot)
+
+### 2-3. 환경
+[![GitHub](https://img.shields.io/badge/GitHub-hotpink?style=flat&logo=github)](https://github.com)
+[![Discord](https://img.shields.io/badge/Discord-7289DA?style=flat&logo=discord&color=2C2F33)](https://discord.com)
+
+## 3. 개발 일정
