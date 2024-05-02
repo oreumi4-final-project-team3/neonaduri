@@ -20,11 +20,10 @@ import com.est.neonaduri.spots.repository.SpotsRepository;
 public class SpotsService {
 
 	private final SpotsRepository spotsRepository;
-	private final ApiManager apiManager;
+
 	@Autowired
 	public SpotsService(SpotsRepository spotsRepository,ApiManager apiManager) {
 		this.spotsRepository = spotsRepository;
-		this.apiManager=apiManager;
 	}
 
 	//기본적인 CRUD 관련 코드들 작성
@@ -46,21 +45,5 @@ public class SpotsService {
 	}
 
 
-	public void saveSpots(){
-		List<List<String>> totalDomesticList=new ArrayList<>();
-		for(int areaCode: AreaCode.getAllAreaCodes()){
-			List<String> areaBasedcontentIdList = apiManager.fetchByAreaBased(5, areaCode, ContentCode.SPOT);
-			totalDomesticList.add(areaBasedcontentIdList);
-		}
 
-		for(List<String> areaList:totalDomesticList){
-			for(String contentId:areaList){
-				List<TourApiDto> commonInfoList = apiManager.fetchByCommonInfo(contentId, ContentCode.SPOT);
-				for(TourApiDto dto:commonInfoList){
-					Spots spot = dto.toEntity();
-					spotsRepository.save(spot);
-				}
-			}
-		}
-	}
 }

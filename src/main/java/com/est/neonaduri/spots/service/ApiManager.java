@@ -17,7 +17,6 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 
 @Component
@@ -39,36 +38,19 @@ public class ApiManager {
      * 조회 메서드
      */
 
-    // 위치 기반 조회 -> 추후 필요 시 사용
-    public List<TourApiDto> fetchByLocationInfo(double mapX,double mapY,int radius,int numOfRows){
-        log.info("fetch메서드 정상 호출");
-        String locationInfoUrl=createLocationInfoUrl(mapX,mapY,radius,numOfRows);
-        log.info("url확인={}",locationInfoUrl);
-        return fetch(locationInfoUrl);
-    }
-
     // 지역코드 기반 관광지 조회 -> contentId 추출용
     public List<String> fetchByAreaBased(int numOfRows,int areaCode,int contentTypeCode){
         String areaBasedUrl = createAreaBasedUrl(numOfRows, areaCode, contentTypeCode);
-        List<TourApiDto> fetchedList = fetch(areaBasedUrl);
-
-        return fetchedList.stream()
-                .map(TourApiDto::getContentId)
-                .collect(Collectors.toList());
+        return fetchForAreaBasedContentId(areaBasedUrl);
     }
 
 
     //공통 정보 조회 -> contentId로 단건 조회만 가능
     public List<TourApiDto> fetchByCommonInfo(String contentId,int contentTypeId){
         String commonInfoUrl = createCommonInfoUrl(contentId, contentTypeId);
-        return fetch2(commonInfoUrl);
+        return fetchForCommonInfo(commonInfoUrl);
     }
 
-
-
-
-
-    // contentId에 해당하는 이미지 조회
 
     /**
      * URL 생성기
@@ -129,9 +111,9 @@ public class ApiManager {
      * Tour Api 서버에서 데이터 받아오는 메서드
      * @author lsh
      */
-    public List<TourApiDto> fetch(String url){
+    public List<String> fetchForAreaBasedContentId(String url){
         log.info("fetch메서드 시작");
-        List<TourApiDto> result=new ArrayList<>();
+        List<String> result=new ArrayList<>();
         try {
             log.info("try문 접근={}",url);
             RestTemplate restTemplate = new RestTemplate();
@@ -156,9 +138,9 @@ public class ApiManager {
 
             for(Object o :jsonItemList){
                 JSONObject item = (JSONObject) o;
-                TourApiDto tourApiDto = makeLocationDto1(item);
-                if(tourApiDto==null) continue;
-                result.add(tourApiDto);
+                String contentId = (String) item.get("contentid");
+                if(contentId==null) continue;
+                result.add(contentId);
             }
             log.info("직렬화 완료={}",result);
             return result;
@@ -168,7 +150,7 @@ public class ApiManager {
             return result;
         }
     }
-    public List<TourApiDto> fetch2(String url){
+    public List<TourApiDto> fetchForCommonInfo(String url){
         log.info("fetch메서드 시작");
         List<TourApiDto> result=new ArrayList<>();
         try {
@@ -212,19 +194,7 @@ public class ApiManager {
      * 콘텐츠 정보 직렬화 (JSON -> DTO)
      * @author lsh
      */
-    private TourApiDto makeLocationDto1(JSONObject item) {
 
-        return TourApiDto.builder()
-                .contentId((String) item.get("contentid"))
-                .title((String) item.get("title"))
-                .address((String) item.get("addr1"))
-                .areaCode((int) Long.parseLong((String) item.get("areacode"))) // 문자열을 Long으로 변환
-                .contentTypeId(Long.parseLong((String) item.get("contenttypeid"))) // 문자열을 Long으로 변환
-                .firstImage((String) item.get("firstimage"))
-                .mapX(Double.parseDouble((String) item.get("mapx"))) // 문자열을 double로 변환
-                .mapY(Double.parseDouble((String) item.get("mapy"))) // 문자열을 double로 변환
-                .build();
-    }
     private TourApiDto makeLocationDto2(JSONObject item) {
 
         return TourApiDto.builder()
