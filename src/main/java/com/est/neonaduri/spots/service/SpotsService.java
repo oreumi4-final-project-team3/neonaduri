@@ -46,21 +46,5 @@ public class SpotsService {
 	}
 
 
-	public void saveSpots(){
-		List<List<String>> totalDomesticList=new ArrayList<>();
-		for(int areaCode: AreaCode.getAllAreaCodes()){
-			List<String> areaBasedcontentIdList = apiManager.fetchByAreaBased(5, areaCode, ContentCode.SPOT);
-			totalDomesticList.add(areaBasedcontentIdList);
-		}
 
-		for(List<String> areaList:totalDomesticList){
-			for(String contentId:areaList){
-				List<TourApiDto> commonInfoList = apiManager.fetchByCommonInfo(contentId, ContentCode.SPOT);
-				for(TourApiDto dto:commonInfoList){
-					Spots spot = dto.toEntity();
-					spotsRepository.save(spot);
-				}
-			}
-		}
-	}
 }
