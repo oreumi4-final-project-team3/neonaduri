@@ -40,8 +40,6 @@ public class Users extends BaseTimeEntity {
 
 }
 
-
-
 /*
  * 사용자 세부정보(추가 기능) 엔터티 추가 예정
  *
