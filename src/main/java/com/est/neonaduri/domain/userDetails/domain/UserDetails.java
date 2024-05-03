@@ -19,4 +19,19 @@ public class UserDetails {
     @OneToOne
     @JoinColumn(name = "USER_ID", nullable = false)
     private Users users;
+
+    @Column(name = "USER_MBTI")
+    private String userMbti;
+
+    @Column(name = "USER_STYLE")
+    private String userStyle;
+
+    @Column(name = "USER_INTRO")
+    private String userIntro;
+
+    @Column(name = "QUESTION")
+    private String question;
+
+    @Column(name = "ANSWER")
+    private String answer;
 }
