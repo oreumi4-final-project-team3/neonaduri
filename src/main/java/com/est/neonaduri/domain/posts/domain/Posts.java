@@ -9,12 +9,13 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
 @Builder
+@Entity
 @Table(name="POSTS")
 public class Posts extends BaseTimeEntity {
 	@Id
@@ -46,6 +47,12 @@ public class Posts extends BaseTimeEntity {
 	@Column(name="ADDR", length = 50)
 	private String address;
 
+	@CreatedDate
+	@Column(name="CREATED" ,nullable = false)
+	private LocalDateTime created;
+
+	@Column(name="MODIFIED")
+	private LocalDateTime modified;
 
 	//Default 초기화
 	@PrePersist
