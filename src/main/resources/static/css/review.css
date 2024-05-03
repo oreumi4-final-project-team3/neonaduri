@@ -1,0 +1,119 @@
+
+/* 전체 헤더 스타일링 */
+
+/* 로고 이미지 스타일링 */
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 160px;
+}
+/* 각 요소들의 스타일 */
+.logo, .header-buttons, .user-controls {
+    display: flex;
+    align-items: center; /* 세로 중앙 정렬 */
+}
+.header logo{
+    width:200px;
+    height: 200px;
+}
+/*여기갈까? 같이갈까? 버튼 설정*/
+.header-buttons span {
+    margin-right: 50px; /* 버튼 사이의 간격 설정 */
+    font-size: 25px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+/*마이페이지 버튼과 찜 버튼 설정*/
+.user-controls img{
+    margin-right: 30px;
+    /*padding: 5px 10px;*/
+    cursor: pointer;
+}
+
+/*구분 선*/
+.separator {
+    border-top: 1px solid #ccc; /* 실선 구분선 */
+    /* border-top: 1px dashed #ccc; */ /* 점선 구분선 */
+    /* border-top: 1px dotted #ccc; */ /* 점선 구분선 */
+    margin: 20px 0; /* 구분선 위아래 여백 설정 */
+}
+
+
+/*중간 body 부분*/
+.regions{
+    position: relative;
+}
+.regions span{
+    margin-left: 100px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.region-image img{
+    width: 100%;
+    height: 350px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    margin-top:188px;
+}
+.tourist-sites{
+    margin-top: 400px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4개의 열을 가짐 */
+    gap: 20px; /* 관광지 사이의 간격 설정 */
+    row-gap: 100px;
+}
+
+.tourist-site {
+    /* 각 관광지 요소의 스타일 */
+    text-align: center; /* 내용을 중앙으로 정렬 */
+}
+.tourist-site img{
+    width:250px;
+    height:200px;
+    border-radius: 10px;
+}
+h3{
+    cursor: pointer;
+}
+p{
+    color: #7E7E7E;
+}
+h3, p {
+    margin: 5px 0; /* 요소들의 위아래 여백 설정 */
+}
+
+
+/*footer 부분*/
+
+.footer {
+    display: flex;
+    align-items: center; /* 요소들을 수직 가운데 정렬합니다. */
+}
+.footer-logo{
+    margin-right: auto;
+    margin-left: 30px;
+}
+.footer-logo img{
+    width: 100px;
+    height: 100px;
+}
+
+.footer span{
+    color: #7E7E7E;
+    font-weight: bold;
+}
+
+.footer-group {
+    display: flex;
+    flex-direction: column; /* 세로로 요소들을 배치합니다. */
+    margin-top:10px;
+    margin-left: -1400px;
+}
+
+.github-link {
+    margin-left: auto; /* 우측으로 정렬합니다. */
+}
