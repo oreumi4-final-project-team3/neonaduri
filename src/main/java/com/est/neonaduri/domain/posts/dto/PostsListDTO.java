@@ -13,7 +13,6 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class PostsListDTO {
     private String spotName;
     private String writerId;
@@ -22,6 +21,7 @@ public class PostsListDTO {
     private String postTitle;
     private String postContent;
 
+    @Builder
     public PostsListDTO(Posts posts) {
         this.spotName = posts.getSpotName();
         this.writerId = posts.getUsers().getUserName();
