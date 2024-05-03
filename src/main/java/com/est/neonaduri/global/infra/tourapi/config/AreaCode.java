@@ -1,4 +1,4 @@
-package com.est.neonaduri.domain.spots.config;
+package com.est.neonaduri.global.infra.tourapi.config;
 
 public class AreaCode {
     public static final int SEOUL = 1;
