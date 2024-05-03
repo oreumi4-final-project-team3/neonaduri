@@ -60,9 +60,12 @@
 ### 2-2. 백
 [![Java](https://img.shields.io/badge/Java-orange?style=flat&logo=java)](https://www.java.com)
 [![Spring Boot](https://img.shields.io/badge/Spring_Boot-LimeGreen?style=flat&logo=spring)](https://spring.io/projects/spring-boot)
+### 2-3. DB
+[![MySQL](https://img.shields.io/badge/MySQL-blue.svg)](https://www.mysql.com/)
 
-### 2-3. 환경
+### 2-4. 환경
 [![GitHub](https://img.shields.io/badge/GitHub-hotpink?style=flat&logo=github)](https://github.com)
 [![Discord](https://img.shields.io/badge/Discord-7289DA?style=flat&logo=discord&color=2C2F33)](https://discord.com)
+
 
 ## 3. 개발 일정
