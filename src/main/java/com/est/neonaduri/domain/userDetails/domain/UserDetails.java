@@ -1,14 +1,17 @@
 package com.est.neonaduri.domain.userDetails.domain;
 
+import com.est.neonaduri.domain.userDetails.dto.UserDetailsRequestDto;
 import com.est.neonaduri.domain.users.domain.Users;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Table(name = "USER_DETAILS")
 @Entity
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserDetails {
@@ -34,4 +37,10 @@ public class UserDetails {
 
     @Column(name = "ANSWER")
     private String answer;
+
+    public void update(UserDetailsRequestDto request){
+        this.userMbti = request.getMbti();
+        this.userStyle = request.getStyle();
+        this.userIntro = request.getIntro();
+    }
 }
