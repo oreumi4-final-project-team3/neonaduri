@@ -33,7 +33,7 @@ public class TourApiCrawler {
     @Scheduled(cron = "0 30 10 1 * *")
     //60초마다 갱신
 
-//    @Scheduled(fixedRate = 60000)
+    //@Scheduled(fixedRate = 60000)
 
     public void performTourApiCrawler(){
         List<List<String>> contentIds = collectAreaBasedContentId();
