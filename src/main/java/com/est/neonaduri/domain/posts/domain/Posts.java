@@ -14,6 +14,7 @@ import org.springframework.data.annotation.CreatedDate;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity
 @Table(name="POSTS")
 public class Posts extends BaseTimeEntity {
@@ -58,15 +59,5 @@ public class Posts extends BaseTimeEntity {
 	public void prePersist(){
 		this.postId = IdGenerator.generatePostId(this.postCategory);
 		this.postView = this.postView == null ? 0 : this.postView;
-	}
-
-	@Builder
-	public Posts(String postCategory, String postTitle, String postContent, String spotName, String address, Users users) {
-		this.postCategory = postCategory;
-		this.postTitle = postTitle;
-		this.postContent = postContent;
-		this.spotName = spotName;
-		this.address = address;
-		this.users = users;
 	}
 }
