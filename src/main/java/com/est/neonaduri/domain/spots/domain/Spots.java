@@ -1,5 +1,6 @@
 package com.est.neonaduri.domain.spots.domain;
 
+import com.est.neonaduri.domain.posts.domain.Posts;
 import com.est.neonaduri.global.config.BaseTimeEntity;
 import com.est.neonaduri.global.utils.IdGenerator;
 import jakarta.persistence.*;
@@ -20,8 +21,9 @@ public class Spots extends BaseTimeEntity {
 	@Column(name="SPOT_ID", length = 100 ,nullable = false)
 	private String spotId;
 
-	@Column(name="AREA_CODE",nullable = false)
-	private int areaCode;
+	@OneToOne
+	@JoinColumn(name = "POST_ID", nullable = false)
+	private Posts posts;
 
 	@Column(name="SPOT_TYPE",nullable = false)
 	private Long spotType;
@@ -35,14 +37,6 @@ public class Spots extends BaseTimeEntity {
 	@Column(name="MAP_X",nullable = false)
 	private double mapX;
 
-	@Column(name="SPOT_NAME", length = 255 ,nullable = false)
-	private String spotName;
-
-	@Column(name="SPOT_OVERVIEW", length = 2000 ,nullable = false)
-	private String spotOverview;
-
-	@Column(name="SPOT_ADDR", length = 50 ,nullable = false)
-	private String spotAddr;
 
 	@PrePersist
 	public void prePersist(){

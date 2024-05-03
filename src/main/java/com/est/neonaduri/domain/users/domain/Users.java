@@ -15,6 +15,9 @@ public class Users extends BaseTimeEntity {
     @Column(name="USER_ID", updatable = false,length = 100)
     private String userId;
 
+    @Column(name = "USER_ROLE",length = 20)
+    private String userRole;
+
     @Column(name="USER_NAME",nullable = false,length=20)
     private String userName;
 

@@ -1,7 +1,7 @@
-package com.est.neonaduri.domain.spots.service;
+package com.est.neonaduri.global.infra.tourapi.service;
 
-import com.est.neonaduri.domain.spots.config.ApiConst;
-import com.est.neonaduri.domain.spots.dto.TourApiDto;
+import com.est.neonaduri.global.infra.tourapi.config.ApiConst;
+import com.est.neonaduri.global.infra.tourapi.dto.TourApiDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONArray;

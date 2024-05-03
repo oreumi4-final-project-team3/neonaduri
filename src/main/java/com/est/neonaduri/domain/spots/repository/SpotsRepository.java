@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SpotsRepository extends JpaRepository<Spots,String> {
-	Optional<Spots> findByspotName(String spotName);
-
-	List<Spots> findByAreaCode(int areaCode);
+//	Optional<Spots> findByspotName(String spotName);
+//
+//	List<Spots> findByAreaCode(int areaCode);
 }
