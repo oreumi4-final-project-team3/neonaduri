@@ -4,6 +4,7 @@ import com.est.neonaduri.domain.posts.domain.Posts;
 import com.est.neonaduri.global.config.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,6 +15,7 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Companions extends BaseTimeEntity {
     @Id
     @Column(name = "COMPANION_ID", length = 100, nullable = false)
@@ -37,4 +39,10 @@ public class Companions extends BaseTimeEntity {
 
     @Column(name = "COM_END", nullable = false)
     private LocalDateTime comEnd;
+
+    @PrePersist
+    public void prePersist(){
+        this.comStatus = this.comStatus == null ? false : this.comStatus;
+        this.comWish = this.comWish == null ? 0 : this.comWish;
+    }
 }
