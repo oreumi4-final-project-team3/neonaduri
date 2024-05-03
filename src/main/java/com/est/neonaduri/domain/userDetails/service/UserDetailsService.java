@@ -7,6 +7,7 @@ import com.est.neonaduri.domain.users.domain.Users;
 import com.est.neonaduri.domain.users.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -23,6 +24,7 @@ public class UserDetailsService {
         return userDetailsRepository.findByUsers_UserId(userId);
     }
 
+    @Transactional
     public UserDetails updateUserDetails(String userId, UserDetailsRequestDto request){
         UserDetails userDetails = userDetailsRepository.findByUsers_UserId(userId);
 

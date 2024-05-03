@@ -7,6 +7,9 @@ public class IdGenerator {
         return "user_"+ UUID.randomUUID().toString();
     }
 
+    public static String generateUserDetailsId(){
+        return "userDetail_"+UUID.randomUUID();
+    }
     public static String generateSpotId(String spotId) {
         return "spot_"+ spotId;
     }

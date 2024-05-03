@@ -22,7 +22,6 @@ public class UserService {
         userDTO.setUserId(user.getUserId());
         userDTO.setUserName(user.getUserName());
         userDTO.setUserEmail(user.getUserEmail());
-        userDTO.setUserPw(user.getUserPw());
         userDTO.setUserRegion(user.getUserRegion());
         userDTO.setUserBirth(user.getUserBirth());
         userDTO.setUserGender(user.getUserGender());
