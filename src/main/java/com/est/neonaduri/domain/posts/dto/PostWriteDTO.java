@@ -14,6 +14,7 @@ public class PostWriteDTO {
     private String postTitle;
     private String postContent;
     private String spotName;
+    private Integer areaCode;
     private String address;
 
     public Posts toEntity(Users users) {
@@ -21,6 +22,7 @@ public class PostWriteDTO {
                 .postCategory(postCategory)
                 .postTitle(postTitle)
                 .postContent(postContent)
+                .areaCode(areaCode)
                 .spotName(spotName)
                 .address(address)
                 .users(users)
