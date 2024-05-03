@@ -88,9 +88,10 @@
 
     // 전체 버튼에 대한 클릭 이벤트 처리
     document.querySelector('.region-all-btn').addEventListener('click', function(event) {
-    event.preventDefault();
-    const defaultRegion = '1'; // 서울을 나타내는 지역 코드
-    localStorage.setItem('selectedRegion', defaultRegion); // 로컬 스토리지에 저장
-    updateRegionImage(defaultRegion); // 대표 이미지 업데이트 함수 호출
-});
+        event.preventDefault();
+        const defaultRegion = '1'; // 서울을 나타내는 지역 코드
+        localStorage.setItem('selectedRegion', defaultRegion); // 로컬 스토리지에 저장
+        updateRegionImage(defaultRegion); // 대표 이미지 업데이트 함수 호출
+
+    });
 
