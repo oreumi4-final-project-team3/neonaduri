@@ -6,14 +6,18 @@ import java.util.stream.Collectors;
 import com.est.neonaduri.domain.posts.domain.Posts;
 import com.est.neonaduri.domain.posts.dto.PostWriteDTO;
 import com.est.neonaduri.domain.posts.dto.PostsListDTO;
+import com.est.neonaduri.domain.posts.dto.ReviewDTO;
 import com.est.neonaduri.domain.posts.service.PostsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
 
-@RestController
+
+@Controller
 public class PostsController {
 
 	private final PostsService postsService;
@@ -52,5 +56,17 @@ public class PostsController {
 				.map(this::convertToPostsListDTO)
 				.collect(Collectors.toList());
 		return postsListDTO;
+	}
+
+	@GetMapping("api/reviews")
+	public String getAllReview(Model model){
+		model.addAttribute("reviews",postsService.getAllReviewList());
+		return "reviewList";
+	}
+
+	@GetMapping("api/reviews/code/{areaCode}")
+	public String getSameAreaReview(@PathVariable int areaCode , Model model){
+		model.addAttribute("reviews",postsService.getReviewListByArea(areaCode));
+		return "reviewList";
 	}
 }
