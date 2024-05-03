@@ -4,17 +4,20 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.est.neonaduri.domain.posts.domain.Posts;
+import com.est.neonaduri.domain.posts.dto.PostWriteDTO;
 import com.est.neonaduri.domain.posts.dto.PostsListDTO;
 import com.est.neonaduri.domain.posts.service.PostsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
 public class PostsController {
 
 	private final PostsService postsService;
+
 	@Autowired
 	public PostsController(PostsService postsService) {
 		this.postsService = postsService;
@@ -22,6 +25,18 @@ public class PostsController {
 
 	private PostsListDTO convertToPostsListDTO(Posts posts) {
 		return new PostsListDTO(posts);
+	}
+
+	/**
+	 * 같이갈까? 게시글을 생성하는 API
+	 *
+	 * @return ResponseEntity<Posts> : 같이갈까? 게시글 생성
+	 * @author jyh
+	 */
+	@PostMapping("api/posts/{userId}")
+	public ResponseEntity<Posts> createPost(@PathVariable(name = "userId") String userId, @RequestBody PostWriteDTO postWriteDTO) {
+		Posts createdPost = postsService.createPost(userId, postWriteDTO);
+		return ResponseEntity.status(HttpStatus.CREATED).body(createdPost);
 	}
 
 	/**
