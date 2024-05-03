@@ -20,7 +20,7 @@ bin/
 ### IntelliJ IDEA ###
 application-private.properties
 config.properties
-
+application-email.properties
 .idea
 *.iws
 *.iml
