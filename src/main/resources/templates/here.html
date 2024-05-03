@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>여기갈까?</title>
+    <link rel="stylesheet" th:href="@{/css/here.css}">
+
+</head>
+<body>
+<header>
+    <div class ="header">
+        <div class="logo">
+            <img th:src="@{/images/logo.png}" alt="팀 로고"/>
+
+        </div>
+        <div class="header-buttons">
+            <span class="header-btn1" onclick="goToHerePage()">여기갈까?</span>
+            <span class="header-btn2">같이갈까?</span>
+        </div>
+        <div class="user-controls">
+            <img th:src="@{/images/mypage.png}" alt="마이페이지로 이동"/>
+            <img th:src="@{/images/like.png}" alt="찜"/>
+        </div>
+    </div>
+    <div class="separator"></div>
+</header>
+<main>
+    <div class="regions">
+        <span class="region-all-btn" onclick="goToHerePage()">전체</span>
+        <span class="region-btn" data-area-code="1">서울</span>
+        <span class="region-btn" data-area-code="31">경기</span>
+        <span class="region-btn" data-area-code="2">인천</span>
+        <span class="region-btn" data-area-code="32">강원</span>
+        <span class="region-btn" data-area-code="33">충북</span>
+        <span class="region-btn" data-area-code="34">충남</span>
+        <span class="region-btn" data-area-code="35">경북</span>
+        <span class="region-btn" data-area-code="36">경남</span>
+        <span class="region-btn" data-area-code="37">전북</span>
+        <span class="region-btn" data-area-code="38">전남</span>
+        <span class="region-btn" data-area-code="39">제주</span>
+    </div>
+    <div class="region-image">
+        <img id="regionImage" th:src="@{/images/seoul.png}" alt="대표이미지"/>
+    </div>
+    <div class="tourist-sites">
+        <!-- 관광지 리스트가 여기에 표시됩니다. -->
+        <div class="tourist-site" th:each="spot : ${spots}">
+            <img th:if="${not #strings.isEmpty(spot.spotImg)}" th:src="${spot.spotImg}" alt="관광지 이미지">
+            <img th:if="${#strings.isEmpty(spot.spotImg)}" src="/images/havenotimage.png" alt="이미지 준비중">
+            <p th:text="${spot.spotAddr}"></p>
+            <h3 th:text="${spot.spotName}"></h3>
+            <p th:text="${#strings.length(spot.spotOverview) > 20 ? #strings.substring(spot.spotOverview,0,20)+'...': spot.spotOverview}"></p>
+        </div>
+    </div>
+
+</main>
+<div class="separator"></div>
+<footer>
+    <div class="footer">
+        <div class="footer-logo">
+            <img th:src="@{/images/logo.png}" alt="팀 로고"/>
+        </div>
+        <div class="footer-group">
+            <div class="data">
+                <span>데이터 제공 : 한국관광공사 TourAPI</span>
+            </div>
+            <div class="icon-made">
+                <span>아이콘 제작자: Freepik - Flaticon</span>
+            </div>
+        </div>
+        <div class="github-link">
+            <a href="https://github.com/oreumi4-final-project-team3/neonaduri">
+                <img th:src="@{/images/github.png}" alt="깃허브로 이동"/>
+        </div>
+    </div>
+</footer>
+</body>
+<script>
+    // "여기갈까?" 버튼 클릭 시 새로고침
+    function goToHerePage() {
+        window.location.href = "/api/spots";
+    }
+
+    // 각 지역 선택시 관광지 게시글 리스트 처리
+    document.addEventListener('DOMContentLoaded', function() {
+        const regionButtons = document.querySelectorAll('.region-btn');
+        regionButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const areaCode = this.getAttribute('data-area-code');
+                fetchSpots(areaCode);
+                window.history.pushState({areaCode: areaCode}, `Region ${areaCode}`, `/api/spots/code/${areaCode}`);
+                location.href = `/api/spots/code/${areaCode}`; // 주소를 변경 후 페이지를 새로고침합니다.
+            });
+        });
+    });
+    function fetchSpots(areaCode) {
+        fetch(`/api/spots/code/${areaCode}`)
+            .then(response => response.json())
+            .then(data => {
+                const spotsList = data.map(spot => `
+                <div class="tourist-site">
+                    <img src="${spot.spotImg}" alt="관광지 이미지">
+                    <p>${spot.spotAddr}</p>
+                    <h3>${spot.spotName}</h3>
+                    <p>${spot.spotOverview}</p>
+                </div>
+            `).join('');
+                document.querySelector('.tourist-sites').innerHTML = spotsList;
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
+    // 지역 별 대표 이미지 처리
+    document.querySelectorAll('.region-btn').forEach(button => {
+        button.addEventListener('click', function(event) {
+            event.preventDefault();
+            const region = this.getAttribute('data-area-code'); // 지역 코드 가져오기
+            localStorage.setItem('selectedRegion', region); // 로컬 스토리지에 저장
+            updateRegionImage(region); // 이미지 업데이트 함수 호출
+        });
+    });
+
+    // 지역 이미지 업데이트 함수
+    function updateRegionImage(regionCode) {
+        const imageElement = document.getElementById('regionImage');
+        const imagePath = getImagePathByRegion(regionCode);
+        imageElement.src = imagePath;
+    }
+
+    // 지역 코드에 따른 이미지 경로 반환 함수
+    function getImagePathByRegion(region) {
+        switch(region) {
+            case '1': return '/images/seoul.png';
+                break;
+            case '2': return '/images/incheon.jpg';
+                break;
+            case '31': return '/images/kyungki.jpg';
+                break;
+            case '32': return '/images/kangwon.jpg';
+                break;
+            case '33': return '/images/chungbuk.png';
+                break;
+            case '34': return '/images/chungnam.jpg';
+                break;
+            case '35': return '/images/kyungbuk.jpg';
+                break;
+            case '36': return '/images/kyungnam.jpg';
+                break;
+            case '37': return '/images/jeonbuk.jpg';
+                break;
+            case '38': return '/images/jeonnam.jpg';
+                break;
+            case '39': return '/images/jeju.jpg';
+                break;
+
+            default: return '/images/seoul.png';
+        }
+    }
+
+    // 페이지 로드 시 선택된 지역 이미지 설정
+    document.addEventListener('DOMContentLoaded', function() {
+        const selectedRegion = localStorage.getItem('selectedRegion') || '1'; // 로컬 스토리지에서 선택된 지역 코드 가져오기, 기본값은 '1'
+        updateRegionImage(selectedRegion); // 가져온 지역 코드로 이미지 업데이트
+    });
+
+    // 전체 버튼에 대한 클릭 이벤트 처리
+    document.querySelector('.region-all-btn').addEventListener('click', function(event) {
+        event.preventDefault();
+        const defaultRegion = '1'; // 서울을 나타내는 지역 코드
+        localStorage.setItem('selectedRegion', defaultRegion); // 로컬 스토리지에 저장
+        updateRegionImage(defaultRegion); // 대표 이미지 업데이트 함수 호출
+    });
+
+</script>
+</html>
+
