@@ -2,7 +2,9 @@ package com.est.neonaduri.domain.spots.controller;
 
 import java.util.Optional;
 
+import com.est.neonaduri.domain.spots.dto.SpotPageDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,6 +38,11 @@ public class SpotsController {
 	public String getAllSpots(Model model){
 		model.addAttribute("spots",spotsService.getAllSpots());
 		return "here";
+	}
+	@GetMapping("api/spot/{spotId}")
+	public ResponseEntity<SpotPageDto> getSpot(@PathVariable String spotId){
+		SpotPageDto spotPage = spotsService.getSpotPage(spotId);
+		return ResponseEntity.ok(spotPage);
 	}
 
 
