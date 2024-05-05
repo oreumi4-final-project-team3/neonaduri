@@ -1,10 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="UTF-8">
+  <title>관광지 상세 정보</title>
+  <link rel="stylesheet" th:href="@{/css/post-spot-page.css}">
+  <script src="script.js" defer></script>
 </head>
 <body>
+<header>
+  <div class ="header">
+    <div class="logo">
+      <img th:src="@{/images/logo.png}" alt="팀 로고"/>
 
+    </div>
+    <div class="header-buttons">
+      <span class="header-btn1" onclick="goToHerePage()">여기갈까?</span>
+      <span class="header-btn2">같이갈까?</span>
+    </div>
+    <div class="user-controls">
+      <img th:src="@{/images/mypage.png}" alt="마이페이지로 이동"/>
+      <img th:src="@{/images/like.png}" alt="찜"/>
+    </div>
+  </div>
+  <div class="separator1"></div>
+</header>
+<main>
+  <div class="image-container">
+    <img id="area-image" src="/images/chungbuk.png">
+    <div class="text-overlay">서울</div>
+  </div>
+  <section id="section1">
+    <div class="spot-info">
+      <h1 th:text="${spotPage.spotName}">관광지</h1>
+      <p th:text="${spotPage.spotAddr}">관광지 주소</p>
+    </div>
+    <div class="spot-content">
+      <div class="spot-details">
+        <img th:src="${spotPage.spotImg}" alt="Tourist Spot" class="spot-image">
+        <h1>상세정보</h1>
+        <p th:text="${spotPage.spotOverview}">관광지 상세 설명...</p>
+      </div>
+      <div class="reservation">
+        <div class="interest-count">
+          <span>관심 인원수: </span>
+          <span >0</span>명
+        </div>
+        <button>예약하기</button>
+      </div>
+    </div>
+  </section>
+  <section id="section2">
+    <div id="map"></div>
+  </section>
+  <section id="section3">
+    <div id="aiResults">AI generated results...</div>
+  </section>
+</main>
+<div class="separator2"></div>
+<footer>
+  <div class="footer">
+    <div class="footer-logo">
+      <img th:src="@{/images/logo.png}" alt="팀 로고"/>
+    </div>
+    <div class="footer-group">
+      <div class="data">
+        <span>데이터 제공 : 한국관광공사 TourAPI</span>
+      </div>
+      <div class="icon-made">
+        <span>아이콘 제작자: Freepik - Flaticon</span>
+      </div>
+    </div>
+    <div class="github-link">
+      <a href="https://github.com/oreumi4-final-project-team3/neonaduri">
+        <img th:src="@{/images/github.png}" alt="깃허브로 이동"/>
+      </a>
+    </div>
+  </div>
+</footer>
 </body>
 </html>
