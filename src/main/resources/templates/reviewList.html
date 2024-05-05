@@ -54,6 +54,14 @@
         </div>
     </div>
 
+    <div class="pagination">
+        <a th:if="${reviews.hasPrevious()}" th:href="@{/api/reviews(page=${currentPage - 1}, size=${reviews.size})}">이전</a>
+        <span th:each="pageNum : ${#numbers.sequence(1, reviews.totalPages)}">
+        <a th:href="@{/api/reviews(page=${pageNum}, size=${reviews.size})}" th:text="${pageNum}" th:classappend="${pageNum==currentPage} ? 'active'"></a>
+
+    </span>
+        <a th:if="${reviews.hasNext()}" th:href="@{/api/reviews(page=${currentPage + 1}, size=${reviews.size})}">다음</a>
+    </div>
 </main>
 <div class="separator"></div>
 <footer>

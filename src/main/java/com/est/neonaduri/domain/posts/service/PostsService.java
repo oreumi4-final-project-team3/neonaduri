@@ -8,6 +8,8 @@ import com.est.neonaduri.domain.posts.dto.PostWriteDTO;
 import com.est.neonaduri.domain.users.domain.Users;
 import com.est.neonaduri.domain.users.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.est.neonaduri.domain.posts.dto.ReviewDTO;
@@ -55,10 +57,10 @@ public class PostsService {
 		postsRepository.delete(posts);
 	}
 
-	public List<ReviewDTO> getAllReviewList(){
-		List<Posts> posts = postsRepository.findBypostCategory("reviews");
+	public Page<ReviewDTO> getAllReviewList(Pageable pageable){
+		Page<Posts> posts = postsRepository.findBypostCategory("reviews",pageable);
 
-		return posts.stream().map(review->{
+		return posts.map(review->{
 			Users users = review.getUsers();
 			if(users!=null){
 				return new ReviewDTO(null, review.getPostTitle(), review.getSpotName(),review.getUsers().getUserName());
@@ -66,23 +68,23 @@ public class PostsService {
 			else{
 				return null;
 			}
-		}).collect(Collectors.toList());
+		});
 
 	}
-	public List<ReviewDTO> getReviewListByArea(int areaCode) {
-		List<Posts> posts = postsRepository.findBypostCategory("reviews");
-
-		return posts.stream()
-			.filter(review -> review.getAreaCode().equals(areaCode))
-			.map(review -> {
-				Users users = review.getUsers();
-				if (users != null) {
-					return new ReviewDTO(null, review.getPostTitle(), review.getSpotName(),
-						review.getUsers().getUserName());
-				} else {
-					return null;
-				}
-			}).collect(Collectors.toList());
-
-	}
+	// public List<ReviewDTO> getReviewListByArea(int areaCode) {
+	// 	List<Posts> posts = postsRepository.findBypostCategory("reviews");
+	//
+	// 	return posts.stream()
+	// 		.filter(review -> review.getAreaCode().equals(areaCode))
+	// 		.map(review -> {
+	// 			Users users = review.getUsers();
+	// 			if (users != null) {
+	// 				return new ReviewDTO(null, review.getPostTitle(), review.getSpotName(),
+	// 					review.getUsers().getUserName());
+	// 			} else {
+	// 				return null;
+	// 			}
+	// 		}).collect(Collectors.toList());
+	//
+	// }
 }
