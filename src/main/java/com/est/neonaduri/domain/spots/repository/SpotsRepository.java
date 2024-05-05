@@ -5,9 +5,10 @@ import java.util.Optional;
 
 import com.est.neonaduri.domain.spots.domain.Spots;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SpotsRepository extends JpaRepository<Spots,String> {
-
 }
