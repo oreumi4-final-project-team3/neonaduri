@@ -1,0 +1,158 @@
+/* 전체 적용 */
+h1 {
+    font-size: 48px; /* h1 텍스트 크기를 48px로 설정합니다. */
+}
+
+p {
+    font-size: 24px; /* p 텍스트 크기를 24px로 설정합니다. */
+}
+body {
+    width: 1920px;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+}
+/* 전체 헤더 스타일링 */
+
+/* 로고 이미지 스타일링 */
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 160px;
+}
+/* 각 요소들의 스타일 */
+.logo, .header-buttons, .user-controls {
+    display: flex;
+    align-items: center; /* 세로 중앙 정렬 */
+}
+.header logo{
+    width:200px;
+    height: 200px;
+}
+/*여기갈까? 같이갈까? 버튼 설정*/
+.header-buttons span {
+    margin-right: 50px; /* 버튼 사이의 간격 설정 */
+    font-size: 25px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.header-btn1{
+    font-weight: bold;
+}
+/*마이페이지 버튼과 찜 버튼 설정*/
+.user-controls img{
+    margin-right: 30px;
+    /*padding: 5px 10px;*/
+    cursor: pointer;
+}
+
+/*구분 선*/
+.separator1 {
+    border-top: 1px solid #ccc; /* 실선 구분선 */
+}
+.separator2 {
+    border-top: 1px solid #ccc; /* 실선 구분선 */
+    /* 구분선 위아래 여백 설정 */
+    margin: 20px 0;
+}
+
+
+#section1, #section2, #section3 {
+    margin-left: 100px; /* 섹션들을 오른쪽으로 100px 만큼 띄웁니다. */
+}
+.spot-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+.spot-details,.reservation {
+    flex: 1;
+    padding: 10px;
+    box-sizing: border-box;
+    max-width: 100%; /* 최대 너비를 부모 요소에 맞춤 */
+}
+
+.spot-details p {
+    width: 100%; /* 화면 전체 너비에 맞춤 */
+    max-width: calc(100vw - 20px); /* padding과 border 고려한 너비 조정 */
+    box-sizing: border-box;
+}
+.interest-count {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #666;
+}
+.image-container {
+    position: relative;
+}
+
+.text-overlay {
+    position: absolute;
+    color: rgba(126, 126, 126, 0.8);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    font-size: 95px;
+}
+#area-image {
+    width: 100%;
+    height: 350px;
+    opacity: 0.5;
+}
+
+.spot-image {
+    width: 622px;
+    height: 556px;
+    border-radius: 20px;
+}
+
+/*section#section1 div {*/
+/*    padding: 20px;*/
+/*    text-align: center;*/
+/*}*/
+
+#map {
+    height: 300px;
+    background-color: #ccc;
+}
+
+
+
+
+
+/*footer 부분*/
+
+.footer {
+    display: flex;
+    align-items: center; /* 요소들을 수직 가운데 정렬합니다. */
+}
+.footer-logo{
+    margin-right: auto;
+    margin-left: 30px;
+}
+.footer-logo img{
+    width: 100px;
+    height: 100px;
+}
+
+.footer span{
+    color: #7E7E7E;
+    font-weight: bold;
+}
+
+.footer-group {
+    display: flex;
+    flex-direction: column; /* 세로로 요소들을 배치합니다. */
+    margin-top:10px;
+    margin-left: -1400px;
+}
+
+.github-link {
+    margin-left: auto; /* 우측으로 정렬합니다. */
+}
