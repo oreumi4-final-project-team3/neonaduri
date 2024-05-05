@@ -39,10 +39,17 @@ public class SpotsController {
 		model.addAttribute("spots",spotsService.getAllSpots());
 		return "here";
 	}
+	/**
+	 * 관광지 상세페이지를 조회하는 API
+	 *
+	 * @return SpotPageDto : 관광지 상세정보
+	 * @author lsh
+	 */
 	@GetMapping("api/spot/{spotId}")
-	public ResponseEntity<SpotPageDto> getSpot(@PathVariable String spotId){
+	public String getSpot(@PathVariable String spotId,Model model){
 		SpotPageDto spotPage = spotsService.getSpotPage(spotId);
-		return ResponseEntity.ok(spotPage);
+		model.addAttribute("spotPage",spotPage);
+		return "post-spot-page";
 	}
 
 
