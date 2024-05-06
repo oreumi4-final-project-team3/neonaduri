@@ -4,7 +4,16 @@
   <meta charset="UTF-8">
   <title>관광지 상세 정보</title>
   <link rel="stylesheet" th:href="@{/css/post-spot-page.css}">
-  <script src="script.js" defer></script>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cbd674e6a776632944506cb4de10f74c&libraries=services"></script>
+  <script src="/js/map.js" defer></script>
+  <script src="/js/post-spot-page.js" defer></script>
+  <script th:inline="javascript">
+    /*<![CDATA[*/
+    var mapX = [[${spotPage.mapX}]]; // Thymeleaf에서 mapX 값을 JavaScript 변수로 전달
+    var mapY = [[${spotPage.mapY}]]; // Thymeleaf에서 mapY 값을 JavaScript 변수로 전달
+    var areaCode=[[${spotPage.areaCode}]];// Thymeleaf에서 areaCode값을 JavaScript 변수로 전달
+    /*]]>*/
+  </script>
 </head>
 <body>
 <header>
@@ -26,8 +35,8 @@
 </header>
 <main>
   <div class="image-container">
-    <img id="area-image" src="/images/chungbuk.png">
-    <div class="text-overlay">서울</div>
+    <img id="area-image" src="/images/havenotimage.png">
+    <div id="area-name" class="text-overlay">지역명</div>
   </div>
   <section id="section1">
     <div class="spot-info">
@@ -41,19 +50,36 @@
         <p th:text="${spotPage.spotOverview}">관광지 상세 설명...</p>
       </div>
       <div class="reservation">
-        <div class="interest-count">
-          <span>관심 인원수: </span>
-          <span >0</span>명
-        </div>
         <button>예약하기</button>
       </div>
     </div>
   </section>
+  <div class="separator2"></div>
   <section id="section2">
+    <div class="map_wrap">
     <div id="map"></div>
+    <!-- 지도타입 컨트롤 div 입니다 -->
+    <div class="custom_typecontrol radius_border">
+      <span id="btnRoadmap" class="selected_btn" onclick="setMapType('roadmap')">지도</span>
+      <span id="btnSkyview" class="btn" onclick="setMapType('skyview')">스카이뷰</span>
+    </div>
+    <!-- 지도 확대, 축소 컨트롤 div 입니다 -->
+    <div class="custom_zoomcontrol radius_border">
+      <span onclick="zoomIn()"><img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_plus.png" alt="확대"></span>
+      <span onclick="zoomOut()"><img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_minus.png" alt="축소"></span>
+    </div>
+    </div>
   </section>
   <section id="section3">
-    <div id="aiResults">AI generated results...</div>
+    <div>
+      <img src="/images/alan.jpg">
+      <h1>AI 추천 검색</h1>
+    </div>
+    <div id="aiResults">
+      <p>실시간 검색 앨런</p>
+      <br>
+      <p>관련 최신 정보를 확인하고 있어요.</p></div>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut delectus magni, maiores quas reprehenderit sequi veniam vero? Ab beatae doloribus id iste, iure maiores nulla qui repellendus, unde ut voluptatum.</p>
   </section>
 </main>
 <div class="separator2"></div>
@@ -77,5 +103,13 @@
     </div>
   </div>
 </footer>
+<!--<nav class="scroll_container">-->
+<!--  <div id="scrollTop">-->
+<!--    <img src="/images/btn_up_light.png" alt="버튼 상단 이동">-->
+<!--  </div>-->
+<!--  <div id="scrollDown">-->
+<!--    <img src="/images/btn_down_light.png" alt="버튼 하단 이동">-->
+<!--  </div>-->
+<!--</nav>-->
 </body>
 </html>

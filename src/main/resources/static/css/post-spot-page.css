@@ -9,7 +9,7 @@ p {
 body {
     width: 1920px;
     height: 100%;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     overflow-x: hidden;
     font-family: Arial, sans-serif;
@@ -61,7 +61,8 @@ body {
 
 
 #section1, #section2, #section3 {
-    margin-left: 100px; /* 섹션들을 오른쪽으로 100px 만큼 띄웁니다. */
+    margin-left: 50px;
+    margin-right: 50px;
 }
 .spot-content {
     display: flex;
@@ -70,23 +71,34 @@ body {
     margin-top: 20px;
 }
 
-.spot-details,.reservation {
-    flex: 1;
+.spot-details {
+    flex: 2; /* 기존의 flex: 1에서 변경 */
     padding: 10px;
     box-sizing: border-box;
     max-width: 100%; /* 최대 너비를 부모 요소에 맞춤 */
 }
+.reservation {
+    flex: 1; /* 이 부분은 그대로 유지 */
+    padding: 10px;
+    box-sizing: border-box;
+    max-width: 100%; /* 최대 너비를 부모 요소에 맞춤 */
+    width: 330px;
+    height: 556px;
+    border-radius: 20px;
+    background-color: #D9D9D9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.reservation button {
+    font-size: 48px;
+}
 
 .spot-details p {
     width: 100%; /* 화면 전체 너비에 맞춤 */
-    max-width: calc(100vw - 20px); /* padding과 border 고려한 너비 조정 */
-    box-sizing: border-box;
+    max-width: calc(100vw - 10px); /* padding과 border 고려한 너비 조정 */
 }
-.interest-count {
-    margin-bottom: 10px;
-    font-size: 16px;
-    color: #666;
-}
+
 .image-container {
     position: relative;
 }
@@ -112,19 +124,62 @@ body {
     border-radius: 20px;
 }
 
+
+
 /*section#section1 div {*/
 /*    padding: 20px;*/
 /*    text-align: center;*/
 /*}*/
 
 #map {
-    height: 300px;
+    height: 500px;
     background-color: #ccc;
 }
+.map_wrap {position:relative;overflow:hidden;width:100%;height:500px;}
+.radius_border{border:1px solid #919191;border-radius:5px;}
+.custom_typecontrol {position:absolute;top:10px;right:10px;overflow:hidden;width:130px;height:30px;margin:0;padding:0;z-index:1;font-size:12px;font-family:'Malgun Gothic', '맑은 고딕', sans-serif;}
+.custom_typecontrol span {display:block;width:65px;height:30px;float:left;text-align:center;line-height:30px;cursor:pointer;}
+.custom_typecontrol .btn {background:#fff;background:linear-gradient(#fff,  #e6e6e6);}
+.custom_typecontrol .btn:hover {background:#f5f5f5;background:linear-gradient(#f5f5f5,#e3e3e3);}
+.custom_typecontrol .btn:active {background:#e6e6e6;background:linear-gradient(#e6e6e6, #fff);}
+.custom_typecontrol .selected_btn {color:#fff;background:#425470;background:linear-gradient(#425470, #5b6d8a);}
+.custom_typecontrol .selected_btn:hover {color:#fff;}
+.custom_zoomcontrol {position:absolute;top:50px;right:10px;width:36px;height:80px;overflow:hidden;z-index:1;background-color:#f5f5f5;}
+.custom_zoomcontrol span {display:block;width:36px;height:40px;text-align:center;cursor:pointer;}
+.custom_zoomcontrol span img {width:15px;height:15px;padding:12px 0;border:none;}
+.custom_zoomcontrol span:first-child{border-bottom:1px solid #bfbfbf;}
 
 
+#section3 {
+    margin-top: 40px;
+    background-color: #569ACC; /* 배경 색상 변경 */
+    max-width: 100%; /* 부모 요소의 가로를 맞춤 */
+    height: 600px; /* 높이를 600px로 지정 */
+    border-radius: 20px; /* 둥근 테두리 설정 */
+    padding: 20px; /* 내부 여백 설정 */
+    box-sizing: border-box; /* 요소의 크기를 테두리와 여백을 포함하여 계산 */
+}
 
+#section3 > div {
+    display: flex;
+    align-items: center; /* 이미지와 h1을 세로 중앙에 정렬 */
+}
 
+#section3 img {
+    margin-right: 10px; /* 이미지와 h1 사이 간격 조정 */
+    width: 60px;
+    height: auto;
+}
+#aiResults p {
+    margin: 0; /* 문단의 상하 여백 제거 */
+    font-size: 24px; /* 텍스트 크기 변경 */
+    word-wrap: break-word;
+    color: white;
+}
+
+#aiResults {
+    margin-top: 10px; /* aiResults와 이미지, h1 사이 간격 조정 */
+}
 
 /*footer 부분*/
 
@@ -156,3 +211,4 @@ body {
 .github-link {
     margin-left: auto; /* 우측으로 정렬합니다. */
 }
+
