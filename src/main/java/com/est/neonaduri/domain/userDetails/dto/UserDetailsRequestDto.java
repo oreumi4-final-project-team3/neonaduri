@@ -4,9 +4,13 @@ import com.est.neonaduri.domain.userDetails.domain.UserDetails;
 import com.est.neonaduri.domain.users.domain.Users;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @AllArgsConstructor
 @Getter
+@Setter
+@NoArgsConstructor
 public class UserDetailsRequestDto {
     private String mbti;
     private String style;
