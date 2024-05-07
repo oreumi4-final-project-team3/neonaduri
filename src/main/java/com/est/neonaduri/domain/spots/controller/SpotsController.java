@@ -78,17 +78,17 @@ public class SpotsController {
 	 * @return List<SpotsListDTO> : 관광지 리스트
 	 * @author kec
 	 */
-	// @GetMapping("api/spots/code/{areaCode}")
-	// public String getSameAreaSpot(@PathVariable int areaCode
-	// 		,Model model
-	// 		,@RequestParam(defaultValue = "1")int page
-	// 		,@RequestParam(defaultValue = "12")int size){
-	//
-	// 	Pageable pageable = PageRequest.of( Math.max(page-1, 0),size);
-	// 	model.addAttribute("spots",spotsService.getSameAreaSpots(areaCode,pageable));
-	// 	model.addAttribute("currentPage",page);
-	// 	model.addAttribute("areaCode",areaCode);
-	// 	return "here";
-	// }
+	@GetMapping("api/spots/code/{areaCode}")
+	public String getSameAreaSpot(@PathVariable int areaCode
+			,Model model
+			,@RequestParam(defaultValue = "1")int page
+			,@RequestParam(defaultValue = "12")int size){
+
+		Pageable pageable = PageRequest.of( Math.max(page-1, 0),size);
+		model.addAttribute("spots",spotsService.getSameAreaSpots(areaCode,pageable));
+		model.addAttribute("currentPage",page);
+		model.addAttribute("areaCode",areaCode);
+		return "here";
+	}
 
 }

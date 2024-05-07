@@ -69,27 +69,22 @@ public class SpotsService {
 		return dtoPage;
 	}
 
-	// public Page<SpotsListDTO> getSameAreaSpots(int areaCode, Pageable pageable) {
-	// 	Page<Spots> spots = spotsRepository.findAll(pageable);
-	//
-	// 	List<SpotsListDTO> dtoList = spots.stream()
-	// 		.filter(spot -> {
-	// 			Posts posts = spot.getPosts();
-	// 			return posts != null && // Null 체크 추가
-	// 				posts.getAreaCode().equals(areaCode) && // 지역 코드 일치 여부 확인
-	// 				"spots".equals(posts.getPostCategory()); // "spots" 카테고리 여부 확인
-	// 		})
-	// 		.map(spot -> new SpotsListDTO(
-	// 			spot.getPosts().getAddress(),
-	// 			spot.getPosts().getSpotName(),
-	// 			spot.getSpotImg(),
-	// 			spot.getPosts().getPostContent()
-	// 		))
-	// 		.peek(dto -> System.out.println("DTO: " + dto))
-	// 		.collect(Collectors.toList());
-	//
-	// 	return new PageImpl<>(dtoList, pageable, spots.getTotalElements());
-	// }
+	public Page<SpotsListDTO> getSameAreaSpots(int areaCode, Pageable pageable) {
+		Page<Spots> spots = spotsRepository.findSpotsByAreaCodeAndCategory(areaCode,pageable);
+
+		List<SpotsListDTO> dtoList = spots.stream()
+			.map(spot -> new SpotsListDTO(
+				spot.getPosts().getAddress(),
+				spot.getPosts().getSpotName(),
+				spot.getSpotImg(),
+				spot.getPosts().getPostContent(),
+				spot.getSpotId()
+			))
+			.peek(dto -> System.out.println("DTO: " + dto))
+			.collect(Collectors.toList());
+
+		return new PageImpl<>(dtoList, pageable, spots.getTotalElements());
+	}
 
 	public SpotPageDto getSpotPage(String spotId){
 		Spots spot = spotsRepository.findById(spotId)

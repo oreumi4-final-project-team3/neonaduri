@@ -5,64 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>여기갈까?</title>
     <link rel="stylesheet" th:href="@{/css/here.css}">
-    <script src="../static/js/here.js"></script>
-
 </head>
-<body>
-<header>
-    <div class ="header">
-        <div class="logo">
-            <img th:src="@{/images/logo.png}" alt="팀 로고"/>
+<body style="
+    width: 1920PX; /* 뷰포트의 너비에 맞게 설정 */
+    height: 100%; /* 뷰포트의 높이에 맞게 설정 */
+    overflow-X: hidden; /* 화면을 넘어가는 콘텐츠를 숨김 */
+    margin: 0 auto;
+    padding: 0;
+    font-family: Arial, sans-serif;">
+    <header>
+        <div class ="header">
+            <div class="logo">
+                <img th:src="@{/images/logo.png}" alt="팀 로고"/>
 
+            </div>
+            <div class="header-buttons">
+                <span class="header-btn1" onclick="goToHerePage()">여기갈까?</span>
+                <span class="header-btn2">같이갈까?</span>
+            </div>
+            <div class="user-controls">
+                <img th:src="@{/images/mypage.png}" alt="마이페이지로 이동"/>
+                <img th:src="@{/images/like.png}" alt="찜"/>
+            </div>
         </div>
-        <div class="header-buttons">
-            <span class="header-btn1" onclick="goToHerePage()">여기갈까?</span>
-            <span class="header-btn2">같이갈까?</span>
+        <div class="separator"></div>
+    </header>
+    <main>
+        <div class="regions">
+            <span class="region-all-btn" onclick="goToHerePage()">전체</span>
+            <span class="region-btn" data-area-code="1">서울</span>
+            <span class="region-btn" data-area-code="31">경기</span>
+            <span class="region-btn" data-area-code="2">인천</span>
+            <span class="region-btn" data-area-code="32">강원</span>
+            <span class="region-btn" data-area-code="33">충북</span>
+            <span class="region-btn" data-area-code="34">충남</span>
+            <span class="region-btn" data-area-code="35">경북</span>
+            <span class="region-btn" data-area-code="36">경남</span>
+            <span class="region-btn" data-area-code="37">전북</span>
+            <span class="region-btn" data-area-code="38">전남</span>
+            <span class="region-btn" data-area-code="39">제주</span>
         </div>
-        <div class="user-controls">
-            <img th:src="@{/images/mypage.png}" alt="마이페이지로 이동"/>
-            <img th:src="@{/images/like.png}" alt="찜"/>
+        <div class="region-image">
+            <img id="regionImage" th:src="@{/images/seoul.png}" alt="대표이미지"/>
         </div>
-    </div>
-    <div class="separator"></div>
-</header>
-<main>
-    <div class="regions">
-        <span class="region-all-btn" onclick="goToHerePage()">전체</span>
-        <span class="region-btn" data-area-code="1">서울</span>
-        <span class="region-btn" data-area-code="31">경기</span>
-        <span class="region-btn" data-area-code="2">인천</span>
-        <span class="region-btn" data-area-code="32">강원</span>
-        <span class="region-btn" data-area-code="33">충북</span>
-        <span class="region-btn" data-area-code="34">충남</span>
-        <span class="region-btn" data-area-code="35">경북</span>
-        <span class="region-btn" data-area-code="36">경남</span>
-        <span class="region-btn" data-area-code="37">전북</span>
-        <span class="region-btn" data-area-code="38">전남</span>
-        <span class="region-btn" data-area-code="39">제주</span>
-    </div>
-    <div class="region-image">
-        <img id="regionImage" th:src="@{/images/seoul.png}" alt="대표이미지"/>
-    </div>
-    <div class="tourist-sites">
-        <!-- 관광지 리스트가 여기에 표시됩니다. -->
-        <div class="tourist-site" th:each="spot : ${spots}">
-            <img th:if="${not #strings.isEmpty(spot.spotImg)}" th:src="${spot.spotImg}" alt="관광지 이미지">
-            <img th:if="${#strings.isEmpty(spot.spotImg)}" src="/images/havenotimage.png" alt="이미지 준비중">
-            <p th:text="${spot.spotAddr}"></p>
-            <h3 id="spotName" th:text="${spot.spotName}" onclick="getSpotIdAndNavigate(this)"></h3>
-            <p th:text="${#strings.length(spot.spotOverview) > 20 ? #strings.substring(spot.spotOverview,0,20)+'...': spot.spotOverview}"></p>
-            <input type="hidden" class="spotId" th:value="${spot.spotId}">
+        <div class="tourist-sites">
+            <!-- 관광지 리스트가 여기에 표시됩니다. -->
+            <div class="tourist-site" th:each="spot : ${spots}">
+                <img th:if="${not #strings.isEmpty(spot.spotImg)}" th:src="${spot.spotImg}" alt="관광지 이미지">
+                <img th:if="${#strings.isEmpty(spot.spotImg)}" src="/images/havenotimage.png" alt="이미지 준비중">
+                <p th:text="${spot.spotAddr}"></p>
+                <h3 id="spotName" th:text="${spot.spotName}" onclick="getSpotIdAndNavigate(this)"></h3>
+                <p th:text="${#strings.length(spot.spotOverview) > 20 ? #strings.substring(spot.spotOverview,0,20)+'...': spot.spotOverview}"></p>
+                <input type="hidden" class="spotId" th:value="${spot.spotId}">
+            </div>
         </div>
-    </div>
-    <div class="pagination">
-        <a th:if="${spots.hasPrevious()}" th:href="@{/api/spots(page=${currentPage - 1}, size=${spots.size})}">이전</a>
-        <span th:each="pageNum : ${#numbers.sequence(1, spots.totalPages)}">
-        <a th:href="@{/api/spots(page=${pageNum}, size=${spots.size})}" th:text="${pageNum}" th:classappend="${pageNum==currentPage} ? 'active'"></a>
+        <div class="pagination">
+            <a th:if="${spots.hasPrevious()}" th:href="@{/api/spots(page=${currentPage - 1}, size=${spots.size})}">이전</a>
+            <span th:each="pageNum : ${#numbers.sequence(1, spots.totalPages)}">
+            <a th:href="@{/api/spots(page=${pageNum}, size=${spots.size})}" th:text="${pageNum}" th:classappend="${pageNum==currentPage} ? 'active'"></a>
 
-    </span>
-        <a th:if="${spots.hasNext()}" th:href="@{/api/spots(page=${currentPage + 1}, size=${spots.size})}">다음</a>
-    </div>
+        </span>
+            <a th:if="${spots.hasNext()}" th:href="@{/api/spots(page=${currentPage + 1}, size=${spots.size})}">다음</a>
+        </div>
 
 <!--    <div class="pagination">-->
 <!--        <a th:if="${spots.hasPrevious()}" th:href="@{/api/spots/code/{areaCode}(areaCode=${areaCode}, page=${currentPage - 1}, size=${spots.size})}">이전</a>-->
@@ -73,32 +77,33 @@
 <!--    </div>-->
 
 
-</main>
-<div class="separator"></div>
-<footer>
-    <div class="footer">
-        <div class="footer-logo">
-            <img th:src="@{/images/logo.png}" alt="팀 로고"/>
-        </div>
-        <div class="footer-group">
-            <div class="data">
-                <span>데이터 제공 : 한국관광공사 TourAPI</span>
+    </main>
+    <div class="separator"></div>
+    <footer>
+        <div class="footer">
+            <div class="footer-logo">
+                <img th:src="@{/images/logo.png}" alt="팀 로고"/>
             </div>
-            <div class="icon-made">
-                <span>아이콘 제작자: Freepik - Flaticon</span>
+            <div class="footer-group">
+                <div class="data">
+                    <span>데이터 제공 : 한국관광공사 TourAPI</span>
+                </div>
+                <div class="icon-made">
+                    <span>아이콘 제작자: Freepik - Flaticon</span>
+                </div>
+            </div>
+            <div class="github-link">
+                <a href="https://github.com/oreumi4-final-project-team3/neonaduri">
+                    <img th:src="@{/images/github.png}" alt="깃허브로 이동"/>
             </div>
         </div>
-        <div class="github-link">
-            <a href="https://github.com/oreumi4-final-project-team3/neonaduri">
-                <img th:src="@{/images/github.png}" alt="깃허브로 이동"/>
-        </div>
-    </div>
-</footer>
+    </footer>
 </body>
+<script src="/js/here.js" defer></script>
 <script>
     function getSpotIdAndNavigate(element) {
         const spotId = element.parentNode.querySelector('.spotId').value;
-        window.location.href = "/api/spot/" + spotId;
+        window.location.replace("/api/spot/" + spotId);
     }
 </script>
 
