@@ -54,7 +54,7 @@
         </div>
     </div>
 
-    <div class="pagination">
+    <div class="pagination" th:if="${reviews.totalElements > 0}">
         <a th:if="${pageType == 'all' and reviews.hasPrevious}" th:href="@{/api/reviews(page=${currentPage - 1}, size=${reviews.size})}">이전</a>
         <a th:if="${pageType == 'region' and reviews.hasPrevious}" th:href="@{/api/reviews/code/{areaCode}(areaCode=${areaCode},page=${currentPage - 1}, size=${reviews.size})}">이전</a>
 
