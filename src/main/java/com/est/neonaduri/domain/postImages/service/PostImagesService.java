@@ -30,6 +30,15 @@ public class PostImagesService {
     @Value("${cloud.aws.s3.bucket}")
     private String bucketName;
 
+    //save spots img
+    public PostImages createPostImages(String imgLink, Posts post) {
+        return postImagesRepository.save(PostImages.builder()
+                .postImagesId(imgLink)
+                .posts(post)
+                .build());
+    }
+
+    //S3
     public PostImages uploadImg(MultipartFile file, Posts post) throws IOException {
         if (file.isEmpty()) {
             return null;
