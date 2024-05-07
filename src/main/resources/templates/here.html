@@ -59,7 +59,7 @@
                 <input type="hidden" class="spotId" th:value="${spot.spotId}">
             </div>
         </div>
-        <div class="pagination">
+        <div class="pagination" th:if="${spots.totalElements > 0}">
             <a th:if="${pageType == 'all' and spots.hasPrevious}" th:href="@{/api/spots(page=${currentPage - 1}, size=${spots.size})}">이전</a>
             <a th:if="${pageType == 'region' and spots.hasPrevious}" th:href="@{/api/spots/code/{areaCode}(areaCode=${areaCode},page=${currentPage - 1}, size=${spots.size})}">이전</a>
 
