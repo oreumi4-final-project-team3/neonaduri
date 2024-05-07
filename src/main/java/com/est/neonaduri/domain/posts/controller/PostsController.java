@@ -47,17 +47,20 @@ public class PostsController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(createdPost);
 	}
 
-	@PostMapping("api/posts/{userId}/{postId}")
+	/**
+	 * 같이갈까? 게시글을 생성하는 API (이미지 저장기능 추가)
+	 *
+	 * @return ResponseEntity<Posts>
+	 * @author cjw
+	 */
+	@PostMapping("api/posts/img/{userId}")
 	public ResponseEntity<Posts> addPost(@PathVariable(name = "userId") String userId,
-										 @PathVariable(name = "postId") String postId,
 										 @RequestPart(value = "postRequest") PostWriteDTO postWriteDTO,
 										 @RequestPart(value = "img", required = false) MultipartFile file){
 
-		Posts createdPost = null;
-
+		Posts createdPost = postsService.createPost(userId,postWriteDTO);
 		try{
-			PostImages postImages = postImagesService.uploadImg(file, postId);
-			createdPost = postsService.createPost(userId,postWriteDTO);
+			PostImages postImages = postImagesService.uploadImg(file, createdPost);
 		} catch(IOException e){
 			System.out.println("IMG 등록 실패");
 		}

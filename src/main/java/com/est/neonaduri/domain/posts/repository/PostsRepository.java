@@ -9,4 +9,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PostsRepository extends JpaRepository<Posts,String> {
 	List<Posts> findBypostCategory(String postCategory);
+	Posts findByPostId(String postId);
 }
