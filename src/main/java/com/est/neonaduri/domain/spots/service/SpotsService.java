@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import com.est.neonaduri.domain.posts.domain.Posts;
 import com.est.neonaduri.domain.posts.repository.PostsRepository;
 import com.est.neonaduri.domain.spots.domain.Spots;
+import com.est.neonaduri.domain.spots.dto.SpotPageDto;
 import com.est.neonaduri.domain.spots.dto.SpotsListDTO;
 import com.est.neonaduri.domain.spots.repository.SpotsRepository;
 import com.est.neonaduri.global.infra.tourapi.config.AreaCode;
@@ -16,6 +17,7 @@ import com.est.neonaduri.global.infra.tourapi.config.ContentCode;
 import com.est.neonaduri.global.infra.tourapi.dto.TourApiDto;
 import com.est.neonaduri.global.infra.tourapi.service.ApiManager;
 
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -88,6 +90,21 @@ public class SpotsService {
 	//
 	// 	return new PageImpl<>(dtoList, pageable, spots.getTotalElements());
 	// }
+
+	public SpotPageDto getSpotPage(String spotId){
+		Spots spot = spotsRepository.findById(spotId)
+				.orElseThrow(() -> new EntityNotFoundException("해당하는 게시물을 찾을 수 없습니다."));
+		return new SpotPageDto(
+				spot.getPosts().getSpotName(),
+				spot.getPosts().getAddress(),
+				spot.getSpotImg(),
+				spot.getPosts().getPostContent(),
+				spot.getPosts().getAreaCode(),
+				spot.getMapX(),
+				spot.getMapY());
+	}
+
+
 
 
 }

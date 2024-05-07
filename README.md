@@ -57,12 +57,19 @@
 
 ## 2. 기술 스택
 ### 2-1. 프론트
+[![HTML](https://img.shields.io/badge/HTML-red.svg)](https://www.w3.org/TR/html52/)
+[![CSS](https://img.shields.io/badge/CSS-blue.svg)](https://www.w3.org/Style/CSS/specs.en.html)
+[![JavaScript](https://img.shields.io/badge/JavaScript-yellow.svg)](https://www.ecma-international.org/ecma-262/6.0/)
+
 ### 2-2. 백
 [![Java](https://img.shields.io/badge/Java-orange?style=flat&logo=java)](https://www.java.com)
-[![Spring Boot](https://img.shields.io/badge/Spring_Boot-LimeGreen?style=flat&logo=spring)](https://spring.io/projects/spring-boot)
+[![Spring Boot](https://img.shields.io/badge/Spring_Boot-LimeGreen?style=flat)](https://spring.io/projects/spring-boot)
+### 2-3. DB
+[![MySQL](https://img.shields.io/badge/MySQL-blue.svg)](https://www.mysql.com/)
 
-### 2-3. 환경
+### 2-4. 환경
 [![GitHub](https://img.shields.io/badge/GitHub-hotpink?style=flat&logo=github)](https://github.com)
 [![Discord](https://img.shields.io/badge/Discord-7289DA?style=flat&logo=discord&color=2C2F33)](https://discord.com)
+
 
 ## 3. 개발 일정

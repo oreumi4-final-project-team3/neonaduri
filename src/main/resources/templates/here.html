@@ -50,8 +50,9 @@
             <img th:if="${not #strings.isEmpty(spot.spotImg)}" th:src="${spot.spotImg}" alt="관광지 이미지">
             <img th:if="${#strings.isEmpty(spot.spotImg)}" src="/images/havenotimage.png" alt="이미지 준비중">
             <p th:text="${spot.spotAddr}"></p>
-            <h3 id="spotName" th:text="${spot.spotName}"></h3>
+            <h3 id="spotName" th:text="${spot.spotName}" onclick="getSpotIdAndNavigate(this)"></h3>
             <p th:text="${#strings.length(spot.spotOverview) > 20 ? #strings.substring(spot.spotOverview,0,20)+'...': spot.spotOverview}"></p>
+            <input type="hidden" class="spotId" th:value="${spot.spotId}">
         </div>
     </div>
     <div class="pagination">
@@ -70,8 +71,6 @@
 <!--    </span>-->
 <!--        <a th:if="${spots.hasNext()}" th:href="@{/api/spots/code/{areaCode}(areaCode=${areaCode}, page=${currentPage + 1}, size=${spots.size})}">다음</a>-->
 <!--    </div>-->
-
-
 
 
 </main>
@@ -96,6 +95,12 @@
     </div>
 </footer>
 </body>
-<script src="/js/here.js"></script>
+<script>
+    function getSpotIdAndNavigate(element) {
+        const spotId = element.parentNode.querySelector('.spotId').value;
+        window.location.href = "/api/spot/" + spotId;
+    }
+</script>
+
 </html>
 

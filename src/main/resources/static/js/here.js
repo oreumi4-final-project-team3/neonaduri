@@ -95,4 +95,10 @@
 
     });
 
+    // function getSpotIdAndNavigate(element) {
+    //     // 클릭된 요소의 부모 요소에서 spotId를 가져옵니다.
+    //     const spotId = element.parentNode.querySelector('.spotId').value;
+    //     // spotId를 이용하여 상세페이지로 이동합니다.
+    //     window.location.href = "/api/spot/" + spotId;
+    // }
 

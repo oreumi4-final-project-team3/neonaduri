@@ -27,9 +27,6 @@ public class Users extends BaseTimeEntity {
     @Column(name="USER_IMG")
     private String userImg;
 
-    @Column(name="USER_PW", nullable=false)
-    private String userPw;
-
     @Column(name="USER_REGION")
     private Integer userRegion;
 
