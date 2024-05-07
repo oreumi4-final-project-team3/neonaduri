@@ -17,6 +17,9 @@ public class IdGenerator {
     public static String generatePostId(String category){
         return "post_"+category+"_"+UUID.randomUUID().toString();
     }
+    public static String generateCompanionId() {
+        return "companion_" + UUID.randomUUID().toString();
+    }
     // 어느 게시글의 위시리스트(찜) 여부에 따라 다르게
     public static String generateWishListId(String category){
         return "wishlist_"+category+"_"+UUID.randomUUID().toString();
