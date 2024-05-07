@@ -1,12 +1,14 @@
 package com.est.neonaduri.domain.posts.controller;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.est.neonaduri.domain.postImages.domain.PostImages;
+import com.est.neonaduri.domain.postImages.service.PostImagesService;
 import com.est.neonaduri.domain.posts.domain.Posts;
 import com.est.neonaduri.domain.posts.dto.PostWriteDTO;
 import com.est.neonaduri.domain.posts.dto.PostsListDTO;
-import com.est.neonaduri.domain.posts.dto.ReviewDTO;
 import com.est.neonaduri.domain.posts.service.PostsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,16 +16,19 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 
 @Controller
 public class PostsController {
 
 	private final PostsService postsService;
+	private final PostImagesService postImagesService;
 
 	@Autowired
-	public PostsController(PostsService postsService) {
+	public PostsController(PostsService postsService, PostImagesService postImagesService) {
 		this.postsService = postsService;
+		this.postImagesService = postImagesService;
 	}
 
 	private PostsListDTO convertToPostsListDTO(Posts posts) {
@@ -40,6 +45,28 @@ public class PostsController {
 	public ResponseEntity<Posts> createPost(@PathVariable(name = "userId") String userId, @RequestBody PostWriteDTO postWriteDTO) {
 		Posts createdPost = postsService.createPost(userId, postWriteDTO);
 		return ResponseEntity.status(HttpStatus.CREATED).body(createdPost);
+	}
+
+	/**
+	 * 같이갈까? 게시글을 생성하는 API (이미지 저장기능 추가)
+	 *
+	 * @return ResponseEntity<Posts>
+	 * @author cjw
+	 */
+	@PostMapping("api/posts/img/{userId}")
+	public ResponseEntity<Posts> addPost(@PathVariable(name = "userId") String userId,
+										 @RequestPart(value = "postRequest") PostWriteDTO postWriteDTO,
+										 @RequestPart(value = "img", required = false) MultipartFile file){
+
+		Posts createdPost = postsService.createPost(userId,postWriteDTO);
+		try{
+			PostImages postImages = postImagesService.uploadImg(file, createdPost);
+		} catch(IOException e){
+			System.out.println("IMG 등록 실패");
+		}
+
+		return ResponseEntity.status(HttpStatus.CREATED)
+				.body(createdPost);
 	}
 
 	/**
