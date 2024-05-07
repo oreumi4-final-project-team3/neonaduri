@@ -9,7 +9,7 @@ public class UserDTO {
     private String userId;
     private String userName;
     private String userEmail;
-    private String userPw;
+    private String userImg;
     private Integer userRegion;
     private LocalDateTime userBirth;
     private String userGender;
