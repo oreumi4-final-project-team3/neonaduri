@@ -50,7 +50,7 @@
             <img th:if="${not #strings.isEmpty(spot.spotImg)}" th:src="${spot.spotImg}" alt="관광지 이미지">
             <img th:if="${#strings.isEmpty(spot.spotImg)}" src="/images/havenotimage.png" alt="이미지 준비중">
             <p th:text="${spot.spotAddr}"></p>
-            <h3 th:text="${spot.spotName}"></h3>
+            <h3 id="spotName" th:text="${spot.spotName}"></h3>
             <p th:text="${#strings.length(spot.spotOverview) > 20 ? #strings.substring(spot.spotOverview,0,20)+'...': spot.spotOverview}"></p>
         </div>
     </div>

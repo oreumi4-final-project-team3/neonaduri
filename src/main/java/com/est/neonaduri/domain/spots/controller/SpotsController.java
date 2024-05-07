@@ -26,7 +26,7 @@ public class SpotsController {
 
 	//데이터 가공 - 게시글 리스트 페이지나 ,인기 게시글 페이지에서 필요한 데이터만 추출
 	private SpotsListDTO convertToSpotsListDTO(Spots spots) {
-		return new SpotsListDTO(spots.getPosts().getAddress(), spots.getPosts().getSpotName(), spots.getSpotImg(),spots.getPosts().getPostContent());
+		return new SpotsListDTO(spots.getPosts().getAddress(), spots.getPosts().getSpotName(), spots.getSpotImg(),spots.getPosts().getPostContent(),spots.getSpotId());
 	}
 
 	/**

@@ -57,10 +57,11 @@ public class SpotsService {
 					posts.getAddress(),
 					posts.getSpotName(),
 					spot.getSpotImg(),
-					posts.getPostContent()
+					posts.getPostContent(),
+					spot.getSpotId()
 				);
 			} else {
-				return new SpotsListDTO("", "", "", "");
+				return new SpotsListDTO("", "", "", "","");
 			}
 		});
 		return dtoPage;
