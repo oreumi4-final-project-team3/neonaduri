@@ -2,7 +2,9 @@ package com.est.neonaduri.domain.spots.controller;
 
 import java.util.Optional;
 
+import com.est.neonaduri.domain.spots.dto.SpotPageDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,6 +38,18 @@ public class SpotsController {
 	public String getAllSpots(Model model){
 		model.addAttribute("spots",spotsService.getAllSpots());
 		return "here";
+	}
+	/**
+	 * 관광지 상세페이지를 조회하는 API
+	 *
+	 * @return SpotPageDto : 관광지 상세정보
+	 * @author lsh
+	 */
+	@GetMapping("api/spot/{spotId}")
+	public String getSpot(@PathVariable String spotId,Model model){
+		SpotPageDto spotPage = spotsService.getSpotPage(spotId);
+		model.addAttribute("spotPage",spotPage);
+		return "post-spot-page";
 	}
 
 
