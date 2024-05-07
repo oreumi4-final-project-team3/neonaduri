@@ -60,21 +60,18 @@
             </div>
         </div>
         <div class="pagination">
-            <a th:if="${spots.hasPrevious()}" th:href="@{/api/spots(page=${currentPage - 1}, size=${spots.size})}">이전</a>
-            <span th:each="pageNum : ${#numbers.sequence(1, spots.totalPages)}">
-            <a th:href="@{/api/spots(page=${pageNum}, size=${spots.size})}" th:text="${pageNum}" th:classappend="${pageNum==currentPage} ? 'active'"></a>
+            <a th:if="${pageType == 'all' and spots.hasPrevious}" th:href="@{/api/spots(page=${currentPage - 1}, size=${spots.size})}">이전</a>
+            <a th:if="${pageType == 'region' and spots.hasPrevious}" th:href="@{/api/spots/code/{areaCode}(areaCode=${areaCode},page=${currentPage - 1}, size=${spots.size})}">이전</a>
 
-        </span>
-            <a th:if="${spots.hasNext()}" th:href="@{/api/spots(page=${currentPage + 1}, size=${spots.size})}">다음</a>
+            <span th:each="pageNum : ${#numbers.sequence(1, spots.totalPages)}">
+                <a th:if="${pageType == 'all'}" th:href="@{/api/spots(page=${pageNum}, size=${spots.size})}" th:text="${pageNum}" th:classappend="${pageNum==currentPage} ? 'active'"></a>
+                <a th:if="${pageType == 'region'}" th:href="@{/api/spots/code/{areaCode}(areaCode=${areaCode}, page=${pageNum}, size=${spots.size})}" th:text="${pageNum}" th:classappend="${pageNum==currentPage} ? 'active'"></a>
+            </span>
+
+            <a th:if="${pageType == 'all' and spots.hasNext}" th:href="@{/api/spots(page=${currentPage + 1}, size=${spots.size})}">다음</a>
+            <a th:if="${pageType == 'region' and spots.hasNext}" th:href="@{/api/spots/code/{areaCode}(areaCode=${areaCode},page=${currentPage + 1}, size=${spots.size})}">다음</a>
         </div>
 
-<!--    <div class="pagination">-->
-<!--        <a th:if="${spots.hasPrevious()}" th:href="@{/api/spots/code/{areaCode}(areaCode=${areaCode}, page=${currentPage - 1}, size=${spots.size})}">이전</a>-->
-<!--        <span th:each="pageNum : ${#numbers.sequence(1, spots.totalPages)}">-->
-<!--        <a th:href="@{/api/spots/code/{areaCode}(areaCode=${areaCode}, page=${pageNum}, size=${spots.size})}" th:text="${pageNum}" th:classappend="${pageNum==currentPage} ? 'active' : ''"></a>-->
-<!--    </span>-->
-<!--        <a th:if="${spots.hasNext()}" th:href="@{/api/spots/code/{areaCode}(areaCode=${areaCode}, page=${currentPage + 1}, size=${spots.size})}">다음</a>-->
-<!--    </div>-->
 
 
     </main>

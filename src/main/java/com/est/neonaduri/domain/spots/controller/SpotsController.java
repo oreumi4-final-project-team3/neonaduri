@@ -45,6 +45,7 @@ public class SpotsController {
 		Pageable pageable = PageRequest.of( Math.max(page-1, 0),size);
 		model.addAttribute("spots",spotsService.getAllSpots(pageable));
 		model.addAttribute("currentPage",page);
+		model.addAttribute("pageType","all");
 		return "here";
 	}
 	/**
@@ -87,7 +88,7 @@ public class SpotsController {
 		Pageable pageable = PageRequest.of( Math.max(page-1, 0),size);
 		model.addAttribute("spots",spotsService.getSameAreaSpots(areaCode,pageable));
 		model.addAttribute("currentPage",page);
-		model.addAttribute("areaCode",areaCode);
+		model.addAttribute("pageType","region");
 		return "here";
 	}
 

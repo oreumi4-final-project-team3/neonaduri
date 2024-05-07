@@ -98,10 +98,6 @@ public class SpotsService {
 				spot.getMapX(),
 				spot.getMapY());
 	}
-
-
-
-
 }
 
 

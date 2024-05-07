@@ -138,12 +138,16 @@ h3, p {
     display: flex;
     list-style: none;
     justify-content: center;
-    margin-top: 50px;
+    margin-top: 80px;
 }
+.pagination span{
+    margin-bottom: 10px;
+}
+
 .pagination a {
     border: 1px solid #ddd;
     padding: 5px 10px;
-    margin: 0 5px;
+    margin: 0 10px;
     text-decoration: none;
     color: #666;
     font-size: 14px;

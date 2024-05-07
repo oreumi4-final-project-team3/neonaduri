@@ -72,12 +72,21 @@ public class PostsController {
 		Pageable pageable = PageRequest.of( Math.max(page-1, 0),size);
 		model.addAttribute("reviews",postsService.getAllReviewList(pageable));
 		model.addAttribute("currentPage",page);
+		model.addAttribute("pageType","all");
 		return "reviewList";
 	}
 
-	// @GetMapping("api/reviews/code/{areaCode}")
-	// public String getSameAreaReview(@PathVariable int areaCode , Model model){
-	// 	model.addAttribute("reviews",postsService.getReviewListByArea(areaCode));
-	// 	return "reviewList";
-	// }
+	@GetMapping("api/reviews/code/{areaCode}")
+	public String getSameAreaReview(@PathVariable int areaCode
+		,Model model
+		,@RequestParam(defaultValue = "1")int page
+		,@RequestParam(defaultValue = "12")int size){
+
+		Pageable pageable = PageRequest.of( Math.max(page-1, 0),size);
+		model.addAttribute("reviews",postsService.getReviewListByArea(areaCode,pageable));
+		model.addAttribute("currentPage",page);
+		model.addAttribute("pageType","region");
+		model.addAttribute("areaCode",areaCode);
+		return "reviewList";
+	}
 }
