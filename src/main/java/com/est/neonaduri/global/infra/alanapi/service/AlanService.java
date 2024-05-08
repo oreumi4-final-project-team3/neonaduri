@@ -21,7 +21,7 @@ import com.fasterxml.jackson.core.JsonParser;
 @PropertySource("classpath:config.properties")
 public class AlanService {
 
-    @Value("${Alan-Api-ClientKey}")
+    @Value("${Alan-Api-ClientKey2}")
     private String clientId;
 
     private final WebClient webClient;
