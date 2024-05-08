@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.est.neonaduri.domain.companions.dto.CompanionsListDTO;
+import com.est.neonaduri.domain.companions.service.CompanionsService;
 import com.est.neonaduri.domain.postImages.domain.PostImages;
 import com.est.neonaduri.domain.postImages.service.PostImagesService;
 import com.est.neonaduri.domain.posts.domain.Posts;
@@ -23,12 +25,14 @@ import org.springframework.web.multipart.MultipartFile;
 public class PostsController {
 
 	private final PostsService postsService;
+	private final CompanionsService companionsService;
 	private final PostImagesService postImagesService;
 
 	@Autowired
-	public PostsController(PostsService postsService, PostImagesService postImagesService) {
+	public PostsController(PostsService postsService, PostImagesService postImagesService, CompanionsService companionsService) {
 		this.postsService = postsService;
 		this.postImagesService = postImagesService;
+		this.companionsService = companionsService;
 	}
 
 	private PostsListDTO convertToPostsListDTO(Posts posts) {
@@ -36,7 +40,7 @@ public class PostsController {
 	}
 
 	/**
-	 * 같이갈까? 게시글을 생성하는 API
+	 * 같이갈까? 게시글(Posts)을 생성하는 API
 	 *
 	 * @return ResponseEntity<Posts> : 같이갈까? 게시글 생성
 	 * @author jyh
@@ -76,12 +80,17 @@ public class PostsController {
 	 * @author jyh
 	 */
 	@GetMapping("api/posts")
-	public List<PostsListDTO> getAllposts() {
-		List<PostsListDTO> postsListDTO = postsService.getAllPosts()
-				.stream()
-				.map(this::convertToPostsListDTO)
-				.collect(Collectors.toList());
-		return postsListDTO;
+	public String getAllposts(Model model) {
+		List<PostsListDTO> posts = postsService.getAllPosts();
+
+		for (PostsListDTO post : posts) {
+			List<CompanionsListDTO> companions = companionsService.getAllCompanions(post.getPostId());
+			post.setCompanions(companions);
+		}
+
+		model.addAttribute("posts", posts);
+
+		return "companions";
 	}
 
 	@GetMapping("api/reviews")
