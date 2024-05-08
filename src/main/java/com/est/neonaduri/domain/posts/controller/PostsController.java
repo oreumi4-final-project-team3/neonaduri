@@ -7,8 +7,10 @@ import java.util.stream.Collectors;
 import com.est.neonaduri.domain.postImages.domain.PostImages;
 import com.est.neonaduri.domain.postImages.service.PostImagesService;
 import com.est.neonaduri.domain.posts.domain.Posts;
+import com.est.neonaduri.domain.posts.dto.AddPostRequest;
 import com.est.neonaduri.domain.posts.dto.PostWriteDTO;
 import com.est.neonaduri.domain.posts.dto.PostsListDTO;
+import com.est.neonaduri.domain.posts.dto.UpdatePostRequest;
 import com.est.neonaduri.domain.posts.service.PostsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -43,39 +45,19 @@ public class PostsController {
 		return new PostsListDTO(posts);
 	}
 
-	/**
-	 * 같이갈까? 게시글을 생성하는 API
-	 *
-	 * @return ResponseEntity<Posts> : 같이갈까? 게시글 생성
-	 * @author jyh
-	 */
-	@PostMapping("api/posts/{userId}")
-	public ResponseEntity<Posts> createPost(@PathVariable(name = "userId") String userId, @RequestBody PostWriteDTO postWriteDTO) {
-		Posts createdPost = postsService.createPost(userId, postWriteDTO);
-		return ResponseEntity.status(HttpStatus.CREATED).body(createdPost);
-	}
+//	/**
+//	 * 같이갈까? 게시글을 생성하는 API
+//	 *
+//	 * @return ResponseEntity<Posts> : 같이갈까? 게시글 생성
+//	 * @author jyh
+//	 */
+//	@PostMapping("api/posts/{userId}")
+//	public ResponseEntity<Posts> createPost(@PathVariable(name = "userId") String userId, @RequestBody PostWriteDTO postWriteDTO) {
+//		Posts createdPost = postsService.createPost(userId, postWriteDTO);
+//		return ResponseEntity.status(HttpStatus.CREATED).body(createdPost);
+//	}
 
-	/**
-	 * 같이갈까? 게시글을 생성하는 API (이미지 저장기능 추가)
-	 *
-	 * @return ResponseEntity<Posts>
-	 * @author cjw
-	 */
-	@PostMapping("api/posts/img/{userId}")
-	public ResponseEntity<Posts> addPost(@PathVariable(name = "userId") String userId,
-										 @RequestPart(value = "postRequest") PostWriteDTO postWriteDTO,
-										 @RequestPart(value = "img", required = false) MultipartFile file){
 
-		Posts createdPost = postsService.createPost(userId,postWriteDTO);
-		try{
-			PostImages postImages = postImagesService.uploadImg(file, createdPost);
-		} catch(IOException e){
-			System.out.println("IMG 등록 실패");
-		}
-
-		return ResponseEntity.status(HttpStatus.CREATED)
-				.body(createdPost);
-	}
 
 	/**
 	 * 같이갈까? 게시글 리스트를 조회하는 API
@@ -116,4 +98,59 @@ public class PostsController {
 		model.addAttribute("areaCode",areaCode);
 		return "reviewList";
 	}
+
+	//CJW
+	/**
+	 * Posts를 생성하는 API
+	 *
+	 * @return ResponseEntity<Posts>
+	 * @author cjw
+	 */
+	@PostMapping("api/posts/{userId}")
+	public ResponseEntity<Posts> addPost(@PathVariable(name = "userId") String userId,
+										 @RequestPart(value = "postRequest") PostWriteDTO postWriteDTO,
+										 @RequestPart(value = "img", required = false) MultipartFile file){
+
+		Posts createdPost = postsService.createPost(userId,postWriteDTO);
+		try{
+			PostImages postImages = postImagesService.uploadImg(file, createdPost);
+		} catch(IOException e){
+			System.out.println("IMG 등록 실패");
+		}
+
+		return ResponseEntity.status(HttpStatus.CREATED)
+				.body(createdPost);
+	}
+
+	@PostMapping("/api/posts")
+	public ResponseEntity<Posts> addPosts(@RequestBody AddPostRequest request){
+		//security 에서 반환 예정
+		String userId = "admin_id";
+		//입력 받게 수정
+		String category = "review";
+
+		Posts post = postsService.savePost(request,category,userId);
+		return ResponseEntity.status(HttpStatus.CREATED)
+				.body(post);
+	}
+
+	/**
+	 * Posts를 삭제하는 API
+	 *
+	 * @author cjw
+	 */
+	@DeleteMapping("/api/posts/{id}")
+	public ResponseEntity<Void> deletePost(@PathVariable String id){
+		postsService.deletePost(id);
+		return ResponseEntity.ok().build();
+	}
+
+	@PutMapping("/api/posts/{id}")
+	public ResponseEntity<Posts> updatePost(@PathVariable String id, @RequestBody UpdatePostRequest request){
+		Posts updatedPost = postsService.update(id,request);
+		return ResponseEntity.status(HttpStatus.OK)
+				.body(updatedPost);
+	}
+
+
 }

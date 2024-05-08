@@ -60,4 +60,9 @@ public class Posts extends BaseTimeEntity {
 		this.postId = IdGenerator.generatePostId(this.postCategory);
 		this.postView = this.postView == null ? 0 : this.postView;
 	}
+
+	public void update(String title, String content){
+		this.postTitle = title;
+		this.postContent = content;
+	}
 }
