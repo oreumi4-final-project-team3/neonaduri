@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>같이갈까?</title>
+        <link rel="stylesheet" th:href="@{/css/companions.css}">
+        <script src="/js/companions.js"></script>
+    </head>
+</head>
+<body>
+<header>
+    <div class ="header">
+        <div class="logo">
+            <img th:src="@{/images/logo.png}" alt="팀 로고"/>
+
+        </div>
+        <div class="header-buttons">
+            <span class="header-btn1" onclick="goToHerePage()">여기갈까?</span>
+            <span class="header-btn2" onclick="goToCompanionsPage()">같이갈까?</span>
+        </div>
+        <div class="user-controls">
+            <img th:src="@{/images/mypage.png}" alt="마이페이지로 이동"/>
+            <img th:src="@{/images/like.png}" alt="찜"/>
+        </div>
+    </div>
+    <div class="separator"></div>
+</header>
+
+<main>
+    <div class="separator"></div>
+    <div class="regions">
+        <span class="region-all-btn" onclick="goToHerePage()">전체</span>
+        <span class="region-btn" data-area-code="1">서울</span>
+        <span class="region-btn" data-area-code="31">경기</span>
+        <span class="region-btn" data-area-code="2">인천</span>
+        <span class="region-btn" data-area-code="32">강원</span>
+        <span class="region-btn" data-area-code="33">충북</span>
+        <span class="region-btn" data-area-code="34">충남</span>
+        <span class="region-btn" data-area-code="35">경북</span>
+        <span class="region-btn" data-area-code="36">경남</span>
+        <span class="region-btn" data-area-code="37">전북</span>
+        <span class="region-btn" data-area-code="38">전남</span>
+        <span class="region-btn" data-area-code="39">제주</span>
+    </div>
+    <div class="region-image">
+        <img id="regionImage" th:src="@{/images/companions.png}" alt="대표이미지"/>
+    </div>
+    <div class="tourist-sites">
+        <!-- 게시글 리스트가 여기에 표시됩니다. -->
+        <div class="tourist-site" th:each="post : ${posts}">
+<!--            <img th:if="${not #strings.isEmpty(post.spotImg)}" th:src="${spot.spotImg}" alt="관광지 이미지">-->
+<!--            <img th:if="${#strings.isEmpty(spot.spotImg)}" src="/images/havenotimage.png" alt="이미지 준비중">-->
+            <p th:text="${post.writerId}"></p>
+            <p th:text="${post.userGender}"></p>
+
+            <div class="companion-list" th:each="companion : ${post.companions}">
+                <p th:text="${companion.comStart}"></p>
+                <p th:text="${companion.getComEnd()}"></p>
+                <p th:text="${companion.comRecruit}"></p>
+            </div>
+<!--            <p th:text="${comp}"></p>-->
+<!--            <p th:text="${#strings.length(spot.spotOverview) > 20 ? #strings.substring(spot.spotOverview,0,20)+'...': spot.spotOverview}"></p>-->
+        </div>
+
+    </div>
+    <div class="pagination">
+        <!-- 페이지 버튼 -->
+        <button class="page-btn" data-page="1">1</button>
+        <button class="page-btn" data-page="2">2</button>
+        <button class="page-btn" data-page="3">3</button>
+        <!-- 이하 페이지 버튼 추가 -->
+    </div>
+</main>
+<div class="separator"></div>
+<footer>
+    <div class="footer">
+        <div class="footer-logo">
+            <img th:src="@{/images/logo.png}" alt="팀 로고"/>
+        </div>
+        <div class="footer-group">
+            <div class="data">
+                <span>데이터 제공 : 한국관광공사 TourAPI</span>
+            </div>
+            <div class="icon-made">
+                <span>아이콘 제작자: Freepik - Flaticon</span>
+            </div>
+        </div>
+        <div class="github-link">
+            <a href="https://github.com/oreumi4-final-project-team3/neonaduri">
+                <img th:src="@{/images/github.png}" alt="깃허브로 이동"/>
+            </a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
