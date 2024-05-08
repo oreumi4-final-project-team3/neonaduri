@@ -95,5 +95,14 @@
 
     });
 
-
+    function getSpotIdAndNavigate(element) {
+        const spotId = element.parentNode.querySelector('.spotId').value;
+        window.location.replace("/api/spot/" + spotId);
+    }
+    function goToHerePage() {
+        window.location.href = "/api/spots";
+    }
+    function goToReviewPage(){
+        window.location.href = "/api/reviews";
+    }
 

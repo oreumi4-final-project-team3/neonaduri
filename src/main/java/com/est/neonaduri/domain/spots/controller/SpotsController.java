@@ -2,6 +2,8 @@ package com.est.neonaduri.domain.spots.controller;
 
 import java.util.Optional;
 
+import com.est.neonaduri.domain.companions.service.CompanionsService;
+import com.est.neonaduri.domain.postImages.service.PostImagesService;
 import com.est.neonaduri.domain.spots.dto.SpotPageDto;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -22,9 +24,13 @@ import com.est.neonaduri.domain.spots.service.SpotsService;
 public class SpotsController {
 
 	private final SpotsService spotsService;
+	private final CompanionsService companionsService;
+	private final PostImagesService postImagesService;
 	@Autowired
-	public SpotsController(SpotsService spotsService) {
+	public SpotsController(SpotsService spotsService,CompanionsService companionsService,PostImagesService postImagesService) {
 		this.spotsService = spotsService;
+		this.companionsService=companionsService;
+		this.postImagesService=postImagesService;
 	}
 
 	//데이터 가공 - 게시글 리스트 페이지나 ,인기 게시글 페이지에서 필요한 데이터만 추출
@@ -68,10 +74,12 @@ public class SpotsController {
 	 * @return Optional<Spots> : 관광지
 	 * @author kec
 	 */
-	//@GetMapping("api/spots/{spotName}")
-	//public Optional<Spots> getSpot(@PathVariable String spotName){
-	//	return spotsService.getSpot(spotName);
-	//}
+	@GetMapping("api/spots/name/{spotName}")
+	public String getSpotByName(@PathVariable String spotName,Model model){
+		SpotPageDto spotPageDto = spotsService.getSpotPageByName(spotName);
+		model.addAttribute("spotPage",spotPageDto);
+		return "post-spot-page";
+	}
 
 	/**
 	 * 관광지 지역 코드로 조회하는 API
@@ -92,4 +100,11 @@ public class SpotsController {
 		return "here";
 	}
 
+	@GetMapping("api/main")
+	public String getHotPosts(Model model){
+		model.addAttribute("spots",spotsService.getHotSpots());
+		model.addAttribute("companions",companionsService.getHotCompanions());
+		model.addAttribute("top",spotsService.getToptenSpots());
+		return "main";
+	}
 }

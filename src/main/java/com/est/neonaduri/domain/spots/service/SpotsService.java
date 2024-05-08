@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import com.est.neonaduri.domain.posts.domain.Posts;
 import com.est.neonaduri.domain.posts.repository.PostsRepository;
 import com.est.neonaduri.domain.spots.domain.Spots;
+import com.est.neonaduri.domain.spots.dto.SpotNameDTO;
 import com.est.neonaduri.domain.spots.dto.SpotPageDto;
 import com.est.neonaduri.domain.spots.dto.SpotsListDTO;
 import com.est.neonaduri.domain.spots.repository.SpotsRepository;
@@ -50,6 +51,10 @@ public class SpotsService {
 		spotsRepository.delete(spots);
 	}
 
+	public Spots getSpot(String spotName){
+		return spotsRepository.findBySpotName(spotName);
+	}
+
 	public Page<SpotsListDTO> getAllSpots(Pageable pageable) {
 		Page<Spots> spots = spotsRepository.findAll(pageable);
 		Page<SpotsListDTO> dtoPage = spots.map(spot -> {
@@ -86,6 +91,27 @@ public class SpotsService {
 		return new PageImpl<>(dtoList, pageable, spots.getTotalElements());
 	}
 
+	public List<SpotsListDTO> getHotSpots(){
+		List<Spots> spots = spotsRepository.findHotSpots();
+		List<SpotsListDTO> dtoList = spots.stream()
+			.map(spot -> new SpotsListDTO(
+				spot.getPosts().getAddress(),
+				spot.getPosts().getSpotName(),
+				spot.getSpotImg(),
+				spot.getPosts().getPostContent(),
+				spot.getSpotId()
+			))
+			.collect(Collectors.toList());
+
+		return dtoList;
+	}
+	public List<SpotNameDTO> getToptenSpots(){
+		return spotsRepository.findToptenSpots().stream().map(spot-> new SpotNameDTO(
+			spot.getPosts().getSpotName(),
+			spot.getSpotId()
+		)).collect(Collectors.toList());
+	}
+
 	public SpotPageDto getSpotPage(String spotId){
 		Spots spot = spotsRepository.findById(spotId)
 				.orElseThrow(() -> new EntityNotFoundException("해당하는 게시물을 찾을 수 없습니다."));
@@ -97,6 +123,17 @@ public class SpotsService {
 				spot.getPosts().getAreaCode(),
 				spot.getMapX(),
 				spot.getMapY());
+	}
+	public SpotPageDto getSpotPageByName(String spotName){
+		Spots spot = spotsRepository.findBySpotName(spotName);
+		return new SpotPageDto(
+			spot.getPosts().getSpotName(),
+			spot.getPosts().getAddress(),
+			spot.getSpotImg(),
+			spot.getPosts().getPostContent(),
+			spot.getPosts().getAreaCode(),
+			spot.getMapX(),
+			spot.getMapY());
 	}
 }
 

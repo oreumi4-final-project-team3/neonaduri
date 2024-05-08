@@ -2,6 +2,15 @@
 /* 전체 헤더 스타일링 */
 
 /* 로고 이미지 스타일링 */
+body {
+
+    width: 1920PX; /* 뷰포트의 너비에 맞게 설정 */
+    height: 100%; /* 뷰포트의 높이에 맞게 설정 */
+    overflow-X: hidden; /* 화면을 넘어가는 콘텐츠를 숨김 */
+    margin: 0 auto;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
 .header{
     display: flex;
     justify-content: space-between;
@@ -24,7 +33,9 @@
     padding: 5px 10px;
     cursor: pointer;
 }
-
+.header-btn3{
+    font-weight: bold;
+}
 /*마이페이지 버튼과 찜 버튼 설정*/
 .user-controls img{
     margin-right: 30px;

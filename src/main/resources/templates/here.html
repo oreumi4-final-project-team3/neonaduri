@@ -22,6 +22,7 @@
             <div class="header-buttons">
                 <span class="header-btn1" onclick="goToHerePage()">여기갈까?</span>
                 <span class="header-btn2">같이갈까?</span>
+                <span class="header-btn3" onclick="goToReviewPage()">후기볼까?</span>
             </div>
             <div class="user-controls">
                 <img th:src="@{/images/mypage.png}" alt="마이페이지로 이동"/>
@@ -59,18 +60,7 @@
                 <input type="hidden" class="spotId" th:value="${spot.spotId}">
             </div>
         </div>
-        <div class="pagination" th:if="${spots.totalElements > 0}">
-            <a th:if="${pageType == 'all' and spots.hasPrevious}" th:href="@{/api/spots(page=${currentPage - 1}, size=${spots.size})}">이전</a>
-            <a th:if="${pageType == 'region' and spots.hasPrevious}" th:href="@{/api/spots/code/{areaCode}(areaCode=${areaCode},page=${currentPage - 1}, size=${spots.size})}">이전</a>
 
-            <span th:each="pageNum : ${#numbers.sequence(1, spots.totalPages)}">
-                <a th:if="${pageType == 'all'}" th:href="@{/api/spots(page=${pageNum}, size=${spots.size})}" th:text="${pageNum}" th:classappend="${pageNum==currentPage} ? 'active'"></a>
-                <a th:if="${pageType == 'region'}" th:href="@{/api/spots/code/{areaCode}(areaCode=${areaCode}, page=${pageNum}, size=${spots.size})}" th:text="${pageNum}" th:classappend="${pageNum==currentPage} ? 'active'"></a>
-            </span>
-
-            <a th:if="${pageType == 'all' and spots.hasNext}" th:href="@{/api/spots(page=${currentPage + 1}, size=${spots.size})}">다음</a>
-            <a th:if="${pageType == 'region' and spots.hasNext}" th:href="@{/api/spots/code/{areaCode}(areaCode=${areaCode},page=${currentPage + 1}, size=${spots.size})}">다음</a>
-        </div>
 
 
 
@@ -97,12 +87,7 @@
     </footer>
 </body>
 <script src="/js/here.js" defer></script>
-<script>
-    function getSpotIdAndNavigate(element) {
-        const spotId = element.parentNode.querySelector('.spotId').value;
-        window.location.replace("/api/spot/" + spotId);
-    }
-</script>
+
 
 </html>
 

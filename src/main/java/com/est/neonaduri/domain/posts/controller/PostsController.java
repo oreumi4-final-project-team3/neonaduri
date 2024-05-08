@@ -116,4 +116,5 @@ public class PostsController {
 		model.addAttribute("areaCode",areaCode);
 		return "reviewList";
 	}
+
 }
