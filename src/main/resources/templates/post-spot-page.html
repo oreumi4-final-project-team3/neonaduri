@@ -6,13 +6,14 @@
   <link rel="stylesheet" th:href="@{/css/post-spot-page.css}">
   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cbd674e6a776632944506cb4de10f74c&libraries=services"></script>
   <script src="/js/alan.js" defer></script>
-  <script src="/js/map.js" defer></script>
+  <script src="/js/map.js" defesksr></script>
   <script src="/js/post-spot-page.js" defer></script>
   <script th:inline="javascript">
     /*<![CDATA[*/
     var mapX = [[${spotPage.mapX}]]; // Thymeleaf에서 mapX 값을 JavaScript 변수로 전달
     var mapY = [[${spotPage.mapY}]]; // Thymeleaf에서 mapY 값을 JavaScript 변수로 전달
     var areaCode=[[${spotPage.areaCode}]];// Thymeleaf에서 areaCode값을 JavaScript 변수로 전달
+    var spotName=[[${spotPage.spotName}]];
     /*]]>*/
   </script>
 </head>
@@ -77,7 +78,11 @@
       <img src="/images/alan.jpg">
       <h1>AI 추천 검색</h1>
     </div>
-    <div id="aiResults"></div>
+    <div id="aiResults">
+      <div id="loading" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 100; display: flex; align-items: center; justify-content: center;">
+        <div>Loading...</div>
+      </div>
+    </div>
   </section>
 </main>
 <div class="separator2"></div>
