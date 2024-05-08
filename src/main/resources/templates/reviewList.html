@@ -54,6 +54,20 @@
         </div>
     </div>
 
+    <div class="pagination" th:if="${reviews.totalElements > 0}">
+        <a th:if="${pageType == 'all' and reviews.hasPrevious}" th:href="@{/api/reviews(page=${currentPage - 1}, size=${reviews.size})}">이전</a>
+        <a th:if="${pageType == 'region' and reviews.hasPrevious}" th:href="@{/api/reviews/code/{areaCode}(areaCode=${areaCode},page=${currentPage - 1}, size=${reviews.size})}">이전</a>
+
+        <span th:each="pageNum : ${#numbers.sequence(1, reviews.totalPages)}">
+            <a th:if="${pageType == 'all'}" th:href="@{/api/reviews(page=${pageNum}, size=${reviews.size})}" th:text="${pageNum}" th:classappend="${pageNum==currentPage} ? 'active'"></a>
+            <a th:if="${pageType == 'region'}" th:href="@{/api/reviews/code/{areaCode}(areaCode=${areaCode}, page=${pageNum}, size=${reviews.size})}" th:text="${pageNum}" th:classappend="${pageNum==currentPage} ? 'active'"></a>
+
+        </span>
+
+        <a th:if="${pageType == 'all' and reviews.hasNext}" th:href="@{/api/reviews(page=${currentPage + 1}, size=${reviews.size})}">다음</a>
+        <a th:if="${pageType == 'region' and reviews.hasNext}" th:href="@{/api/reviews/code/{areaCode}(areaCode=${areaCode},page=${currentPage + 1}, size=${reviews.size})}">다음</a>
+    </div>
+
 </main>
 <div class="separator"></div>
 <footer>

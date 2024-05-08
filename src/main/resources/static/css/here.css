@@ -1,6 +1,16 @@
+
 /* 전체 헤더 스타일링 */
 
 /* 로고 이미지 스타일링 */
+body {
+
+    width: 1920PX; /* 뷰포트의 너비에 맞게 설정 */
+    height: 100%; /* 뷰포트의 높이에 맞게 설정 */
+    overflow-X: hidden; /* 화면을 넘어가는 콘텐츠를 숨김 */
+    margin: 0 auto;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
 .header{
     display: flex;
     justify-content: space-between;
@@ -31,15 +41,6 @@
     margin-right: 30px;
     /*padding: 5px 10px;*/
     cursor: pointer;
-}
-
-body {
-    width: 1920px;
-    height: 100%;
-    margin: 0 auto;
-    padding: 0;
-    overflow-x: hidden;
-    font-family: Arial, sans-serif;
 }
 
 /*구분 선*/
@@ -131,4 +132,31 @@ h3, p {
 
 .github-link {
     margin-left: auto; /* 우측으로 정렬합니다. */
+}
+
+.pagination {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    margin-top: 80px;
+}
+.pagination span{
+    margin-bottom: 10px;
+}
+
+.pagination a {
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+    margin: 0 10px;
+    text-decoration: none;
+    color: #666;
+    font-size: 14px;
+}
+.pagination a.active {
+    background-color: #4CAF50; /* 예시로 녹색을 선택 */
+    color: white; /* 텍스트 색상을 흰색으로 */
+    border: 1px solid #4CAF50; /* 경계선도 동일한 색상으로 */
+}
+.pagination a:hover:not(.active) {
+    background-color: #ddd; /* 호버 효과 */
 }
