@@ -65,11 +65,13 @@ body {
     width: 100%;
     height: 350px;
     position: absolute;
-    top: 0;
+    top: -7px;
     left: 0;
     z-index: -1;
     margin-top:188px;
+    opacity: 0.8;
 }
+
 .tourist-sites{
     margin-top: 400px;
     display: grid;
