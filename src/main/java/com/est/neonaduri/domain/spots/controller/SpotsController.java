@@ -4,11 +4,15 @@ import java.util.Optional;
 
 import com.est.neonaduri.domain.spots.dto.SpotPageDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.est.neonaduri.domain.spots.domain.Spots;
 import com.est.neonaduri.domain.spots.dto.SpotsListDTO;
@@ -25,7 +29,7 @@ public class SpotsController {
 
 	//데이터 가공 - 게시글 리스트 페이지나 ,인기 게시글 페이지에서 필요한 데이터만 추출
 	private SpotsListDTO convertToSpotsListDTO(Spots spots) {
-		return new SpotsListDTO(spots.getPosts().getAddress(), spots.getPosts().getSpotName(), spots.getSpotImg(),spots.getPosts().getPostContent());
+		return new SpotsListDTO(spots.getPosts().getAddress(), spots.getPosts().getSpotName(), spots.getSpotImg(),spots.getPosts().getPostContent(),spots.getSpotId());
 	}
 
 	/**
@@ -35,8 +39,13 @@ public class SpotsController {
 	 * @author kec
 	 */
 	@GetMapping("api/spots")
-	public String getAllSpots(Model model){
-		model.addAttribute("spots",spotsService.getAllSpots());
+	public String getAllSpots(Model model,
+							@RequestParam(defaultValue = "1")int page,
+							@RequestParam(defaultValue = "12")int size){
+		Pageable pageable = PageRequest.of( Math.max(page-1, 0),size);
+		model.addAttribute("spots",spotsService.getAllSpots(pageable));
+		model.addAttribute("currentPage",page);
+		model.addAttribute("pageType","all");
 		return "here";
 	}
 	/**
@@ -71,8 +80,15 @@ public class SpotsController {
 	 * @author kec
 	 */
 	@GetMapping("api/spots/code/{areaCode}")
-	public String getSameAreaSpot(@PathVariable int areaCode,Model model){
-		model.addAttribute("spots",spotsService.getSameAreaSpots(areaCode));
+	public String getSameAreaSpot(@PathVariable int areaCode
+			,Model model
+			,@RequestParam(defaultValue = "1")int page
+			,@RequestParam(defaultValue = "12")int size){
+
+		Pageable pageable = PageRequest.of( Math.max(page-1, 0),size);
+		model.addAttribute("spots",spotsService.getSameAreaSpots(areaCode,pageable));
+		model.addAttribute("currentPage",page);
+		model.addAttribute("pageType","region");
 		return "here";
 	}
 
