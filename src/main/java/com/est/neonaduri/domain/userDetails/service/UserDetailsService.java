@@ -33,7 +33,7 @@ public class UserDetailsService {
         return userDetails;
     }
 
-    public UserDetailsRequestDto getUserDetails(String userId) {
+    public UserDetailsRequestDto getUserDetailData(String userId) {
         UserDetails userDetails = userDetailsRepository.findByUsers_UserId(userId); // 사용자 정보 조회
 
         // UserDetails 객체가 null인지 확인
