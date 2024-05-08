@@ -59,36 +59,3 @@ function updateAreaInfo() {
 
 updateAreaInfo(); // 페이지 로드 시 함수 실행
 
-// 스크롤 버튼 관련
-
-// let scrollTop = document.getElementById("scrollTop");
-// let scrollDown = document.getElementById("scrollDown");
-//
-// window.addEventListener('scroll', scrollFunction);
-//
-// scrollTop.addEventListener('click', handleScrollTop);
-// scrollDown.addEventListener('click',handleScrollDown);
-//
-// function scrollFunction() {
-//     if (document.documentElement.scrollTop > 100) {
-//         scrollTop.classList.add("show");
-//         scrollDown.classList.add("show");
-//     } else {
-//         scrollTop.classList.remove("show");
-//         scrollDown.classList.remove("show");
-//     }
-// }
-// function handleScrollTop() {
-//     window.scrollTo({
-//         top: 0,
-//         behavior: "smooth"
-//     });
-// }
-//
-//
-// function handleScrollDown() {
-//     window.scrollTo({
-//         top: document.documentElement.scrollHeight,
-//         behavior: "smooth"
-//     });
-// }
