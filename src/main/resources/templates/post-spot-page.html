@@ -47,8 +47,7 @@
     </div>
     <div class="spot-content">
       <div class="spot-details">
-        <img src="${spotPage.spotImg}" alt="Tourist Spot" class="spot-image"
-             onerror="this.onerror=null; this.src='/images/havenotimage.png';">
+        <img class="spot-image" th:src="${!#strings.isEmpty(spotPage.spotImg) ? spotPage.spotImg : '/images/havenotimage.png'}" alt="이미지 준비중">
         <h1>상세정보</h1>
         <p th:text="${spotPage.spotOverview}">관광지 상세 설명...</p>
       </div>
