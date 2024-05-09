@@ -1,6 +1,7 @@
 package com.est.neonaduri.domain.companions.service;
 
 import com.est.neonaduri.domain.companions.domain.Companions;
+import com.est.neonaduri.domain.companions.dto.CompanionsListDTO;
 import com.est.neonaduri.domain.companions.repository.CompanionsRepository;
 import com.est.neonaduri.domain.posts.domain.Posts;
 import com.est.neonaduri.domain.posts.dto.CreatePostDTO;
@@ -14,6 +15,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -41,6 +44,13 @@ public class CompanionsService {
         Companions savedCompanions = companionsRepository.save(createPostDTO.toCompanionsWriteDTO(savedPost));
 
         return savedCompanions;
+    }
+
+    //Read
+    public List<CompanionsListDTO> getAllCompanions(String postId) {
+        return companionsRepository.findByPosts_PostId(postId).stream()
+                .map(CompanionsListDTO::new)
+                .collect(Collectors.toList());
     }
 
     // Update
