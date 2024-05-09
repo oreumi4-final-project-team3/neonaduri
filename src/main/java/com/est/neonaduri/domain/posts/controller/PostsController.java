@@ -30,7 +30,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class PostsController {
-
     private final PostsService postsService;
     private final PostImagesService postImagesService;
 
@@ -43,19 +42,6 @@ public class PostsController {
     private PostsListDTO convertToPostsListDTO(Posts posts) {
         return new PostsListDTO(posts);
     }
-
-//	/**
-//	 * 같이갈까? 게시글을 생성하는 API
-//	 *
-//	 * @return ResponseEntity<Posts> : 같이갈까? 게시글 생성
-//	 * @author jyh
-//	 */
-//	@PostMapping("api/posts/{userId}")
-//	public ResponseEntity<Posts> createPost(@PathVariable(name = "userId") String userId, @RequestBody PostWriteDTO postWriteDTO) {
-//		Posts createdPost = postsService.createPost(userId, postWriteDTO);
-//		return ResponseEntity.status(HttpStatus.CREATED).body(createdPost);
-//	}
-
 
     /**
      * 같이갈까? 게시글 리스트를 조회하는 API
@@ -98,31 +84,11 @@ public class PostsController {
     }
 
     //CJW
-
     /**
      * Posts를 생성하는 API
      *
-     * @return ResponseEntity<Posts>
      * @author cjw
      */
-    @PostMapping("api/posts/img")
-    public ResponseEntity<Posts> addPost(@RequestPart(value = "data") PostWriteDTO postWriteDTO,
-                                         @RequestPart(value = "file", required = false) MultipartFile file) {
-
-        //Security에서 전달 예정
-        String userId = "admin_id";
-        Posts createdPost = postsService.createPost(userId, postWriteDTO);
-        try {
-            PostImages postImages = postImagesService.uploadImg(file, createdPost);
-        } catch (IOException e) {
-            System.out.println("IMG 등록 실패");
-        }
-
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body(createdPost);
-    }
-
-    //test
     @PostMapping("/api/posts")
     public ResponseEntity<Posts> addImgPosts(@RequestPart(value = "data") AddPostRequest request,
                                              @RequestPart(value = "file", required = false) MultipartFile file) {
@@ -139,17 +105,14 @@ public class PostsController {
                 .body(post);
     }
 
-    /**
-     * Posts를 삭제하는 API
-     *
-     * @author cjw
-     */
+    //이미지 관련 로직 추가 필요
     @DeleteMapping("/api/posts/{id}")
     public ResponseEntity<Void> deletePost(@PathVariable String id) {
         postsService.deletePost(id);
         return ResponseEntity.ok().build();
     }
 
+    //이미지 관련 로직 추가 필요
     @PutMapping("/api/posts/{id}")
     public ResponseEntity<Posts> updatePost(@PathVariable String id, @RequestBody UpdatePostRequest request) {
         Posts updatedPost = postsService.update(id, request);
