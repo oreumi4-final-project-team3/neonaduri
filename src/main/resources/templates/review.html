@@ -25,6 +25,7 @@
           <div class="text-muted fst-italic mb-2" th:text="|주소 : ${review.address}|"></div>
         </header>
         <section class="mb-5">
+          <img th:src="@{${img_link}}"/>
           <p class="fs-5 mb-4" th:text="${review.postContent}"></p>
         </section>
         <button type="button" id="modify-btn"

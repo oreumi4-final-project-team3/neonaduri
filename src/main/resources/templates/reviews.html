@@ -13,7 +13,7 @@
 
 <div class="container">
     <button type="button" id="create-btn"
-            th:onclick="|location.href='@{/new-review}'|"
+            th:onclick="|location.href='@{/uploadReview}'|"
             class="btn btn-secondary btn-sm mb-3">글 등록</button>
     <div class="row-6" th:each="item : ${reviews}">
         <div class="card">
@@ -23,7 +23,7 @@
                 <h5 class="card-title" th:text="${item.postTitle}"></h5>
                 <p class="card-text" th:text="${item.users.getUserName()}"></p>
                 <p class="card-text" th:text="${item.postView}"></p>
-                <a th:href="@{/reviews/{id}(id=${item.postId})}" class="btn btn-primary">보러가기</a>
+                <a th:href="@{/reviews/{postId}(postId=${item.postId})}" class="btn btn-primary">보러가기</a>
             </div>
         </div>
         <br>

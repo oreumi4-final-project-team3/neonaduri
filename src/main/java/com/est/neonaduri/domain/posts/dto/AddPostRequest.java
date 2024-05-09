@@ -12,8 +12,9 @@ import lombok.NoArgsConstructor;
 public class AddPostRequest {
     private String title;
     private String content;
+    private String category;
 
-    public Posts toEntity(Users user, String category) {	// 생성자를 사용해 객체 생성
+    public Posts toEntity(Users user) {	// 생성자를 사용해 객체 생성
         return Posts.builder()
                 .postTitle(title)
                 .postCategory(category)

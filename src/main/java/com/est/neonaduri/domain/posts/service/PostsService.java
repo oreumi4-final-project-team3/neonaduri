@@ -110,9 +110,9 @@ public class PostsService {
 		return post;
 	}
 
-	public Posts savePost(AddPostRequest request, String category, String userId){
+	public Posts savePost(AddPostRequest request,String userId){
 		Users user = userRepository.findByUserId(userId);
-		return postsRepository.save(request.toEntity(user,category));
+		return postsRepository.save(request.toEntity(user));
 	}
 
 }
