@@ -11,7 +11,7 @@
 <header>
     <div class ="header">
         <div class="logo">
-            <img th:src="@{/images/logo.png}" alt="팀 로고"/>
+            <img th:src="@{/images/logo.png}" alt="팀 로고" onclick="goToMainPage()"/>
 
         </div>
         <div class="header-buttons">
@@ -23,20 +23,22 @@
             <img th:src="@{/images/mypage.png}" alt="마이페이지로 이동"/>
 
             <img th:src="@{/images/like.png}" alt="찜"/>
-
+        </div>
     </div>
     <div class="separator"></div>
 </header>
 <main>
-    <div class="search">
-        <input type="text" id="searchInput" placeholder="어느 도시로 떠나시나요?"> <!-- 입력 필드 추가 -->
-        <button id="searchButton" class="search-button" onclick="searchSpot()">검색</button> <!-- 버튼 텍스트 수정 -->
-    </div>
+    <div class="search-bar">
+        <div class="search">
+            <div class="searchInput">
+                <input type="text" id="searchInput" placeholder="어느 도시로 떠나시나요?"> <!-- 입력 필드 추가 -->
+            </div>
+            <button id="searchButton" class="search-button" onclick="searchSpot()"> 🔍 </button> <!-- 버튼 텍스트 수정 -->
+        </div>
 
-
-    <div class="background-image">
-
-        <img id="regionImage" th:src="@{/images/train.png}" alt="검색배경 이미지"/>
+        <div class="background-image">
+            <img id="regionImage" th:src="@{/images/train.png}" alt="검색배경 이미지"/>
+        </div>
     </div>
 
     <div class="menu-bar">
@@ -70,6 +72,8 @@
     </div>
 
 
+
+<!--최근 인기 동행 게시글-->
     <div class="hotCompanions">
 
         <img  th:src="@{/images/companionsMark.png}"/>
@@ -81,33 +85,46 @@
         </div>
     </div>
 
-    <div class="tourist-sites1">
-        <!-- 관광지 리스트가 여기에 표시됩니다. -->
-        <div class="tourist-site1" th:each="companion : ${companions}">
-            <div class="top-left">
-                <p th:text="${companion.userName}"></p>
-                <p>
-                    <span th:text="${#strings.length(companion.userBirth) > 10 ? #strings.substring(companion.userBirth, 0, 10) : companion.userBirth}"></span>
-                </p>
-            </div>
-            <div class="top-right">
-                <p>
-                    여행기간:
-                    <span th:text="${#strings.length(companion.comStart) > 10 ? #strings.substring(companion.comStart, 0, 10) : companion.comStart}"></span>
-                    ~
-                    <span th:text="${#strings.length(companion.comEnd) > 10 ? #strings.substring(companion.comEnd, 0, 10) : companion.comEnd}"></span>
-                </p>
-            </div>
-            <div class="middle">
-<!--                이미지 들어갈 부분-->
-            </div>
-            <div class="bottom">
-                <p th:text="${companion.postTitle}"></p>
-                <p th:text="${companion.postContent}"></p>
+<div class="tourist-sites12">
+    <!-- 관광지 리스트가 여기에 표시됩니다. -->
+    <div class="tourist-site1" th:each="companion : ${companions}">
+        <div class="top-contents">
+                <div class="top-writer-profileimg"></div>
+                <div class="top-writer-info">
+                    <p class="top-writer-info-username" th:text="${companion.userName}"></p>
+                    <div class="top-writer-info-datails">
+                        <p class="userBirth" th:text="${#strings.length(companion.userBirth) > 10 ? #strings.substring(companion.userBirth, 0, 10) : companion.userBirth}"></p>
+                        <p class="userAge"></p>
+                        <p th:text="${companion.userGender}"></p>
+                    </div>
+                </div>
+        <hr>
+            <div class="top-companion-schedule">
+                <p>🗓️ 여행기간</p>
+                <div class="top-companion-schedule-details">
+                    <p th:text="${#temporals.format(companion.comStart, 'MM.dd')}"></p>
+                    <p> ~ </p>
+                    <p th:text="${#temporals.format(companion.comEnd, 'MM.dd')}"></p>
+                </div>
             </div>
         </div>
-    </div>
 
+
+        <div class="middle-contents">
+            <div class="companion-image-placeholder">
+                <img id="sample-image" th:src="@{/images/companionTestImg.png}" alt="샘플이미지">
+            </div>
+        </div>
+
+
+        <div class="bottom-contents">
+            <p class="bottom-contents-title" th:text="${companion.postTitle}"></p>
+            <p class="bottom-contents-content" th:text="${companion.postContent}"></p>
+        </div>
+    </div>
+</div>
+
+<!--최근 인기 관광지 게시글-->
     <div class="hotSpots">
         <img  th:src="@{/images/spotsMark.png}"/>
         <div>
@@ -118,7 +135,7 @@
         </div>
     </div>
 
-    <div class="tourist-sites2">
+    <div class="tourist-sites">
         <!-- 관광지 리스트가 여기에 표시됩니다. -->
         <div class="tourist-site2" th:each="spot : ${spots}">
             <img th:if="${not #strings.isEmpty(spot.spotImg)}" th:src="${spot.spotImg}" alt="관광지 이미지">

@@ -25,7 +25,9 @@ body {
 .header logo{
     width:200px;
     height: 200px;
-
+}
+.logo img{
+    cursor:pointer;
 }
 /*여기갈까? 같이갈까? 버튼 설정*/
 .header-buttons span {
@@ -34,6 +36,7 @@ body {
     padding: 5px 10px;
     cursor: pointer;
 }
+
 
 /*마이페이지 버튼과 찜 버튼 설정*/
 .user-controls img{
@@ -49,15 +52,55 @@ body {
     /* border-top: 1px dotted #ccc; */ /* 점선 구분선 */
     margin: 0 0; /* 구분선 위아래 여백 설정 */
 }
+/*검색기능과 배경이미지*/
+.background-image {
+    position: relative; /* 이미지의 부모 설정*/
+    top:-67px;
+}
 
-
+.background-image img {
+    width: 100%;
+    height: 350px;
+    position: absolute;
+    margin-top: -45px;
+    left: 0;
+    z-index: -1;
+    opacity: 0.8;
+}
+.search{
+    position: relative;
+    top:70px;
+    text-align: center;
+    align-items: center;
+}
+.searchInput{
+    text-align: center;
+}
+#searchInput{
+    font-size:18px;
+    font-weight: bold;
+    text-align: center;
+}
+#searchButton{
+    top:-52px;
+    left:250px;
+    position:relative;
+    border-right: 10px;
+    background-color: white;
+    font-size:30px;
+}
+.searchInput input{
+    width:600px;
+    height: 60px;
+    border-radius: 20px;
+}
 /*중간 body 부분*/
+
+
 .menu-bar{
     display: flex;
     flex-direction: column;
 }
-
-
 .menu-img{
     display: flex;
     justify-content: space-between;
@@ -65,6 +108,7 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    margin-left: 100px;
 }
 .toptenSpots{
     display: flex;
@@ -83,7 +127,6 @@ body {
     margin-bottom: 30px; /* 간격을 조정할 값으로 변경 가능 */
 }
 
-
 .menu-bar img{
     margin-right: 60px;
     width:400px;
@@ -96,41 +139,122 @@ body {
     margin-top: -400px;
     margin-bottom: 50px;
 }
-.search{
-    position: relative;
-    margin-top: -73px;
-}
-.search button{
-    width:570px;
-    height: 75px;
-    border-radius: 50px;
-    margin-top: 20px;
-    margin-left: 640px;
-
-}
-
-.background-image {
-    position: relative; /* 이미지의 부모 설정*/
-}
-
-.background-image img {
-    width: 100%;
-    height: 350px;
-    position: absolute;
-    top: -22px;
-    left: 0;
-    z-index: -1;
-    opacity: 0.8;
-}
-.tourist-sites1{
-    margin-top: 100px;
+/*인기 동행 게시글 */
+.tourist-sites12{
+    margin-top: 40px;
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3개의 열을 가짐 */
     gap: 20px; /* 관광지 사이의 간격 설정 */
     row-gap: 100px;
+    margin-bottom: 20px;
+
 }
-.tourist-sites2{
-    margin-top: 60px;
+
+.tourist-sites1{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    box-shadow: 0px 0px 5px 5px rgba(225,225,225,0.2);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+
+}
+.tourist-site1{
+    border: 1px solid #ccc;
+    /*padding:20px;*/
+    border-radius: 20px;
+    width:430px;
+    margin-left: 100px;
+    justify-content: space-between;
+}
+.top-contents{
+    display: flex;
+    align-items: center;
+    margin: 10px 0px;
+}
+.top-writer-profileimg{
+    width:50px;
+    height: 50px;
+    border-right: 50px;
+    background-color: #cccccc;
+    margin-left: 20px;
+}
+.top-writer-info{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+.top-writer-info p{
+    margin: 0px;
+}
+.top-writer-info-datails{
+    display: flex;
+    margin-top: 2px;
+}
+.top-writer-info-datails p{
+    color: #0085FF;
+    margin-right: 2px;
+}
+.userBirth{
+    display: none;
+}
+.top-companion-schedule{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+.top-companion-schedule p{
+    margin:0px;
+    font-weight: bold;
+}
+.top-companion-schedule-details{
+    display: flex;
+    margin-top: 5px;
+}
+.top-companion-schedule-details p{
+    color:#3ADC1F;
+    font-weight: bold;
+}
+hr{
+    margin : 0 70px;
+    height: 50px;
+    border : 1px solid rgba(40,40,40,.5);
+}
+.top-companion-schedule{
+    display: flex;
+}
+.middle-contents{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.companion-image-placeholder{
+    display: flex;
+}
+#sample-image{
+    width:100%;
+    height:150px;
+    border-right: 10px;
+}
+.bottom-contents{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin: 5px 0px 10px 10px;
+}
+.bottom-contents p{
+    color: black;
+    font-weight: bold;
+}
+.bottom-contents-title{
+    font-weight: bold;
+}
+
+/*인기 관광지 게시글*/
+.tourist-sites{
+    margin-top: 40px;
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* 4개의 열을 가짐 */
     gap: 20px; /* 관광지 사이의 간격 설정 */
@@ -169,7 +293,7 @@ h3, p {
 }
 
 .hotCompanions, .hotSpots{
-    margin-top: 300px;
+    margin-top: 100px;
     margin-left: 110px;
 
 }
@@ -213,31 +337,4 @@ h3, p {
 
 .github-link {
     margin-left: auto; /* 우측으로 정렬합니다. */
-}
-
-.pagination {
-    display: flex;
-    list-style: none;
-    justify-content: center;
-    margin-top: 80px;
-}
-.pagination span{
-    margin-bottom: 10px;
-}
-
-.pagination a {
-    border: 1px solid #ddd;
-    padding: 5px 10px;
-    margin: 0 10px;
-    text-decoration: none;
-    color: #666;
-    font-size: 14px;
-}
-.pagination a.active {
-    background-color: #4CAF50; /* 예시로 녹색을 선택 */
-    color: white; /* 텍스트 색상을 흰색으로 */
-    border: 1px solid #4CAF50; /* 경계선도 동일한 색상으로 */
-}
-.pagination a:hover:not(.active) {
-    background-color: #ddd; /* 호버 효과 */
 }

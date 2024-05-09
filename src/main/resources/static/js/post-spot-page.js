@@ -59,6 +59,9 @@ function updateAreaInfo() {
 
 updateAreaInfo(); // 페이지 로드 시 함수 실행
 
+function goToMainPage(){
+    window.location.href = "/api/main";
+}
 // 스크롤 버튼 관련
 
 // let scrollTop = document.getElementById("scrollTop");

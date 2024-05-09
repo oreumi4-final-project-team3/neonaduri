@@ -105,4 +105,6 @@
     function goToReviewPage(){
         window.location.href = "/api/reviews";
     }
-
+    function goToMainPage() {
+        window.location.href = "/api/main";
+    }

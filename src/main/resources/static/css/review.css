@@ -26,6 +26,9 @@ body {
     width:200px;
     height: 200px;
 }
+.logo img{
+    cursor: pointer;
+}
 /*여기갈까? 같이갈까? 버튼 설정*/
 .header-buttons span {
     margin-right: 50px; /* 버튼 사이의 간격 설정 */
