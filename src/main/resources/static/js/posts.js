@@ -58,7 +58,10 @@ if (createReviewButton) {
         const inputData={
             title : document.getElementById('title').value,
             content: document.getElementById('content').value,
-            category: "review"
+            category: "review",
+            areaCode: document.getElementById('areaCode').value,
+            spotName: document.getElementById('spotName').value,
+            address: document.getElementById('address').value
         };
 
         const formData = new FormData();

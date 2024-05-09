@@ -128,8 +128,6 @@ public class PostsController {
                                              @RequestPart(value = "file", required = false) MultipartFile file) {
         //security 에서 반환 예정
         String userId = "admin_id";
-        //입력 받게 수정
-        String category = "review";
 
         Posts post = postsService.savePost(request, userId);
         try {

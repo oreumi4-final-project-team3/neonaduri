@@ -13,15 +13,18 @@ public class AddPostRequest {
     private String title;
     private String content;
     private String category;
+    private String areaCode;
+    private String spotName;
+    private String address;
 
     public Posts toEntity(Users user) {	// 생성자를 사용해 객체 생성
         return Posts.builder()
                 .postTitle(title)
                 .postCategory(category)
                 .postContent(content)
-                .areaCode(15) //수정
-                .address("address_test")//수정
-                .spotName("spotName_test")//수정
+                .areaCode(Integer.parseInt(areaCode))
+                .address(address)
+                .spotName(spotName)
                 .users(user)
                 .build();
     }
