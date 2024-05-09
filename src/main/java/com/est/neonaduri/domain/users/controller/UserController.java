@@ -51,13 +51,13 @@ public class UserController {
         return userService.getUserData(userId);
     }
 
-    @GetMapping("mypage/{userId}")
+    @GetMapping("api/mypage/{userId}")
     public String showMyPage(@PathVariable String userId, Model model) {
         // User 정보 가져오기
         UserDTO userDto = userService.getUserData(userId);
 
         // UserDetails 정보 가져오기
-        UserDetailsRequestDto userDetailsDto = userDetailsService.getUserDetails(userId);
+        UserDetailsRequestDto userDetailsDto = userDetailsService.getUserDetailData(userId);
 
         // 모델에 UserDTO와 UserDetails 객체 추가
         model.addAttribute("user", userDto);
@@ -66,4 +66,6 @@ public class UserController {
         // mypage HTML을 렌더링
         return "mypage";
     }
+    
+//    @PutMapping으로 sns api에서 받아오는 정보 외의 것 받아오기
 }
