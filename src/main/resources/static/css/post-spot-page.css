@@ -185,7 +185,7 @@ body {
 
 #aiResults p {
     margin-bottom: 10px;
-    font-size: 30px;
+    font-size: 21px;
     font-weight: bold;
     word-wrap: break-word;
 }
@@ -220,3 +220,10 @@ body {
     margin-left: auto; /* 우측으로 정렬합니다. */
 }
 
+/* 로딩바 */
+#loading {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}

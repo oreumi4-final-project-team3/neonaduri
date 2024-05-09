@@ -95,3 +95,4 @@ function goToMainPage(){
 //         behavior: "smooth"
 //     });
 // }
+

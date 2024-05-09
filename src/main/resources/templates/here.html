@@ -88,6 +88,14 @@
 </body>
 <script src="/js/here.js" defer></script>
 
+<script>
+    function getSpotIdAndNavigate(element) {
+        const spotId = element.parentNode.querySelector('.spotId').value;
+        console.log("Spot ID is: ", spotId);
+        window.location.replace("/api/spot/" + spotId);
+    }
+</script>
+
 
 </html>
 
