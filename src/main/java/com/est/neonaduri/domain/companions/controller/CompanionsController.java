@@ -22,7 +22,7 @@ public class CompanionsController {
     }
 
     /**
-     * 같이갈까? 게시글을 생성하는 API
+     * 같이갈까? 게시글(Posts + Companions)을 생성하는 API
      *
      * @return ResponseEntity<Companions> : 같이갈까? 게시글 생성
      * @author jyh

@@ -40,10 +40,14 @@ public class Companions {
     @Column(name = "COM_END", nullable = false)
     private LocalDateTime comEnd;
 
+    @Column(name = "COM_RESERVE", nullable = false)
+    private Integer comReserve;
+
     @PrePersist
     public void prePersist(){
         this.companionId = IdGenerator.generateCompanionId();
         this.comStatus = this.comStatus == null ? false : this.comStatus;
         this.comWish = this.comWish == null ? 0 : this.comWish;
+        this.comReserve = this.comReserve == null ? 0 : this.comReserve;
     }
 }

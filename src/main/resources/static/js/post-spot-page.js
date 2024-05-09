@@ -59,6 +59,7 @@ function updateAreaInfo() {
 
 updateAreaInfo(); // 페이지 로드 시 함수 실행
 
+<<<<<<< HEAD
 function goToMainPage(){
     window.location.href = "/api/main";
 }
@@ -95,3 +96,5 @@ function goToMainPage(){
 //         behavior: "smooth"
 //     });
 // }
+=======
+>>>>>>> develop

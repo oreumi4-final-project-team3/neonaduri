@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>같이갈까?</title>
+        <link rel="stylesheet" th:href="@{/css/companions.css}">
+
+    </head>
+</head>
+<body>
+<header>
+    <div class ="header">
+        <div class="logo">
+            <img th:src="@{/images/logo.png}" alt="팀 로고"/>
+
+        </div>
+        <div class="header-buttons">
+            <span class="header-btn1" onclick="goToHerePage()">여기갈까?</span>
+            <span class="header-btn2" onclick="goToCompanionsPage()">같이갈까?</span>
+        </div>
+        <div class="user-controls">
+            <img th:src="@{/images/mypage.png}" alt="마이페이지로 이동"/>
+            <img th:src="@{/images/like.png}" alt="찜"/>
+        </div>
+    </div>
+    <div class="separator"></div>
+</header>
+
+<main>
+    <div class="separator"></div>
+    <div class="regions">
+        <div class="regions-button-wrap">
+            <span class="region-all-btn" onclick="goToCompanionsPage()">전체</span>
+            <span class="region-btn" data-area-code="1">서울</span>
+            <span class="region-btn" data-area-code="31">경기</span>
+            <span class="region-btn" data-area-code="2">인천</span>
+            <span class="region-btn" data-area-code="32">강원</span>
+            <span class="region-btn" data-area-code="33">충북</span>
+            <span class="region-btn" data-area-code="34">충남</span>
+            <span class="region-btn" data-area-code="35">경북</span>
+            <span class="region-btn" data-area-code="36">경남</span>
+            <span class="region-btn" data-area-code="37">전북</span>
+            <span class="region-btn" data-area-code="38">전남</span>
+            <span class="region-btn" data-area-code="39">제주</span>
+        </div>
+        <div class="region-image">
+            <img id="regionImage" th:src="@{/images/companions.png}" alt="대표이미지"/>
+        </div>
+    </div>
+
+    <div class="button-wrap">
+
+            <a class="sort-recent-button">최신 순</a>
+            <a class="sort-popular-button">인기 순</a>
+            <a class="sort-view-button">많이 본 순</a>
+            <a class="sort-comment-button">댓글 순</a>
+
+        <a class="button-create-post">같이가자!</a>
+    </div>
+    <div class="tourist-sites">
+        <!-- 게시글 리스트 -->
+        <div class="tourist-site" th:each="post : ${posts}">
+            <div class="top-contents">
+                    <div class="top-writer-profileimg"></div>
+                    <div class="top-writer-info">
+                        <p class="top-writer-info-username" th:text="${post.writerId}"></p>
+                        <div class="top-writer-info-details">
+                            <p class="user-birth" th:text="${post.userBirth}"></p>
+                            <p class="age"></p>
+                            <p>&nbsp;·&nbsp;</p>
+                            <p th:text="${post.userGender}"></p>
+                        </div>
+                    </div>
+            <hr>
+                <div class="top-companion-schedule" th:each="companion : ${post.companions}">
+                    <p>🗓️ 여행기간</p>
+                    <div class="top-companion-schedule-details">
+                        <p th:text="${#temporals.format(companion.comStart, 'MM.dd')}"></p>
+                        <p>&nbsp;~&nbsp;</p>
+                        <p th:text="${#temporals.format(companion.comEnd, 'MM.dd')}"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="middle-contents">
+                <div class="companion-image-placeholder">
+                    <img id="sample-image" th:src= "@{/images/sampleimg.png}" alt="샘플 이미지">
+                </div>
+
+
+                    <div class="companion-status" th:each="companion : ${post.companions}">
+                        <div class="companion-status-image">
+                            <img id="recruit-image" th:src= "@{/images/recruit.png}" alt="모집인원 이미지">
+                            <img id="reserve-image" th:src= "@{/images/reserve.png}" alt="현재인원 이미지">
+                            <img id="like-image" th:src= "@{/images/like.png}" alt="좋아요 이미지">
+                        </div>
+
+                        <div class="companion-status-number">
+                            <p class="companion-status-number-recruit" th:text="${companion.comRecruit}"></p>
+                            <p class="companion-status-number-reserve" th:text="${companion.comReserve}"></p>
+                            <p class="companion-status-number-wish" th:text="${companion.comWish}"></p>
+                        </div>
+                    </div>
+            </div>
+
+            <div class="bottom-contents" th:each="companion : ${post.companions}">
+                <p class="bottom-contents-title" th:text="${#strings.length(post.postTitle) > 29 ? #strings.substring(post.postTitle,0,29) + '...' : post.postTitle}"></p>
+                <p class="bottom-contents-content" th:text="${#strings.length(post.postContent) > 29 ? #strings.substring(post.postContent,0,29) + '...' : post.postContent}"></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="pagination">
+        <!-- 페이지 버튼 -->
+        <button class="page-btn" data-page="1">1</button>
+        <button class="page-btn" data-page="2">2</button>
+        <button class="page-btn" data-page="3">3</button>
+        <!-- 이하 페이지 버튼 추가 -->
+    </div>
+</main>
+<div class="separator"></div>
+<footer>
+    <div class="footer">
+        <div class="footer-logo">
+            <img th:src="@{/images/logo.png}" alt="팀 로고"/>
+        </div>
+        <div class="footer-group">
+            <div class="data">
+                <span>데이터 제공 : 한국관광공사 TourAPI</span>
+            </div>
+            <div class="icon-made">
+                <span>아이콘 제작자: Freepik - Flaticon</span>
+            </div>
+        </div>
+        <div class="github-link">
+            <a href="https://github.com/oreumi4-final-project-team3/neonaduri">
+                <img th:src="@{/images/github.png}" alt="깃허브로 이동"/>
+            </a>
+        </div>
+    </div>
+</footer>
+</body>
+<script src="/js/companions.js"></script>
+</html>
