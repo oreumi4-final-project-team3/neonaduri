@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import com.est.neonaduri.domain.posts.domain.Posts;
 import com.est.neonaduri.domain.posts.dto.PostWriteDTO;
+import com.est.neonaduri.domain.spots.dto.SpotsListDTO;
 import com.est.neonaduri.domain.posts.dto.PostsListDTO;
 import com.est.neonaduri.domain.users.domain.Users;
 import com.est.neonaduri.domain.users.repository.UserRepository;

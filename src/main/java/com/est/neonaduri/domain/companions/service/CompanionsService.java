@@ -1,7 +1,11 @@
 package com.est.neonaduri.domain.companions.service;
 
 import com.est.neonaduri.domain.companions.domain.Companions;
+
+import com.est.neonaduri.domain.companions.dto.CompanionsDTO;
+
 import com.est.neonaduri.domain.companions.dto.CompanionsListDTO;
+
 import com.est.neonaduri.domain.companions.repository.CompanionsRepository;
 import com.est.neonaduri.domain.posts.domain.Posts;
 import com.est.neonaduri.domain.posts.dto.CreatePostDTO;
@@ -79,5 +83,21 @@ public class CompanionsService {
         companions.setComStart(updatePostDTO.getComStart());
         companions.setComEnd(updatePostDTO.getComEnd());
         return companionsRepository.save(companions);
+    }
+
+    public List<CompanionsDTO> getHotCompanions(){
+        List<Companions> companions = companionsRepository.findHotCompanions();
+        List<CompanionsDTO> dtoList = companions.stream()
+            .map(companion -> new CompanionsDTO(
+                companion.getPosts().getUsers().getUserName(),
+                companion.getPosts().getUsers().getUserBirth(),
+                companion.getPosts().getUsers().getUserGender(),
+                companion.getComStart(),
+                companion.getComEnd(),
+                companion.getPosts().getPostTitle(),
+                companion.getPosts().getPostContent()
+            )).collect(Collectors.toList());
+        
+        return dtoList;
     }
 }

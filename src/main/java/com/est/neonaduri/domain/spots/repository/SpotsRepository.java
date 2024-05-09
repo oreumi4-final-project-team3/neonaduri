@@ -18,4 +18,12 @@ public interface SpotsRepository extends JpaRepository<Spots,String> {
 	@Query("SELECT s FROM Spots s JOIN s.posts p WHERE p.areaCode = :areaCode AND p.postCategory = 'spots'")
 	Page<Spots> findSpotsByAreaCodeAndCategory(@Param("areaCode") int areaCode, Pageable pageable);
 
+	@Query("SELECT s FROM Spots s JOIN s.posts p WHERE p.postCategory = 'spots' ORDER BY p.postView DESC limit 4")
+	List<Spots> findHotSpots();
+
+	@Query("SELECT s FROM Spots s JOIN s.posts p WHERE p.postCategory = 'spots' ORDER BY p.postView DESC limit 10")
+	List<Spots> findToptenSpots();
+
+	@Query("SELECT s FROM Spots s JOIN s.posts p WHERE p.spotName= :spotName AND p.postCategory = 'spots'")
+	Spots findBySpotName(@Param("spotName") String spotName);
 }
