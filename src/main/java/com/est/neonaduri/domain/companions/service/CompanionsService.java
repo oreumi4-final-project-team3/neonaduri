@@ -50,12 +50,6 @@ public class CompanionsService {
         return savedCompanions;
     }
 
-    //Read
-    public List<CompanionsListDTO> getAllCompanions(String postId) {
-        return companionsRepository.findByPosts_PostId(postId).stream()
-                .map(CompanionsListDTO::new)
-                .collect(Collectors.toList());
-    }
 
     // Update
     @Transactional
