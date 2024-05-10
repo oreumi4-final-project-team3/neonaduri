@@ -91,6 +91,8 @@ body {
     width:250px;
     height:200px;
     border-radius: 10px;
+
+    cursor: pointer;
 }
 h3{
     cursor: pointer;

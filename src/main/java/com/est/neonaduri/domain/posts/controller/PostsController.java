@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.est.neonaduri.domain.companions.dto.CompanionsListDTO;
 import com.est.neonaduri.domain.companions.service.CompanionsService;
 import com.est.neonaduri.domain.postImages.domain.PostImages;
 import com.est.neonaduri.domain.postImages.service.PostImagesService;
@@ -14,7 +15,6 @@ import com.est.neonaduri.domain.posts.dto.PostsListDTO;
 import com.est.neonaduri.domain.posts.dto.UpdatePostRequest;
 import com.est.neonaduri.domain.posts.service.PostsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -35,13 +35,10 @@ public class PostsController {
 	  private final PostsService postsService;
 	  private final PostImagesService postImagesService;
 
-      private final CompanionsService companionsService;
-
 	  @Autowired
 	  public PostsController(PostsService postsService, PostImagesService postImagesService, CompanionsService companionsService) {
 		this.postsService = postsService;
 		this.postImagesService = postImagesService;
-        this.companionsService = companionsService;
 	  }
 
     private PostsListDTO convertToPostsListDTO(Posts posts) {
@@ -64,59 +61,6 @@ public class PostsController {
         return postsListDTO;
     }
      */
-    @GetMapping("api/posts")
-    public String getAllposts(Model model, @RequestParam(defaultValue = "1")int page,
-                              @RequestParam(defaultValue = "12")int size) {
-        Pageable pageable = PageRequest.of( Math.max(page-1, 0),size);
-
-        model.addAttribute("companions", postsService.getAllPosts(pageable));
-        model.addAttribute("currentPage",page);
-        model.addAttribute("pageType","region");
-        return "companions";
-//        List<PostsListDTO> posts = postsService.getAllPosts();
-//
-//        for (PostsListDTO post : posts) {
-//            List<CompanionsListDTO> companions = companionsService.getAllCompanions(post.getPostId());
-//            post.setCompanions(companions);
-//        }
-//
-//        model.addAttribute("companions", posts);
-    }
-
-    @GetMapping("api/posts/{areaCode}")
-    public String getSameAreaPost(@PathVariable int areaCode, Model model, @RequestParam(defaultValue = "1")int page, @RequestParam(defaultValue = "12")int size) {
-        Pageable pageable = PageRequest.of(Math.max(page-1, 0), size);
-
-        model.addAttribute("companions", postsService.getSameAreaPosts(areaCode, pageable));
-        model.addAttribute("currentPage",page);
-        model.addAttribute("pageType","region");
-        return "companions";
-    }
-
-    @GetMapping("api/reviews")
-    public String getAllReview(Model model,
-                               @RequestParam(defaultValue = "1") int page,
-                               @RequestParam(defaultValue = "12") int size) {
-        Pageable pageable = PageRequest.of(Math.max(page - 1, 0), size);
-        model.addAttribute("reviews", postsService.getAllReviewList(pageable));
-        model.addAttribute("currentPage", page);
-        model.addAttribute("pageType", "all");
-        return "reviewList";
-    }
-
-    @GetMapping("api/reviews/code/{areaCode}")
-    public String getSameAreaReview(@PathVariable int areaCode
-            , Model model
-            , @RequestParam(defaultValue = "1") int page
-            , @RequestParam(defaultValue = "12") int size) {
-
-        Pageable pageable = PageRequest.of(Math.max(page - 1, 0), size);
-        model.addAttribute("reviews", postsService.getReviewListByArea(areaCode, pageable));
-        model.addAttribute("currentPage", page);
-        model.addAttribute("pageType", "region");
-        model.addAttribute("areaCode", areaCode);
-        return "reviewList";
-    }
  
   
     //CJW

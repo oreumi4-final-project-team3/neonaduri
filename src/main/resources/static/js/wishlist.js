@@ -1,22 +1,4 @@
 
-function searchSpot() {
-    // 입력 필드에서 값 가져오기
-    var spotName = document.getElementById("searchInput").value;
-
-    // 만약 검색어가 비어 있으면 알림 표시
-    if (spotName === "") {
-        alert("도시 이름을 입력하세요.");
-        return;
-    }
-
-    // 입력된 도시 이름으로 검색
-    window.location.href = "/api/spots/name/" + encodeURIComponent(spotName);
-}
-
-function navigateToSpotDetail(element) {
-    const spotId = element.getAttribute('data-spotId');
-    window.location.href = "/api/spot/" + spotId;
-}
 function getSpotIdAndNavigate(element) {
     const spotId = element.parentNode.querySelector('.spotId').value;
     window.location.replace("/api/spot/" + spotId);
@@ -25,11 +7,15 @@ function goToHerePage() {
     window.location.href = "/api/spots";
 }
 function goToReviewPage(){
-    window.location.href = "/reviews";
+    window.location.href = "/api/reviews";
 }
 function goToMainPage() {
     window.location.href = "/api/main";
 }
+// 관심있는 매칭 클릭 시 이동 , 시큐리티 필요
+// function goToWishlistPage(){
+//     window.location.href = "/api/wishlist";
+// }
 document.addEventListener("DOMContentLoaded", function() {
     const userBirthElements = document.querySelectorAll(".userBirth");
     const userAgeElements = document.querySelectorAll(".userAge");

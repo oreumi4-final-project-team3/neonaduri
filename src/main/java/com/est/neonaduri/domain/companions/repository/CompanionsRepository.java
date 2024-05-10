@@ -1,7 +1,6 @@
 package com.est.neonaduri.domain.companions.repository;
 
 import com.est.neonaduri.domain.companions.domain.Companions;
-import com.est.neonaduri.domain.posts.domain.Posts;
 import com.est.neonaduri.domain.spots.domain.Spots;
 
 import org.springframework.data.domain.Page;
@@ -22,6 +21,8 @@ public interface CompanionsRepository extends JpaRepository<Companions, String> 
 
     @Query("SELECT c FROM Companions c JOIN c.posts p WHERE p.postCategory = 'companions' ORDER BY p.postView DESC limit 3")
     List<Companions> findHotCompanions();
+
+
 
     @Query("SELECT c FROM Companions c JOIN c.posts p WHERE p.areaCode = :areaCode AND p.postCategory = 'companions'")
     Page<Companions> findCompanionsByAreaCodeAndCategory(@Param("areaCode") int areaCode, Pageable pageable);

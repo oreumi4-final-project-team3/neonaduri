@@ -3,47 +3,27 @@ package com.est.neonaduri.domain.posts.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.est.neonaduri.domain.companions.domain.Companions;
-import com.est.neonaduri.domain.companions.dto.CompanionsDTO;
-import com.est.neonaduri.domain.companions.dto.CompanionsListDTO;
-import com.est.neonaduri.domain.companions.repository.CompanionsRepository;
+import com.est.neonaduri.domain.postImages.domain.PostImages;
+import com.est.neonaduri.domain.postImages.repository.PostImagesRepository;
 import com.est.neonaduri.domain.posts.domain.Posts;
-import com.est.neonaduri.domain.posts.dto.AddPostRequest;
-import com.est.neonaduri.domain.posts.dto.PostWriteDTO;
-import com.est.neonaduri.domain.posts.dto.UpdatePostRequest;
-import com.est.neonaduri.domain.spots.dto.SpotsListDTO;
-import com.est.neonaduri.domain.posts.dto.PostsListDTO;
+import com.est.neonaduri.domain.posts.dto.*;
 import com.est.neonaduri.domain.users.domain.Users;
 import com.est.neonaduri.domain.users.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.est.neonaduri.domain.posts.dto.ReviewDTO;
 import com.est.neonaduri.domain.posts.repository.PostsRepository;
-import com.est.neonaduri.domain.spots.domain.Spots;
-import com.est.neonaduri.domain.spots.repository.SpotsRepository;
-import com.est.neonaduri.domain.users.domain.Users;
-import com.est.neonaduri.domain.users.repository.UserRepository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@RequiredArgsConstructor
 public class PostsService {
-
-
 	private final PostsRepository postsRepository;
-	private final SpotsRepository spotsRepository;
 	private final UserRepository userRepository;
-	private final CompanionsRepository companionsRepository;
-	@Autowired
-	public PostsService(PostsRepository postsRepository, SpotsRepository spotsRepository,UserRepository userRepository, CompanionsRepository companionsRepository) {
-		this.postsRepository = postsRepository;
-		this.spotsRepository = spotsRepository;
-		this.userRepository = userRepository;
-		this.companionsRepository = companionsRepository;
-	}
+	private final PostImagesRepository postImagesRepository;
 
 	//기본적인 CRUD 관련 코드들 작성
 	//Create
@@ -108,13 +88,14 @@ public class PostsService {
 //		postsRepository.delete(posts);
 //	}
 
-	public Page<ReviewDTO> getAllReviewList(Pageable pageable){
-		Page<Posts> posts = postsRepository.findBypostCategory("reviews",pageable);
+	public Page<PostsResponseDTO> getPostListByCategory(String category, Pageable pageable){
+		Page<Posts> posts = postsRepository.findBypostCategory(category,pageable);
 
-		return posts.map(review->{
-			Users users = review.getUsers();
-			if(users!=null){
-				return new ReviewDTO(null, review.getPostTitle(), review.getSpotName(),review.getUsers().getUserName());
+		return posts.map(post->{
+			Users user = post.getUsers();
+			if(user!=null){
+				return new PostsResponseDTO(post,user,findImgLink(post));
+				//return new ReviewDTO(findImgLink(review), review.getPostTitle(), review.getSpotName(),review.getUsers().getUserName());
 			}
 			else{
 				return null;
@@ -122,26 +103,28 @@ public class PostsService {
 		});
 
 	}
-	public Page<ReviewDTO> getReviewListByArea(int areaCode, Pageable pageable) {
-		Page<Posts> posts = postsRepository.findReviewsByAreaCodeAndCategory(areaCode, pageable);
+	public Page<PostsResponseDTO> getPostListByCategoryAndAreaCode(String category, int areaCode, Pageable pageable) {
+		//Page<Posts> posts = postsRepository.findReviewsByAreaCodeAndCategory(areaCode, pageable);
+		Page<Posts> posts = postsRepository.findAllByPostCategoryAndAreaCode(category,areaCode,pageable);
 
-		List<ReviewDTO> dtoList = posts.getContent().stream()
-			.map(review -> new ReviewDTO(
-				null,
-				review.getPostTitle(),
-				review.getSpotName(),
-				review.getUsers().getUserName()))
+		List<PostsResponseDTO> dtoList = posts.getContent().stream()
+			.map(post -> new PostsResponseDTO(post,post.getUsers(),findImgLink(post)))
 			.peek(dto -> System.out.println("DTO: " + dto))
 			.collect(Collectors.toList());
 
 		return new PageImpl<>(dtoList, pageable, posts.getTotalElements());
 	}
 
-	//CJW
-	public List<Posts> findAllByCategory(String category){
-		return postsRepository.findBypostCategory(category);
+	//imgLink 반환하는 메소드
+	String findImgLink(Posts post){
+		PostImages postImage = postImagesRepository.findPostImagesByPosts(post);
+		if(postImage != null){
+			return postImage.getPostImagesId();
+		}
+		return "/images/havenotimage.png";
 	}
 
+	//CJW
 	public Posts findById(String id){
 		return postsRepository.findByPostId(id);
 	}
