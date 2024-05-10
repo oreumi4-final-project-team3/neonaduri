@@ -8,7 +8,6 @@ public class ReviewDTO {
 	private String postTitle;
 	private String spotName;
 	private String userName;
-	private String imgLInk;
 
 	public ReviewDTO(String spotImg, String postTitle, String spotName, String userName) {
 		this.spotImg = spotImg;

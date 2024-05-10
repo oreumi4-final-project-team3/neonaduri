@@ -6,10 +6,7 @@ import java.util.stream.Collectors;
 import com.est.neonaduri.domain.postImages.domain.PostImages;
 import com.est.neonaduri.domain.postImages.repository.PostImagesRepository;
 import com.est.neonaduri.domain.posts.domain.Posts;
-import com.est.neonaduri.domain.posts.dto.AddPostRequest;
-import com.est.neonaduri.domain.posts.dto.PostWriteDTO;
-import com.est.neonaduri.domain.posts.dto.UpdatePostRequest;
-import com.est.neonaduri.domain.posts.dto.PostsListDTO;
+import com.est.neonaduri.domain.posts.dto.*;
 import com.est.neonaduri.domain.users.domain.Users;
 import com.est.neonaduri.domain.users.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +15,6 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.est.neonaduri.domain.posts.dto.ReviewDTO;
 import com.est.neonaduri.domain.posts.repository.PostsRepository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -57,13 +53,14 @@ public class PostsService {
 //		postsRepository.delete(posts);
 //	}
 
-	public Page<ReviewDTO> getPostListByCategory(String category, Pageable pageable){
+	public Page<PostsResponseDTO> getPostListByCategory(String category, Pageable pageable){
 		Page<Posts> posts = postsRepository.findBypostCategory(category,pageable);
 
-		return posts.map(review->{
-			Users users = review.getUsers();
-			if(users!=null){
-				return new ReviewDTO(findImgLink(review), review.getPostTitle(), review.getSpotName(),review.getUsers().getUserName());
+		return posts.map(post->{
+			Users user = post.getUsers();
+			if(user!=null){
+				return new PostsResponseDTO(post,user,findImgLink(post));
+				//return new ReviewDTO(findImgLink(review), review.getPostTitle(), review.getSpotName(),review.getUsers().getUserName());
 			}
 			else{
 				return null;
