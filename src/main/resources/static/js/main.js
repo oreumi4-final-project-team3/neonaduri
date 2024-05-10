@@ -25,7 +25,7 @@ function goToHerePage() {
     window.location.href = "/api/spots";
 }
 function goToReviewPage(){
-    window.location.href = "/api/reviews";
+    window.location.href = "/reviews";
 }
 function goToMainPage() {
     window.location.href = "/api/main";
