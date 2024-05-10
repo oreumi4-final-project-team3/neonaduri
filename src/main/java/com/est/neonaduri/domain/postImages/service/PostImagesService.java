@@ -74,4 +74,7 @@ public class PostImagesService {
 
         return request;
     }
+    public Posts getPosts(String postId){
+        return postImagesRepository.findById(postId).orElseThrow().getPosts();
+    }
 }

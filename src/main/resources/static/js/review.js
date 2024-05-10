@@ -96,3 +96,10 @@ document.querySelector('.region-all-btn').addEventListener('click', function(eve
     localStorage.setItem('selectedRegion', defaultRegion); // 로컬 스토리지에 저장
     updateRegionImage(defaultRegion); // 대표 이미지 업데이트 함수 호출
 });
+
+function goToReviewPage(){
+    window.location.href = "/api/reviews";
+}
+function goToMainPage(){
+    window.location.href = "/api/main";
+}

@@ -7,6 +7,8 @@ import com.est.neonaduri.domain.posts.domain.Posts;
 import com.est.neonaduri.domain.posts.dto.AddPostRequest;
 import com.est.neonaduri.domain.posts.dto.PostWriteDTO;
 import com.est.neonaduri.domain.posts.dto.UpdatePostRequest;
+import com.est.neonaduri.domain.spots.dto.SpotsListDTO;
+import com.est.neonaduri.domain.posts.dto.PostsListDTO;
 import com.est.neonaduri.domain.users.domain.Users;
 import com.est.neonaduri.domain.users.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,9 +48,13 @@ public class PostsService {
 		return postsRepository.save(postWriteDTO.toEntity(user)) ;
 	}
 	//Read - ALL
-	public List<Posts> getAllPosts(){
-		return postsRepository.findAll();
+	public List<PostsListDTO> getAllPosts() {
+		List<Posts> posts = postsRepository.findBypostCategory("post");
+		return posts.stream()
+				.map(PostsListDTO::new)
+				.collect(Collectors.toList());
 	}
+
 	//Read - ONE
 	public Posts getPost(String postId){
 		return postsRepository.findById(postId).orElseThrow();

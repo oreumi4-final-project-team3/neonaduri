@@ -45,10 +45,10 @@
 </table>
 
 ## 목차
-[0. neonaduri - 너나들이](#neonaduri-너나들이)<br>
-[1. 기능](#기능)<br>
-[2. 기술 스택](#기술-스택)<br>
-[3. 개발 일정](#개발-일정)<br>
+[0. neonaduri - 너나들이](#neonaduri---너나들이)<br>
+[1. 기능](#1-기능)<br>
+[2. 기술 스택](#2-기술-스택)<br>
+[3. 개발 일정](#3-개발-일정)
 
 ## 1. 기능
 - 국내 관광지 정보에 대한 지역별 상세 제공
@@ -57,19 +57,24 @@
 
 ## 2. 기술 스택
 ### 2-1. 프론트
-[![HTML](https://img.shields.io/badge/HTML-red.svg)](https://www.w3.org/TR/html52/)
-[![CSS](https://img.shields.io/badge/CSS-blue.svg)](https://www.w3.org/Style/CSS/specs.en.html)
-[![JavaScript](https://img.shields.io/badge/JavaScript-yellow.svg)](https://www.ecma-international.org/ecma-262/6.0/)
+![HTML](https://img.shields.io/badge/-HTML-orange?style=flat&logo=html5&logoColor=white)
+![CSS](https://img.shields.io/badge/-CSS-blue?style=flat&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/-JavaScript-yellow?style=flat&logo=javascript&logoColor=white)
 
 ### 2-2. 백
-[![Java](https://img.shields.io/badge/Java-orange?style=flat&logo=java)](https://www.java.com)
-[![Spring Boot](https://img.shields.io/badge/Spring_Boot-LimeGreen?style=flat)](https://spring.io/projects/spring-boot)
+![Java](https://img.shields.io/badge/-Java-red?style=flat&logo=java&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/-Spring%20Boot-green?style=flat&logo=spring-boot)
+
 ### 2-3. DB
-[![MySQL](https://img.shields.io/badge/MySQL-blue.svg)](https://www.mysql.com/)
+![MySQL](https://img.shields.io/badge/-MySQL-blue?style=flat&logo=mysql&logoColor=white)
 
 ### 2-4. 환경
-[![GitHub](https://img.shields.io/badge/GitHub-hotpink?style=flat&logo=github)](https://github.com)
-[![Discord](https://img.shields.io/badge/Discord-7289DA?style=flat&logo=discord&color=2C2F33)](https://discord.com)
+<img src="https://github.com/oreumi4-final-project-team3/neonaduri/assets/128894133/f1b994e6-60a0-48a1-87f1-7fdf7eab7bfa" width="250" height="200">
 
+### 2-5. 협업
+![GitHub](https://img.shields.io/badge/-GitHub-black?style=flat&logo=github)
+[![Discord](https://img.shields.io/badge/Discord-7289DA?style=flat&logo=discord&color=2C2F33)](https://discord.com)
+![Notion](https://img.shields.io/badge/-Notion-black?style=flat&logo=notion&logoColor=white)
 
 ## 3. 개발 일정
+![image](https://github.com/oreumi4-final-project-team3/neonaduri/assets/128894133/29961eb7-98d2-423e-8f3e-cfe0b8fac843)

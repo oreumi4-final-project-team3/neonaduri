@@ -5,13 +5,15 @@
   <title>관광지 상세 정보</title>
   <link rel="stylesheet" th:href="@{/css/post-spot-page.css}">
   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cbd674e6a776632944506cb4de10f74c&libraries=services"></script>
-  <script src="/js/map.js" defer></script>
+  <script src="/js/alan.js" defer></script>
+  <script src="/js/map.js" defesksr></script>
   <script src="/js/post-spot-page.js" defer></script>
   <script th:inline="javascript">
     /*<![CDATA[*/
     var mapX = [[${spotPage.mapX}]]; // Thymeleaf에서 mapX 값을 JavaScript 변수로 전달
     var mapY = [[${spotPage.mapY}]]; // Thymeleaf에서 mapY 값을 JavaScript 변수로 전달
     var areaCode=[[${spotPage.areaCode}]];// Thymeleaf에서 areaCode값을 JavaScript 변수로 전달
+    var spotName=[[${spotPage.spotName}]];
     /*]]>*/
   </script>
 </head>
@@ -19,12 +21,13 @@
 <header>
   <div class ="header">
     <div class="logo">
-      <img th:src="@{/images/logo.png}" alt="팀 로고"/>
+      <img th:src="@{/images/logo.png}" alt="팀 로고" onclick="goToMainPage()"/>
 
     </div>
     <div class="header-buttons">
       <span class="header-btn1" onclick="goToHerePage()">여기갈까?</span>
       <span class="header-btn2">같이갈까?</span>
+      <span class="header-btn3" onclick="goToReviewPage()">후기볼까?</span>
     </div>
     <div class="user-controls">
       <img th:src="@{/images/mypage.png}" alt="마이페이지로 이동"/>
@@ -45,8 +48,7 @@
     </div>
     <div class="spot-content">
       <div class="spot-details">
-        <img src="${spotPage.spotImg}" alt="Tourist Spot" class="spot-image"
-             onerror="this.onerror=null; this.src='/images/havenotimage.png';">
+        <img class="spot-image" th:src="${!#strings.isEmpty(spotPage.spotImg) ? spotPage.spotImg : '/images/havenotimage.png'}" alt="이미지 준비중">
         <h1>상세정보</h1>
         <p th:text="${spotPage.spotOverview}">관광지 상세 설명...</p>
       </div>
@@ -77,10 +79,9 @@
       <h1>AI 추천 검색</h1>
     </div>
     <div id="aiResults">
-      <p>실시간 검색 앨런</p>
-      <p>관련 최신 정보를 확인하고 있어요.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut delectus magni, maiores quas reprehenderit sequi
-        veniam vero? Ab beatae doloribus id iste, iure maiores nulla qui repellendus, unde ut voluptatum.</p>
+      <div id="loading" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 100; display: flex; align-items: center; justify-content: center;">
+        <div>Loading...</div>
+      </div>
     </div>
   </section>
 </main>
@@ -105,13 +106,5 @@
     </div>
   </div>
 </footer>
-<!--<nav class="scroll_container">-->
-<!--  <div id="scrollTop">-->
-<!--    <img src="/images/btn_up_light.png" alt="버튼 상단 이동">-->
-<!--  </div>-->
-<!--  <div id="scrollDown">-->
-<!--    <img src="/images/btn_down_light.png" alt="버튼 하단 이동">-->
-<!--  </div>-->
-<!--</nav>-->
 </body>
 </html>

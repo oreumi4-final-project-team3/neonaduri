@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
@@ -21,7 +22,7 @@ public class CompanionsController {
     }
 
     /**
-     * 같이갈까? 게시글을 생성하는 API
+     * 같이갈까? 게시글(Posts + Companions)을 생성하는 API
      *
      * @return ResponseEntity<Companions> : 같이갈까? 게시글 생성
      * @author jyh
@@ -46,4 +47,6 @@ public class CompanionsController {
         log.info("수정 게시물 : {}", postId);
         return ResponseEntity.ok().body(updatedCompanions);
     }
+
+
 }

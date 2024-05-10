@@ -1,0 +1,236 @@
+/*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */
+blockquote, dd, dl, dt, fieldset, figure, h1, h2, h3, h4, h5, h6, hr, html, iframe, legend, li, ol, p, pre, textarea, ul {margin:0;padding:0}
+h1, h2, h3, h4, h5, h6 {font-size:100%;font-weight:400}
+ul {list-style:none}
+button, input, select {margin:0}
+html {box-sizing:border-box}
+*, :after, :before {box-sizing:inherit}
+img, video {height:auto;max-width:100%}
+iframe {border:0}
+table {border-collapse:collapse;border-spacing:0}
+td, th {padding:0}
+
+body {
+    font-size: 20px;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+/*헤더*/
+
+.logo {
+    margin: 36px 36px 41px 45px;
+    width: 170px;
+    height: 173px;
+}
+
+.header_box {
+    display: flex;
+}
+
+.nav_box {
+    display: flex;
+    align-items: center;
+}
+
+.nav_one ul {
+    display: flex;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.nav_one a {
+    color: #7E7E7E;
+}
+
+.nav_one a:hover {
+    color: black;
+}
+
+.nav_two ul {
+    display: flex;
+    align-items: center;
+    margin-left: 620px;
+}
+
+li {
+    margin-right: 26px;
+}
+
+.my_info {
+    font-size: 25px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+hr {
+    width: 92%;
+    border: #E0E0E0 solid 2px;
+    margin: 0 auto 77px auto;
+}
+
+.second_hr {
+    margin-bottom: 50px;
+}
+
+/*메인*/
+
+.main_box_top {
+    display: flex;
+    padding: 0 110px;
+}
+
+.main_box_bottom {
+    padding: 0 110px;
+    margin-bottom: 200px;
+}
+
+label {
+    display: block;
+    margin-bottom: 15px;
+}
+
+main input {
+    width: 442px;
+    height: 62px;
+    border-radius: 10px;
+    border: none;
+    background-color: #ECECEC;
+    margin-bottom: 67px;
+    padding-left: 20px;
+}
+
+textarea {
+    width: 100%;
+    height: 300px;
+    border-radius: 10px;
+    border: none;
+    background-color: #ECECEC;
+    margin-bottom: 67px;
+    padding: 15px 20px;
+    resize: none;
+}
+
+.main_right {
+    border: #E0E0E0 solid 1px;
+    border-radius: 10px;
+    width: 263px;
+    height: 663px;
+    box-shadow: 0 4px 3px rgba(0, 0, 0, 0.25);
+    margin-left: auto;
+    text-align: center;
+}
+
+.main_right label {
+    font-size: 30px;
+}
+
+#userName {
+    font-size: 30px;
+}
+
+.profile_img {
+    margin: 45px 0 13px;
+    width: 155px;
+    height: 155px;
+    border-radius: 50%;
+}
+
+.custom-file-upload {
+    position: relative;
+    bottom: 70px;
+    left: 62px;
+    padding: 6px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    line-height: 18px;
+    margin: 0;
+}
+
+#file-upload {
+    display: none;
+}
+
+.edit {
+    position: relative;
+    top: 10px;
+    right: 55px;
+    border: none;
+    background: transparent;
+}
+
+.main_box_bottom form {
+    position: relative;
+}
+
+.edit_textarea {
+    background-color: transparent;
+    position: absolute;
+    top: 12px;
+    right: 10px;
+    border: none;
+}
+
+.mbti_input {
+    margin: 0 0 97px 110px;
+}
+
+select {
+    margin-bottom: 17px;
+    padding-left: 10px;
+    width: 280px;
+    height: 45px;
+    border-radius: 5px;
+    border-color: #ECECEC;
+    display: block;
+}
+
+.birth_gender {
+    display: flex;
+}
+
+#userBirth {
+    margin-right: 55px;
+}
+
+.birth_gender > label {
+    margin-bottom: 40px;
+}
+
+.birth_gender > p {
+    margin-bottom: 67px;
+}
+
+#last_line {
+    width: 100%;
+    border: #7E7E7E solid 1px;
+    margin: 0;
+}
+
+/*푸터*/
+footer {
+    display: flex;
+    padding: 16px 36px;
+    align-items: center;
+}
+
+footer p {
+    margin-left: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #7E7E7E;
+}
+
+.github {
+    margin-left: auto;
+
+}

@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.est.neonaduri.domain.companions.dto.CompanionsListDTO;
+import com.est.neonaduri.domain.companions.service.CompanionsService;
 import com.est.neonaduri.domain.postImages.domain.PostImages;
 import com.est.neonaduri.domain.postImages.service.PostImagesService;
 import com.est.neonaduri.domain.posts.domain.Posts;
@@ -30,14 +32,16 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class PostsController {
-    private final PostsService postsService;
-    private final PostImagesService postImagesService;
+	  private final PostsService postsService;
+	  private final CompanionsService companionsService;
+	  private final PostImagesService postImagesService;
 
-    @Autowired
-    public PostsController(PostsService postsService, PostImagesService postImagesService) {
-        this.postsService = postsService;
-        this.postImagesService = postImagesService;
-    }
+	  @Autowired
+	  public PostsController(PostsService postsService, PostImagesService postImagesService, CompanionsService companionsService) {
+		this.postsService = postsService;
+		this.postImagesService = postImagesService;
+		this.companionsService = companionsService;
+	  }
 
     private PostsListDTO convertToPostsListDTO(Posts posts) {
         return new PostsListDTO(posts);
@@ -82,7 +86,8 @@ public class PostsController {
         model.addAttribute("areaCode", areaCode);
         return "reviewList";
     }
-
+ 
+  
     //CJW
     /**
      * Posts를 생성하는 API
@@ -119,6 +124,5 @@ public class PostsController {
         return ResponseEntity.status(HttpStatus.OK)
                 .body(updatedPost);
     }
-
-
+  
 }
