@@ -8,10 +8,28 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 public class RepliesController {
     private final RepliesService repliesService;
+
+
+    /**
+     * 게시물에 해당하는 댓글리스트 조회
+     * @param postId
+     * @return
+     * @author lsh
+     */
+    @GetMapping("api/posts/{postId}")
+    @ResponseBody
+    public ResponseEntity<List<ReplyResponseDto>> getRepliesByPostId(@PathVariable(name = "postId")String postId){
+        List<ReplyResponseDto> replies = repliesService.getRepliesByPostId(postId);
+        return ResponseEntity.ok(replies);
+    }
+
+
 
     /**
      * 댓글 저장 기능
