@@ -12,6 +12,10 @@ import com.est.neonaduri.domain.posts.domain.Posts;
 import com.est.neonaduri.domain.wishlist.domain.Wishlist;
 import com.est.neonaduri.domain.wishlist.repository.WishListRepository;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -21,8 +25,8 @@ public class WishListService {
     private final CompanionsRepository companionsRepository;
 
 
-    public List<CompanionsDTO> getWishlists(String userId) {
-        List<Wishlist> wishlists = wishListRepository.findAllByUsersUserId(userId);
+    public Page<CompanionsDTO> getWishlists(String userId, Pageable pageable) {
+        Page<Wishlist> wishlists = wishListRepository.findAllByUsersUserId(userId,pageable);
         List<CompanionsDTO> dtoList = new ArrayList<>();
 
         for (Wishlist wishlist : wishlists) {
@@ -43,6 +47,6 @@ public class WishListService {
             }
 
         }
-        return dtoList;
+        return new PageImpl<>(dtoList, pageable, wishlists.getTotalElements());
     }
 }

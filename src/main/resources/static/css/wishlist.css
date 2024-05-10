@@ -258,7 +258,7 @@ h3, p {
 }
 
 .hotCompanions, .hotSpots{
-    margin-top: 100px;
+    margin-top: 170px;
     margin-left: 110px;
 
 }
@@ -302,4 +302,31 @@ h3, p {
 
 .github-link {
     margin-left: auto; /* 우측으로 정렬합니다. */
+}
+/*페이징 처리*/
+.pagination {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    margin-top: 80px;
+}
+.pagination span{
+    margin-bottom: 10px;
+}
+
+.pagination a {
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+    margin: 0 10px;
+    text-decoration: none;
+    color: #666;
+    font-size: 14px;
+}
+.pagination a.active {
+    background-color: #4CAF50; /* 예시로 녹색을 선택 */
+    color: white; /* 텍스트 색상을 흰색으로 */
+    border: 1px solid #4CAF50; /* 경계선도 동일한 색상으로 */
+}
+.pagination a:hover:not(.active) {
+    background-color: #ddd; /* 호버 효과 */
 }

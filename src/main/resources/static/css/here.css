@@ -136,7 +136,7 @@ h3, p {
 .github-link {
     margin-left: auto; /* 우측으로 정렬합니다. */
 }
-
+/*페이징 처리*/
 .pagination {
     display: flex;
     list-style: none;

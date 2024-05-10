@@ -32,7 +32,7 @@
 
 <!--        <img  th:src="@{/images/companionsMark.png}"/>-->
         <div>
-            <span id="title" onclick="goToWishlistPage()"> 🤍 관심있는 매칭</span>
+            <span id="title"> 🤍 관심있는 매칭</span>
         </div>
     </div>
 
@@ -75,6 +75,13 @@
         </div>
     </div>
 
+    <div class="pagination" th:if="${companions.totalElements > 0}">
+        <a th:if="${companions.hasPrevious}" th:href="@{/api/wishlist/{admin_id}(admin_id=${admin_id},page=${currentPage - 1}, size=${companions.size})}">이전</a>
+        <span th:each="pageNum : ${#numbers.sequence(1, companions.totalPages)}">
+            <a th:href="@{/api/wishlist/{admin_id}(admin_id=${admin_id},page=${pageNum}, size=${companions.size})}" th:text="${pageNum}" th:classappend="${pageNum==currentPage} ? 'active'"></a>
+        </span>
+        <a th:if="${companions.hasNext}" th:href="@{/api/wishlist/{admin_id}(admin_id=${admin_id},page=${currentPage + 1}, size=${companions.size})}">다음</a>
+    </div>
 </main>
 <div class="separator"></div>
 <footer>
@@ -98,7 +105,7 @@
     </div>
 </footer>
 </body>
-<script src="/js/here.js" defer></script>
+<script src="/js/wishlist.js" defer></script>
 
 <script>
     function getSpotIdAndNavigate(element) {
