@@ -34,6 +34,9 @@ public class Replies extends BaseTimeEntity {
     @Column(name = "CONTENT",length = 100)
     private String content;
 
+    public void updateReply(String content) {
+        this.content = content;
+    }
 
     @PrePersist
     public void prePersist(){
