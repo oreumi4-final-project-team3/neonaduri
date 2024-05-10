@@ -51,16 +51,26 @@ public class PostsController {
      * @return List<Posts> : 같이갈까? 게시글 리스트
      * @author jyh
      */
-    /*
     @GetMapping("api/posts")
-    public List<PostsListDTO> getAllposts() {
-        List<PostsListDTO> postsListDTO = postsService.getAllPosts()
-                .stream()
-                .map(this::convertToPostsListDTO)
-                .collect(Collectors.toList());
-        return postsListDTO;
+    public String getAllposts(Model model, @RequestParam(defaultValue = "1")int page,
+                              @RequestParam(defaultValue = "12")int size) {
+        Pageable pageable = PageRequest.of( Math.max(page-1, 0),size);
+
+        model.addAttribute("companions", postsService.getAllPosts(pageable));
+        model.addAttribute("currentPage",page);
+        model.addAttribute("pageType","region");
+        return "companions";
     }
-     */
+
+    @GetMapping("api/posts/{areaCode}")
+    public String getSameAreaPost(@PathVariable int areaCode, Model model, @RequestParam(defaultValue = "1")int page, @RequestParam(defaultValue = "12")int size) {
+        Pageable pageable = PageRequest.of(Math.max(page-1, 0), size);
+
+        model.addAttribute("companions", postsService.getSameAreaPosts(areaCode, pageable));
+        model.addAttribute("currentPage",page);
+        model.addAttribute("pageType","region");
+        return "companions";
+    }
  
   
     //CJW
