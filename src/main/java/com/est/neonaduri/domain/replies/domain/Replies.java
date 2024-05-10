@@ -6,6 +6,7 @@ import com.est.neonaduri.global.config.BaseTimeEntity;
 import com.est.neonaduri.global.utils.IdGenerator;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,6 +15,7 @@ import java.time.LocalDateTime;
 @Table(name="REPLIES")
 @Entity
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class Replies extends BaseTimeEntity {
@@ -32,10 +34,10 @@ public class Replies extends BaseTimeEntity {
     @Column(name = "CONTENT",length = 100)
     private String content;
 
-    /*
+
     @PrePersist
     public void prePersist(){
         this.replyId = IdGenerator.generateReplyId(posts.getPostCategory());
     }
-     */
+
 }
