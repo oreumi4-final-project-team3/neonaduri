@@ -36,6 +36,13 @@ dependencies {
     //AWS S3
     implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE'
 
+    //Elastic search
+    implementation 'org.springframework.boot:spring-boot-starter-data-elasticsearch'
+    implementation 'co.elastic.clients:elasticsearch-java:8.9.0'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.16.0'
+
+
+
 }
 
 tasks.named('test') {
