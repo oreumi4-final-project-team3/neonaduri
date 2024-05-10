@@ -4,6 +4,7 @@ import com.est.neonaduri.domain.posts.domain.Posts;
 import com.est.neonaduri.domain.posts.repository.PostsRepository;
 import com.est.neonaduri.domain.replies.domain.Replies;
 import com.est.neonaduri.domain.replies.dto.ReplyRequestDto;
+import com.est.neonaduri.domain.replies.dto.ReplyResponseDto;
 import com.est.neonaduri.domain.replies.repository.RepliesRepository;
 import com.est.neonaduri.domain.users.domain.Users;
 import com.est.neonaduri.domain.users.repository.UserRepository;
@@ -12,12 +13,21 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 public class RepliesService {
     private final RepliesRepository repliesRepository;
     private final PostsRepository postsRepository;
     private final UserRepository userRepository;
+
+    public List<ReplyResponseDto> getRepliesByPostId(String postId){
+        return repliesRepository.findByPosts_PostId(postId).stream()
+                .map(ReplyResponseDto::toResponse)
+                .collect(Collectors.toList());
+    }
 
     @Transactional
     public Replies saveReply(String postId, String userId, ReplyRequestDto dto){
