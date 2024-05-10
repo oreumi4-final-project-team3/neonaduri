@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관심목록</title>
+    <link rel="stylesheet" th:href="@{/css/wishlist.css}">
+</head>
+<body>
+<header>
+    <div class ="header">
+        <div class="logo">
+            <img th:src="@{/images/logo.png}" alt="팀 로고" onclick="goToMainPage()"/>
+
+        </div>
+        <div class="header-buttons">
+            <span class="header-btn1" onclick="goToHerePage()">여기갈까?</span>
+            <span class="header-btn2">같이갈까?</span>
+            <span class="header-btn3" onclick="goToReviewPage()">후기볼까?</span>
+
+        </div>
+        <div class="user-controls">
+            <img th:src="@{/images/mypage.png}" alt="마이페이지로 이동"/>
+            <img th:src="@{/images/like.png}" alt="찜"/>
+        </div>
+    </div>
+    <div class="separator"></div>
+</header>
+<main>
+    <!--최근 인기 동행 게시글-->
+    <div class="hotCompanions">
+
+<!--        <img  th:src="@{/images/companionsMark.png}"/>-->
+        <div>
+            <span id="title" onclick="goToWishlistPage()"> 🤍 관심있는 매칭</span>
+        </div>
+    </div>
+
+    <div class="tourist-sites12">
+        <!-- 관광지 리스트가 여기에 표시됩니다. -->
+        <div class="tourist-site1" th:each="companion : ${companions}">
+            <div class="top-contents">
+                <div class="top-writer-profileimg"></div>
+                <div class="top-writer-info">
+                    <p class="top-writer-info-username" th:text="${companion.userName}"></p>
+                    <div class="top-writer-info-datails">
+                        <p class="userBirth" th:text="${#strings.length(companion.userBirth) > 10 ? #strings.substring(companion.userBirth, 0, 10) : companion.userBirth}"></p>
+                        <p class="userAge"></p>
+                        <p th:text="${companion.userGender}"></p>
+                    </div>
+                </div>
+                <hr>
+                <div class="top-companion-schedule">
+                    <p>🗓️ 여행기간</p>
+                    <div class="top-companion-schedule-details">
+                        <p th:text="${#temporals.format(companion.comStart, 'MM.dd')}"></p>
+                        <p> ~ </p>
+                        <p th:text="${#temporals.format(companion.comEnd, 'MM.dd')}"></p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="middle-contents">
+                <div class="companion-image-placeholder">
+                    <img id="sample-image" th:src="@{/images/companionTestImg.png}" alt="샘플이미지">
+                </div>
+            </div>
+
+
+            <div class="bottom-contents">
+                <p class="bottom-contents-title" th:text="${companion.postTitle}"></p>
+                <p class="bottom-contents-content" th:text="${companion.postContent}"></p>
+            </div>
+        </div>
+    </div>
+
+</main>
+<div class="separator"></div>
+<footer>
+    <div class="footer">
+        <div class="footer-logo">
+            <img th:src="@{/images/logo.png}" alt="팀 로고"/>
+        </div>
+        <div class="footer-group">
+            <div class="data">
+                <span>데이터 제공 : 한국관광공사 TourAPI</span>
+            </div>
+            <div class="icon-made">
+                <span>아이콘 제작자: Freepik - Flaticon</span>
+            </div>
+        </div>
+        <div class="github-link">
+            <a href="https://github.com/oreumi4-final-project-team3/neonaduri">
+                <img th:src="@{/images/github.png}" alt="깃허브로 이동">
+            </a>
+        </div>
+    </div>
+</footer>
+</body>
+<script src="/js/here.js" defer></script>
+
+<script>
+    function getSpotIdAndNavigate(element) {
+        const spotId = element.parentNode.querySelector('.spotId').value;
+        console.log("Spot ID is: ", spotId);
+        window.location.replace("/api/spot/" + spotId);
+    }
+</script>
+
+
+</html>
+
