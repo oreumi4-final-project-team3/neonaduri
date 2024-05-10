@@ -4,7 +4,7 @@ function goToHerePage() {
 }
 // 전체 버튼 클릭 시 전체리스트로 이동
 function goToAllPage() {
-    window.location.href = "/api/reviews";
+    window.location.href = "/reviews";
 }
 
 // 각 지역 선택시 관광지 게시글 리스트 처리
@@ -14,13 +14,13 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('click', function() {
             const areaCode = this.getAttribute('data-area-code');
             fetchSpots(areaCode);
-            window.history.pushState({areaCode: areaCode}, `Region ${areaCode}`, `/api/reviews/code/${areaCode}`);
-            location.href = `/api/reviews/code/${areaCode}`; // 주소를 변경 후 페이지를 새로고침합니다.
+            window.history.pushState({areaCode: areaCode}, `Region ${areaCode}`, `/reviews/${areaCode}`);
+            location.href = `/reviews/${areaCode}`; // 주소를 변경 후 페이지를 새로고침합니다.
         });
     });
 });
 function fetchSpots(areaCode) {
-    fetch(`/api/reviews/code/${areaCode}`)
+    fetch(`reviews/${areaCode}`)
         .then(response => response.json())
         .then(data => {
             const spotsList = data.map(review => `

@@ -16,8 +16,11 @@ import org.springframework.stereotype.Repository;
 public interface PostsRepository extends JpaRepository<Posts,String> {
 
 	Page<Posts> findBypostCategory(String postCategory, Pageable pageable);
+	Page<Posts> findAllByPostCategoryAndAreaCode(String postCategory, int areaCode, Pageable pageable);
+
 	@Query("SELECT p FROM Posts p WHERE p.areaCode = :areaCode AND p.postCategory = 'reviews'")
 	Page<Posts> findReviewsByAreaCodeAndCategory(@Param("areaCode") int areaCode, Pageable pageable);
+
   
 	List<Posts> findBypostCategory(String postCategory);
 	Posts findByPostId(String postId);

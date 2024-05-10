@@ -44,6 +44,8 @@
     <div class="region-image">
         <img id="regionImage" th:src="@{/images/seoul.png}" alt="대표이미지"/>
     </div>
+    <button type="button" id="create-btn"
+            th:onclick="|location.href='@{/uploadReview}'|">글 등록</button>
     <div class="tourist-sites">
         <!-- 관광지 리스트가 여기에 표시됩니다. -->
         <div class="tourist-site" th:each="review : ${reviews}">

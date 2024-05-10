@@ -3,15 +3,16 @@ package com.est.neonaduri.domain.posts.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.est.neonaduri.domain.postImages.domain.PostImages;
+import com.est.neonaduri.domain.postImages.repository.PostImagesRepository;
 import com.est.neonaduri.domain.posts.domain.Posts;
 import com.est.neonaduri.domain.posts.dto.AddPostRequest;
 import com.est.neonaduri.domain.posts.dto.PostWriteDTO;
 import com.est.neonaduri.domain.posts.dto.UpdatePostRequest;
-import com.est.neonaduri.domain.spots.dto.SpotsListDTO;
 import com.est.neonaduri.domain.posts.dto.PostsListDTO;
 import com.est.neonaduri.domain.users.domain.Users;
 import com.est.neonaduri.domain.users.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -19,25 +20,14 @@ import org.springframework.stereotype.Service;
 
 import com.est.neonaduri.domain.posts.dto.ReviewDTO;
 import com.est.neonaduri.domain.posts.repository.PostsRepository;
-import com.est.neonaduri.domain.spots.domain.Spots;
-import com.est.neonaduri.domain.spots.repository.SpotsRepository;
-import com.est.neonaduri.domain.users.domain.Users;
-import com.est.neonaduri.domain.users.repository.UserRepository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@RequiredArgsConstructor
 public class PostsService {
-
-
 	private final PostsRepository postsRepository;
-	private final SpotsRepository spotsRepository;
 	private final UserRepository userRepository;
-	@Autowired
-	public PostsService(PostsRepository postsRepository, SpotsRepository spotsRepository,UserRepository userRepository) {
-		this.postsRepository = postsRepository;
-		this.spotsRepository = spotsRepository;
-		this.userRepository = userRepository;
-	}
+	private final PostImagesRepository postImagesRepository;
 
 	//기본적인 CRUD 관련 코드들 작성
 	//Create
@@ -67,13 +57,13 @@ public class PostsService {
 //		postsRepository.delete(posts);
 //	}
 
-	public Page<ReviewDTO> getAllReviewList(Pageable pageable){
-		Page<Posts> posts = postsRepository.findBypostCategory("reviews",pageable);
+	public Page<ReviewDTO> getPostListByCategory(String category, Pageable pageable){
+		Page<Posts> posts = postsRepository.findBypostCategory(category,pageable);
 
 		return posts.map(review->{
 			Users users = review.getUsers();
 			if(users!=null){
-				return new ReviewDTO(null, review.getPostTitle(), review.getSpotName(),review.getUsers().getUserName());
+				return new ReviewDTO(findImgLink(review), review.getPostTitle(), review.getSpotName(),review.getUsers().getUserName());
 			}
 			else{
 				return null;
@@ -81,12 +71,13 @@ public class PostsService {
 		});
 
 	}
-	public Page<ReviewDTO> getReviewListByArea(int areaCode, Pageable pageable) {
-		Page<Posts> posts = postsRepository.findReviewsByAreaCodeAndCategory(areaCode, pageable);
+	public Page<ReviewDTO> getPostListByCategoryAndAreaCode(String category, int areaCode, Pageable pageable) {
+		//Page<Posts> posts = postsRepository.findReviewsByAreaCodeAndCategory(areaCode, pageable);
+		Page<Posts> posts = postsRepository.findAllByPostCategoryAndAreaCode(category,areaCode,pageable);
 
 		List<ReviewDTO> dtoList = posts.getContent().stream()
 			.map(review -> new ReviewDTO(
-				null,
+				findImgLink(review),
 				review.getPostTitle(),
 				review.getSpotName(),
 				review.getUsers().getUserName()))
@@ -96,10 +87,22 @@ public class PostsService {
 		return new PageImpl<>(dtoList, pageable, posts.getTotalElements());
 	}
 
+	//imgLink 반환하는 메소드
+	String findImgLink(Posts post){
+		PostImages postImage = postImagesRepository.findPostImagesByPosts(post);
+		if(postImage != null){
+			return postImage.getPostImagesId();
+		}
+		return null;
+	}
+
 	//CJW
+	/*
 	public List<Posts> findAllByCategory(String category){
 		return postsRepository.findBypostCategory(category);
 	}
+
+	 */
 
 	public Posts findById(String id){
 		return postsRepository.findByPostId(id);
