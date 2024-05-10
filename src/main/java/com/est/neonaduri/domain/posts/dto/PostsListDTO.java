@@ -1,6 +1,5 @@
 package com.est.neonaduri.domain.posts.dto;
 
-import com.est.neonaduri.domain.companions.dto.CompanionsListDTO;
 import com.est.neonaduri.domain.posts.domain.Posts;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +8,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Getter
 @Setter
@@ -23,7 +21,6 @@ public class PostsListDTO {
     private String userGender;
     private String postTitle;
     private String postContent;
-    private List<CompanionsListDTO> companions;
 
     @Builder
     public PostsListDTO(Posts posts) {

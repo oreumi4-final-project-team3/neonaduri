@@ -60,64 +60,71 @@
         <a class="button-create-post">같이가자!</a>
     </div>
     <div class="tourist-sites">
-        <!-- 게시글 리스트 -->
-        <div class="tourist-site" th:each="post : ${posts}">
+        <!-- 게시글 리스트가 여기에 표시됩니다. -->
+        <div class="tourist-site" th:each="companion : ${companions}">
             <div class="top-contents">
-                    <div class="top-writer-profileimg"></div>
-                    <div class="top-writer-info">
-                        <p class="top-writer-info-username" th:text="${post.writerId}"></p>
-                        <div class="top-writer-info-details">
-                            <p class="user-birth" th:text="${post.userBirth}"></p>
-                            <p class="age"></p>
-                            <p>&nbsp;·&nbsp;</p>
-                            <p th:text="${post.userGender}"></p>
-                        </div>
+                <div class="top-writer-profileimg"></div>
+                <div class="top-writer-info">
+                    <p class="top-writer-info-username" th:text="${companion.userName}"></p>
+                    <div class="top-writer-info-details">
+                        <p class="userBirth" th:text="${#strings.length(companion.userBirth) > 10 ? #strings.substring(companion.userBirth, 0, 10) : companion.userBirth}"></p>
+                        <p class="userAge"></p>
+                        <p>&nbsp;·&nbsp;</p>
+                        <p th:text="${companion.userGender}"></p>
                     </div>
-            <hr>
-                <div class="top-companion-schedule" th:each="companion : ${post.companions}">
+                </div>
+                <hr>
+                <div class="top-companion-schedule">
                     <p>🗓️ 여행기간</p>
                     <div class="top-companion-schedule-details">
                         <p th:text="${#temporals.format(companion.comStart, 'MM.dd')}"></p>
-                        <p>&nbsp;~&nbsp;</p>
+                        <p> ~ </p>
                         <p th:text="${#temporals.format(companion.comEnd, 'MM.dd')}"></p>
                     </div>
                 </div>
             </div>
 
+
             <div class="middle-contents">
                 <div class="companion-image-placeholder">
-                    <img id="sample-image" th:src= "@{/images/sampleimg.png}" alt="샘플 이미지">
+                    <img id="sample-image" th:src="@{/images/companionTestImg.png}" alt="샘플이미지">
                 </div>
 
-
-                    <div class="companion-status" th:each="companion : ${post.companions}">
-                        <div class="companion-status-image">
-                            <img id="recruit-image" th:src= "@{/images/recruit.png}" alt="모집인원 이미지">
-                            <img id="reserve-image" th:src= "@{/images/reserve.png}" alt="현재인원 이미지">
-                            <img id="like-image" th:src= "@{/images/like.png}" alt="좋아요 이미지">
-                        </div>
-
-                        <div class="companion-status-number">
-                            <p class="companion-status-number-recruit" th:text="${companion.comRecruit}"></p>
-                            <p class="companion-status-number-reserve" th:text="${companion.comReserve}"></p>
-                            <p class="companion-status-number-wish" th:text="${companion.comWish}"></p>
-                        </div>
+                <div class="companion-status">
+                    <div class="companion-status-image">
+                        <img id="recruit-image" th:src= "@{/images/recruit.png}" alt="모집인원 이미지">
+                        <img id="reserve-image" th:src= "@{/images/reserve.png}" alt="현재인원 이미지">
+                        <img id="like-image" th:src= "@{/images/like.png}" alt="좋아요 이미지">
                     </div>
+
+                    <div class="companion-status-number">
+                        <p class="companion-status-number-recruit" th:text="${companion.comRecruit}"></p>
+                        <p class="companion-status-number-reserve" th:text="${companion.comReserve}"></p>
+                        <p class="companion-status-number-wish" th:text="${companion.comWish}"></p>
+                    </div>
+                </div>
             </div>
 
-            <div class="bottom-contents" th:each="companion : ${post.companions}">
-                <p class="bottom-contents-title" th:text="${#strings.length(post.postTitle) > 29 ? #strings.substring(post.postTitle,0,29) + '...' : post.postTitle}"></p>
-                <p class="bottom-contents-content" th:text="${#strings.length(post.postContent) > 29 ? #strings.substring(post.postContent,0,29) + '...' : post.postContent}"></p>
+
+            <div class="bottom-contents">
+                <p class="bottom-contents-title" th:text="${#strings.length(companion.postTitle) > 29 ? #strings.substring(companion.postTitle,0,29) + '...' : companion.postTitle}"></p>
+                <p class="bottom-contents-content" th:text="${#strings.length(companion.postContent) > 29 ? #strings.substring(companion.postContent,0,29) + '...' : companion.postContent}"></p>
             </div>
         </div>
     </div>
 
-    <div class="pagination">
-        <!-- 페이지 버튼 -->
-        <button class="page-btn" data-page="1">1</button>
-        <button class="page-btn" data-page="2">2</button>
-        <button class="page-btn" data-page="3">3</button>
-        <!-- 이하 페이지 버튼 추가 -->
+    <div class="pagination" th:if="${companions.totalElements > 0}">
+        <a th:if="${pageType == 'all' and companions.hasPrevious}" th:href="@{/api/spots(page=${currentPage - 1}, size=${companions.size})}">이전</a>
+        <a th:if="${pageType == 'region' and companions.hasPrevious}" th:href="@{/api/spots/code/{areaCode}(areaCode=${areaCode},page=${currentPage - 1}, size=${companions.size})}">이전</a>
+
+        <span th:each="pageNum : ${#numbers.sequence(1, companions.totalPages)}">
+            <a th:if="${pageType == 'all'}" th:href="@{/api/posts(page=${pageNum}, size=${companions.size})}" th:text="${pageNum}" th:classappend="${pageNum==currentPage} ? 'active'"></a>
+            <a th:if="${pageType == 'region'}" th:href="@{/api/posts/{areaCode}(areaCode=${areaCode}, page=${pageNum}, size=${companions.size})}" th:text="${pageNum}" th:classappend="${pageNum==currentPage} ? 'active'"></a>
+
+        </span>
+
+        <a th:if="${pageType == 'all' and companions.hasNext}" th:href="@{/api/posts(page=${currentPage + 1}, size=${companions.size})}">다음</a>
+        <a th:if="${pageType == 'region' and companions.hasNext}" th:href="@{/api/posts/{areaCode}(areaCode=${areaCode},page=${currentPage + 1}, size=${companions.size})}">다음</a>
     </div>
 </main>
 <div class="separator"></div>
