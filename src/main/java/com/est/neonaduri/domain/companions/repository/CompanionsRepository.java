@@ -16,4 +16,6 @@ public interface CompanionsRepository extends JpaRepository<Companions, String> 
 
     @Query("SELECT c FROM Companions c JOIN c.posts p WHERE p.postCategory = 'companions' ORDER BY p.postView DESC limit 3")
     List<Companions> findHotCompanions();
+
+
 }
