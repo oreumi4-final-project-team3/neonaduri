@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>리뷰 목록</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+<div class="p-5 mb-5 text-center</> bg-light">
+    <h1 class="mb-3">너나두리</h1>
+    <h4 class="mb-4">리뷰 목록</h4>
+</div>
+
+<div class="container">
+    <button type="button" id="create-btn"
+            th:onclick="|location.href='@{/uploadReview}'|"
+            class="btn btn-secondary btn-sm mb-3">글 등록</button>
+    <div class="row-6" th:each="item : ${reviews}">
+        <div class="card">
+            <div class="card-header" th:text="${item.postId}">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title" th:text="${item.postTitle}"></h5>
+                <p class="card-text" th:text="${item.users.getUserName()}"></p>
+                <p class="card-text" th:text="${item.postView}"></p>
+                <a th:href="@{/reviews/{postId}(postId=${item.postId})}" class="btn btn-primary">보러가기</a>
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+
+</body>
+</html>
