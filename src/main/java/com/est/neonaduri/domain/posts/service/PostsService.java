@@ -4,7 +4,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.est.neonaduri.domain.posts.domain.Posts;
+import com.est.neonaduri.domain.posts.dto.AddPostRequest;
 import com.est.neonaduri.domain.posts.dto.PostWriteDTO;
+import com.est.neonaduri.domain.posts.dto.UpdatePostRequest;
 import com.est.neonaduri.domain.spots.dto.SpotsListDTO;
 import com.est.neonaduri.domain.posts.dto.PostsListDTO;
 import com.est.neonaduri.domain.users.domain.Users;
@@ -21,6 +23,7 @@ import com.est.neonaduri.domain.spots.domain.Spots;
 import com.est.neonaduri.domain.spots.repository.SpotsRepository;
 import com.est.neonaduri.domain.users.domain.Users;
 import com.est.neonaduri.domain.users.repository.UserRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class PostsService {
@@ -60,9 +63,9 @@ public class PostsService {
 	public void updatePost(Posts posts){
 	}
 	//Delete
-	public void deletePost(Posts posts){
-		postsRepository.delete(posts);
-	}
+//	public void deletePost(Posts posts){
+//		postsRepository.delete(posts);
+//	}
 
 	public Page<ReviewDTO> getAllReviewList(Pageable pageable){
 		Page<Posts> posts = postsRepository.findBypostCategory("reviews",pageable);
@@ -91,6 +94,31 @@ public class PostsService {
 			.collect(Collectors.toList());
 
 		return new PageImpl<>(dtoList, pageable, posts.getTotalElements());
+	}
+
+	//CJW
+	public List<Posts> findAllByCategory(String category){
+		return postsRepository.findBypostCategory(category);
+	}
+
+	public Posts findById(String id){
+		return postsRepository.findByPostId(id);
+	}
+
+	public void deletePost(String id){
+		postsRepository.deleteById(id);
+	}
+
+	@Transactional
+	public Posts update(String id, UpdatePostRequest request){
+		Posts post = postsRepository.findByPostId(id);
+		post.update(request.getTitle(), request.getContent());
+		return post;
+	}
+
+	public Posts savePost(AddPostRequest request,String userId){
+		Users user = userRepository.findByUserId(userId);
+		return postsRepository.save(request.toEntity(user));
 	}
 
 }

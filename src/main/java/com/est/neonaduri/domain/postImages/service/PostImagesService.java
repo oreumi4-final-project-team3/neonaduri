@@ -7,6 +7,7 @@ import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.est.neonaduri.domain.postImages.domain.PostImages;
 import com.est.neonaduri.domain.postImages.repository.PostImagesRepository;
 import com.est.neonaduri.domain.posts.domain.Posts;
+import com.est.neonaduri.domain.posts.repository.PostsRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,6 +21,7 @@ import java.io.InputStream;
 @RequiredArgsConstructor
 public class PostImagesService {
     private final PostImagesRepository postImagesRepository;
+    private final PostsRepository postsRepository;
 
     @Autowired
     private AmazonS3 amazonS3;
@@ -36,6 +38,11 @@ public class PostImagesService {
                 .postImagesId(imgLink)
                 .posts(post)
                 .build());
+    }
+
+    public PostImages findPostImages(String postId){
+        Posts posts = postsRepository.findByPostId(postId);
+        return postImagesRepository.findPostImagesByPosts(posts);
     }
 
     //S3
