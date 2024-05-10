@@ -3,6 +3,10 @@ package com.est.neonaduri.domain.posts.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.est.neonaduri.domain.companions.domain.Companions;
+import com.est.neonaduri.domain.companions.dto.CompanionsDTO;
+import com.est.neonaduri.domain.companions.dto.CompanionsListDTO;
+import com.est.neonaduri.domain.companions.repository.CompanionsRepository;
 import com.est.neonaduri.domain.posts.domain.Posts;
 import com.est.neonaduri.domain.posts.dto.AddPostRequest;
 import com.est.neonaduri.domain.posts.dto.PostWriteDTO;
@@ -32,11 +36,13 @@ public class PostsService {
 	private final PostsRepository postsRepository;
 	private final SpotsRepository spotsRepository;
 	private final UserRepository userRepository;
+	private final CompanionsRepository companionsRepository;
 	@Autowired
-	public PostsService(PostsRepository postsRepository, SpotsRepository spotsRepository,UserRepository userRepository) {
+	public PostsService(PostsRepository postsRepository, SpotsRepository spotsRepository,UserRepository userRepository, CompanionsRepository companionsRepository) {
 		this.postsRepository = postsRepository;
 		this.spotsRepository = spotsRepository;
 		this.userRepository = userRepository;
+		this.companionsRepository = companionsRepository;
 	}
 
 	//기본적인 CRUD 관련 코드들 작성
@@ -48,11 +54,46 @@ public class PostsService {
 		return postsRepository.save(postWriteDTO.toEntity(user)) ;
 	}
 	//Read - ALL
-	public List<PostsListDTO> getAllPosts() {
-		List<Posts> posts = postsRepository.findBypostCategory("post");
-		return posts.stream()
-				.map(PostsListDTO::new)
+	public Page<CompanionsListDTO> getAllPosts(Pageable pageable) {
+		Page<Companions> companions = companionsRepository.findCompanionsByPosts_PostCategory("companions", pageable);
+
+		List<CompanionsListDTO> dtoPage = companions.getContent().stream()
+				.map(companion -> new CompanionsListDTO(
+						companion.getPosts().getUsers().getUserName(),
+						companion.getPosts().getUsers().getUserBirth(),
+						companion.getPosts().getUsers().getUserGender(),
+						companion.getComStart(),
+						companion.getComEnd(),
+						companion.getPosts().getPostTitle(),
+						companion.getPosts().getPostContent(),
+                        companion.getComRecruit(),
+                        companion.getComWish(),
+                        companion.getComReserve()
+				))
 				.collect(Collectors.toList());
+
+		return new PageImpl<>(dtoPage, pageable, companions.getTotalElements());
+	}
+
+	//Read - areaCode
+	public Page<CompanionsListDTO> getSameAreaPosts(int areaCode, Pageable pageable) {
+		Page<Companions> companions = companionsRepository.findCompanionsByAreaCodeAndCategory(areaCode, pageable);
+
+		List<CompanionsListDTO> dtoList = companions.stream()
+				.map(companion -> new CompanionsListDTO(
+						companion.getPosts().getUsers().getUserName(),
+						companion.getPosts().getUsers().getUserBirth(),
+						companion.getPosts().getUsers().getUserGender(),
+						companion.getComStart(),
+						companion.getComEnd(),
+						companion.getPosts().getPostTitle(),
+						companion.getPosts().getPostContent(),
+						companion.getComRecruit(),
+						companion.getComWish(),
+						companion.getComReserve()
+				)).collect(Collectors.toList());
+
+		return new PageImpl<>(dtoList, pageable, companions.getTotalElements());
 	}
 
 	//Read - ONE
