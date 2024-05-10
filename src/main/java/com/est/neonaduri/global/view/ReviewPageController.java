@@ -46,9 +46,31 @@ public class ReviewPageController {
         return "reviewList";
     }
 
-
-
     //CJW
+    @GetMapping("/reviews/id/{postId}")
+    public String showReview(@PathVariable String postId, Model model) {
+        Posts review = postsService.findById(postId);
+        model.addAttribute("review", review);
+
+        PostImages img = postImagesService.findPostImages(postId);
+
+        if(img==null){
+            //사진 없을 경우 기본 이미지
+            model.addAttribute("img_link","https://neonaduri.s3.ap-northeast-2.amazonaws.com/neonaduri_logo.png");
+        }
+        else{
+            model.addAttribute("img_link",img.getPostImagesId());
+        }
+
+        return "review";
+    }
+
+    @GetMapping("/uploadReview")
+    public String uploadReview(){
+        return "uploadReview";
+    }
+
+    //생성, 수정 같이 작동 부분 -> 아직 연결 X
     @GetMapping("/new-review")
     public String newReview(@RequestParam(required = false) String id, Model model) {
         if (id == null) {
@@ -60,9 +82,5 @@ public class ReviewPageController {
         return "newReview";
     }
 
-    @GetMapping("/uploadReview")
-    public String uploadReview(){
-        return "uploadReview";
-    }
-}
 
+}

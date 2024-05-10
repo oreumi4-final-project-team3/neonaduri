@@ -20,15 +20,15 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 function fetchSpots(areaCode) {
-    fetch(`reviews/${areaCode}`)
+    fetch(`/reviews/${areaCode}`)
         .then(response => response.json())
         .then(data => {
-            const spotsList = data.map(review => `
+            const reviewsList = data.map(review => `
                 <div class="tourist-site">
-                    <img src="${review.spotImg}" alt="관광지 이미지">
+                    <img src="${review.imgLink}" alt="관광지 이미지">
                     <p>${review.postTitle}</p>
-                    <h3>${spot.spotName}</h3>
-                    <p>${spot.userName}</p>
+                    <h3>${review.spotName}</h3>
+                    <p>${review.user.getUserName()}</p>
                 </div>
             `).join('');
             document.querySelector('.tourist-sites').innerHTML = reviewsList;

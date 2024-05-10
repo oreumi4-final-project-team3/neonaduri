@@ -13,6 +13,7 @@ public class PostsResponseDTO {
     private String imgLink;
 
 
+
     public PostsResponseDTO(Posts post, Users user, String imgLink){
         this.postId = post.getPostId();
         this.postTitle = post.getPostTitle();

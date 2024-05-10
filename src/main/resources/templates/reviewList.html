@@ -53,11 +53,10 @@
     <div class="tourist-sites">
         <!-- 관광지 리스트가 여기에 표시됩니다. -->
         <div class="tourist-site" th:each="review : ${reviews}">
-            <img th:if="${not #strings.isEmpty(review.spotImg)}" th:src="${review.spotImg}" alt="관광지 이미지">
-            <img th:if="${#strings.isEmpty(review.spotImg)}" src="/images/havenotimage.png" alt="이미지 준비중">
-            <p th:text="${review.postTitle}"></p>
-            <h3 th:text="${review.spotName}"></h3>
-            <p th:text="${review.userName}"></p>
+            <img th:onclick="|location.href='@{/reviews/id/{postId}(postId=${review.postId})}'|" th:src="${review.imgLink}" alt="관광지 이미지">
+            <h3 th:onclick="|location.href='@{/reviews/id/{postId}(postId=${review.postId})}'|" th:text="${review.postTitle}"></h3>
+            <p th:text="${review.spotName}"></p>
+            <p th:text="${review.user.getUserName()}"></p>
         </div>
     </div>
 

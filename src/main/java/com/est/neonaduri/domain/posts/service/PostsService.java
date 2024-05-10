@@ -68,16 +68,12 @@ public class PostsService {
 		});
 
 	}
-	public Page<ReviewDTO> getPostListByCategoryAndAreaCode(String category, int areaCode, Pageable pageable) {
+	public Page<PostsResponseDTO> getPostListByCategoryAndAreaCode(String category, int areaCode, Pageable pageable) {
 		//Page<Posts> posts = postsRepository.findReviewsByAreaCodeAndCategory(areaCode, pageable);
 		Page<Posts> posts = postsRepository.findAllByPostCategoryAndAreaCode(category,areaCode,pageable);
 
-		List<ReviewDTO> dtoList = posts.getContent().stream()
-			.map(review -> new ReviewDTO(
-				findImgLink(review),
-				review.getPostTitle(),
-				review.getSpotName(),
-				review.getUsers().getUserName()))
+		List<PostsResponseDTO> dtoList = posts.getContent().stream()
+			.map(post -> new PostsResponseDTO(post,post.getUsers(),findImgLink(post)))
 			.peek(dto -> System.out.println("DTO: " + dto))
 			.collect(Collectors.toList());
 
@@ -90,17 +86,10 @@ public class PostsService {
 		if(postImage != null){
 			return postImage.getPostImagesId();
 		}
-		return null;
+		return "/images/havenotimage.png";
 	}
 
 	//CJW
-	/*
-	public List<Posts> findAllByCategory(String category){
-		return postsRepository.findBypostCategory(category);
-	}
-
-	 */
-
 	public Posts findById(String id){
 		return postsRepository.findByPostId(id);
 	}

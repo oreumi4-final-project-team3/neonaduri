@@ -28,6 +28,7 @@
           <img th:src="@{${img_link}}"/>
           <p class="fs-5 mb-4" th:text="${review.postContent}"></p>
         </section>
+        <!-- 아직 로직 연결 X -->
         <button type="button" id="modify-btn"
                 th:onclick="|location.href='@{/new-review?id={reviewId}(reviewId=${review.postId})}'|"
                 class="btn btn-primary btn-sm">수정</button>
