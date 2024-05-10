@@ -9,7 +9,7 @@ import org.springframework.util.unit.DataSize;
 import org.springframework.web.servlet.DispatcherServlet;
 
 @Configuration
-public class AppConfig {
+public class ImageFileConfig {
 
     @Bean
     public MultipartConfigElement multipartConfigElement() {

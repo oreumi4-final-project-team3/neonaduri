@@ -33,14 +33,12 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 public class PostsController {
 	  private final PostsService postsService;
-	  private final CompanionsService companionsService;
 	  private final PostImagesService postImagesService;
 
 	  @Autowired
 	  public PostsController(PostsService postsService, PostImagesService postImagesService, CompanionsService companionsService) {
 		this.postsService = postsService;
 		this.postImagesService = postImagesService;
-		this.companionsService = companionsService;
 	  }
 
     private PostsListDTO convertToPostsListDTO(Posts posts) {
@@ -53,6 +51,7 @@ public class PostsController {
      * @return List<Posts> : 같이갈까? 게시글 리스트
      * @author jyh
      */
+    /*
     @GetMapping("api/posts")
     public List<PostsListDTO> getAllposts() {
         List<PostsListDTO> postsListDTO = postsService.getAllPosts()
@@ -61,6 +60,7 @@ public class PostsController {
                 .collect(Collectors.toList());
         return postsListDTO;
     }
+     */
 
     @GetMapping("api/reviews")
     public String getAllReview(Model model,
