@@ -10,7 +10,7 @@ const postElements = document.querySelectorAll(".tourist-site");
 
 postElements.forEach(function(postElement) {
 
-    const birthElement = postElement.querySelector(".user-birth");
+    const birthElement = postElement.querySelector(".userBirth");
     const birthStr = birthElement.textContent;
     const birthStrDate = birthStr.split("T")[0];
     const birthDate = new Date(birthStrDate);
@@ -18,7 +18,7 @@ postElements.forEach(function(postElement) {
     const koreanAge = calculateKoreanAge(birthDate);
     const ageGroup = calculateAgeGroup(koreanAge);
 
-    const ageElement = postElement.querySelector(".age");
+    const ageElement = postElement.querySelector(".userAge");
 
     ageElement.textContent = ageGroup;
 });
@@ -44,4 +44,31 @@ function calculateAgeGroup(koreanAge) {
     } else {
         return "50대이상";
     }
+}
+
+// 각 지역 선택 시 게시글 리스트 처리
+document.addEventListener('DOMContentLoaded', function () {
+    const regionButtons = document.querySelectorAll('.region-btn');
+    regionButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const areaCode = this.getAttribute('data-area-code');
+            fetchPosts(areaCode);
+            window.history.pushState({areaCode: areaCode}, `Region ${areaCode}`, `/api/posts/${areaCode}`);
+            location.href = `/api/posts/${areaCode}`;
+        });
+    });
+});
+
+function fetchPosts(areaCode) {
+    fetch(`/api/posts/${areaCode}`)
+        .then(response => response.json())
+        .then(data => {
+            const postsList = data.map(post => `
+                <div class="tourist-sites">
+                   
+                </div>
+            `).join('');
+            document.querySelector('.tourist-sites').innerHTML = postsList;
+        })
+        .catch(error => console.error('Error:', error));
 }
