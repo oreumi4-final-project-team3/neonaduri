@@ -41,6 +41,15 @@ public class RepliesService {
         return findReply;
     }
 
+    @Transactional
+    public String deleteReply(String userId,String replyId){
+        Replies findReply = repliesRepository.findById(replyId).orElseThrow(() -> new EntityNotFoundException("해당하는 댓글이 없습니다."));
+        validateReply(userId,findReply);
+
+        repliesRepository.delete(findReply);
+        return replyId;
+    }
+
     private static void validateReply(String userId, Replies findReply)  {
         if (!findReply.getUsers().getUserId().equals(userId)) {
             throw new IllegalArgumentException("댓글을 작성한 유저가 아닙니다.");

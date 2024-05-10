@@ -47,4 +47,18 @@ public class RepliesController {
         ReplyResponseDto response = ReplyResponseDto.toResponse(replies);
         return ResponseEntity.ok(response);
     }
+
+    /**
+     * 댓글 삭제 기능
+     * @param userId
+     * @param replyId
+     * @return
+     * @author lsh
+     */
+    @DeleteMapping("api/posts/{replyId}/{userId}")
+    public ResponseEntity<String> deleteReply(@PathVariable(name = "userId")String userId,
+                                              @PathVariable(name = "replyId")String replyId){
+        String deletedReply = repliesService.deleteReply(userId, replyId);
+        return ResponseEntity.ok("댓글이 삭제 되었습니다. 댓글 id: "+deletedReply);
+    }
 }
