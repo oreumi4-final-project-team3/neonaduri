@@ -62,7 +62,7 @@ public class PostsController {
         return "companions";
     }
 
-    @GetMapping("api/posts/{areaCode}")
+    @GetMapping("api/posts/area/{areaCode}")
     public String getSameAreaPost(@PathVariable int areaCode, Model model, @RequestParam(defaultValue = "1")int page, @RequestParam(defaultValue = "12")int size) {
         Pageable pageable = PageRequest.of(Math.max(page-1, 0), size);
 

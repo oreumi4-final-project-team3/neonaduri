@@ -1,8 +1,14 @@
+function goToMainPage() {
+    window.location.href = "/api/main";
+}
 function goToHerePage() {
     window.location.href = "/api/spots";
 }
 function goToCompanionsPage() {
     window.location.href = "/api/posts";
+}
+function goToReviewPage(){
+    window.location.href = "/reviews";
 }
 
 // 연령 계산
@@ -53,14 +59,14 @@ document.addEventListener('DOMContentLoaded', function () {
         button.addEventListener('click', function() {
             const areaCode = this.getAttribute('data-area-code');
             fetchPosts(areaCode);
-            window.history.pushState({areaCode: areaCode}, `Region ${areaCode}`, `/api/posts/${areaCode}`);
-            location.href = `/api/posts/${areaCode}`;
+            window.history.pushState({areaCode: areaCode}, `Region ${areaCode}`, `/api/posts/area/${areaCode}`);
+            location.href = `/api/posts/area/${areaCode}`;
         });
     });
 });
 
 function fetchPosts(areaCode) {
-    fetch(`/api/posts/${areaCode}`)
+    fetch(`/api/posts/area/${areaCode}`)
         .then(response => response.json())
         .then(data => {
             const postsList = data.map(post => `
