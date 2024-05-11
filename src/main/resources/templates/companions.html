@@ -127,8 +127,9 @@
         <a th:if="${pageType == 'region' and companions.hasNext}" th:href="@{/api/posts/{areaCode}(areaCode=${areaCode},page=${currentPage + 1}, size=${companions.size})}">다음</a>
     </div>
 </main>
-<div class="separator-footer"></div>
+
 <footer>
+    <div class="separator-footer"></div>
     <div class="footer">
         <div class="footer-logo">
             <img th:src="@{/images/logo.png}" alt="팀 로고"/>
