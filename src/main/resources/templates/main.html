@@ -20,8 +20,9 @@
             <span class="header-btn3" onclick="goToReviewPage()">후기볼까?</span>
         </div>
         <div class="user-controls">
-            <img th:src="@{/images/mypage.png}" alt="마이페이지로 이동"/>
-
+            <a th:href="@{/api/mypage/{userId}}">
+                <img th:src="@{/images/mypage.png}" alt="마이페이지로 이동"/>
+            </a>
             <img th:src="@{/images/like.png}" alt="찜"/>
         </div>
     </div>
@@ -73,7 +74,7 @@
 
 
 
-<!--최근 인기 동행 게시글-->
+    <!--최근 인기 동행 게시글-->
     <div class="hotCompanions">
 
         <img  th:src="@{/images/companionsMark.png}"/>
@@ -81,14 +82,14 @@
             <span id="title">최근 인기 동행 게시글</span>
         </div>
         <div>
-        <span id="content">인기 있는 동행글을 추천받아보세요</span>
+            <span id="content">인기 있는 동행글을 추천받아보세요</span>
         </div>
     </div>
 
-<div class="tourist-sites12">
-    <!-- 관광지 리스트가 여기에 표시됩니다. -->
-    <div class="tourist-site1" th:each="companion : ${companions}">
-        <div class="top-contents">
+    <div class="tourist-sites12">
+        <!-- 관광지 리스트가 여기에 표시됩니다. -->
+        <div class="tourist-site1" th:each="companion : ${companions}">
+            <div class="top-contents">
                 <div class="top-writer-profileimg"></div>
                 <div class="top-writer-info">
                     <p class="top-writer-info-username" th:text="${companion.userName}"></p>
@@ -98,40 +99,40 @@
                         <p th:text="${companion.userGender}"></p>
                     </div>
                 </div>
-        <hr>
-            <div class="top-companion-schedule">
-                <p>🗓️ 여행기간</p>
-                <div class="top-companion-schedule-details">
-                    <p th:text="${#temporals.format(companion.comStart, 'MM.dd')}"></p>
-                    <p> ~ </p>
-                    <p th:text="${#temporals.format(companion.comEnd, 'MM.dd')}"></p>
+                <hr>
+                <div class="top-companion-schedule">
+                    <p>🗓️ 여행기간</p>
+                    <div class="top-companion-schedule-details">
+                        <p th:text="${#temporals.format(companion.comStart, 'MM.dd')}"></p>
+                        <p> ~ </p>
+                        <p th:text="${#temporals.format(companion.comEnd, 'MM.dd')}"></p>
+                    </div>
                 </div>
             </div>
-        </div>
 
 
-        <div class="middle-contents">
-            <div class="companion-image-placeholder">
-                <img id="sample-image" th:src="@{/images/companionTestImg.png}" alt="샘플이미지">
+            <div class="middle-contents">
+                <div class="companion-image-placeholder">
+                    <img id="sample-image" th:src="@{/images/companionTestImg.png}" alt="샘플이미지">
+                </div>
+            </div>
+
+
+            <div class="bottom-contents">
+                <p class="bottom-contents-title" th:text="${companion.postTitle}"></p>
+                <p class="bottom-contents-content" th:text="${companion.postContent}"></p>
             </div>
         </div>
-
-
-        <div class="bottom-contents">
-            <p class="bottom-contents-title" th:text="${companion.postTitle}"></p>
-            <p class="bottom-contents-content" th:text="${companion.postContent}"></p>
-        </div>
     </div>
-</div>
 
-<!--최근 인기 관광지 게시글-->
+    <!--최근 인기 관광지 게시글-->
     <div class="hotSpots">
         <img  th:src="@{/images/spotsMark.png}"/>
         <div>
-        <span id="title1">최근 인기 관광지</span>
+            <span id="title1">최근 인기 관광지</span>
         </div>
         <div>
-        <span id="content1">인기 있는 관광지를 추천받아보세요</span>
+            <span id="content1">인기 있는 관광지를 추천받아보세요</span>
         </div>
     </div>
 

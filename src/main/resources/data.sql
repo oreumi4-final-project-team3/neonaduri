@@ -4,4 +4,9 @@ SELECT 'admin_id', 'admin', 'Admin', 'example.com', 12, NULL, NULL
     SELECT 'admin' FROM users WHERE user_id = 'admin_id'
 );
 
-INSERT INTO
+-- 더미 데이터
+INSERT INTO user_details (detail_id, user_id, answer, question, user_intro, user_mbti, user_style)
+SELECT 'detail_id', 'admin_id', null, null, null, null, NULL
+    WHERE NOT EXISTS (
+    SELECT 'detail_id' FROM user_details WHERE user_id = 'admin_id'
+);
