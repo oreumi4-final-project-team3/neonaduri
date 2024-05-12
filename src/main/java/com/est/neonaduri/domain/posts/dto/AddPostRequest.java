@@ -3,12 +3,14 @@ package com.est.neonaduri.domain.posts.dto;
 import com.est.neonaduri.domain.posts.domain.Posts;
 import com.est.neonaduri.domain.users.domain.Users;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@Builder
 public class AddPostRequest {
     private String title;
     private String content;
