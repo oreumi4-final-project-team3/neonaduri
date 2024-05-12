@@ -6,6 +6,8 @@ import com.est.neonaduri.domain.companions.dto.CompanionsDTO;
 
 import com.est.neonaduri.domain.companions.dto.CompanionsListDTO;
 
+import com.est.neonaduri.domain.companions.dto.CompanionsResponseDTO;
+import com.est.neonaduri.domain.companions.dto.CompanionsWriteDTO;
 import com.est.neonaduri.domain.companions.repository.CompanionsRepository;
 import com.est.neonaduri.domain.posts.domain.Posts;
 import com.est.neonaduri.domain.posts.dto.CreatePostDTO;
@@ -15,6 +17,8 @@ import com.est.neonaduri.domain.users.domain.Users;
 import com.est.neonaduri.domain.users.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -94,4 +98,14 @@ public class CompanionsService {
         
         return dtoList;
     }
+
+    //CJW
+
+    //companions 저장
+    public Companions saveCompanions(CompanionsWriteDTO writeDTO, Posts post){
+        return companionsRepository.save(writeDTO.toEntity(post));
+    }
+
+
+
 }

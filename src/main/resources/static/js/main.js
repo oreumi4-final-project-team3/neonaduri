@@ -30,6 +30,12 @@ function goToReviewPage(){
 function goToMainPage() {
     window.location.href = "/api/main";
 }
+
+// 페이지 렌더링을 위해 관리자 id로 userId 임시 설정
+function goToMyPage() {
+    window.location.href = "/api/mypage/admin_id";
+}
+
 document.addEventListener("DOMContentLoaded", function() {
     const userBirthElements = document.querySelectorAll(".userBirth");
     const userAgeElements = document.querySelectorAll(".userAge");

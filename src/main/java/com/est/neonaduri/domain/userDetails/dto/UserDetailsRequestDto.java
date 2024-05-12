@@ -8,19 +8,43 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-@NoArgsConstructor
 public class UserDetailsRequestDto {
-    private String mbti;
-    private String style;
-    private String intro;
+    private String userMbti;
+    private String userStyle;
+    private String userIntro;
+
+    public String getMbti() {
+        return userMbti;
+    }
+
+    public void setMbti(String mbti) {
+        this.userMbti = mbti;
+    }
+
+    public String getStyle() {
+        return userStyle;
+    }
+
+    public void setStyle(String style) {
+        this.userStyle = style;
+    }
+
+    public String getIntro() {
+        return userIntro;
+    }
+
+    public void setIntro(String intro) {
+        this.userIntro = intro;
+    }
 
     public UserDetails toEntity(Users users){
         return UserDetails.builder()
-                .userMbti(mbti)
-                .userStyle(style)
-                .userIntro(intro)
+                .userMbti(userMbti)
+                .userStyle(userStyle)
+                .userIntro(userIntro)
                 .users(users)
                 .build();
     }
