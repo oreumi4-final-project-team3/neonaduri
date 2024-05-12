@@ -1,7 +1,8 @@
-package com.est.neonaduri.domain.search.repository;
+package com.est.neonaduri.domain.posts.repository;
 
 import com.est.neonaduri.domain.posts.domain.Posts;
-import com.est.neonaduri.domain.search.dto.PostSearchCondition;
+import com.est.neonaduri.domain.posts.dto.PostSearchCondition;
+import com.est.neonaduri.domain.posts.repository.PostsCustomRepository;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.core.types.dsl.Expressions;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -12,24 +13,24 @@ import java.util.List;
 
 import static com.est.neonaduri.domain.posts.domain.QPosts.posts;
 
-public class SearchRepositoryImpl implements SearchCustomRepository {
-    private  final JPAQueryFactory queryFactory;
-    public SearchRepositoryImpl(EntityManager em){
-        this.queryFactory=new JPAQueryFactory(em);
+public class PostsRepositoryImpl implements PostsCustomRepository {
+    private final JPAQueryFactory queryFactory;
+
+    public PostsRepositoryImpl(EntityManager em) {
+        this.queryFactory = new JPAQueryFactory(em);
     }
 
 
     @Override
-    public List<Posts> search(PostSearchCondition postSearchCondition) {
+    public List<Posts> search(PostSearchCondition content) {
         return queryFactory
                 .selectFrom(posts)
-                .where(titleLike(postSearchCondition.getSearchText())
-                        .or(writerEq(postSearchCondition.getSearchText()))
-                        .or(categoryEq(postSearchCondition.getSearchText())))
+                .where(titleLike(content.getSearchText())
+                        .or(writerEq(content.getSearchText()))
+                        .or(categoryEq(content.getSearchText())))
                 .orderBy(posts.created.desc())
                 .fetch();
     }
-
 
     //조건 1 게시물 제목이 포함된 입력
     private BooleanExpression titleLike(String title){

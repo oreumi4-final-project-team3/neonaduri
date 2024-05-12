@@ -1,4 +1,4 @@
-package com.est.neonaduri.domain.search.dto;
+package com.est.neonaduri.domain.posts.dto;
 
 import lombok.Builder;
 import lombok.Getter;

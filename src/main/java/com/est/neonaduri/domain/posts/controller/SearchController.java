@@ -1,8 +1,8 @@
-package com.est.neonaduri.domain.search.controller;
+package com.est.neonaduri.domain.posts.controller;
 
 import com.est.neonaduri.domain.posts.dto.PostsListDTO;
-import com.est.neonaduri.domain.search.dto.PostSearchCondition;
-import com.est.neonaduri.domain.search.service.SearchService;
+import com.est.neonaduri.domain.posts.dto.PostSearchCondition;
+import com.est.neonaduri.domain.posts.service.SearchService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

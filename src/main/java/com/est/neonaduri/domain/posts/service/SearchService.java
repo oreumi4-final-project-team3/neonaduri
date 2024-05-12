@@ -1,8 +1,8 @@
-package com.est.neonaduri.domain.search.service;
+package com.est.neonaduri.domain.posts.service;
 
 import com.est.neonaduri.domain.posts.dto.PostsListDTO;
 import com.est.neonaduri.domain.posts.repository.PostsRepository;
-import com.est.neonaduri.domain.search.dto.PostSearchCondition;
+import com.est.neonaduri.domain.posts.dto.PostSearchCondition;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
