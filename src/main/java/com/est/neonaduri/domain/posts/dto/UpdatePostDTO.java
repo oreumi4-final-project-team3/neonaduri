@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -19,6 +20,6 @@ public class UpdatePostDTO {
     private Integer areaCode;
     private String address;
     private Integer comRecruit;
-    private LocalDateTime comStart;
-    private LocalDateTime comEnd;
+    private LocalDate comStart;
+    private LocalDate comEnd;
 }

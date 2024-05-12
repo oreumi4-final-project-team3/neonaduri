@@ -16,6 +16,11 @@ public class CompanionPageController {
     private final PostsService postsService;
     private final CompanionsService companionsService;
 
+    @GetMapping("/uploadCompanion")
+    public String uploadCompanion(){
+        return "uploadCompanion";
+    }
+
     @GetMapping("/companions")
     public String getAllCompanions(Model model,
                                    @RequestParam(defaultValue = "1")int page,

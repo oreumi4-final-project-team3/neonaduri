@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -15,8 +16,8 @@ import java.time.LocalDateTime;
 @Builder
 public class CompanionsWriteDTO {
     private Integer comRecruit;
-    private LocalDateTime comStart;
-    private LocalDateTime comEnd;
+    private LocalDate comStart;
+    private LocalDate comEnd;
 
     public Companions toEntity(Posts posts) {
         return Companions.builder()
