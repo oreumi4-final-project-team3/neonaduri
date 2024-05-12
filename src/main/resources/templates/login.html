@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>너나들이 - 로그인</title>
+    <!--    <link rel="stylesheet" th:href="@{/css/login.css}">-->
+    <link rel="stylesheet" href="../static/css/login.css">
+</head>
+<body>
+<header>
+    <div class="header_box">
+        <a th:href="@{/api/main}">
+            <img class="logo" th:src="@{/images/neonaduriLogo.png}" alt="너나들이 로고">
+        </a>
+        <div class="nav_box">
+            <nav class="nav_one">
+                <ul>
+                    <li><a th:href="@{/api/main}">홈</a></li>
+                    <li><a href="#" onclick="goToHerePage()">여기 갈까?</a></li>
+                    <li><a href="#">같이 갈까?</a></li>
+                    <li><a href="#" onclick="goToReviewPage()">후기 볼까?</a></li>
+                </ul>
+            </nav>
+            <nav class="nav_two">
+                <ul>
+                    <li><a href="#" onclick="reloadPage()">로그인</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+<main>
+    <div class="login_box">
+        <h1>
+            안녕하세요!<br>
+            여행의 즐거움을<br>
+            <span>함께</span> 나누어요
+        </h1>
+        <form th:action="@{/api/user/register}" method="post" enctype="multipart/form-data">
+            <label for="userRegion">사는 곳은 어디인가요?</label>
+            <select id="userRegion" name="userRegion">
+                <option selected>서울특별시</option>
+                <option>부산광역시</option>
+                <option>대구광역시</option>
+                <option>인천광역시</option>
+                <option>광주광역시</option>
+                <option>대전광역시</option>
+                <option>울산광역시</option>
+                <option>세종특별자치시</option>
+                <option>경기도</option>
+                <option>강원도</option>
+                <option>충청북도</option>
+                <option>충청남도</option>
+                <option>전라북도</option>
+                <option>전라남도</option>
+                <option>경상북도</option>
+                <option>경상남도</option>
+                <option>제주특별자치도</option>
+            </select>
+            <label for="userGender">성별이 무엇인가요?</label>
+            <select id="userGender" name="userGender">
+                <option selected>남성</option>
+                <option>여성</option>
+            </select>
+            <label for="userBirth">생년월일이 어떻게 되세요?</label>
+            <input type="datetime-local" id="userBirth" name="userBirth">
+            <label for="userMbti">MBTI는요?</label>
+            <input type="text" id="userMbti" name="userMbti" placeholder="MBTI">
+            <label for="userIntro">자기소개 한 문장 작성해주세요:)</label>
+            <input type="text" id="userIntro" name="userIntro">
+            <label for="userStyle">마지막으로, 당신의 여행 스타일은?</label>
+            <select id="userStyle" name="userStyle">
+                <option value="" selected>나의 여행스타일은? 🏖️</option>
+                <option value="party">광란의 파티파티!!</option>
+                <option value="cultural">차분하고 고요한 문화유적 기행</option>
+                <option value="food">나는야 미식가! 식도락 여행</option>
+                <option value="trendy">인생 사진 찍어요~ 트렌디한 여행 </option>
+                <option value="activity">무적 체력을 소유한 액티비티 매니아</option>
+                <option value="spontaneous">너 P야? 무계획 즉흥 여행</option>
+                <option value="healing">힐링이 필요해.. 여유로운 일정</option>
+            </select>
+            <button type="submit">회원가입</button>
+        </form>
+    </div>
+</main>
+<script th:src="@{/js/login.js}"></script>
+</body>
+</html>

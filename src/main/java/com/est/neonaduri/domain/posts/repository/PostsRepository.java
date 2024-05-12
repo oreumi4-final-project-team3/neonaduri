@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PostsRepository extends JpaRepository<Posts,String> {
+public interface PostsRepository extends JpaRepository<Posts,String>,PostsCustomRepository{
 	Page<Posts> findBypostCategory(String postCategory, Pageable pageable);
 	Page<Posts> findAllByPostCategoryAndAreaCode(String postCategory, int areaCode, Pageable pageable);
 	List<Posts> findBypostCategory(String postCategory);
