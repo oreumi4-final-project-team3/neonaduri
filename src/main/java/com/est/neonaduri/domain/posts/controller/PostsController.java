@@ -104,7 +104,7 @@ public class PostsController {
         return ResponseEntity.ok().build();
     }
 
-    //이미지 관련 로직 추가 필요
+    //이미지 관련 로직 추가 필요.
     @PutMapping("/api/posts/{id}")
     public ResponseEntity<Posts> updatePost(@PathVariable String id, @RequestBody UpdatePostRequest request) {
         Posts updatedPost = postsService.update(id, request);

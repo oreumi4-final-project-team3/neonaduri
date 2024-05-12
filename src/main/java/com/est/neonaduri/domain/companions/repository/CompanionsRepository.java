@@ -28,4 +28,5 @@ public interface CompanionsRepository extends JpaRepository<Companions, String> 
     //CJW
     Page<Companions> findAll(Pageable pageable);
     Page<Companions> findAllByPosts_AreaCode(int areaCode, Pageable pageable);
+    Companions findByCompanionId(String companionId);
 }
