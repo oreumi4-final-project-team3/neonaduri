@@ -8,13 +8,16 @@
 <body>
 <header>
     <div class="header_box">
-        <img class="logo" th:src="@{/images/neonaduriLogo.png}" alt="너나들이 로고">
+        <a th:href="@{/api/main}">
+            <img class="logo" th:src="@{/images/neonaduriLogo.png}" alt="너나들이 로고">
+        </a>
         <div class="nav_box">
             <nav class="nav_one">
                 <ul>
-                    <li><a href="#">홈</a></li>
-                    <li><a href="here.html">여기 갈까?</a></li>
+                    <li><a th:href="@{/api/main}">홈</a></li>
+                    <li><a href="#" onclick="goToHerePage()">여기 갈까?</a></li>
                     <li><a href="#">같이 갈까?</a></li>
+                    <li><a href="#" onclick="goToReviewPage()">후기 볼까?</a></li>
                 </ul>
             </nav>
             <nav class="nav_two">
@@ -25,7 +28,10 @@
             </nav>
         </div>
     </div>
-    <nav class="my_info"><a href="mypage.html">내 정보</a></nav>
+    <div class="header_subbox">
+        <nav class="my_matching"><a th:href="@{#}">나의 매칭</a></nav>
+        <nav class="my_info"><a href="#" onclick="reloadPage()">내 정보</a></nav>
+    </div>
     <hr>
 </header>
 <main>
@@ -35,7 +41,7 @@
             <label for="userEmail">이메일</label>
             <div class="input">
                 <input type="text" id="userEmail" th:value="${user.userEmail}">
-                <button class="edit">
+                <button class="edit" onclick="updateUser()">
                     <img th:src="@{/images/edit_pencil.png}" alt="수정하기">
                 </button>
             </div>
@@ -55,7 +61,7 @@
             <!--너나두리 회원가입 시 입력한 데이터-->
             <label for="userRegion">지역코드</label>
             <input type="text" id="userRegion" th:value="${user.userRegion}">
-            <button class="edit">
+            <button class="edit" onclick="updateUser()">
                 <img th:src="@{/images/edit_pencil.png}" alt="수정하기">
             </button>
             <div class="birth_gender">
@@ -71,50 +77,56 @@
         <div class="main_right">
             <!--오른쪽 프로필 모달-->
             <p id="userImg" th:text="${user.userImg}"></p>
+
             <!-- 프로필 이미지가 있으면 해당 이미지를 표시하고, 없으면 디폴트 이미지를 표시합니다. -->
-            <img class="profile_img" alt="프로필 사진">
-            <label for="file-upload" class="custom-file-upload">
+            <img class="profile_img" th:src="${user.userImg != null ? user.userImg : '/images/havenotimage.png'}" alt="프로필 사진">
+
+            <!-- 프로필 이미지 변경 버튼 -->
+            <label for="file-upload" class="file-upload">
                 <img th:src="@{/images/edit_profile_img.png}" alt="프로필 이미지 변경 버튼">
             </label>
+            <!-- 파일 업로드 input -->
             <input id="file-upload" type="file">
-            <label for="userName">닉네임</label>
-            <p id="userName" th:text="${user.userName}"></p>
+            <!--             onchange="uploadImage(this)"-->
+            <input type="text" id="userName" th:value="${user.userName}">
+            <button class="edit-nickname" onclick="uploadImage()">
+                <img th:src="@{/images/edit_pencil.png}" alt="수정하기">
+            </button>
         </div>
     </div>
-    <form th:action="@{/api/userdetails/{userId}(userId=${userId})}" method="post">
-        <!--MBTI 데이터-->
-<!--        <input class="mbti_input" type="text" id="userMbti" name="userMbti" th:value="${userDetails.mbti}">-->
-        <button class="edit" type="submit">
-            <img th:src="@{/images/edit_pencil.png}" alt="수정하기">
-        </button>
-    </form>
+    <!--MBTI 데이터-->
+    <input class="mbti_input" type="text" id="userMbti" name="userMbti" th:value="${userDetails.userMbti}">
+    <button class="edit" onclick="updateUserDetails()">
+        <img th:src="@{/images/edit_pencil.png}" alt="수정하기">
+    </button>
     <hr class="second_hr">
     <!--UserDetails 테이블의 데이터-->
     <div class="main_box_bottom">
         <label for="userIntro">나는 누구인가요?</label>
-        <form th:action="@{/api/userdetails/{userId}(userId=${userId})}" method="post">
-            <textarea id="userIntro" name="userIntro" placeholder="여기에 내용을 입력하세요"></textarea>
-            <button class="edit_textarea" type="submit">
+        <div id="input">
+            <textarea id="userIntro" name="userIntro" placeholder="여기에 내용을 입력하세요" th:text="${userDetails.userIntro}"></textarea>
+            <button class="edit-textarea" onclick="updateUserDetails()">
                 <img th:src="@{/images/edit_pencil.png}" alt="수정하기">
             </button>
-        </form>
+        </div>
         <label>원하는 여행 스타일은?</label>
-        <select>
-            <option selected>나의 여행스타일은? 🏖️</option>
-            <option>광란의 파티파티!!</option>
-            <option>차분하고 고요한 문화유적 기행</option>
-            <option>나는야 미식가! 식도락 여행</option>
-            <option>인생 사진 찍어요~ 트렌디한 여행 </option>
-            <option>무적 체력을 소유한 액티비티 매니아</option>
-            <option>너 P야? 무계획 즉흥 여행</option>
-            <option>힐링이 필요해.. 여유로운 일정</option>
+        <select id="userStyle" name="tripStyleSelect" th:value="${userDetails.userStyle}" onchange="updateUserDetails()">
+            <option value="" selected>나의 여행스타일은? 🏖️</option>
+            <option value="party">광란의 파티파티!!</option>
+            <option value="cultural">차분하고 고요한 문화유적 기행</option>
+            <option value="food">나는야 미식가! 식도락 여행</option>
+            <option value="trendy">인생 사진 찍어요~ 트렌디한 여행 </option>
+            <option value="activity">무적 체력을 소유한 액티비티 매니아</option>
+            <option value="spontaneous">너 P야? 무계획 즉흥 여행</option>
+            <option value="healing">힐링이 필요해.. 여유로운 일정</option>
         </select>
-<!--        <p id="userStyle" th:text="${userDetails.style}"></p>-->
     </div>
 </main>
 <hr id="last_line">
 <footer>
-    <img th:src="@{/images/mini_logo.png}">
+    <button class="goup" onclick="scrollToTop()">
+        <img th:src="@{/images/mini_logo.png}" alt="Logo">
+    </button>
     <div class="footer_desc">
         <p>데이터 제공 : 한국관광공사 TourAPI</p>
         <p>아이콘 제작자: Freepik - Flaticon</p>

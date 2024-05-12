@@ -5,10 +5,11 @@ import com.est.neonaduri.domain.userDetails.service.UserDetailsService;
 import com.est.neonaduri.domain.users.dto.UserDTO;
 import com.est.neonaduri.domain.users.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class UserController {
@@ -33,22 +34,15 @@ public class UserController {
 //        return userService.getUserData(userId);
 //    }
 
-    /**
-     * UserId 별로 User테이블의 필드만 조회 - @Controller
-     *
-     * @return mypage view 페이지
-     * @author lhy
-     */
 //    @GetMapping("api/users/{userId}")
-//    public String getUserHtml(@PathVariable String userId, Model model) {
-//        UserDTO user = userService.getUserData(userId);
-//        model.addAttribute("user", user);
-//        return "mypage"; // templates 폴더의 mypage.html을 참조합니다.
+//    public UserDTO getUserData(@PathVariable String userId) {
+//        return userService.getUserData(userId);
 //    }
 
     @GetMapping("api/users/{userId}")
-    public UserDTO getUserData(@PathVariable String userId) {
-        return userService.getUserData(userId);
+    public ResponseEntity<UserDTO> getUserData(@PathVariable String userId) {
+        UserDTO userData = userService.getUserData(userId);
+        return ResponseEntity.ok(userData);
     }
 
     @GetMapping("api/mypage/{userId}")
@@ -66,6 +60,22 @@ public class UserController {
         // mypage HTML을 렌더링
         return "mypage";
     }
-    
-//    @PutMapping으로 sns api에서 받아오는 정보 외의 것 받아오기
+
+
+    // 사용자 정보 수정 API
+    @PutMapping("api/users/{userId}")
+    public ResponseEntity<UserDTO> updateUser(@PathVariable String userId, @RequestBody UserDTO userDto) {
+        UserDTO updatedUser = userService.updateUser(userId, userDto);
+        return ResponseEntity.ok(updatedUser);
+    }
+
+    // 사용자 정보 생성 API
+    @PostMapping("api/users")
+    public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO userDto) {
+        UserDTO createdUser = userService.createUser(userDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
+    }
+
+
+
 }

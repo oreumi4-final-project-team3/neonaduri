@@ -59,17 +59,22 @@ a {
 .nav_two ul {
     display: flex;
     align-items: center;
-    margin-left: 620px;
 }
 
 li {
     margin-right: 26px;
 }
 
-.my_info {
+.header_subbox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 0 110px 30px 110px;
+}
+
+.my_info, .my_matching {
     font-size: 25px;
     text-align: center;
-    margin-bottom: 30px;
 }
 
 hr {
@@ -135,25 +140,46 @@ textarea {
 }
 
 #userName {
+    display: inline-block;
+    margin: 0 auto;
     font-size: 30px;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+    padding: 0;
+    width: 120px;
+}
+
+#userName:focus {
+    outline: none;
+}
+
+.edit-nickname {
+    background-color: #03C04A;
+    border-radius: 5px;
+    border: none;
+    width: 33px;
+    height: 33px;
+    padding: 3px;
 }
 
 .profile_img {
-    margin: 45px 0 13px;
+    margin: 45px 0 0 0;
     width: 155px;
     height: 155px;
     border-radius: 50%;
 }
 
-.custom-file-upload {
+.file-upload {
     position: relative;
-    bottom: 70px;
-    left: 62px;
-    padding: 6px 10px;
+    bottom: 60px;
+    left: 190px;
     cursor: pointer;
     border-radius: 5px;
     line-height: 18px;
     margin: 0;
+    width: 31px;
+    height: 31px;
 }
 
 #file-upload {
@@ -168,16 +194,25 @@ textarea {
     background: transparent;
 }
 
-.main_box_bottom form {
+#input {
     position: relative;
 }
 
-.edit_textarea {
-    background-color: transparent;
+.edit-textarea {
     position: absolute;
-    top: 12px;
-    right: 10px;
+    top: 0;
+    right: 0;
+    margin: 12px 10px 0 0;
     border: none;
+    background: transparent;
+}
+
+.edit:hover, .edit_textarea:hover, .edit-nickname:hover {
+    cursor: pointer;
+}
+
+.main_box_bottom form {
+    position: relative;
 }
 
 .mbti_input {
@@ -212,7 +247,7 @@ select {
 
 #last_line {
     width: 100%;
-    border: #7E7E7E solid 1px;
+    border: #919191 solid 1px;
     margin: 0;
 }
 
@@ -228,6 +263,11 @@ footer p {
     font-size: 16px;
     font-weight: bold;
     color: #7E7E7E;
+}
+
+.goup {
+    background: transparent;
+    border: none;
 }
 
 .github {

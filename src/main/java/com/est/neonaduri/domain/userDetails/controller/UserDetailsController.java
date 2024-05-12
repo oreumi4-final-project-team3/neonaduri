@@ -7,9 +7,10 @@ import com.est.neonaduri.domain.users.dto.UserDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+@Controller
 @RequiredArgsConstructor
 public class UserDetailsController {
     private final UserDetailsService userDetailsService;
@@ -29,7 +30,6 @@ public class UserDetailsController {
 //    }
 
     /**
-     *
      * 위 메서드의 RequestPart 매개변수를 RequestBody로 변경
      *
      * @return http 응답으로 반환
@@ -37,9 +37,12 @@ public class UserDetailsController {
      */
 
     @PostMapping("/api/userdetails/{userId}")
-    public ResponseEntity<UserDetails> addUserDetails(@PathVariable(name="userId") String userId,
-                                                      @RequestBody UserDetailsRequestDto request ){
-        UserDetails newUserDetails = userDetailsService.saveUserDetails(userId,request);
+    public ResponseEntity<UserDetails> addUserDetails(@PathVariable(name = "userId") String userId,
+                                                      @RequestBody UserDetailsRequestDto request) {
+        String tripStyle = request.getStyle();
+        request.setStyle(tripStyle);
+
+        UserDetails newUserDetails = userDetailsService.saveUserDetails(userId, request);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(newUserDetails);
     }
@@ -51,7 +54,7 @@ public class UserDetailsController {
      * @author cjw
      */
     @GetMapping("/api/userdetails/{userId}")
-    public ResponseEntity<UserDetails> getUserDetails(@PathVariable(name="userId") String userId){
+    public ResponseEntity<UserDetails> getUserDetails(@PathVariable(name = "userId") String userId) {
         UserDetails findUserDetails = userDetailsService.findUserDetails(userId);
         return ResponseEntity.status(HttpStatus.FOUND)
                 .body(findUserDetails);
@@ -68,12 +71,25 @@ public class UserDetailsController {
      * @return UserDetails : 수정된 userDetails
      * @author cjw
      */
-    @PutMapping("api/userdetails/{userId}")
-    public ResponseEntity<UserDetails> updateUserDetails(@PathVariable(name="userId") String userId,
-                                                         @RequestPart(value = "userDetailsRequest")UserDetailsRequestDto request){
-        UserDetails updatedUserDetails = userDetailsService.updateUserDetails(userId,request);
-        return ResponseEntity.status(HttpStatus.OK)
-                .body(updatedUserDetails);
+//    @PutMapping("/updateUserDetails/{userId}")
+//    public ResponseEntity<UserDetails> updateUserDetails(@PathVariable(name = "userId") String userId,
+//                                                         @RequestPart(value = "userDetailsRequest") UserDetailsRequestDto request) {
+//        UserDetails updatedUserDetails = userDetailsService.updateUserDetails(userId, request);
+//        return ResponseEntity.status(HttpStatus.OK)
+//                .body(updatedUserDetails);
+//    }
+
+//    @PutMapping("api/updateUserDetails/{userId}")
+//    public ResponseEntity<UserDetails> updateUserDetails(@PathVariable(name = "userId") String userId, @RequestBody UserDetailsRequestDto request) {
+//        UserDetails updatedUserDetails = userDetailsService.updateUserDetails(userId, request);
+//        return ResponseEntity.status(HttpStatus.OK)
+//                .body(updatedUserDetails);
+//    }
+
+    @PutMapping("/api/userDetails/{userId}")
+    public ResponseEntity<UserDetailsRequestDto> updateUserDetails(@PathVariable String userId, @RequestBody UserDetailsRequestDto userDetailsDto) {
+        userDetailsService.updateUserDetails(userId, userDetailsDto.getIntro(), userDetailsDto.getStyle(), userDetailsDto.getMbti());
+        return ResponseEntity.ok(userDetailsDto);
     }
 
 }
