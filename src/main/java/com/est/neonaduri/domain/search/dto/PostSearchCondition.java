@@ -7,10 +7,10 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class PostSearchCondition {
-    private String searchTest;
+    private String searchText;
 
     @Builder
     public PostSearchCondition(String searchTest){
-        this.searchTest=searchTest;
+        this.searchText =searchTest;
     }
 }

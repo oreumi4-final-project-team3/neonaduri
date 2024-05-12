@@ -1,7 +1,6 @@
 package com.est.neonaduri.domain.search.repository;
 
 import com.est.neonaduri.domain.posts.domain.Posts;
-import com.est.neonaduri.domain.posts.domain.QPosts;
 import com.est.neonaduri.domain.search.dto.PostSearchCondition;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.core.types.dsl.Expressions;
@@ -24,9 +23,9 @@ public class SearchRepositoryImpl implements SearchCustomRepository {
     public List<Posts> search(PostSearchCondition postSearchCondition) {
         return queryFactory
                 .selectFrom(posts)
-                .where(titleLike(postSearchCondition.getSearchTest())
-                        .or(writerEq(postSearchCondition.getSearchTest()))
-                        .or(categoryEq(postSearchCondition.getSearchTest())))
+                .where(titleLike(postSearchCondition.getSearchText())
+                        .or(writerEq(postSearchCondition.getSearchText()))
+                        .or(categoryEq(postSearchCondition.getSearchText())))
                 .orderBy(posts.created.desc())
                 .fetch();
     }
