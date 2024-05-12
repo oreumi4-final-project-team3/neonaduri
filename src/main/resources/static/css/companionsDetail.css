@@ -1,0 +1,317 @@
+/* 전체 헤더 스타일링 */
+
+/* 로고 이미지 스타일링 */
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 160px;
+    margin-top: 10px;
+}
+/* 각 요소들의 스타일 */
+.logo, .header-buttons, .user-controls {
+    display: flex;
+    align-items: center; /* 세로 중앙 정렬 */
+}
+.header logo{
+    width:200px;
+    height: 200px;
+}
+.logo img{
+    cursor:pointer;
+}
+/*여기갈까? 같이갈까? 버튼 설정*/
+.header-buttons span {
+    margin-right: 50px; /* 버튼 사이의 간격 설정 */
+    font-size: 25px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.header-btn2{
+    font-weight: bold;
+}
+/*마이페이지 버튼과 찜 버튼 설정*/
+.user-controls img{
+    margin-right: 30px;
+    /*padding: 5px 10px;*/
+    cursor: pointer;
+}
+
+body {
+    width: 1920px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+}
+
+p {
+    margin: 0;
+}
+
+/*구분 선*/
+.separator {
+    border-top: 1px solid #ccc; /* 실선 구분선 */
+    /* border-top: 1px dashed #ccc; */ /* 점선 구분선 */
+    /* border-top: 1px dotted #ccc; */ /* 점선 구분선 */
+    margin-top: 20px; /* 구분선 위 여백 설정 */
+}
+
+/*중간 body 부분*/
+.title-text {
+    margin: 30px 0 0;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+main {
+    margin: 0 100px 0 100px;
+}
+
+.title-contents-info, .tour-info-schedule, .tour-info-region, .tour-info-userInfo-details {
+    display: flex;
+    align-items: baseline;
+}
+
+.title-contents-info {
+    justify-content: space-between;
+    width: 250px;
+}
+
+.tour-info-schedule, .tour-info-region {
+    margin-left: 20px;
+    width: 220px;
+}
+
+.tour-info-region{
+    margin-top: 20px;
+}
+
+.title-contents-info p {
+    margin: 5px 0 0 0;
+}
+
+.region-image img {
+    width: 100%;
+    height: 600px;
+    opacity: 0.8;
+}
+
+.tour-info {
+    display: grid;
+    grid-template-columns: 1000px auto;
+    grid-gap: 0px 200px;
+}
+
+.tour-info-schedule-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 25px;
+    width: 100%;
+    height: 100px;
+    background-color: #e9e9e9;
+    border-radius: 10px;
+}
+
+.tour-info-userInfo-wrap {
+    display: flex;
+    align-items: center;
+    margin-top: 25px;
+    background-color: #e9e9e9;
+    width: 100%;
+    height: 100px;
+    border-radius: 10px;
+}
+
+.profileimg{
+    background: orangered;
+    width: 70px;
+    height: 70px;
+    border-radius: 50px;
+    margin-left: 20px;
+}
+
+.tour-info-userInfo-detail{
+    margin-left: 15px;
+}
+
+.tour-info-userInfo-userName{
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.tour-info-userInfo-details{
+    margin-top: 10px;
+}
+
+.tour-info-content {
+    display: flex;
+    flex-direction: column;
+    margin-top: 25px;
+    width: 100%;
+    height: 500px;
+    background-color: #e9e9e9;
+    border-radius: 10px;
+}
+
+.tour-info-content p{
+    margin: 20px 0 0 20px;
+}
+
+.tour-info-comment-form {
+    margin: 20px 0 20px 0;
+    position: relative;
+}
+
+.tour-info-comment-form input {
+    width: calc(100% - 12px);
+    height: 50px;
+    padding: 0 0 0 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+.tour-info-comment-form input::placeholder {
+    color: #cccccc;
+}
+
+.tour-info-comment-form button {
+    width: 80px;
+    height: 52px;
+    padding: 0;
+    font-size: 16px;
+    background-color: #2AD931;
+    color: #fff;
+    border: none;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.tour-info-comment-list-wrap {
+    margin-bottom: 20px;
+}
+
+.tour-info-comment-list-userInfo {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+}
+
+.tour-info-comment-list-userInfo-profileimg{
+    background: orangered;
+    width: 70px;
+    height: 70px;
+    border-radius: 50px;
+}
+
+.tour-info-comment-list-userInfo-detail {
+    margin-left: 15px;
+}
+
+.tour-info-comment-list-userInfo-userName{
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.tour-info-comment-list-created{
+    margin-top: 10px;
+}
+
+
+.tour-info-companions-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-top: 25px;
+    background-color: #e9e9e9;
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.tour-info-companions-detail{
+    display: flex;
+    align-items: baseline;
+    font-size: 20px;
+    margin-left: 20px;
+}
+
+.tour-info-companions-button-wrap {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.tour-info-companions-button, .tour-info-companions-button-wish{
+    width: 100%;
+    height: 60px;
+    color: #ffffff;
+    border-radius: 10px;
+    font-size: 20px;
+    text-align: center;
+    line-height: 60px;
+    font-weight: bold;
+    cursor:pointer;
+}
+
+.tour-info-companions-button{
+    background-color: #2AD931;
+}
+
+.tour-info-companions-button-wish{
+    margin-top: 15px;
+    background-color: #00A3FF;
+}
+
+.tour-info-companions-map{
+    width: 100%;
+    height: 500px;
+    margin-top: 20px;
+    background-color: #e9e9e9;
+    border-radius: 10px;
+}
+
+
+/*footer 부분*/
+.separator-footer{
+    border-top: 1px solid #ccc; /* 실선 구분선 */
+    margin: 30px 0px 20px; /* 구분선 위아래 여백 설정 */
+}
+
+.footer {
+    display: flex;
+    align-items: center; /* 요소들을 수직 가운데 정렬합니다. */
+}
+.footer-logo{
+    margin-right: auto;
+    margin-left: 30px;
+}
+.footer-logo img{
+    width: 100px;
+    height: 100px;
+}
+
+.footer span{
+    color: #7E7E7E;
+    font-weight: bold;
+}
+
+.footer-group {
+    display: flex;
+    flex-direction: column; /* 세로로 요소들을 배치합니다. */
+    margin-top:10px;
+    margin-left: -1400px;
+}
+
+.github-link {
+    margin-left: auto; /* 우측으로 정렬합니다. */
+}
