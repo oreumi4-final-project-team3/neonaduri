@@ -63,7 +63,9 @@ public class PostsController {
     }
 
     @GetMapping("api/posts/{areaCode}")
-    public String getSameAreaPost(@PathVariable int areaCode, Model model, @RequestParam(defaultValue = "1")int page, @RequestParam(defaultValue = "12")int size) {
+    public String getSameAreaPost(@PathVariable int areaCode, Model model,
+                                  @RequestParam(defaultValue = "1")int page,
+                                  @RequestParam(defaultValue = "12")int size) {
         Pageable pageable = PageRequest.of(Math.max(page-1, 0), size);
 
         model.addAttribute("companions", postsService.getSameAreaPosts(areaCode, pageable));

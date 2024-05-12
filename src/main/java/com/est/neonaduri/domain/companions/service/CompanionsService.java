@@ -9,15 +9,19 @@ import com.est.neonaduri.domain.companions.dto.CompanionsListDTO;
 import com.est.neonaduri.domain.companions.dto.CompanionsResponseDTO;
 import com.est.neonaduri.domain.companions.dto.CompanionsWriteDTO;
 import com.est.neonaduri.domain.companions.repository.CompanionsRepository;
+import com.est.neonaduri.domain.postImages.domain.PostImages;
+import com.est.neonaduri.domain.postImages.repository.PostImagesRepository;
 import com.est.neonaduri.domain.posts.domain.Posts;
 import com.est.neonaduri.domain.posts.dto.CreatePostDTO;
 import com.est.neonaduri.domain.posts.dto.UpdatePostDTO;
 import com.est.neonaduri.domain.posts.repository.PostsRepository;
 import com.est.neonaduri.domain.users.domain.Users;
 import com.est.neonaduri.domain.users.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,18 +32,13 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class CompanionsService {
 
     private final CompanionsRepository companionsRepository;
     private final UserRepository userRepository;
     private final PostsRepository postsRepository;
-
-    @Autowired
-    public CompanionsService(CompanionsRepository companionsRepository, UserRepository userRepository, PostsRepository postsRepository) {
-        this.companionsRepository = companionsRepository;
-        this.userRepository = userRepository;
-        this.postsRepository = postsRepository;
-    }
+    private final PostImagesRepository postImagesRepository;
 
     // 동행 CRUD
     // Create
@@ -100,12 +99,40 @@ public class CompanionsService {
     }
 
     //CJW
-
     //companions 저장
     public Companions saveCompanions(CompanionsWriteDTO writeDTO, Posts post){
         return companionsRepository.save(writeDTO.toEntity(post));
     }
 
+    //전체 companions 반환
+    public Page<CompanionsResponseDTO> getAllCompanions(Pageable pageable){
+        Page<Companions> companions = companionsRepository.findAll(pageable);
+
+        List<CompanionsResponseDTO> dtoList = companions.stream()
+                .map(companion -> new CompanionsResponseDTO(companion, companion.getPosts(), companion.getPosts().getUsers(), findImgLink(companion)))
+                .collect(Collectors.toList());
+
+        return new PageImpl<>(dtoList,pageable,companions.getTotalElements());
+    }
+
+    //지역 코드별 companions 반환
+    public Page<CompanionsResponseDTO> getCompanionsByAreaCode(int areaCode, Pageable pageable){
+        Page<Companions> companions = companionsRepository.findAllByPosts_AreaCode(areaCode,pageable);
+
+        List<CompanionsResponseDTO> dtoList = companions.stream()
+                .map(companion -> new CompanionsResponseDTO(companion, companion.getPosts(), companion.getPosts().getUsers(), findImgLink(companion)))
+                .collect(Collectors.toList());
+
+        return new PageImpl<>(dtoList,pageable,companions.getTotalElements());
+    }
+
+    String findImgLink(Companions companion){
+        PostImages postImage = postImagesRepository.findPostImagesByPosts(companion.getPosts());
+        if(postImage != null){
+            return postImage.getPostImagesId();
+        }
+        return "/images/companionTestImg.png";
+    }
 
 
 }

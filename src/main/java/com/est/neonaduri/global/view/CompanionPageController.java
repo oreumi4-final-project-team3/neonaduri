@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -27,8 +28,21 @@ public class CompanionPageController {
                                    @RequestParam(defaultValue = "12")int size){
         Pageable pageable = PageRequest.of( Math.max(page-1, 0),size);
 
-        //model.addAttribute("companions",companionsService.getAllCompanions(pageable));
+        model.addAttribute("companions",companionsService.getAllCompanions(pageable));
+        model.addAttribute("currentPage",page);
+        model.addAttribute("pageType","region");
+        return "companions";
+    }
 
+    @GetMapping("/companions/{areaCode}")
+    public String getCompanionsByAreaCode(@PathVariable int areaCode, Model model,
+                                          @RequestParam(defaultValue = "1")int page,
+                                          @RequestParam(defaultValue = "12")int size){
+        Pageable pageable = PageRequest.of(Math.max(page-1, 0), size);
+
+        model.addAttribute("companions", companionsService.getCompanionsByAreaCode(areaCode, pageable));
+        model.addAttribute("currentPage",page);
+        model.addAttribute("pageType","region");
 
         return "companions";
     }

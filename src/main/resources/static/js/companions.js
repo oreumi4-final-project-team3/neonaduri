@@ -2,7 +2,7 @@ function goToHerePage() {
     window.location.href = "/api/spots";
 }
 function goToCompanionsPage() {
-    window.location.href = "/api/posts";
+    window.location.href = "/companions";
 }
 
 // 연령 계산
@@ -53,14 +53,14 @@ document.addEventListener('DOMContentLoaded', function () {
         button.addEventListener('click', function() {
             const areaCode = this.getAttribute('data-area-code');
             fetchPosts(areaCode);
-            window.history.pushState({areaCode: areaCode}, `Region ${areaCode}`, `/api/posts/${areaCode}`);
-            location.href = `/api/posts/${areaCode}`;
+            window.history.pushState({areaCode: areaCode}, `Region ${areaCode}`, `/companions/${areaCode}`);
+            location.href = `/companions/${areaCode}`;
         });
     });
 });
 
 function fetchPosts(areaCode) {
-    fetch(`/api/posts/${areaCode}`)
+    fetch(`/companions/${areaCode}`)
         .then(response => response.json())
         .then(data => {
             const postsList = data.map(post => `
@@ -104,7 +104,7 @@ if(createButton){
             body: formData
         }).then(()=>{
           alert('등록 완료되었습니다');
-          location.replace("api/posts");
+          location.replace("companions");
         })
     });
 }
