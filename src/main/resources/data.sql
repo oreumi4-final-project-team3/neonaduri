@@ -3,3 +3,5 @@ SELECT 'admin_id', 'admin', 'Admin', 'example.com', 12, NULL, NULL
     WHERE NOT EXISTS (
     SELECT 'admin' FROM users WHERE user_id = 'admin_id'
 );
+
+INSERT INTO
