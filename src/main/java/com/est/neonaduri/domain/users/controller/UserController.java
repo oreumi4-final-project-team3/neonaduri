@@ -76,6 +76,18 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
     }
 
+//    @PostMapping("/api/users/register")
+//    public String registerUser(UserDTO userDTO) {
+//        userService.registerUser(userDTO);
+//        return "redirect:/api/main";
+//    }
 
+    // 사용자 정보 생성 API
+    @RequestMapping(value = "/api/users/register", method = RequestMethod.POST)
+    public String createUser(@RequestBody UserDTO userDto, Model model) {
+        UserDTO createdUser = userService.createUser(userDto);
+        model.addAttribute("user", createdUser);
+        return "redirect:/api/main"; // 메인으로 이동
+    }
 
 }
