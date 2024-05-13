@@ -10,6 +10,7 @@ import com.est.neonaduri.domain.posts.dto.AddPostRequest;
 import com.est.neonaduri.domain.posts.dto.CreatePostDTO;
 import com.est.neonaduri.domain.posts.dto.UpdatePostDTO;
 import com.est.neonaduri.domain.posts.service.PostsService;
+import com.est.neonaduri.domain.wishlist.domain.Wishlist;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,6 +75,24 @@ public class CompanionsController {
         }
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(newCompanions);
+    }
+
+    //예약후 업데이트
+    @PutMapping("/api/companions/{comId}/bookers")
+    public ResponseEntity<Companions> afterBook(@PathVariable String comId){
+        Companions companion = companionsService.afterBook(comId);
+
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(companion);
+    }
+
+    //찜 후 업데이트
+    @PutMapping("/api/companions/{comId}/wishlist")
+    public ResponseEntity<Companions> afterWish(@PathVariable String comId){
+        Companions companion = companionsService.afterWish(comId);
+
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(companion);
     }
 
 }

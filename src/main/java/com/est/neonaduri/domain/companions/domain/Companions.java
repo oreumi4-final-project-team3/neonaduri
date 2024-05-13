@@ -47,8 +47,20 @@ public class Companions {
     @PrePersist
     public void prePersist(){
         this.companionId = IdGenerator.generateCompanionId();
-        this.comStatus = this.comStatus == null ? false : this.comStatus;
+        //this.comStatus = this.comStatus == null ? false : this.comStatus;
+        this.comStatus = true;
         this.comWish = this.comWish == null ? 0 : this.comWish;
         this.comReserve = this.comReserve == null ? 0 : this.comReserve;
+    }
+
+    public void updateBook(Integer reserved){
+        this.comReserve = reserved;
+        if(this.comReserve == this.comRecruit){
+            this.comStatus = false;
+        }
+    }
+
+    public void updateWishList(Integer wished){
+        this.comWish = wished;
     }
 }
