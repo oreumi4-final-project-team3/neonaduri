@@ -56,7 +56,9 @@ function updateAreaInfo() {
 
 updateAreaInfo(); // 페이지 로드 시 함수 실행
 
+function reserveCompanion(spotName, spotAddr, areaCode){
 
+}
 
 // 스크롤 버튼 관련
 

@@ -14,13 +14,13 @@
     <input type="text" name="content" id="content"/>
     <br>
     <label for="areaCode">지역 코드</label>
-    <input type="text" name="areaCode" id="areaCode"/>
+    <input type="text" name="areaCode" id="areaCode" th:value="${post.areaCode}"/>
     <br>
     <label for="spotName">관광지명</label>
-    <input type="text" name="spotName" id="spotName"/>
+    <input type="text" name="spotName" id="spotName" th:value="${post.spotName}"/>
     <br>
     <label for="address">주소</label>
-    <input type="text" name="address" id="address"/>
+    <input type="text" name="address" id="address" th:value="${post.address}"/>
     <br>
 
     <label for="comRecruit">모집인원</label>

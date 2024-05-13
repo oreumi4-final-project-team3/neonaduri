@@ -121,6 +121,7 @@ public class SpotsService {
 		Posts post = postsRepository.findById(postId).orElseThrow(() -> new EntityNotFoundException("해당하는 게시물을 찾을 수 없습니다."));
 		Spots spot = spotsRepository.findByPosts_PostId(postId);
 		return new SpotPageDto(
+				post.getPostId(),
 				post.getSpotName(),
 				post.getAddress(),
 				spot.getSpotImg(),

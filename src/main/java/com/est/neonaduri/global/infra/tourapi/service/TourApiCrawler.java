@@ -32,7 +32,6 @@ public class TourApiCrawler {
     // 매달 1일 10시30분에 실행
     @Scheduled(cron = "0 30 10 1 * *")
     //60초마다 갱신
-
     //@Scheduled(fixedRate = 60000)
 
     public void performTourApiCrawler(){

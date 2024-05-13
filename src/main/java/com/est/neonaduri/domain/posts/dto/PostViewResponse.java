@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 @Getter
-@NoArgsConstructor
 public class PostViewResponse {
     private String postId;
     private Users users;
@@ -18,6 +17,7 @@ public class PostViewResponse {
     private Integer areaCode;
     private String address;
     private LocalDateTime created;
+    private String spotName;
 
     public PostViewResponse(Posts post) {
         this.postId = post.getPostId();
@@ -28,6 +28,12 @@ public class PostViewResponse {
         this.areaCode = post.getAreaCode();
         this.address = post.getAddress();
         this.created = post.getCreated();
+    }
+
+    public PostViewResponse(){
+        this.areaCode = 1;
+        this.spotName = "관광지 이름을 입력해 주세요";
+        this.address = "관광지 주소를 입력해 주세요";
     }
 
 }

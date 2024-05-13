@@ -105,7 +105,7 @@ if(createButton){
             body: formData
         }).then(()=>{
           alert('등록 완료되었습니다');
-          location.replace("companions");
+          location.replace("/companions");
         })
     });
 }
