@@ -1,57 +1,6 @@
-/* 전체 헤더 스타일링 */
 
-/* 로고 이미지 스타일링 */
-.header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 160px;
-    margin-top: 10px;
-}
-/* 각 요소들의 스타일 */
-.logo, .header-buttons, .user-controls {
-    display: flex;
-    align-items: center; /* 세로 중앙 정렬 */
-}
-.header logo{
-    width:200px;
-    height: 200px;
-}
-.logo img{
-    cursor:pointer;
-}
-/*여기갈까? 같이갈까? 버튼 설정*/
-.header-buttons span {
-    margin-right: 50px; /* 버튼 사이의 간격 설정 */
-    font-size: 25px;
-    padding: 5px 10px;
-    cursor: pointer;
-}
 .header-btn2{
     font-weight: bold;
-}
-/*마이페이지 버튼과 찜 버튼 설정*/
-.user-controls img{
-    margin-right: 30px;
-    /*padding: 5px 10px;*/
-    cursor: pointer;
-}
-
-body {
-    width: 1920px;
-    height: 100%;
-    margin: 0 auto;
-    padding: 0;
-    overflow-x: hidden;
-    font-family: Arial, sans-serif;
-}
-
-/*구분 선*/
-.separator {
-    border-top: 1px solid #ccc; /* 실선 구분선 */
-    /* border-top: 1px dashed #ccc; */ /* 점선 구분선 */
-    /* border-top: 1px dotted #ccc; */ /* 점선 구분선 */
-    margin-top: 20px; /* 구분선 위 여백 설정 */
 }
 
 /*중간 body 부분*/

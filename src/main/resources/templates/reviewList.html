@@ -5,26 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>리뷰리스트</title>
     <link rel="stylesheet" th:href="@{/css/review.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
 
 </head>
 <body>
 <header>
-    <div class ="header">
-        <div class="logo">
-            <img th:src="@{/images/logo.png}" alt="팀 로고" onclick="goToMainPage()"/>
-
-        </div>
-        <div class="header-buttons">
-            <span class="header-btn1" onclick="goToHerePage()" style="font-weight: normal">여기갈까?</span>
-            <span class="header-btn2">같이갈까?</span>
-            <span class="header-btn3" onclick="goToReviewPage()">갔다왔어?</span>
-        </div>
-        <div class="user-controls">
-            <img th:src="@{/images/mypage.png}" alt="마이페이지로 이동"/>
-            <img th:src="@{/images/like.png}" alt="찜"/>
-        </div>
-    </div>
-    <div class="separator"></div>
+    <div th:replace="~{header.html}"></div>
 </header>
 <main>
     <div class="regions">
@@ -47,7 +33,7 @@
 
     <div>
         <button type="button" id="create-btn"
-                     th:onclick="|location.href='@{/uploadReview}'|">글 등록</button>
+                th:onclick="|location.href='@{/uploadReview}'|">글 등록</button>
     </div>
 
     <div class="tourist-sites">
@@ -77,27 +63,10 @@
 </main>
 <div class="separator"></div>
 <footer>
-    <div class="footer">
-        <div class="footer-logo">
-            <img th:src="@{/images/logo.png}" alt="팀 로고"/>
-        </div>
-        <div class="footer-group">
-            <div class="data">
-                <span>데이터 제공 : 한국관광공사 TourAPI</span>
-            </div>
-            <div class="icon-made">
-                <span>아이콘 제작자: Freepik - Flaticon</span>
-            </div>
-        </div>
-        <div class="github-link">
-            <a href="https://github.com/oreumi4-final-project-team3/neonaduri">
-                <img th:src="@{/images/github.png}" alt="깃허브로 이동"/>
-            </a>
-        </div>
-    </div>
+    <div th:replace="~{footer.html}"></div>
 </footer>
 </body>
 <script src="/js/review.js"></script>
-
+<script src="/js/page.js" defer></script>
 </html>
 

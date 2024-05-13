@@ -10,6 +10,7 @@ import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -19,12 +20,16 @@ public class SearchService {
     private final PostsRepository postsRepository;
     private final RedisTemplate<String,String> redisTemplate;
 
-    public List<PostsListDTO> searchPosts(PostSearchCondition postSearchCondition){
+    public Map<String, List<PostsListDTO>> searchPosts(PostSearchCondition postSearchCondition){
         redisTemplate.opsForZSet().incrementScore("ranking",postSearchCondition.getSearchText(),1);
-        return postsRepository.search(postSearchCondition)
+        List<PostsListDTO> searchedPosts = postsRepository.search(postSearchCondition)
                 .stream()
                 .map(PostsListDTO::new)
                 .collect(Collectors.toList());
+        Map<String, List<PostsListDTO>> groupedByCategory = searchedPosts.stream()
+                .collect(Collectors.groupingBy(PostsListDTO::getPostCategory));
+
+        return groupedByCategory;
     }
 
     public List<SearchRankResponseDto> getSearchRankList(){

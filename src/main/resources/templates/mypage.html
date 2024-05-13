@@ -8,16 +8,16 @@
 <body>
 <header>
     <div class="header_box">
-        <a th:href="@{/api/main}">
+        <a href="#" onclick="goToMainPage()">
             <img class="logo" th:src="@{/images/neonaduriLogo.png}" alt="너나들이 로고">
         </a>
         <div class="nav_box">
             <nav class="nav_one">
                 <ul>
-                    <li><a th:href="@{/api/main}">홈</a></li>
+                    <li><a href="#" onclick="goToMainPage()">홈</a></li>
                     <li><a href="#" onclick="goToHerePage()">여기 갈까?</a></li>
-                    <li><a href="#">같이 갈까?</a></li>
-                    <li><a href="#" onclick="goToReviewPage()">후기 볼까?</a></li>
+                    <li><a href="#" onclick="goTogether()">같이 갈까?</a></li>
+                    <li><a href="#" onclick="goToReviewPage()">리뷰 볼까?</a></li>
                 </ul>
             </nav>
             <nav class="nav_two">
@@ -29,7 +29,7 @@
         </div>
     </div>
     <div class="header_subbox">
-        <nav class="my_matching"><a th:href="@{#}">나의 매칭</a></nav>
+        <nav class="my_matching"><a th:href="@{/myMatching}">나의 매칭</a></nav>
         <nav class="my_info"><a href="#" onclick="reloadPage()">내 정보</a></nav>
     </div>
     <hr>
@@ -86,10 +86,9 @@
                 <img th:src="@{/images/edit_profile_img.png}" alt="프로필 이미지 변경 버튼">
             </label>
             <!-- 파일 업로드 input -->
-            <input id="file-upload" type="file">
-            <!--             onchange="uploadImage(this)"-->
+            <input id="file-upload" type="file" onchange="uploadImage(this)">
             <input type="text" id="userName" th:value="${user.userName}">
-            <button class="edit-nickname" onclick="uploadImage()">
+            <button class="edit-nickname" onclick="updateUser()">
                 <img th:src="@{/images/edit_pencil.png}" alt="수정하기">
             </button>
         </div>
@@ -135,6 +134,7 @@
         <img th:src="@{/images/github.png}">
     </a>
 </footer>
-<script th:src="@{/js/mypage.js}"></script>
+<script src="/js/mypage.js"></script>
+<script src="/js/page.js"></script>
 </body>
 </html>

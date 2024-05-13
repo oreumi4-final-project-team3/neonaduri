@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>같이갈까?</title>
     <link rel="stylesheet" th:href="@{/css/companionsDetail.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
 </head>
 <body>
 <header>
@@ -19,7 +20,9 @@
             <span class="header-btn3" onclick="goToReviewPage()">후기볼까?</span>
         </div>
         <div class="user-controls">
-            <img th:src="@{/images/mypage.png}" alt="마이페이지로 이동"/>
+            <a href="#" onclick="goToMyPage()">
+                <img th:src="@{/images/mypage.png}" alt="마이페이지로 이동"/>
+            </a>
             <img th:src="@{/images/like.png}" alt="찜"/>
         </div>
     </div>
@@ -29,21 +32,23 @@
 <main>
     <div class="regions">
         <div class="region-image">
-            <img id="regionImage" th:src="@{/images/companionTestImg.png}" alt="샘플이미지"/>
+            <img id="regionImage" th:src="@{${img_link}}" alt="게시물 이미지"/>
         </div>
     </div>
 
     <div class="title-contents">
-        <p class="title-text">제목</p>
+        <p class="title-text" th:text="${post.postTitle}"></p>
+        <input type="hidden" id="companion-id" th:value="${companion.companionId}">
         <div class="title-contents-info">
             <p>조회수</p>
-            <p>15</p>
+            <p th:text="${post.postView}"></p>
             <p> | </p>
             <p>관심인원</p>
-            <p>45</p>
+            <p th:text="${companion.comWish}"></p>
             <p> | </p>
             <p>댓글</p>
-            <p>3</p>
+            <!-- 댓글 기능 추가 필요 -->
+            <p>0</p>
         </div>
     </div>
 
@@ -53,15 +58,25 @@
 
             <div class="tour-info-schedule-details">
                 <div class="tour-info-schedule">
-                    <p>🗓️ 2024.05.20</p>
+                    <p>🗓️</p>
+                    <p th:text="${companion.comStart}"></p>
                     <p>&nbsp;~&nbsp;</p>
-                    <p>2024.05.25</p>
+                    <p th:text="${companion.comEnd}"></p>
                 </div>
 
                 <div class="tour-info-region">
-                    <p>📍 전라북도,&nbsp;</p>
-                    <p>전주,&nbsp;</p>
-                    <p>한옥마을</p>
+                    <div>
+                        <p>📍</p>
+                        <p th:text="${post.areaCode}"></p>
+                    </div>
+                    <div>
+                        <p>주소 : </p>
+                        <p th:text="${post.address}">&nbsp;</p>
+                    </div>
+                    <div>
+                        <p>관광지명 : </p>
+                        <p th:text="${post.spotName}"></p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -72,22 +87,24 @@
             <div class="tour-info-userInfo-wrap">
                 <div class="profileimg"></div>
                     <div class="tour-info-userInfo-detail">
-                        <p class="tour-info-userInfo-userName">재원</p>
+                        <p class="tour-info-userInfo-userName" th:text="${user.userName}"></p>
                         <div class="tour-info-userInfo-details">
-                            <p>20대</p>
+                            <!-- 나이 설정 필요 -->
+                            <p th:text="${user.userBirth}"></p>
                             <p>&nbsp;|&nbsp;</p>
-                            <p>남자</p>
+                            <p th:text="${user.userGender}"></p>
                             <p>&nbsp;|&nbsp;</p>
-                            <p>서울</p>
+                            <p th:text="${user.userRegion}"></p>
                         </div>
                     </div>
+                </div>
             </div>
         </div>
 
         <div class="tour-info-content-wrap">
             <p class="title-text">여행 소개</p>
             <div class="tour-info-content">
-                <p>게시글 내용</p>
+                <p th:text="${post.postContent}"></p>
             </div>
 
             <div class="tour-info-comment-wrap">
@@ -118,20 +135,23 @@
             <div class="tour-info-companions-details">
                 <div class="tour-info-companions-detail">
                     <p>모집 인원&nbsp;:&nbsp;</p>
-                    <p>5명</p>
+                    <p th:text="${companion.comRecruit}"></p>
+                    <p>명</p>
                 </div>
                 <div class="tour-info-companions-detail">
                     <p>현재 동행 인원&nbsp;:&nbsp;</p>
-                    <p>3명</p>
+                    <p th:text="${companion.comReserve}"></p>
+                    <p>명</p>
                 </div>
                 <div class="tour-info-companions-detail">
                     <p>관심 가지는 인원&nbsp;:&nbsp;</p>
-                    <p>45명</p>
+                    <p th:text="${companion.comWish}"></p>
+                    <p>명</p>
                 </div>
             </div>
             <div class="tour-info-companions-button-wrap">
-                <a class="tour-info-companions-button">같이갈래!</a>
-                <a class="tour-info-companions-button-wish">같이 가볼까?(찜)</a>
+                <a class="tour-info-companions-button" id="booking-btn">같이갈래!</a>
+                <a class="tour-info-companions-button-wish" id="wishing-btn">같이 가볼까?(찜)</a>
             </div>
             <div class="tour-info-companions-map"></div>
         </div>
@@ -162,4 +182,6 @@
     </div>
 </footer>
 </body>
+<script src="/js/uploadReview.js"></script>
+<script src="/js/page.js"></script>
 </html>

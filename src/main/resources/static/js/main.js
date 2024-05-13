@@ -1,16 +1,16 @@
 
 function searchSpot() {
     // 입력 필드에서 값 가져오기
-    var spotName = document.getElementById("searchInput").value;
+    var searchText = document.getElementById("searchInput").value;
 
     // 만약 검색어가 비어 있으면 알림 표시
-    if (spotName === "") {
-        alert("도시 이름을 입력하세요.");
+    if (searchText === "") {
+        alert("검색어가 비어있습니다.");
         return;
     }
 
     // 입력된 도시 이름으로 검색
-    window.location.href = "/api/spots/name/" + encodeURIComponent(spotName);
+    window.location.href = "/api/search?searchText=" + encodeURIComponent(searchText);
 }
 
 function navigateToSpotDetail(element) {
@@ -21,20 +21,7 @@ function getSpotIdAndNavigate(element) {
     const spotId = element.parentNode.querySelector('.spotId').value;
     window.location.replace("/api/spot/" + spotId);
 }
-function goToHerePage() {
-    window.location.href = "/api/spots";
-}
-function goToReviewPage(){
-    window.location.href = "/reviews";
-}
-function goToMainPage() {
-    window.location.href = "/api/main";
-}
 
-// 페이지 렌더링을 위해 관리자 id로 userId 임시 설정
-function goToMyPage() {
-    window.location.href = "/api/mypage/admin_id";
-}
 
 document.addEventListener("DOMContentLoaded", function() {
     const userBirthElements = document.querySelectorAll(".userBirth");

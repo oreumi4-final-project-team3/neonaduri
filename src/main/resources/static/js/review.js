@@ -1,10 +1,6 @@
-// "여기갈까?" 버튼 클릭 시 관광지 게시글 리스트로 이동
-function goToHerePage() {
-    window.location.href = "/api/spots";
-}
-// 전체 버튼 클릭 시 전체리스트로 이동
-function goToAllPage() {
-    window.location.href = "/reviews";
+
+function goToMyPage() {
+    window.location.href = "/api/mypage/admin_id";
 }
 
 // 각 지역 선택시 관광지 게시글 리스트 처리
@@ -97,9 +93,3 @@ document.querySelector('.region-all-btn').addEventListener('click', function(eve
     updateRegionImage(defaultRegion); // 대표 이미지 업데이트 함수 호출
 });
 
-function goToReviewPage(){
-    window.location.href = "/reviews";
-}
-function goToMainPage(){
-    window.location.href = "/api/main";
-}

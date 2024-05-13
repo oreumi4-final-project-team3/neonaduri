@@ -5,32 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>관심목록</title>
     <link rel="stylesheet" th:href="@{/css/wishlist.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
 </head>
 <body>
 <header>
-    <div class ="header">
-        <div class="logo">
-            <img th:src="@{/images/logo.png}" alt="팀 로고" onclick="goToMainPage()"/>
-
-        </div>
-        <div class="header-buttons">
-            <span class="header-btn1" onclick="goToHerePage()">여기갈까?</span>
-            <span class="header-btn2">같이갈까?</span>
-            <span class="header-btn3" onclick="goToReviewPage()">후기볼까?</span>
-
-        </div>
-        <div class="user-controls">
-            <img th:src="@{/images/mypage.png}" alt="마이페이지로 이동"/>
-            <img th:src="@{/images/like.png}" alt="찜"/>
-        </div>
-    </div>
-    <div class="separator"></div>
+    <div th:replace="~{header.html}"></div>
 </header>
 <main>
     <!--최근 인기 동행 게시글-->
     <div class="hotCompanions">
 
-<!--        <img  th:src="@{/images/companionsMark.png}"/>-->
+        <!--        <img  th:src="@{/images/companionsMark.png}"/>-->
         <div>
             <span id="title"> 🤍 관심있는 매칭</span>
         </div>
@@ -85,28 +70,11 @@
 </main>
 <div class="separator"></div>
 <footer>
-    <div class="footer">
-        <div class="footer-logo">
-            <img th:src="@{/images/logo.png}" alt="팀 로고"/>
-        </div>
-        <div class="footer-group">
-            <div class="data">
-                <span>데이터 제공 : 한국관광공사 TourAPI</span>
-            </div>
-            <div class="icon-made">
-                <span>아이콘 제작자: Freepik - Flaticon</span>
-            </div>
-        </div>
-        <div class="github-link">
-            <a href="https://github.com/oreumi4-final-project-team3/neonaduri">
-                <img th:src="@{/images/github.png}" alt="깃허브로 이동">
-            </a>
-        </div>
-    </div>
+    <div th:replace="~{footer.html}"></div>
 </footer>
 </body>
 <script src="/js/wishlist.js" defer></script>
-
+<script src="/js/page.js" defer></script>
 <script>
     function getSpotIdAndNavigate(element) {
         const spotId = element.parentNode.querySelector('.spotId').value;

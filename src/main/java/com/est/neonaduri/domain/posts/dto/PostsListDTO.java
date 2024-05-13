@@ -18,6 +18,7 @@ public class PostsListDTO {
     private String spotName;
     private String writerId;
     private LocalDateTime userBirth;
+    private String postCategory;
     private String userGender;
     private String postTitle;
     private String postContent;
@@ -28,6 +29,7 @@ public class PostsListDTO {
         this.spotName = posts.getSpotName();
         this.writerId = posts.getUsers().getUserName();
         this.userBirth = posts.getUsers().getUserBirth();
+        this.postCategory=posts.getPostCategory();
         this.userGender = posts.getUsers().getUserGender();
         this.postTitle = posts.getPostTitle();
         this.postContent = posts.getPostContent();

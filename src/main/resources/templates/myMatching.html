@@ -8,16 +8,16 @@
 <body>
 <header>
     <div class="header_box">
-        <a th:href="@{/api/main}">
+        <a href="#" onclick="goToMainPage()">
             <img class="logo" th:src="@{/images/neonaduriLogo.png}" alt="너나들이 로고">
         </a>
         <div class="nav_box">
             <nav class="nav_one">
                 <ul>
-                    <li><a th:href="@{/api/main}">홈</a></li>
+                    <li><a href="#" onclick="goToMainPage()">홈</a></li>
                     <li><a href="#" onclick="goToHerePage()">여기 갈까?</a></li>
-                    <li><a href="#">같이 갈까?</a></li>
-                    <li><a href="#" onclick="goToReviewPage()">후기 볼까?</a></li>
+                    <li><a href="#" onclick="goTogether()">같이 갈까?</a></li>
+                    <li><a href="#" onclick="goToReviewPage()">리뷰 볼까?</a></li>
                 </ul>
             </nav>
             <nav class="nav_two">
@@ -29,8 +29,8 @@
         </div>
     </div>
     <div class="header_subbox">
-        <nav class="my_matching"><a th:href="@{#}">나의 매칭</a></nav>
-        <nav class="my_info"><a href="#" onclick="reloadPage()">내 정보</a></nav>
+        <nav class="my_matching"><a href="#" onclick="reloadPage()">나의 매칭</a></nav>
+        <nav class="my_info"><a href="#" onclick="goToMyPage()">내 정보</a></nav>
     </div>
     <hr>
 </header>
@@ -50,6 +50,9 @@
         <img th:src="@{/images/github.png}">
     </a>
 </footer>
+
 <script th:src="@{/js/my-matching.js}"></script>
+<script src="/js/page.js"></script>
+
 </body>
 </html>
