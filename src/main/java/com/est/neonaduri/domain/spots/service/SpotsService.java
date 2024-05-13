@@ -59,7 +59,7 @@ public class SpotsService {
 		Page<Spots> spots = spotsRepository.findAll(pageable);
 		Page<SpotsListDTO> dtoPage = spots.map(spot -> {
 			Posts posts = spot.getPosts();
-			if (posts != null && posts.getPostCategory().equals("spots")) {
+			if (posts != null && posts.getPostCategory().equals("spot")) {
 				return new SpotsListDTO(
 					posts.getAddress(),
 					posts.getSpotName(),

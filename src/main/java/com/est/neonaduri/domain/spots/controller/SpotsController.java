@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import com.est.neonaduri.domain.companions.service.CompanionsService;
 import com.est.neonaduri.domain.postImages.service.PostImagesService;
+import com.est.neonaduri.domain.posts.service.SearchService;
 import com.est.neonaduri.domain.spots.dto.SpotPageDto;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -26,11 +27,13 @@ public class SpotsController {
 	private final SpotsService spotsService;
 	private final CompanionsService companionsService;
 	private final PostImagesService postImagesService;
+	private final SearchService searchService;
 	@Autowired
-	public SpotsController(SpotsService spotsService,CompanionsService companionsService,PostImagesService postImagesService) {
+	public SpotsController(SpotsService spotsService,CompanionsService companionsService,PostImagesService postImagesService,SearchService searchService) {
 		this.spotsService = spotsService;
 		this.companionsService=companionsService;
 		this.postImagesService=postImagesService;
+		this.searchService=searchService;
 	}
 
 	//데이터 가공 - 게시글 리스트 페이지나 ,인기 게시글 페이지에서 필요한 데이터만 추출
@@ -105,6 +108,7 @@ public class SpotsController {
 		model.addAttribute("spots",spotsService.getHotSpots());
 		model.addAttribute("companions",companionsService.getHotCompanions());
 		model.addAttribute("top",spotsService.getToptenSpots());
+		model.addAttribute("searchRank",searchService.getSearchRankList());
 		return "main";
 	}
 }
