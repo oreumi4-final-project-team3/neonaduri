@@ -4,30 +4,11 @@
     <meta charset="UTF-8">
     <title>너나들이 - 마이페이지</title>
     <link rel="stylesheet" th:href="@{/css/mypage.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
 </head>
 <body>
 <header>
-    <div class="header_box">
-        <a href="#" onclick="goToMainPage()">
-            <img class="logo" th:src="@{/images/neonaduriLogo.png}" alt="너나들이 로고">
-        </a>
-        <div class="nav_box">
-            <nav class="nav_one">
-                <ul>
-                    <li><a href="#" onclick="goToMainPage()">홈</a></li>
-                    <li><a href="#" onclick="goToHerePage()">여기 갈까?</a></li>
-                    <li><a href="#" onclick="goTogether()">같이 갈까?</a></li>
-                    <li><a href="#" onclick="goToReviewPage()">리뷰 볼까?</a></li>
-                </ul>
-            </nav>
-            <nav class="nav_two">
-                <ul>
-                    <li><a href="#">로그아웃</a></li>
-                    <li><a href="#"><img th:src="@{/images/like.png}" alt="위시리스트"></a></li>
-                </ul>
-            </nav>
-        </div>
-    </div>
+    <div th:replace="~{header.html}"></div>
     <div class="header_subbox">
         <nav class="my_matching"><a th:href="@{/myMatching}">나의 매칭</a></nav>
         <nav class="my_info"><a href="#" onclick="reloadPage()">내 정보</a></nav>

@@ -65,10 +65,11 @@ public class SpotsService {
 					posts.getSpotName(),
 					spot.getSpotImg(),
 					posts.getPostContent(),
-					spot.getSpotId()
+					spot.getSpotId(),
+					posts.getPostId()
 				);
 			} else {
-				return new SpotsListDTO("", "", "", "","");
+				return new SpotsListDTO("", "", "", "","","");
 			}
 		});
 		return dtoPage;
@@ -83,7 +84,8 @@ public class SpotsService {
 				spot.getPosts().getSpotName(),
 				spot.getSpotImg(),
 				spot.getPosts().getPostContent(),
-				spot.getSpotId()
+				spot.getSpotId(),
+				spot.getPosts().getPostId()
 			))
 			.peek(dto -> System.out.println("DTO: " + dto))
 			.collect(Collectors.toList());
@@ -99,7 +101,8 @@ public class SpotsService {
 				spot.getPosts().getSpotName(),
 				spot.getSpotImg(),
 				spot.getPosts().getPostContent(),
-				spot.getSpotId()
+				spot.getSpotId(),
+				spot.getPosts().getPostId()
 			))
 			.collect(Collectors.toList());
 
@@ -108,22 +111,12 @@ public class SpotsService {
 	public List<SpotNameDTO> getToptenSpots(){
 		return spotsRepository.findToptenSpots().stream().map(spot-> new SpotNameDTO(
 			spot.getPosts().getSpotName(),
-			spot.getSpotId()
+			spot.getSpotId(),
+			spot.getPosts().getPostId()
 		)).collect(Collectors.toList());
 	}
 
-//	public SpotPageDto getSpotPage(String spotId){
-//		Spots spot = spotsRepository.findById(spotId)
-//				.orElseThrow(() -> new EntityNotFoundException("해당하는 게시물을 찾을 수 없습니다."));
-//		return new SpotPageDto(
-//				spot.getPosts().getSpotName(),
-//				spot.getPosts().getAddress(),
-//				spot.getSpotImg(),
-//				spot.getPosts().getPostContent(),
-//				spot.getPosts().getAreaCode(),
-//				spot.getMapX(),
-//				spot.getMapY());
-//	}
+
 	public SpotPageDto getSpotPageByPostId(String postId){
 		Posts post = postsRepository.findById(postId).orElseThrow(() -> new EntityNotFoundException("해당하는 게시물을 찾을 수 없습니다."));
 		Spots spot = spotsRepository.findByPosts_PostId(postId);
