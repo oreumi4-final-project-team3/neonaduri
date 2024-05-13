@@ -7,7 +7,7 @@ function goToHerePage() {
     window.location.href = "/api/spots";
 }
 function goToCompanionsPage() {
-    window.location.href = "/api/posts";
+    window.location.href = "/companions";
 }
 function goToReviewPage(){
     window.location.href = "/reviews";
