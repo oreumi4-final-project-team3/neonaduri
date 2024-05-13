@@ -1,4 +1,6 @@
-
+function goToCompanionsPage() {
+    window.location.href = "/companions";
+}
 
 function goToMyPage() {
     window.location.href = "/api/mypage/admin_id";

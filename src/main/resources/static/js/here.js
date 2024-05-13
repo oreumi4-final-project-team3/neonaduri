@@ -1,4 +1,5 @@
 
+
     // "여기갈까?" 버튼 클릭 시 새로고침
     function goToHerePage() {
     window.location.href = "/api/spots";
@@ -6,8 +7,9 @@
 
     // "같이갈까?" 버튼 클릭 시 새로고침
     function goToCompanionsPage() {
-        window.location.href = "/api/posts";
+        window.location.href = "/companions";
     }
+
 
     // 각 지역 선택시 관광지 게시글 리스트 처리
     document.addEventListener('DOMContentLoaded', function() {
@@ -100,20 +102,9 @@
 
     });
 
-    function getSpotIdAndNavigate(element) {
-        const spotId = element.parentNode.querySelector('.spotId').value;
-        window.location.replace("/api/spot/" + spotId);
-    }
-    function goToHerePage() {
-        window.location.href = "/api/spots";
-    }
-    function goToReviewPage(){
-        window.location.href = "/reviews";
-    }
-    function goToMainPage() {
-        window.location.href = "/api/main";
+    function getPostIdAndNavigate() {
+        const postId = document.querySelector('.postId').value;
+        window.location.replace("/api/spot/" + postId);
     }
 
-    function goToMyPage() {
-        window.location.href = "/api/mypage/admin_id";
-    }
+

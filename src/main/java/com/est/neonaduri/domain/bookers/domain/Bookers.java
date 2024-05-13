@@ -2,6 +2,7 @@ package com.est.neonaduri.domain.bookers.domain;
 
 import com.est.neonaduri.domain.companions.domain.Companions;
 import com.est.neonaduri.domain.users.domain.Users;
+import com.est.neonaduri.global.utils.IdGenerator;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,4 +27,9 @@ public class Bookers {
     @ManyToOne
     @JoinColumn(name = "COMPANION_ID", nullable = false)
     private Companions companions;
+
+    @PrePersist
+    public void prePersist(){
+        this.bookerId = IdGenerator.generateBookerId();
+    }
 }

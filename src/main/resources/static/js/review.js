@@ -93,3 +93,47 @@ document.querySelector('.region-all-btn').addEventListener('click', function(eve
     updateRegionImage(defaultRegion); // 대표 이미지 업데이트 함수 호출
 });
 
+function getAreaName(areaCode){
+    switch (areaCode){
+        case 1:
+            return "서울";
+            break;
+        case 2:
+            return "인천";
+            break;
+        case 31:
+            return "경기";
+            break;
+        case 32:
+            return "강원";
+            break;
+        case 33:
+            return "충북";
+            break;
+        case 34:
+            return "충남";
+            break;
+        case 35:
+            return "경북";
+            break;
+        case 36:
+            return "경남";
+            break;
+        case 37:
+            return "전북";
+            break;
+        case 38:
+            return "전남";
+            break;
+        case 39:
+            return "제주";
+            break;
+
+    }
+}
+document.addEventListener('DOMContentLoaded', function() {
+    // areaCode 값을 정수형으로 변환
+    const areaCode = parseInt(document.getElementById('areaCode').value, 10);
+    const areaText = document.getElementById('areaText');
+    areaText.innerText = "지역 : " + getAreaName(areaCode);
+});
