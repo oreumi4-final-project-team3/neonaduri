@@ -1,3 +1,5 @@
+const bookingButton = document.getElementById('booking-btn');
+
 function goToMainPage() {
     window.location.href = "/api/main";
 }
