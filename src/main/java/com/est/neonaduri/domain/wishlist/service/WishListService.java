@@ -9,6 +9,9 @@ import com.est.neonaduri.domain.companions.domain.Companions;
 import com.est.neonaduri.domain.companions.dto.CompanionsDTO;
 import com.est.neonaduri.domain.companions.repository.CompanionsRepository;
 import com.est.neonaduri.domain.posts.domain.Posts;
+import com.est.neonaduri.domain.posts.repository.PostsRepository;
+import com.est.neonaduri.domain.users.domain.Users;
+import com.est.neonaduri.domain.users.repository.UserRepository;
 import com.est.neonaduri.domain.wishlist.domain.Wishlist;
 import com.est.neonaduri.domain.wishlist.repository.WishListRepository;
 import lombok.RequiredArgsConstructor;
@@ -23,10 +26,12 @@ import org.springframework.stereotype.Service;
 public class WishListService {
     private final WishListRepository wishListRepository;
     private final CompanionsRepository companionsRepository;
+    private final UserRepository userRepository;
+    private final PostsRepository postsRepository;
 
 
     public Page<CompanionsDTO> getWishlists(String userId, Pageable pageable) {
-        Page<Wishlist> wishlists = wishListRepository.findAllByUsersUserId(userId,pageable);
+        Page<Wishlist> wishlists = wishListRepository.findAllByUsersUserId(userId, pageable);
         List<CompanionsDTO> dtoList = new ArrayList<>();
 
         for (Wishlist wishlist : wishlists) {
@@ -35,18 +40,29 @@ public class WishListService {
 
             if (companions != null) {
                 CompanionsDTO dto = new CompanionsDTO(
-                    companions.get().getPosts().getUsers().getUserName(),
-                    companions.get().getPosts().getUsers().getUserBirth(),
-                    companions.get().getPosts().getUsers().getUserGender(),
-                    companions.get().getComStart(),
-                    companions.get().getComEnd(),
-                    companions.get().getPosts().getPostTitle(),
-                    companions.get().getPosts().getPostContent()
+                        companions.get().getPosts().getUsers().getUserName(),
+                        companions.get().getPosts().getUsers().getUserBirth(),
+                        companions.get().getPosts().getUsers().getUserGender(),
+                        companions.get().getComStart(),
+                        companions.get().getComEnd(),
+                        companions.get().getPosts().getPostTitle(),
+                        companions.get().getPosts().getPostContent()
                 );
                 dtoList.add(dto);
             }
 
         }
         return new PageImpl<>(dtoList, pageable, wishlists.getTotalElements());
+    }
+
+    //CJW
+    public Wishlist save(String userId, String postId) {
+        Users user = userRepository.findByUserId(userId);
+        Posts post = postsRepository.findByPostId(postId);
+
+        return wishListRepository.save(Wishlist.builder()
+                .users(user)
+                .posts(post)
+                .build());
     }
 }
