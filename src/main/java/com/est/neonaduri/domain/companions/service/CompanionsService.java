@@ -138,5 +138,9 @@ public class CompanionsService {
         return companionsRepository.findByCompanionId(comId);
     }
 
+    public Companions findByPostId(String postId){
+       return companionsRepository.findByPosts_PostId(postId).orElseThrow(() -> new IllegalArgumentException("해당하는 게시물이 없습니다"));
+    }
+
 
 }
