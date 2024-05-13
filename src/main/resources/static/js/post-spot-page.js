@@ -2,6 +2,11 @@
 function goToHerePage() {
     window.location.href = "/api/spots";
 }
+
+function goToMyPage() {
+    window.location.href = "/api/mypage/admin_id";
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     addLineBreaks(); // 페이지 로드 완료 후 함수 호출
 });

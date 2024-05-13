@@ -2,6 +2,7 @@ function updateUser() {
     // 사용자가 입력한 데이터를 가져옵니다.
     var userEmail = document.getElementById('userEmail').value;
     var userRegion = document.getElementById('userRegion').value;
+    var userName = document.getElementById('userName').value;
 
     // 현재 페이지 URL에서 userId 추출
     var userId = window.location.pathname.split('/').pop();
@@ -10,6 +11,7 @@ function updateUser() {
     var userData = {
         userEmail: userEmail,
         userRegion: userRegion,
+        userName: userName
     };
 
     // AJAX 요청을 수행합니다.
@@ -63,20 +65,34 @@ function updateUserDetails() {
         });
 }
 
+// 페이지 링크
+function goToMainPage() {
+    window.location.href = "/api/main";
+}
 
 function goToHerePage() {
     window.location.href = "/api/spots";
 }
-function goToReviewPage(){
+function goToReviewPage() {
     window.location.href = "/reviews";
+}
+
+function goTogether() {
+    window.location.href = "/companions";
 }
 
 function reloadPage() {
     location.reload();
 }
 
+// 프로필 사진 업로드 기능
+// 파일 업로드 input 요소
+var fileInput = document.getElementById('file-upload');
+
+// 파일 업로드 버튼을 클릭할 때 이미지 업로드 함수 호출
+fileInput.addEventListener('change', uploadImage);
+
 function uploadImage() {
-    var fileInput = document.getElementById('file-upload');
     var file = fileInput.files[0];
     var formData = new FormData();
     formData.append('file', file);
@@ -88,34 +104,14 @@ function uploadImage() {
         .then(response => response.text())
         .then(data => {
             console.log('Uploaded image path:', data);
-            // 여기서 이미지 경로를 받아와서 화면에 표시하거나 다른 동작을 수행합니다.
+            // 이미지 경로를 받아와서 화면에 표시
+            var profileImg = document.querySelector(".profile_img");
+            profileImg.src = data; // 이미지 경로를 받아와서 화면에 표시
         })
         .catch(error => {
             console.error('Error:', error);
         });
 }
-
-// Users 테이블의 userImg 경로 가져오기
-// function uploadImage(input) {
-//     if (input.files && input.files[0]) {
-//         var formData = new FormData();
-//         formData.append("file", input.files[0]);
-//
-//         // AJAX를 사용하여 이미지 업로드
-//         fetch('/uploadImage', {
-//             method: 'POST',
-//             body: formData
-//         })
-//             .then(response => response.json())
-//             .then(data => {
-//                 // 데이터베이스에 저장된 이미지 경로를 가져와서 화면에 표시
-//                 document.querySelector('.profile_img').src = data.imageUrl;
-//             })
-//             .catch(error => {
-//                 console.error('Error:', error);
-//             });
-//     }
-// }
 
 // 프로필 이미지가 존재하면 띄우고, 없으면 default 이미지를 띄움.
 document.addEventListener("DOMContentLoaded", function() {

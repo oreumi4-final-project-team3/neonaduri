@@ -20,7 +20,9 @@
 
         </div>
         <div class="user-controls">
-            <img th:src="@{/images/mypage.png}" alt="마이페이지로 이동"/>
+            <a href="#" onclick="goToMyPage()">
+                <img th:src="@{/images/mypage.png}" alt="마이페이지로 이동"/>
+            </a>
             <img th:src="@{/images/like.png}" alt="찜"/>
         </div>
     </div>
@@ -30,7 +32,7 @@
     <!--최근 인기 동행 게시글-->
     <div class="hotCompanions">
 
-<!--        <img  th:src="@{/images/companionsMark.png}"/>-->
+        <!--        <img  th:src="@{/images/companionsMark.png}"/>-->
         <div>
             <span id="title"> 🤍 관심있는 매칭</span>
         </div>
