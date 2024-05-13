@@ -69,5 +69,24 @@ public class CompanionPageController {
 
         return "companionsDetail";
     }
+    @GetMapping("/companions/postId/{postId}")
+    public String showCompanionByPostId(@PathVariable String postId, Model model){
+        Companions companion = companionsService.findByPostId(postId);
+        PostImages img = postImagesService.findPostImages(companion.getPosts().getPostId());
+
+        model.addAttribute("companion",companion);
+        model.addAttribute("post",companion.getPosts());
+        model.addAttribute("user",companion.getPosts().getUsers());
+
+        if(img==null){
+            //사진 없을 경우 기본 이미지
+            model.addAttribute("img_link","/images/companionTestImg.png");
+        }
+        else{
+            model.addAttribute("img_link",img.getPostImagesId());
+        }
+
+        return "companionsDetail";
+    }
 
 }
