@@ -18,6 +18,10 @@ function getPostIdAndNavigate() {
     console.log("Post ID is: ", postId);
     window.location.replace("/api/spot/" + postId);
 }
+function getCompanionPostNavigate(){
+    const postId=document.querySelector('.postId').valueOf();
+    window.location.replace("/companions/postId/"+postId);
+}
 
 
 document.addEventListener("DOMContentLoaded", function() {
