@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SpotsRepository extends JpaRepository<Spots,String> {
+	Spots findByPosts_PostId(String postId);
 	// @Query를 사용한 예시
 	@Query("SELECT s FROM Spots s JOIN s.posts p WHERE p.areaCode = :areaCode AND p.postCategory = 'spots'")
 	Page<Spots> findSpotsByAreaCodeAndCategory(@Param("areaCode") int areaCode, Pageable pageable);
