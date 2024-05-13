@@ -48,14 +48,14 @@ document.addEventListener('DOMContentLoaded', function () {
         button.addEventListener('click', function() {
             const areaCode = this.getAttribute('data-area-code');
             fetchPosts(areaCode);
-            window.history.pushState({areaCode: areaCode}, `Region ${areaCode}`, `/api/posts/area/${areaCode}`);
-            location.href = `/api/posts/area/${areaCode}`;
+            window.history.pushState({areaCode: areaCode}, `Region ${areaCode}`, `/companions/${areaCode}`);
+            location.href = `/companions/${areaCode}`;
         });
     });
 });
 
 function fetchPosts(areaCode) {
-    fetch(`/api/posts/area/${areaCode}`)
+    fetch(`/companions/${areaCode}`)
         .then(response => response.json())
         .then(data => {
             const postsList = data.map(post => `
@@ -66,4 +66,40 @@ function fetchPosts(areaCode) {
             document.querySelector('.tourist-sites').innerHTML = postsList;
         })
         .catch(error => console.error('Error:', error));
+}
+
+//CJW
+//업로드 기능
+const createButton = document.getElementById('create-btn');
+
+if(createButton){
+    createButton.addEventListener('click',event=>{
+        event.preventDefault();
+
+        const inputData={
+            title : document.getElementById('title').value,
+            content: document.getElementById('content').value,
+            category: "companion",
+            areaCode: document.getElementById('areaCode').value,
+            spotName: document.getElementById('spotName').value,
+            address: document.getElementById('address').value,
+
+            comRecruit: document.getElementById('comRecruit').value,
+            comStart: document.getElementById('comStart').value,
+            comEnd: document.getElementById('comEnd').value
+        }
+
+        const formData = new FormData();
+        formData.append('data', new Blob([JSON.stringify(inputData)], {type: "application/json",}));
+        const fileInput = document.getElementById('fileInput');
+        formData.append('file', fileInput.files[0]);
+
+        fetch('/api/companions',{
+            method: 'POST',
+            body: formData
+        }).then(()=>{
+          alert('등록 완료되었습니다');
+          location.replace("companions");
+        })
+    });
 }

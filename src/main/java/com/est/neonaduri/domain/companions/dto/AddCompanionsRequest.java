@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @NoArgsConstructor
@@ -21,8 +22,8 @@ public class AddCompanionsRequest {
 
     //companions 테이블에 저장
     private Integer comRecruit;
-    private LocalDateTime comStart;
-    private LocalDateTime comEnd;
+    private LocalDate comStart;
+    private LocalDate comEnd;
 
     public AddPostRequest toPostRequest(){
         return AddPostRequest.builder()
