@@ -18,6 +18,7 @@ public class CompanionsResponseDTO {
     private String postContent;
     private String imgLink;
     //	private String img;
+    private String comId;
     private LocalDate comStart;
     private LocalDate comEnd;
     private Integer comRecruit;
@@ -34,6 +35,7 @@ public class CompanionsResponseDTO {
         this.postContent=post.getPostContent();
         this.imgLink = imgLink;
         //companion
+        this.comId = companion.getCompanionId();
         this.comStart = companion.getComStart();
         this.comEnd = companion.getComEnd();
         this.comRecruit = companion.getComRecruit();

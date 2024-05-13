@@ -1,6 +1,10 @@
 package com.est.neonaduri.global.view;
 
+import com.est.neonaduri.domain.companions.domain.Companions;
 import com.est.neonaduri.domain.companions.service.CompanionsService;
+import com.est.neonaduri.domain.postImages.domain.PostImages;
+import com.est.neonaduri.domain.postImages.service.PostImagesService;
+import com.est.neonaduri.domain.posts.domain.Posts;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -14,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequiredArgsConstructor
 public class CompanionPageController {
     private final CompanionsService companionsService;
+    private final PostImagesService postImagesService;
 
     @GetMapping("/uploadCompanion")
     public String uploadCompanion() {
@@ -43,6 +48,26 @@ public class CompanionPageController {
         model.addAttribute("pageType", "region");
 
         return "companions";
+    }
+
+    @GetMapping("/companions/id/{comId}")
+    public String showCompanion(@PathVariable String comId, Model model){
+        Companions companion = companionsService.findById(comId);
+        PostImages img = postImagesService.findPostImages(companion.getPosts().getPostId());
+
+        model.addAttribute("companion",companion);
+        model.addAttribute("post",companion.getPosts());
+        model.addAttribute("user",companion.getPosts().getUsers());
+
+        if(img==null){
+            //사진 없을 경우 기본 이미지
+            model.addAttribute("img_link","/images/companionTestImg.png");
+        }
+        else{
+            model.addAttribute("img_link",img.getPostImagesId());
+        }
+
+        return "companionsDetail";
     }
 
 }

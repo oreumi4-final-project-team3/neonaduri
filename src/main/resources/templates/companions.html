@@ -86,7 +86,7 @@
 
             <div class="middle-contents">
                 <div class="companion-image-placeholder">
-                    <img id="sample-image" th:src="${companion.imgLink}" alt="업로드한 이미지">
+                    <img id="sample-image" th:onclick="|location.href='@{/companions/id/{comtId}(comtId=${companion.comId})}'|" th:src="${companion.imgLink}" alt="업로드한 이미지">
                 </div>
 
                 <div class="companion-status">

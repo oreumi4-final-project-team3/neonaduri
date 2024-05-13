@@ -134,5 +134,9 @@ public class CompanionsService {
         return "/images/companionTestImg.png";
     }
 
+    public Companions findById(String comId){
+        return companionsRepository.findByCompanionId(comId);
+    }
+
 
 }
