@@ -6,7 +6,7 @@
 
     // "같이갈까?" 버튼 클릭 시 새로고침
     function goToCompanionsPage() {
-        window.location.href = "/api/posts";
+        window.location.href = "/companions";
     }
 
     // 각 지역 선택시 관광지 게시글 리스트 처리

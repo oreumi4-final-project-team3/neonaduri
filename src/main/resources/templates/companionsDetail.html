@@ -39,6 +39,7 @@
     <div class="title-contents">
         <p class="title-text" th:text="${post.postTitle}"></p>
         <input type="hidden" id="companion-id" th:value="${companion.companionId}">
+        <input type="hidden" id="post-id" th:value="${post.postId}">
         <div class="title-contents-info">
             <p>조회수</p>
             <p th:text="${post.postView}"></p>
@@ -150,7 +151,8 @@
                 </div>
             </div>
             <div class="tour-info-companions-button-wrap">
-                <a class="tour-info-companions-button" id="booking-btn">같이갈래!</a>
+                <a class="tour-info-companions-button" id="booking-btn" th:if="${companion.comStatus}">같이갈래!</a>
+                <span th:unless="${companion.comStatus}">예약 마감!!</span>
                 <a class="tour-info-companions-button-wish" id="wishing-btn">같이 가볼까?(찜)</a>
             </div>
             <div class="tour-info-companions-map"></div>
@@ -182,6 +184,6 @@
     </div>
 </footer>
 </body>
-<script src="/js/uploadReview.js"></script>
+<script src="/js/companionsDetail.js"></script>
 <script src="/js/page.js"></script>
 </html>
