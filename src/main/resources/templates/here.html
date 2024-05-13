@@ -40,25 +40,35 @@
                 <input type="hidden" class="spotId" th:value="${spot.spotId}">
             </div>
         </div>
+    </div>
 
-        <div class="pagination" th:if="${spots.totalElements > 0}">
-            <a th:if="${pageType == 'all' and spots.hasPrevious}" th:href="@{/api/spots(page=${currentPage - 1}, size=${spots.size})}">이전</a>
-            <a th:if="${pageType == 'region' and spots.hasPrevious}" th:href="@{/api/spots/code/{areaCode}(areaCode=${areaCode},page=${currentPage - 1}, size=${spots.size})}">이전</a>
+    <div class="pagination" th:if="${spots.totalElements > 0}">
+        <a th:if="${pageType == 'all' and spots.hasPrevious}" th:href="@{/api/spots(page=${currentPage - 1}, size=${spots.size})}">이전</a>
+        <a th:if="${pageType == 'region' and spots.hasPrevious}" th:href="@{/api/spots/code/{areaCode}(areaCode=${areaCode},page=${currentPage - 1}, size=${spots.size})}">이전</a>
 
-            <span th:each="pageNum : ${#numbers.sequence(1, spots.totalPages)}">
+        <span th:each="pageNum : ${#numbers.sequence(1, spots.totalPages)}">
             <a th:if="${pageType == 'all'}" th:href="@{/api/spots(page=${pageNum}, size=${spots.size})}" th:text="${pageNum}" th:classappend="${pageNum==currentPage} ? 'active'"></a>
             <a th:if="${pageType == 'region'}" th:href="@{/api/spots/code/{areaCode}(areaCode=${areaCode}, page=${pageNum}, size=${spots.size})}" th:text="${pageNum}" th:classappend="${pageNum==currentPage} ? 'active'"></a>
 
         </span>
 
-            <a th:if="${pageType == 'all' and spots.hasNext}" th:href="@{/api/spots(page=${currentPage + 1}, size=${spots.size})}">다음</a>
-            <a th:if="${pageType == 'region' and spots.hasNext}" th:href="@{/api/spots/code/{areaCode}(areaCode=${areaCode},page=${currentPage + 1}, size=${spots.size})}">다음</a>
+        <a th:if="${pageType == 'all' and spots.hasNext}" th:href="@{/api/spots(page=${currentPage + 1}, size=${spots.size})}">다음</a>
+        <a th:if="${pageType == 'region' and spots.hasNext}" th:href="@{/api/spots/code/{areaCode}(areaCode=${areaCode},page=${currentPage + 1}, size=${spots.size})}">다음</a>
+    </div>
+</main>
+<div class="separator"></div>
+<footer>
+    <div class="footer">
+        <div class="footer-logo">
+            <img th:src="@{/images/logo.png}" alt="팀 로고"/>
         </div>
     </main>
     <div class="separator"></div>
     <footer>
         <div th:replace="~{footer.html}"></div>
     </footer>
+    </div>
+</footer>
 </body>
 <script src="/js/here.js" defer></script>
 <script src="/js/page.js" defer></script>

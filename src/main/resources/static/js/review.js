@@ -1,4 +1,8 @@
 
+function goToMyPage() {
+    window.location.href = "/api/mypage/admin_id";
+}
+
 // 각 지역 선택시 관광지 게시글 리스트 처리
 document.addEventListener('DOMContentLoaded', function() {
     const regionButtons = document.querySelectorAll('.region-btn');

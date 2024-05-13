@@ -1,5 +1,9 @@
 
 
+function goToMyPage() {
+    window.location.href = "/api/mypage/admin_id";
+}
+
 // 연령 계산
 const postElements = document.querySelectorAll(".tourist-site");
 

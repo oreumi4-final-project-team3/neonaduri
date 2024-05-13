@@ -10,3 +10,7 @@ function goToCompanionsPage() {
 function goToReviewPage(){
     window.location.href = "/reviews";
 }
+
+function goToMyPage() {
+    window.location.href = "/api/mypage/admin_id";
+}

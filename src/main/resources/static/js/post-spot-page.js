@@ -1,5 +1,4 @@
 
-
 document.addEventListener('DOMContentLoaded', function() {
     addLineBreaks(); // 페이지 로드 완료 후 함수 호출
 });
