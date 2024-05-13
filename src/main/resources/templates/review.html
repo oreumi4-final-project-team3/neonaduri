@@ -19,14 +19,16 @@
       <span class="header-btn3" onclick="goToReviewPage()">갔다왔어?</span>
     </div>
     <div class="user-controls">
-      <img th:src="@{/images/mypage.png}" alt="마이페이지로 이동"/>
+      <a href="#" onclick="goToMyPage()">
+        <img th:src="@{/images/mypage.png}" alt="마이페이지로 이동"/>
+      </a>
       <img th:src="@{/images/like.png}" alt="찜"/>
     </div>
   </div>
   <div class="separator"></div>
 </header>
 <main>
-<div class="container">
+  <div class="container">
     <article>
       <div class="image">
         <img th:src="@{${img_link}}"/>
@@ -68,7 +70,7 @@
                 class="btn btn-secondary btn-sm">삭제</button>
       </div>
     </article>
-</div>
+  </div>
 </main>
 <div class="separator"></div>
 <footer>

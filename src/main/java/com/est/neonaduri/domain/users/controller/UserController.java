@@ -30,11 +30,6 @@ public class UserController {
      * @author lhy
      */
 //    @GetMapping("api/users/{userId}")
-//    public UserDTO getUserById(@PathVariable String userId) {
-//        return userService.getUserData(userId);
-//    }
-
-//    @GetMapping("api/users/{userId}")
 //    public UserDTO getUserData(@PathVariable String userId) {
 //        return userService.getUserData(userId);
 //    }
@@ -45,6 +40,7 @@ public class UserController {
         return ResponseEntity.ok(userData);
     }
 
+    // 마이페이지 호출
     @GetMapping("api/mypage/{userId}")
     public String showMyPage(@PathVariable String userId, Model model) {
         // User 정보 가져오기
@@ -61,6 +57,11 @@ public class UserController {
         return "mypage";
     }
 
+    // 나의매칭 페이지 호출
+    @GetMapping("/myMatching")
+    public String showMyMatchingPage() {
+        return "myMatching";
+    }
 
     // 사용자 정보 수정 API
     @PutMapping("api/users/{userId}")
@@ -75,12 +76,6 @@ public class UserController {
         UserDTO createdUser = userService.createUser(userDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
     }
-
-//    @PostMapping("/api/users/register")
-//    public String registerUser(UserDTO userDTO) {
-//        userService.registerUser(userDTO);
-//        return "redirect:/api/main";
-//    }
 
     // 사용자 정보 생성 API
     @RequestMapping(value = "/api/users/register", method = RequestMethod.POST)
