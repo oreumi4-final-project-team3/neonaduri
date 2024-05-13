@@ -94,11 +94,16 @@ p {
     border-radius: 10px;
 }
 
+.form-group #title, #content, #areaCode, #spotName, #address, #comRecruit{
+    margin-left: 10px;
+}
+
 .form-group #content{
     font-family: Arial, sans-serif;
     margin-top: 20px;
-    padding: 10px 0 0 10px;
-    width: 702px;
+    line-height: 20px;
+    padding: 10px;
+    width: 690px;
     height: 500px;
     resize: none;
     border: 1px solid #ccc;
@@ -123,6 +128,7 @@ p {
 
 .form-group-schedule {
     width: 470px;
+    margin-left: 10px;
     display: grid;
     grid-template-columns: 200px 1px 200px;
     grid-gap: 0 30px;
@@ -164,9 +170,11 @@ hr{
     display: inline-block;
     height: 40px;
     padding: 0 10px;
+    line-height: 40px;
+    margin-left: 10px;
     vertical-align: middle;
     border: 1px solid #dddddd;
-    width: 78%;
+    width: 555px;
     color: #999999;
     border-radius: 5px;
 }
@@ -178,7 +186,7 @@ hr{
     vertical-align: middle;
     line-height: 40px;
     border-radius: 5px;
-    background-color: #999999;
+    background-color: #00A3FF;;
     cursor: pointer;
     width: 100px;
     height: 40px;
