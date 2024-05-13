@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>같이갈까?</title>
     <link rel="stylesheet" th:href="@{/css/companions.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
 </head>
 <body>
 <header>
+
+    <div th:replace="~{header.html}"></div>
     <div class ="header">
         <div class="logo">
             <img th:src="@{/images/logo.png}" alt="팀 로고" onclick="goToMainPage()"/>
@@ -26,6 +29,7 @@
         </div>
     </div>
     <div class="separator"></div>
+
 </header>
 
 <main>
@@ -131,25 +135,9 @@
 
 <footer>
     <div class="separator-footer"></div>
-    <div class="footer">
-        <div class="footer-logo">
-            <img th:src="@{/images/logo.png}" alt="팀 로고"/>
-        </div>
-        <div class="footer-group">
-            <div class="data">
-                <span>데이터 제공 : 한국관광공사 TourAPI</span>
-            </div>
-            <div class="icon-made">
-                <span>아이콘 제작자: Freepik - Flaticon</span>
-            </div>
-        </div>
-        <div class="github-link">
-            <a href="https://github.com/oreumi4-final-project-team3/neonaduri">
-                <img th:src="@{/images/github.png}" alt="깃허브로 이동"/>
-            </a>
-        </div>
-    </div>
+    <div th:replace="~{footer.html}"></div>
 </footer>
 </body>
 <script src="/js/companions.js"></script>
+<script src="/js/page.js"></script>
 </html>

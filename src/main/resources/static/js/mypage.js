@@ -65,22 +65,6 @@ function updateUserDetails() {
         });
 }
 
-// 페이지 링크
-function goToMainPage() {
-    window.location.href = "/api/main";
-}
-
-function goToHerePage() {
-    window.location.href = "/api/spots";
-}
-function goToReviewPage() {
-    window.location.href = "/reviews";
-}
-
-function goTogether() {
-    window.location.href = "/companions";
-}
-
 function reloadPage() {
     location.reload();
 }

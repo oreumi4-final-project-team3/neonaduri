@@ -1,63 +1,15 @@
 
-/* 전체 헤더 스타일링 */
-
-/* 로고 이미지 스타일링 */
-body {
-    width: 1920PX; /* 뷰포트의 너비에 맞게 설정 */
-    height: 100%; /* 뷰포트의 높이에 맞게 설정 */
-    overflow-X: hidden; /* 화면을 넘어가는 콘텐츠를 숨김 */
-    margin: 0 auto;
-    padding: 0;
-    font-family: Arial, sans-serif;
-}
-.header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 160px;
-
-}
-/* 각 요소들의 스타일 */
-.logo, .header-buttons, .user-controls {
-    display: flex;
-    align-items: center; /* 세로 중앙 정렬 */
-}
-.header logo{
-    width:200px;
-    height: 200px;
-}
-.logo img{
-    cursor:pointer;
-}
-/*여기갈까? 같이갈까? 버튼 설정*/
-.header-buttons span {
-    margin-right: 50px; /* 버튼 사이의 간격 설정 */
-    font-size: 25px;
-    padding: 5px 10px;
-    cursor: pointer;
-}
-
-
-/*마이페이지 버튼과 찜 버튼 설정*/
-.user-controls img{
-    margin-right: 30px;
-    /*padding: 5px 10px;*/
-    cursor: pointer;
-}
-
-/*구분 선*/
-.separator {
-    border-top: 1px solid #ccc; /* 실선 구분선 */
-    /* border-top: 1px dashed #ccc; */ /* 점선 구분선 */
-    /* border-top: 1px dotted #ccc; */ /* 점선 구분선 */
-    margin: 0 0; /* 구분선 위아래 여백 설정 */
-}
 /*검색기능과 배경이미지*/
 .background-image {
     position: relative; /* 이미지의 부모 설정*/
     top:-67px;
 }
-
+.separator {
+    border-top: 1px solid #ccc; /* 실선 구분선 */
+    /* border-top: 1px dashed #ccc; */ /* 점선 구분선 */
+    /* border-top: 1px dotted #ccc; */ /* 점선 구분선 */
+    margin: 0; /* 구분선 위아래 여백 설정 */
+}
 .background-image img {
     width: 100%;
     height: 350px;
