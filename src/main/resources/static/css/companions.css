@@ -82,7 +82,7 @@ body {
     grid-template-columns: 120px 120px 120px 120px 1440px;
 }
 
-.button-wrap a{
+.button-wrap a, .button-wrap button{
     margin-top: 35px;
     height: 50px;
     border-radius: 10px;
@@ -97,11 +97,13 @@ body {
     width: 100px;
 }
 
-.button-create-post{
+#create-btn{
     background-color: #2AD931;
+    border: 0;
     width: 150px;
     justify-self: end;
     color: #ffffff;
+    font-size: 16px;
 }
 
 .tourist-sites{
