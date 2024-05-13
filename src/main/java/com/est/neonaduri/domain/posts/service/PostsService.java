@@ -127,10 +127,12 @@ public class PostsService {
 		}
 		return "/images/havenotimage.png";
 	}
-
+	@Transactional
 	//CJW
 	public Posts findById(String id){
-		return postsRepository.findByPostId(id);
+		Posts posts = postsRepository.findByPostId(id);
+		posts.setPostView(posts.getPostView()+1);
+		return posts;
 	}
 
 	public void deletePost(String id){
