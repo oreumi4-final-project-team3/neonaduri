@@ -60,14 +60,14 @@ public class SpotsController {
 	 * @return SpotPageDto : 관광지 상세정보
 	 * @author lsh
 	 */
-	@GetMapping("api/spot/{spotId}")
-	public String getSpot(@PathVariable String spotId,Model model){
-		SpotPageDto spotPage = spotsService.getSpotPage(spotId);
-		model.addAttribute("spotPage",spotPage);
-		return "post-spot-page";
-	}
+//	@GetMapping("api/spot/{spotId}")
+//	public String getSpot(@PathVariable String spotId,Model model){
+//		SpotPageDto spotPage = spotsService.getSpotPage(spotId);
+//		model.addAttribute("spotPage",spotPage);
+//		return "post-spot-page";
+//	}
 
-	@GetMapping("api/spot/find/{postId}")
+	@GetMapping("api/spot/{postId}")
 	public String getSpotByPostId(@PathVariable String postId,Model model){
 		SpotPageDto spotPage = spotsService.getSpotPageByPostId(postId);
 		model.addAttribute("spotPage",spotPage);

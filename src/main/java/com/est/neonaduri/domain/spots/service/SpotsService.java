@@ -112,18 +112,18 @@ public class SpotsService {
 		)).collect(Collectors.toList());
 	}
 
-	public SpotPageDto getSpotPage(String spotId){
-		Spots spot = spotsRepository.findById(spotId)
-				.orElseThrow(() -> new EntityNotFoundException("해당하는 게시물을 찾을 수 없습니다."));
-		return new SpotPageDto(
-				spot.getPosts().getSpotName(),
-				spot.getPosts().getAddress(),
-				spot.getSpotImg(),
-				spot.getPosts().getPostContent(),
-				spot.getPosts().getAreaCode(),
-				spot.getMapX(),
-				spot.getMapY());
-	}
+//	public SpotPageDto getSpotPage(String spotId){
+//		Spots spot = spotsRepository.findById(spotId)
+//				.orElseThrow(() -> new EntityNotFoundException("해당하는 게시물을 찾을 수 없습니다."));
+//		return new SpotPageDto(
+//				spot.getPosts().getSpotName(),
+//				spot.getPosts().getAddress(),
+//				spot.getSpotImg(),
+//				spot.getPosts().getPostContent(),
+//				spot.getPosts().getAreaCode(),
+//				spot.getMapX(),
+//				spot.getMapY());
+//	}
 	public SpotPageDto getSpotPageByPostId(String postId){
 		Posts post = postsRepository.findById(postId).orElseThrow(() -> new EntityNotFoundException("해당하는 게시물을 찾을 수 없습니다."));
 		Spots spot = spotsRepository.findByPosts_PostId(postId);
