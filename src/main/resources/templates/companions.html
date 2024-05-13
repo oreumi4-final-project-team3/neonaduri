@@ -54,7 +54,9 @@
             <a class="sort-view-button">많이 본 순</a>
             <a class="sort-comment-button">댓글 순</a>
 
-        <a class="button-create-post">같이가자!</a>
+        <button type="button" id="create-btn"
+                th:onclick="|location.href='@{/uploadCompanion}'|">같이가자!</button>
+
     </div>
     <div class="tourist-sites">
         <!-- 게시글 리스트가 여기에 표시됩니다. -->
@@ -84,7 +86,7 @@
 
             <div class="middle-contents">
                 <div class="companion-image-placeholder">
-                    <img id="sample-image" th:src="@{/images/companionTestImg.png}" alt="샘플이미지">
+                    <img id="sample-image" th:src="${companion.imgLink}" alt="업로드한 이미지">
                 </div>
 
                 <div class="companion-status">
@@ -116,12 +118,12 @@
 
         <span th:each="pageNum : ${#numbers.sequence(1, companions.totalPages)}">
             <a th:if="${pageType == 'all'}" th:href="@{/api/posts(page=${pageNum}, size=${companions.size})}" th:text="${pageNum}" th:classappend="${pageNum==currentPage} ? 'active'"></a>
-            <a th:if="${pageType == 'region'}" th:href="@{/api/posts/{areaCode}(areaCode=${areaCode}, page=${pageNum}, size=${companions.size})}" th:text="${pageNum}" th:classappend="${pageNum==currentPage} ? 'active'"></a>
+            <a th:if="${pageType == 'region'}" th:href="@{/companions/{areaCode}(areaCode=${areaCode}, page=${pageNum}, size=${companions.size})}" th:text="${pageNum}" th:classappend="${pageNum==currentPage} ? 'active'"></a>
 
         </span>
 
         <a th:if="${pageType == 'all' and companions.hasNext}" th:href="@{/api/posts(page=${currentPage + 1}, size=${companions.size})}">다음</a>
-        <a th:if="${pageType == 'region' and companions.hasNext}" th:href="@{/api/posts/{areaCode}(areaCode=${areaCode},page=${currentPage + 1}, size=${companions.size})}">다음</a>
+        <a th:if="${pageType == 'region' and companions.hasNext}" th:href="@{/companions/{areaCode}(areaCode=${areaCode},page=${currentPage + 1}, size=${companions.size})}">다음</a>
     </div>
 </main>
 

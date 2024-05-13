@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -20,8 +21,8 @@ public class CreatePostDTO {
     private Integer areaCode;
     private String address;
     private Integer comRecruit;
-    private LocalDateTime comStart;
-    private LocalDateTime comEnd;
+    private LocalDate comStart;
+    private LocalDate comEnd;
 
     public Posts toPostWriteDTO(Users users) {
         return Posts.builder()

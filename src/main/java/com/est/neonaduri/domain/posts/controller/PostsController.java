@@ -62,8 +62,11 @@ public class PostsController {
         return "companions";
     }
 
-    @GetMapping("api/posts/area/{areaCode}")
-    public String getSameAreaPost(@PathVariable int areaCode, Model model, @RequestParam(defaultValue = "1")int page, @RequestParam(defaultValue = "12")int size) {
+  
+    @GetMapping("api/posts/{areaCode}")
+    public String getSameAreaPost(@PathVariable int areaCode, Model model,
+                                  @RequestParam(defaultValue = "1")int page,
+                                  @RequestParam(defaultValue = "12")int size) {
         Pageable pageable = PageRequest.of(Math.max(page-1, 0), size);
 
         model.addAttribute("companions", postsService.getSameAreaPosts(areaCode, pageable));
@@ -102,7 +105,7 @@ public class PostsController {
         return ResponseEntity.ok().build();
     }
 
-    //이미지 관련 로직 추가 필요
+    //이미지 관련 로직 추가 필요.
     @PutMapping("/api/posts/{id}")
     public ResponseEntity<Posts> updatePost(@PathVariable String id, @RequestBody UpdatePostRequest request) {
         Posts updatedPost = postsService.update(id, request);

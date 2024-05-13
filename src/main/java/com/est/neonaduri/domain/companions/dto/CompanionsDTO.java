@@ -2,6 +2,7 @@ package com.est.neonaduri.domain.companions.dto;
 
 
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import lombok.Data;
@@ -11,14 +12,14 @@ public class CompanionsDTO {
 	private String userName;
 	private LocalDateTime userBirth;
 	private String userGender;
-	private LocalDateTime comStart;
-	private LocalDateTime comEnd;
+	private LocalDate comStart;
+	private LocalDate comEnd;
 	private String postTitle;
 	private String postContent;
 	// private String img;
 
-	public CompanionsDTO(String userName, LocalDateTime userBirth, String userGender, LocalDateTime comStart,
-		LocalDateTime comEnd, String postTitle, String postContent) {
+	public CompanionsDTO(String userName, LocalDateTime userBirth, String userGender, LocalDate comStart,
+						 LocalDate comEnd, String postTitle, String postContent) {
 		this.userName = userName;
 		this.userBirth = userBirth;
 		this.userGender = userGender;

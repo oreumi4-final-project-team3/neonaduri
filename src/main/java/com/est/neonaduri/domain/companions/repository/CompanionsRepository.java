@@ -2,6 +2,7 @@ package com.est.neonaduri.domain.companions.repository;
 
 import com.est.neonaduri.domain.companions.domain.Companions;
 
+import com.est.neonaduri.domain.posts.domain.Posts;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -23,4 +24,9 @@ public interface CompanionsRepository extends JpaRepository<Companions, String> 
 
     @Query("SELECT c FROM Companions c JOIN c.posts p WHERE p.areaCode = :areaCode AND p.postCategory = 'companions'")
     Page<Companions> findCompanionsByAreaCodeAndCategory(@Param("areaCode") int areaCode, Pageable pageable);
+
+    //CJW
+    Page<Companions> findAll(Pageable pageable);
+    Page<Companions> findAllByPosts_AreaCode(int areaCode, Pageable pageable);
+    Companions findByCompanionId(String companionId);
 }

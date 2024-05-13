@@ -8,6 +8,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Table(name = "COMPANIONS")
@@ -35,10 +36,10 @@ public class Companions {
     private Integer comWish;
 
     @Column(name = "COM_START", nullable = false)
-    private LocalDateTime comStart;
+    private LocalDate comStart;
 
     @Column(name = "COM_END", nullable = false)
-    private LocalDateTime comEnd;
+    private LocalDate comEnd;
 
     @Column(name = "COM_RESERVE", nullable = false)
     private Integer comReserve;
