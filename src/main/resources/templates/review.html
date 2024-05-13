@@ -1,43 +1,95 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>리뷰</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>리뷰 상세페이지</title>
+  <link rel="stylesheet" th:href="@{/css/reviewdetail.css}">
 </head>
 <body>
-<div class="p-5 mb-5 text-center</> bg-light">
-  <h1 class="mb-3">너나두리</h1>
-  <h4 class="mb-3">리뷰</h4>
-</div>
+<header>
+  <div class ="header">
+    <div class="logo">
+      <img th:src="@{/images/logo.png}" alt="팀 로고" onclick="goToMainPage()"/>
 
-<div class="container mt-5">
-  <div class="row">
-    <div class="col-lg-8">
-      <article>
-        <input type="hidden" id="review-id" th:value="${review.postId}">
-        <header class="mb-4">
-          <h1 class="fw-bolder mb-1" th:text="${review.postTitle}"></h1>
-          <div class="text-muted fst-italic mb-2" th:text="|작성자 : ${review.users.getUserName()}|"></div>
-          <div class="text-muted fst-italic mb-2" th:text="|생성 시간 ${#temporals.format(review.created, 'yyyy-MM-dd HH:mm')}|"></div>
-          <div class="text-muted fst-italic mb-2" th:text="|조회수 : ${review.postView}|"></div>
-          <div class="text-muted fst-italic mb-2" th:text="|지역 : ${review.areaCode} : 한글로 변환 필요|"></div>
-          <div class="text-muted fst-italic mb-2" th:text="|주소 : ${review.address}|"></div>
-        </header>
-        <section class="mb-5">
-          <img th:src="@{${img_link}}"/>
-          <p class="fs-5 mb-4" th:text="${review.postContent}"></p>
-        </section>
+    </div>
+    <div class="header-buttons">
+      <span class="header-btn1" onclick="goToHerePage()" style="font-weight: normal">여기갈까?</span>
+      <span class="header-btn2">같이갈까?</span>
+      <span class="header-btn3" onclick="goToReviewPage()">갔다왔어?</span>
+    </div>
+    <div class="user-controls">
+      <img th:src="@{/images/mypage.png}" alt="마이페이지로 이동"/>
+      <img th:src="@{/images/like.png}" alt="찜"/>
+    </div>
+  </div>
+  <div class="separator"></div>
+</header>
+<main>
+<div class="container">
+    <article>
+      <div class="image">
+        <img th:src="@{${img_link}}"/>
+      </div>
+      <div class="title">
+        <h1 class="fw-bolder mb-1" th:text="${review.postTitle}"></h1>
+      </div>
+
+      <div class="subtitle">
+        <div class="text-muted fst-italic mb-2" th:text="|조회수 : ${review.postView}|"></div>
+        <div class="text-muted fst-italic mb-2" th:text="|작성자 : ${review.users.getUserName()}|"></div>
+        <div class="text-muted fst-italic mb-2" th:text="|생성 시간 ${#temporals.format(review.created, 'yyyy-MM-dd HH:mm')}|"></div>
+      </div>
+
+      <div class="region">
+        <h2>여행 지역</h2>
+        <div class="text-muted fst-italic mb-2" th:text="|지역 : ${review.areaCode} : 한글로 변환 필요|"></div>
+        <div class="text-muted fst-italic mb-2" th:text="|주소 : ${review.address}|"></div>
+      </div>
+      <div class="content">
+        <h2>리뷰 작성 내용</h2>
+        <p class="fs-5 mb-4" th:text="${review.postContent}"></p>
+      </div>
+
+      <input type="hidden" id="review-id" th:value="${review.postId}">
+
+      <div class="comment">
+        <input type="text" class="comment-input" id="commentInput" placeholder="댓글을 입력해주세요">
+        <button class="comment-btn">게시</button>
+      </div>
+
+
+      <div class="delete">
         <!-- 아직 로직 연결 X -->
         <button type="button" id="modify-btn"
                 th:onclick="|location.href='@{/new-review?id={reviewId}(reviewId=${review.postId})}'|"
                 class="btn btn-primary btn-sm">수정</button>
         <button type="button" id="delete-post-btn"
                 class="btn btn-secondary btn-sm">삭제</button>
-      </article>
+      </div>
+    </article>
+</div>
+</main>
+<div class="separator"></div>
+<footer>
+  <div class="footer">
+    <div class="footer-logo">
+      <img th:src="@{/images/logo.png}" alt="팀 로고"/>
+    </div>
+    <div class="footer-group">
+      <div class="data">
+        <span>데이터 제공 : 한국관광공사 TourAPI</span>
+      </div>
+      <div class="icon-made">
+        <span>아이콘 제작자: Freepik - Flaticon</span>
+      </div>
+    </div>
+    <div class="github-link">
+      <a href="https://github.com/oreumi4-final-project-team3/neonaduri">
+        <img th:src="@{/images/github.png}" alt="깃허브로 이동"/>
+      </a>
     </div>
   </div>
-</div>
-
-<script src="/js/posts.js"></script>
+</footer>
 </body>
+<script src="/js/uploadReview.js"></script>
