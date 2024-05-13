@@ -29,4 +29,11 @@ public class IdGenerator {
         return "reply_"+category+"_"+UUID.randomUUID().toString();
     }
 
+    public static String generateBookerId(){
+        return "booker" + UUID.randomUUID();
+    }
+
+    public static String generateWishListId(){
+        return "wishlist" + UUID.randomUUID();
+    }
 }

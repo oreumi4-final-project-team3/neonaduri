@@ -1,5 +1,16 @@
 
 
+    // "여기갈까?" 버튼 클릭 시 새로고침
+    function goToHerePage() {
+    window.location.href = "/api/spots";
+    }
+
+    // "같이갈까?" 버튼 클릭 시 새로고침
+    function goToCompanionsPage() {
+        window.location.href = "/companions";
+    }
+
+
     // 각 지역 선택시 관광지 게시글 리스트 처리
     document.addEventListener('DOMContentLoaded', function() {
     const regionButtons = document.querySelectorAll('.region-btn');

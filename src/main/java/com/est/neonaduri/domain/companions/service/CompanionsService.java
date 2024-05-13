@@ -1,5 +1,6 @@
 package com.est.neonaduri.domain.companions.service;
 
+import com.est.neonaduri.domain.bookers.repository.BookersRepository;
 import com.est.neonaduri.domain.companions.domain.Companions;
 
 import com.est.neonaduri.domain.companions.dto.CompanionsDTO;
@@ -17,6 +18,7 @@ import com.est.neonaduri.domain.posts.dto.UpdatePostDTO;
 import com.est.neonaduri.domain.posts.repository.PostsRepository;
 import com.est.neonaduri.domain.users.domain.Users;
 import com.est.neonaduri.domain.users.repository.UserRepository;
+import com.est.neonaduri.domain.wishlist.repository.WishListRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +41,8 @@ public class CompanionsService {
     private final UserRepository userRepository;
     private final PostsRepository postsRepository;
     private final PostImagesRepository postImagesRepository;
+    private final BookersRepository bookersRepository;
+    private final WishListRepository wishListRepository;
 
     // 동행 CRUD
     // Create
@@ -136,6 +140,25 @@ public class CompanionsService {
 
     public Companions findById(String comId){
         return companionsRepository.findByCompanionId(comId);
+    }
+
+    @Transactional
+    public Companions afterBook(String comId){
+        Companions companion = companionsRepository.findByCompanionId(comId);
+        Integer reserved = bookersRepository.countAllByCompanions(companion);
+
+        companion.updateBook(reserved);
+
+        return companion;
+    }
+
+    @Transactional
+    public Companions afterWish(String comId){
+        Companions companion = companionsRepository.findByCompanionId(comId);
+        Integer wished = wishListRepository.countAllByPosts(companion.getPosts());
+
+        companion.updateWishList(wished);
+        return companion;
     }
 
 
