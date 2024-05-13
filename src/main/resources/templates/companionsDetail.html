@@ -66,19 +66,19 @@
                 </div>
 
                 <div class="tour-info-region">
-                    <div>
-                        <p>📍</p>
+                    <div class="tour-info-region-areaCode">
+                        <p>📍&nbsp;</p>
                         <div class="text-muted fst-italic mb-2" id="areaText"></div>
                         <input type="hidden" id="areaCode" th:value="${post.areaCode}">
                     </div>
 
                     <div class="tour-info-region-address">
-                        <p>주소 : </p>
+                        <p>주소 :&nbsp;</p>
                         <p th:text="${post.address}">&nbsp;</p>
                     </div>
 
                     <div class="tour-info-region-spotName">
-                        <p>관광지명 : </p>
+                        <p>관광지명 :&nbsp;</p>
                         <p th:text="${post.spotName}"></p>
                     </div>
                 </div>
