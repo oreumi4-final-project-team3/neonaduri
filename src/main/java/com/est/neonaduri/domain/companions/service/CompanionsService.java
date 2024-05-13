@@ -143,8 +143,9 @@ public class CompanionsService {
     }
 
 
-    public Companions findByPostId(String postId){
-       return companionsRepository.findByPosts_PostId(postId).orElseThrow(() -> new IllegalArgumentException("해당하는 게시물이 없습니다"));
+    public Companions findByPostId(String postId) {
+        return companionsRepository.findByPosts_PostId(postId).orElseThrow(() -> new IllegalArgumentException("해당하는 게시물이 없습니다"));
+    }
 
     @Transactional
     public Companions afterBook(String comId){
