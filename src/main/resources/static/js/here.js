@@ -93,7 +93,6 @@
 
     function getPostIdAndNavigate() {
         const postId = document.querySelector('.postId').value;
-        console.log("Post ID is: ", postId);
         window.location.replace("/api/spot/" + postId);
     }
 

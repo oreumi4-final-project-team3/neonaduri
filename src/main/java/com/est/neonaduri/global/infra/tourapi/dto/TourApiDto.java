@@ -33,7 +33,7 @@ public class TourApiDto {
 
     public Posts toPostsEntity(Users user){
         return Posts.builder()
-                .postCategory("spots")
+                .postCategory("spot")
                 .postTitle(title)
                 .spotName(title)
                 .postContent(overview)

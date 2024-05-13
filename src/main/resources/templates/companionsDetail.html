@@ -67,7 +67,8 @@
                 <div class="tour-info-region">
                     <div>
                         <p>📍</p>
-                        <p th:text="${post.areaCode}"></p>
+                        <div class="text-muted fst-italic mb-2" id="areaText"></div>
+                        <input type="hidden" id="areaCode" th:value="${post.areaCode}">
                     </div>
                     <div>
                         <p>주소 : </p>
@@ -184,4 +185,12 @@
 </body>
 <script src="/js/uploadReview.js"></script>
 <script src="/js/page.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // areaCode 값을 정수형으로 변환
+        const areaCode = document.getElementById('areaCode').value;
+        const areaText = document.getElementById('areaText');
+        areaText.innerText = "지역 : " + getAreaName(areaCode);
+    });
+</script>
 </html>
