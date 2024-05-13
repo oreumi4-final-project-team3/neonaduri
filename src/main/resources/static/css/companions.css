@@ -17,6 +17,9 @@
     width:200px;
     height: 200px;
 }
+.logo img{
+    cursor:pointer;
+}
 /*여기갈까? 같이갈까? 버튼 설정*/
 .header-buttons span {
     margin-right: 50px; /* 버튼 사이의 간격 설정 */
@@ -48,7 +51,7 @@ body {
     border-top: 1px solid #ccc; /* 실선 구분선 */
     /* border-top: 1px dashed #ccc; */ /* 점선 구분선 */
     /* border-top: 1px dotted #ccc; */ /* 점선 구분선 */
-    margin: 0 0; /* 구분선 위아래 여백 설정 */
+    margin-top: 20px; /* 구분선 위 여백 설정 */
 }
 
 /*중간 body 부분*/
@@ -59,6 +62,7 @@ body {
 .regions-button-wrap{
     position: absolute;
     z-index: 1;
+    margin-top: 20px;
 }
 
 .regions-button-wrap span{
@@ -283,6 +287,11 @@ h3, p {
 
 /*footer 부분*/
 
+.separator-footer{
+        border-top: 1px solid #ccc; /* 실선 구분선 */
+        margin: 30px 0px 20px; /* 구분선 위아래 여백 설정 */
+}
+
 .footer {
     display: flex;
     align-items: center; /* 요소들을 수직 가운데 정렬합니다. */
@@ -316,10 +325,8 @@ h3, p {
     display: flex;
     list-style: none;
     justify-content: center;
+    align-items: center;
     margin-top: 80px;
-}
-.pagination span{
-    margin-bottom: 10px;
 }
 
 .pagination a {

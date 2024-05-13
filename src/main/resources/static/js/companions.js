@@ -1,8 +1,14 @@
+function goToMainPage() {
+    window.location.href = "/api/main";
+}
 function goToHerePage() {
     window.location.href = "/api/spots";
 }
 function goToCompanionsPage() {
     window.location.href = "/companions";
+}
+function goToReviewPage(){
+    window.location.href = "/reviews";
 }
 
 // 연령 계산

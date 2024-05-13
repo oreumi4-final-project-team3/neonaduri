@@ -98,7 +98,7 @@ document.querySelector('.region-all-btn').addEventListener('click', function(eve
 });
 
 function goToReviewPage(){
-    window.location.href = "/api/reviews";
+    window.location.href = "/reviews";
 }
 function goToMainPage(){
     window.location.href = "/api/main";

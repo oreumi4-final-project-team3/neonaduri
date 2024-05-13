@@ -62,6 +62,7 @@ public class PostsController {
         return "companions";
     }
 
+  
     @GetMapping("api/posts/{areaCode}")
     public String getSameAreaPost(@PathVariable int areaCode, Model model,
                                   @RequestParam(defaultValue = "1")int page,
