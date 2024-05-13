@@ -36,23 +36,11 @@
         <span>인기 관광지 TOP 10</span>
 
         <div class="toptenSpots">
-            <!-- 1번부터 5번까지의 게시글 -->
-            <div class="left-column">
-                <div class="tourist-site" th:each="topten, iterator : ${top}" th:if="${iterator.count <= 5}">
-                    <a th:href="@{'/api/spot/' + ${topten.spotId}}" class="spot-link">
-                        <p th:text="'[' + ${iterator.count} + '] ' + ${topten.spotName}"></p>
-                    </a>
-                </div>
-            </div>
-
-            <!-- 6번부터 10번까지의 게시글 -->
-            <div class="right-column">
-                <div class="tourist-site" th:each="topten, iterator : ${top}" th:if="${iterator.count > 5}">
-                    <a th:href="@{'/api/spot/' + ${topten.spotId}}" class="spot-link">
-                        <p th:text="'[' + ${iterator.count} + '] ' + ${topten.spotName}"></p>
-                    </a>
-                </div>
-            </div>
+            <ul>
+                <li th:each="rank, rankStat : ${searchRank}">
+                    <span th:text="${rankStat.count} + '. ' + ${rank.keyword}"></span>
+                </li>
+            </ul>
         </div>
     </div>
 
