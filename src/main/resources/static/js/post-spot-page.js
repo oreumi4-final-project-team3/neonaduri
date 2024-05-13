@@ -1,7 +1,5 @@
-// "여기갈까?" 버튼 클릭 시 새로고침
-function goToHerePage() {
-    window.location.href = "/api/spots";
-}
+
+
 document.addEventListener('DOMContentLoaded', function() {
     addLineBreaks(); // 페이지 로드 완료 후 함수 호출
 });
@@ -60,9 +58,7 @@ function updateAreaInfo() {
 updateAreaInfo(); // 페이지 로드 시 함수 실행
 
 
-function goToMainPage(){
-    window.location.href = "/api/main";
-}
+
 // 스크롤 버튼 관련
 
 // let scrollTop = document.getElementById("scrollTop");

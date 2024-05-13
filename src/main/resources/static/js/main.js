@@ -21,20 +21,7 @@ function getSpotIdAndNavigate(element) {
     const spotId = element.parentNode.querySelector('.spotId').value;
     window.location.replace("/api/spot/" + spotId);
 }
-function goToHerePage() {
-    window.location.href = "/api/spots";
-}
-function goToReviewPage(){
-    window.location.href = "/reviews";
-}
-function goToMainPage() {
-    window.location.href = "/api/main";
-}
 
-// 페이지 렌더링을 위해 관리자 id로 userId 임시 설정
-function goToMyPage() {
-    window.location.href = "/api/mypage/admin_id";
-}
 
 document.addEventListener("DOMContentLoaded", function() {
     const userBirthElements = document.querySelectorAll(".userBirth");

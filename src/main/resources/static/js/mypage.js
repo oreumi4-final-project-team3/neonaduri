@@ -63,14 +63,6 @@ function updateUserDetails() {
         });
 }
 
-
-function goToHerePage() {
-    window.location.href = "/api/spots";
-}
-function goToReviewPage(){
-    window.location.href = "/reviews";
-}
-
 function reloadPage() {
     location.reload();
 }
