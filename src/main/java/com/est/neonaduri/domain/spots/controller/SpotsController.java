@@ -67,6 +67,13 @@ public class SpotsController {
 		return "post-spot-page";
 	}
 
+	@GetMapping("api/spot/find/{postId}")
+	public String getSpotByPostId(@PathVariable String postId,Model model){
+		SpotPageDto spotPage = spotsService.getSpotPageByPostId(postId);
+		model.addAttribute("spotPage",spotPage);
+		return "post-spot-page";
+	}
+
 
 	/**
 	 * 관광지를 이름으로 조회하는 API

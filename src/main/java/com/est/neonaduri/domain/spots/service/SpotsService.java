@@ -124,6 +124,18 @@ public class SpotsService {
 				spot.getMapX(),
 				spot.getMapY());
 	}
+	public SpotPageDto getSpotPageByPostId(String postId){
+		Posts post = postsRepository.findById(postId).orElseThrow(() -> new EntityNotFoundException("해당하는 게시물을 찾을 수 없습니다."));
+		Spots spot = spotsRepository.findByPosts_PostId(postId);
+		return new SpotPageDto(
+				post.getSpotName(),
+				post.getAddress(),
+				spot.getSpotImg(),
+				post.getPostContent(),
+				post.getAreaCode(),
+				spot.getMapX(),
+				spot.getMapY());
+	}
 	public SpotPageDto getSpotPageByName(String spotName){
 		Spots spot = spotsRepository.findBySpotName(spotName);
 		return new SpotPageDto(
