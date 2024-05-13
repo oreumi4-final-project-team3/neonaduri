@@ -13,13 +13,10 @@ function searchSpot() {
     window.location.href = "/api/search?searchText=" + encodeURIComponent(searchText);
 }
 
-function navigateToSpotDetail(element) {
-    const spotId = element.getAttribute('data-spotId');
-    window.location.href = "/api/spot/" + spotId;
-}
-function getSpotIdAndNavigate(element) {
-    const spotId = element.parentNode.querySelector('.spotId').value;
-    window.location.replace("/api/spot/" + spotId);
+function getPostIdAndNavigate() {
+    const postId = document.querySelector('.postId').value;
+    console.log("Post ID is: ", postId);
+    window.location.replace("/api/spot/" + postId);
 }
 
 

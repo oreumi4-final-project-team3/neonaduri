@@ -6,9 +6,11 @@ import lombok.Data;
 public class SpotNameDTO {
 	private String spotName;
 	private String spotId;
+	private String postId;
 
-	public SpotNameDTO(String spotName,String spotId) {
+	public SpotNameDTO(String spotName, String spotId, String postId) {
 		this.spotName = spotName;
-		this.spotId=spotId;
+		this.spotId = spotId;
+		this.postId = postId;
 	}
 }

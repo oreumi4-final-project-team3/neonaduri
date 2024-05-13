@@ -66,9 +66,10 @@
                 </div>
 
                 <div class="tour-info-region">
-                    <div class="tour-info-region-areaCode">
-                        <p>📍&nbsp;지역 : </p>
-                        <p th:text="${post.areaCode}"></p>
+                    <div>
+                        <p>📍</p>
+                        <div class="text-muted fst-italic mb-2" id="areaText"></div>
+                        <input type="hidden" id="areaCode" th:value="${post.areaCode}">
                     </div>
 
                     <div class="tour-info-region-address">
@@ -185,7 +186,43 @@
         </div>
     </div>
 </footer>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // areaCode 값을 정수형으로 변환
+        let areaCode = parseInt(document.getElementById('areaCode').value, 10);
+        const areaText = document.getElementById('areaText');
+        areaText.innerText = "지역 : " + getAreaName(areaCode);
+    });
+    function getAreaName(areaCode){
+        switch (areaCode){
+            case 1:
+                return "서울";
+            case 2:
+                return "인천";
+            case 31:
+                return "경기";
+            case 32:
+                return "강원";
+            case 33:
+                return "충북";
+            case 34:
+                return "충남";
+            case 35:
+                return "경북";
+            case 36:
+                return "경남";
+            case 37:
+                return "전북";
+            case 38:
+                return "전남";
+            case 39:
+                return "제주";
+            default:
+                return "알 수 없음";
+        }
+    }
+</script>
 </body>
-<script src="/js/companionsDetail.js"></script>
-<script src="/js/page.js"></script>
+<script src="/js/companionsDetail.js" defer></script>
+<script src="/js/page.js" defer></script>
 </html>

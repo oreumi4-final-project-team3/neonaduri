@@ -1,26 +1,6 @@
 const bookingButton = document.getElementById('booking-btn');
 const wishingButton = document.getElementById('wishing-btn');
 
-function goToMainPage() {
-    window.location.href = "/api/main";
-}
-
-function goToHerePage() {
-    window.location.href = "/api/spots";
-}
-
-function goToCompanionsPage() {
-    window.location.href = "/companions";
-}
-
-function goToReviewPage() {
-    window.location.href = "/reviews";
-}
-
-function goToMyPage() {
-    window.location.href = "/api/mypage/admin_id";
-}
-
 //예약 버튼
 if (bookingButton) {
     bookingButton.addEventListener('click', event => {
@@ -61,6 +41,7 @@ if (wishingButton) {
 
     })
 }
+
 
 // 연령 계산
 const birthElement = document.querySelector(".userBirth");

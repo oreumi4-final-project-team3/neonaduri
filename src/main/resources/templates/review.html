@@ -29,7 +29,8 @@
 
       <div class="region">
         <h2>여행 지역</h2>
-        <div class="text-muted fst-italic mb-2" th:text="|지역 : ${review.areaCode} : 한글로 변환 필요|"></div>
+        <div class="text-muted fst-italic mb-2" id="areaText"></div>
+        <input type="hidden" id="areaCode" th:value="${review.areaCode}">
         <div class="text-muted fst-italic mb-2" th:text="|주소 : ${review.address}|"></div>
       </div>
       <div class="content">
@@ -61,4 +62,14 @@
   <div th:replace="~{footer.html}"></div>
 </footer>
 </body>
-<script src="/js/uploadReview.js"></script>
+<script src="/js/review.js" defer></script>
+<script src="/js/page.js" defer></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // areaCode 값을 정수형으로 변환
+    const areaCode = parseInt(document.getElementById('areaCode').value, 10);
+    const areaText = document.getElementById('areaText');
+    areaText.innerText = "지역 : " + getAreaName(areaCode);
+  });
+</script>
+</html>

@@ -33,6 +33,12 @@
         <div class="separator"></div>
     </header>
     <main>
+        <div class="image">
+            <img id="Image" src="/images/companion.png" alt="대표이미지"/>
+        </div>
+        <div id="search-result-text">
+            <h1>검색 결과</h1>
+        </div>
         <div class="search-result">
             <div th:each="entry : ${groupedByCategoryResult.entrySet()}">
                 <h2 th:text="${entry.key}">카테고리 이름</h2>
@@ -40,7 +46,7 @@
                     <li th:each="post : ${entry.value}"
                         th:data-postid="${post.postId}" class="post-item">
                         <h3 th:text="${post.postTitle}">제목</h3>
-                        <p th:text="${post.postContent}">내용</p>
+                        <p th:text="${#strings.length(post.postContent) > 20 ? #strings.substring(post.postContent, 0, 20) + '...' : post.postContent}">내용</p>
                     </li>
                 </ul>
             </div>
@@ -81,8 +87,10 @@
 
                 if (category === 'review') {
                     window.location.href = `/reviews/id/${postId}`;
-                } else if (category === 'spots') {
+                } else if (category === 'spot') {
                     window.location.href = `/api/spot/${postId}`;
+                } else if (category === 'companion'){
+                    window.location.href = `/companions/postId/${postId}`;
                 }
             });
         });
