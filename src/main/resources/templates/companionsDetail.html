@@ -115,10 +115,11 @@
                 <p class="title-text">댓글</p>
                 <div class="tour-info-comment-form">
                     <input type="text" placeholder="댓글을 입력해주세요.">
-                    <button onclick="submitComment()">게시</button>
+                    <button id="replyButton">게시</button>
                 </div>
                 <div th:each="comment : ${comments}" class="comment-container">
-                    <input type="hidden" id="user-id" th:value="${comment.writerId}">
+                    <input type="hidden" class="user-id" th:value="${comment.writerId}">
+                    <input type="hidden" class="posts-id" th:value="${comment.postId}">
                     <img th:if="${comment.userImage != null}" th:src="${comment.userImage}" class="user-image" alt="User Image">
                     <img th:if="${comment.userImage == null}" th:src="@{/images/logo.png}" class="user-image" alt="Default User Image">
                     <div class="comment-info">
@@ -161,7 +162,6 @@
 
 
 </main>
-
 <footer>
     <div class="separator-footer"></div>
     <div class="footer">

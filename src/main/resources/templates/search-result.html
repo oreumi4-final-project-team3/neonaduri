@@ -5,33 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Result</title>
     <link rel="stylesheet" th:href="@{/css/search-result.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
 </head>
-<body style="
-    width: 1920PX; /* 뷰포트의 너비에 맞게 설정 */
-    height: 100%; /* 뷰포트의 높이에 맞게 설정 */
-    overflow-X: hidden; /* 화면을 넘어가는 콘텐츠를 숨김 */
-    margin: 0 auto;
-    padding: 0;
-    font-family: Arial, sans-serif;">
-    <header>
-        <div class ="header">
-            <div class="logo">
-                <img th:src="@{/images/logo.png}" alt="팀 로고" onclick="goToMainPage()"/>
-
-            </div>
-            <div class="header-buttons">
-                <span class="header-btn1" onclick="goToHerePage()">여기갈까?</span>
-                <span class="header-btn2" onclick="goToCompanionsPage()">같이갈까?</span>
-                <span class="header-btn3" onclick="goToReviewPage()">후기볼까?</span>
-
-            </div>
-            <div class="user-controls">
-                <img th:src="@{/images/mypage.png}" alt="마이페이지로 이동"/>
-                <img th:src="@{/images/like.png}" alt="찜"/>
-            </div>
-        </div>
-        <div class="separator"></div>
-    </header>
+<body>
+<header>
+    <div th:replace="~{header.html}"></div>
+</header>
     <main>
         <div class="image">
             <img id="Image" src="/images/companion.png" alt="대표이미지"/>
@@ -53,29 +32,10 @@
         </div>
     </main>
     <div class="separator"></div>
-    <footer>
-        <div class="footer">
-            <div class="footer-logo">
-                <img th:src="@{/images/logo.png}" alt="팀 로고"/>
-            </div>
-            <div class="footer-group">
-                <div class="data">
-                    <span>데이터 제공 : 한국관광공사 TourAPI</span>
-                </div>
-                <div class="icon-made">
-                    <span>아이콘 제작자: Freepik - Flaticon</span>
-                </div>
-            </div>
-            <div class="github-link">
-                <a href="https://github.com/oreumi4-final-project-team3/neonaduri">
-                    <img th:src="@{/images/github.png}" alt="깃허브로 이동">
-                </a>
-            </div>
-        </div>
-    </footer>
+<footer>
+    <div th:replace="~{footer.html}"></div>
+</footer>
 </body>
-<script src="/js/search-result.js" defer></script>
-
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const postItems = document.querySelectorAll('.post-item');
@@ -96,7 +56,6 @@
         });
     });
 </script>
-
-
+<script src="/js/page.js" defer></script>
 </html>
 

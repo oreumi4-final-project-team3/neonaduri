@@ -11,7 +11,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* 화면 전체 높이에 맞추기 위해 */
+    height: auto; /* 화면 전체 높이에 맞추기 위해 */
 }
 /*article 부분*/
 article{
@@ -40,26 +40,95 @@ article{
 .region{
 
 }
-.comment{
 
+.tour-info-comment-form {
+    margin: 20px 0 20px 0;
+    position: relative;
 }
-.comment-input{
-    width: 355px;
-    height: 30px;
+
+.tour-info-comment-form input {
+    width: calc(100% - 12px);
+    height: 50px;
+    padding: 0 0 0 10px;
+    font-size: 16px;
+    border-radius: 10px;
     border: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 50px;
+    outline: none;
 }
-.comment-btn{
-    width: 50px;
-    background-color: forestgreen;
-    color: white;
+
+.tour-info-comment-form input::placeholder {
+    color: #cccccc;
+}
+
+.tour-info-comment-form button {
+    width: 80px;
+    height: 52px;
+    padding: 0;
+    font-size: 16px;
+    background-color: #2AD931;
+    color: #fff;
     border: none;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.comment-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
     padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.user-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.comment-content {
+    flex-grow: 1;
+    margin-right: 10px;
+    color: #333;
+}
+
+.comment-info {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.writer-name {
+    font-weight: bold;
+    margin-right: 25px;
+}
+
+.button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
     cursor: pointer;
 }
-.comment-input::placeholder {
-    color: #999;
+
+.edit-button {
+    background-color: #4CAF50;
+    opacity: 0.8;
+    border-radius: 15px;
+    color: white;
+}
+
+.delete-button {
+    background-color: #f44336;
+    opacity: 0.8;
+    border-radius: 15px;
+    color: white;
 }
 .delete{
     position: relative;

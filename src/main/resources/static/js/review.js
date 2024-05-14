@@ -1,4 +1,113 @@
+document.addEventListener('DOMContentLoaded', function () {
+    const replyButton = document.getElementById('replyButton');
 
+    replyButton.addEventListener('click', function(event) {
+        // 기본 동작을 방지
+        event.preventDefault();
+
+        const postId = document.getElementById('review-id').value;
+        const content = document.querySelector('.tour-info-comment-form input[type="text"]').value;
+
+        if (!content.trim()) {
+            alert('댓글을 입력해 주세요.');
+            return; // 함수 종료
+        }
+
+        const requestBody = {
+            content: content
+        };
+
+        // API 요청 보내기
+        fetch(`/api/posts/${postId}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(requestBody)
+        }).then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP 에러: ${response.status}`);
+            }
+            return response.json();
+        })
+            .then(data => {
+                window.location.reload();
+            })
+            .catch((error) => {
+                alert('댓글 등록에 실패하였습니다.');
+            });
+    });
+});
+// 댓글 수정
+document.addEventListener('DOMContentLoaded', function () {
+    const commentContainers = document.querySelectorAll('.comment-container');
+
+    commentContainers.forEach(container => {
+        const editButton = container.querySelector('.edit-button');
+        const commentContent = container.querySelector('.comment-content');
+        const userId = container.querySelector('.user-id').value;
+        const postId = document.getElementById('review-id').value;
+        const replyId = editButton.getAttribute('data-id');
+
+        editButton.addEventListener('click', function () {
+            if (editButton.textContent === '수정') {
+                const currentText = commentContent.textContent;
+                commentContent.innerHTML = `<input type="text" value="${currentText}" class="edit-input">`;
+                editButton.textContent = '저장';
+            } else {
+                const updatedText = commentContent.querySelector('.edit-input').value;
+                commentContent.textContent = updatedText;
+                editButton.textContent = '수정';
+
+                // API 호출 부분
+                fetch(`/api/posts/${postId}/${replyId}/${userId}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ content: updatedText })
+                }).then(response => {
+                    if (!response.ok) {
+                        throw new Error('댓글 수정 실패');
+                    }
+                    return response.json();
+                }).then(data => {
+                }).catch((error) => {
+                    alert('예기치 못한 오류로 실패했습니다.');
+                });
+            }
+        });
+    });
+});
+
+//댓글 삭제
+document.addEventListener('DOMContentLoaded', function () {
+    const commentContainers = document.querySelectorAll('.comment-container');
+
+    commentContainers.forEach(container => {
+        const deleteButton = container.querySelector('.delete-button');
+        const userId = container.querySelector('.user-id').value;
+        const replyId = deleteButton.getAttribute('data-id');
+
+        deleteButton.addEventListener('click', function () {
+            if (confirm('댓글을 삭제하시겠습니까?')) {
+                fetch(`/api/posts/${replyId}/${userId}`, {
+                    method: 'DELETE'
+                }).then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error('댓글 삭제 실패');
+                    }
+                }).then(data => {
+                    container.remove();
+                }).catch(error => {
+                    alert('댓글 삭제에 실패했습니다.');
+                });
+            }
+        });
+    });
+});
 function goToMyPage() {
     window.location.href = "/api/mypage/admin_id";
 }
@@ -42,13 +151,6 @@ document.querySelectorAll('.region-btn').forEach(button => {
     });
 });
 
-// 지역 이미지 업데이트 함수
-function updateRegionImage(regionCode) {
-    const imageElement = document.getElementById('regionImage');
-    const imagePath = getImagePathByRegion(regionCode);
-    imageElement.src = imagePath;
-}
-
 // 지역 코드에 따른 이미지 경로 반환 함수
 function getImagePathByRegion(region) {
     switch(region) {
@@ -79,19 +181,6 @@ function getImagePathByRegion(region) {
     }
 }
 
-// 페이지 로드 시 선택된 지역 이미지 설정
-document.addEventListener('DOMContentLoaded', function() {
-    const selectedRegion = localStorage.getItem('selectedRegion') || '1'; // 로컬 스토리지에서 선택된 지역 코드 가져오기, 기본값은 '1'
-    updateRegionImage(selectedRegion); // 가져온 지역 코드로 이미지 업데이트
-});
-
-// 전체 버튼에 대한 클릭 이벤트 처리
-document.querySelector('.region-all-btn').addEventListener('click', function(event) {
-    event.preventDefault();
-    const defaultRegion = '1'; // 서울을 나타내는 지역 코드
-    localStorage.setItem('selectedRegion', defaultRegion); // 로컬 스토리지에 저장
-    updateRegionImage(defaultRegion); // 대표 이미지 업데이트 함수 호출
-});
 
 function getAreaName(areaCode){
     switch (areaCode){
@@ -137,3 +226,5 @@ document.addEventListener('DOMContentLoaded', function() {
     const areaText = document.getElementById('areaText');
     areaText.innerText = "지역 : " + getAreaName(areaCode);
 });
+
+

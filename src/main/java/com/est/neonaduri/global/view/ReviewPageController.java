@@ -5,6 +5,8 @@ import com.est.neonaduri.domain.postImages.service.PostImagesService;
 import com.est.neonaduri.domain.posts.domain.Posts;
 import com.est.neonaduri.domain.posts.dto.PostViewResponse;
 import com.est.neonaduri.domain.posts.service.PostsService;
+import com.est.neonaduri.domain.replies.dto.ReplyResponseDto;
+import com.est.neonaduri.domain.replies.service.RepliesService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -14,11 +16,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 @Controller
 @RequiredArgsConstructor
 public class ReviewPageController {
     private final PostsService postsService;
     private final PostImagesService postImagesService;
+    private final RepliesService repliesService;
 
     //KEC
     @GetMapping("/reviews")
@@ -50,8 +55,9 @@ public class ReviewPageController {
     @GetMapping("/reviews/id/{postId}")
     public String showReview(@PathVariable String postId, Model model) {
         Posts review = postsService.findById(postId);
+        List<ReplyResponseDto> repliesByPostId = repliesService.getRepliesByPostId(review.getPostId());
         model.addAttribute("review", review);
-
+        model.addAttribute("comments",repliesByPostId);
         PostImages img = postImagesService.findPostImages(postId);
 
         if(img==null){
