@@ -9,24 +9,24 @@
 <body>
 <header>
     <div class="header_box">
-        <a th:href="@{/api/main}">
+        <a th:href="@{/neonaduri}">
             <img class="logo" th:src="@{/images/neonaduriLogo.png}" alt="너나들이 로고">
         </a>
-        <div class="nav_box">
-            <nav class="nav_one">
-                <ul>
-                    <li><a th:href="@{/api/main}">홈</a></li>
-                    <li><a href="#" onclick="goToHerePage()">여기 갈까?</a></li>
-                    <li><a href="#">같이 갈까?</a></li>
-                    <li><a href="#" onclick="goToReviewPage()">후기 볼까?</a></li>
-                </ul>
-            </nav>
-            <nav class="nav_two">
-                <ul>
-                    <li><a href="#" onclick="reloadPage()">로그인</a></li>
-                </ul>
-            </nav>
-        </div>
+<!--        <div class="nav_box">-->
+<!--            <nav class="nav_one">-->
+<!--                <ul>-->
+<!--                    <li><a th:href="@{/api/main}">홈</a></li>-->
+<!--                    <li><a href="#" onclick="goToHerePage()">여기 갈까?</a></li>-->
+<!--                    <li><a href="#">같이 갈까?</a></li>-->
+<!--                    <li><a href="#" onclick="goToReviewPage()">후기 볼까?</a></li>-->
+<!--                </ul>-->
+<!--            </nav>-->
+<!--            <nav class="nav_two">-->
+<!--                <ul>-->
+<!--                    <li><a href="#" onclick="reloadPage()">로그인</a></li>-->
+<!--                </ul>-->
+<!--            </nav>-->
+<!--        </div>-->
     </div>
 </header>
 <main>
@@ -63,7 +63,7 @@
                 <option>여성</option>
             </select>
             <label for="userBirth">생년월일이 어떻게 되세요?</label>
-            <input type="date" id="userBirth" name="userBirth">
+            <input type="datetime-local" id="userBirth" name="userBirth">
             <label for="userMbti">MBTI는요?</label>
             <input type="text" id="userMbti" name="userMbti" placeholder="MBTI">
             <label for="userIntro">자기소개 한 문장 작성해주세요:)</label>
@@ -83,6 +83,9 @@
         </form>
     </div>
 </main>
+<footer>
+    <p> </p>
+</footer>
 <script th:src="@{/js/login.js}"></script>
 <script src="/js/page.js"></script>
 </body>
