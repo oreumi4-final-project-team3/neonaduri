@@ -3,6 +3,13 @@
     font-weight: bold;
 }
 
+.separator {
+    border-top: 1px solid #ccc; /* 실선 구분선 */
+    /* border-top: 1px dashed #ccc; */ /* 점선 구분선 */
+    /* border-top: 1px dotted #ccc; */ /* 점선 구분선 */
+    margin: 20px 0 0 10px; /* 구분선 위아래 여백 설정 */
+}
+
 /*중간 body 부분*/
 .regions{
     position: relative;
