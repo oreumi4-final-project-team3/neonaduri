@@ -1,10 +1,4 @@
 
-function getSpotIdAndNavigate(element) {
-    const spotId = element.parentNode.querySelector('.spotId').value;
-    window.location.replace("/api/spot/" + spotId);
-}
-
-
 // 관심있는 매칭 클릭 시 이동 , 시큐리티 필요
 // function goToWishlistPage(){
 //     window.location.href = "/api/wishlist";

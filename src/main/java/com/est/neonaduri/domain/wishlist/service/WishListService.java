@@ -8,6 +8,8 @@ import java.util.stream.Collectors;
 import com.est.neonaduri.domain.companions.domain.Companions;
 import com.est.neonaduri.domain.companions.dto.CompanionsDTO;
 import com.est.neonaduri.domain.companions.repository.CompanionsRepository;
+import com.est.neonaduri.domain.postImages.domain.PostImages;
+import com.est.neonaduri.domain.postImages.repository.PostImagesRepository;
 import com.est.neonaduri.domain.posts.domain.Posts;
 import com.est.neonaduri.domain.posts.repository.PostsRepository;
 import com.est.neonaduri.domain.users.domain.Users;
@@ -28,6 +30,7 @@ public class WishListService {
     private final CompanionsRepository companionsRepository;
     private final UserRepository userRepository;
     private final PostsRepository postsRepository;
+    private final PostImagesRepository postImagesRepository;
 
 
     public Page<CompanionsDTO> getWishlists(String userId, Pageable pageable) {
@@ -36,23 +39,32 @@ public class WishListService {
 
         for (Wishlist wishlist : wishlists) {
             String postId = wishlist.getPosts().getPostId();
-            Optional<Companions> companions = companionsRepository.findByPosts_PostId(postId);
+            Companions companions = companionsRepository.findByPosts_PostId(postId).orElseThrow();
 
             if (companions != null) {
                 CompanionsDTO dto = new CompanionsDTO(
-                        companions.get().getPosts().getUsers().getUserName(),
-                        companions.get().getPosts().getUsers().getUserBirth(),
-                        companions.get().getPosts().getUsers().getUserGender(),
-                        companions.get().getComStart(),
-                        companions.get().getComEnd(),
-                        companions.get().getPosts().getPostTitle(),
-                        companions.get().getPosts().getPostContent()
+                        companions.getPosts().getUsers().getUserName(),
+                        companions.getPosts().getUsers().getUserBirth(),
+                        companions.getPosts().getUsers().getUserGender(),
+                        companions.getComStart(),
+                        companions.getComEnd(),
+                        companions.getPosts().getPostTitle(),
+                        companions.getPosts().getPostContent(),
+                        findImgLink(companions),
+                        companions.getCompanionId()
                 );
                 dtoList.add(dto);
             }
 
         }
         return new PageImpl<>(dtoList, pageable, wishlists.getTotalElements());
+    }
+    String findImgLink(Companions companion){
+        PostImages postImage = postImagesRepository.findPostImagesByPosts(companion.getPosts());
+        if(postImage != null){
+            return postImage.getPostImagesId();
+        }
+        return "/images/companionTestImg.png";
     }
 
     //CJW
