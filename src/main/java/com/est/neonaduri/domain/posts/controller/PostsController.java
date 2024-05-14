@@ -14,6 +14,9 @@ import com.est.neonaduri.domain.posts.dto.PostWriteDTO;
 import com.est.neonaduri.domain.posts.dto.PostsListDTO;
 import com.est.neonaduri.domain.posts.dto.UpdatePostRequest;
 import com.est.neonaduri.domain.posts.service.PostsService;
+import com.est.neonaduri.global.config.auth.dto.SessionUser;
+import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -31,15 +34,12 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 @Controller
+@RequiredArgsConstructor
 public class PostsController {
 	  private final PostsService postsService;
 	  private final PostImagesService postImagesService;
+      private final HttpSession httpSession;
 
-	  @Autowired
-	  public PostsController(PostsService postsService, PostImagesService postImagesService, CompanionsService companionsService) {
-		this.postsService = postsService;
-		this.postImagesService = postImagesService;
-	  }
 
     private PostsListDTO convertToPostsListDTO(Posts posts) {
         return new PostsListDTO(posts);
@@ -85,7 +85,7 @@ public class PostsController {
     @PostMapping("/api/posts")
     public ResponseEntity<Posts> addImgPosts(@RequestPart(value = "data") AddPostRequest request,
                                              @RequestPart(value = "file", required = false) MultipartFile file) {
-        //security 에서 반환 예정
+        SessionUser sessionUser = (SessionUser) httpSession.getAttribute("user");
         String userId = "admin_id";
 
         Posts post = postsService.savePost(request, userId);

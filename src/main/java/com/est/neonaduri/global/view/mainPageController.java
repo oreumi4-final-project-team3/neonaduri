@@ -20,15 +20,16 @@ public class mainPageController {
 
     @GetMapping("/neonaduri")
     public String getMainPage(Model model){
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");
-        if(user != null){
-            System.out.println("user is Loged In!!!!");
-            model.addAttribute("userName",user.getName());
-        }
         model.addAttribute("spots",spotsService.getHotSpots());
         model.addAttribute("companions",companionsService.getHotCompanions());
         model.addAttribute("top",spotsService.getToptenSpots());
         model.addAttribute("searchRank",searchService.getSearchRankList());
+
+        SessionUser sessionUser = (SessionUser) httpSession.getAttribute("user");
+        if(sessionUser != null){
+            model.addAttribute("sessionUser",sessionUser);
+        }
+
         return "main";
     }
 

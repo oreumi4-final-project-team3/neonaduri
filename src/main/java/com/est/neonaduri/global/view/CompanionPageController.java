@@ -10,6 +10,8 @@ import com.est.neonaduri.domain.posts.service.PostsService;
 import com.est.neonaduri.domain.replies.dto.ReplyResponseDto;
 import com.est.neonaduri.domain.replies.service.RepliesService;
 import com.est.neonaduri.domain.spots.dto.SpotPageDto;
+import com.est.neonaduri.global.config.auth.dto.SessionUser;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -28,7 +30,7 @@ public class CompanionPageController {
     private final PostImagesService postImagesService;
     private final PostsService postsService;
     private final RepliesService repliesService;
-
+    private final HttpSession httpSession;
 
     @GetMapping("/companions")
     public String getAllCompanions(Model model,
@@ -39,6 +41,12 @@ public class CompanionPageController {
         model.addAttribute("companions", companionsService.getAllCompanions(pageable));
         model.addAttribute("currentPage", page);
         model.addAttribute("pageType", "region");
+
+        SessionUser sessionUser = (SessionUser) httpSession.getAttribute("user");
+        if(sessionUser != null){
+            model.addAttribute("sessionUser",sessionUser);
+        }
+
         return "companions";
     }
 
@@ -51,6 +59,11 @@ public class CompanionPageController {
         model.addAttribute("companions", companionsService.getCompanionsByAreaCode(areaCode, pageable));
         model.addAttribute("currentPage", page);
         model.addAttribute("pageType", "region");
+
+        SessionUser sessionUser = (SessionUser) httpSession.getAttribute("user");
+        if(sessionUser != null){
+            model.addAttribute("sessionUser",sessionUser);
+        }
 
         return "companions";
     }
@@ -74,6 +87,11 @@ public class CompanionPageController {
             model.addAttribute("img_link",img.getPostImagesId());
         }
 
+        SessionUser sessionUser = (SessionUser) httpSession.getAttribute("user");
+        if(sessionUser != null){
+            model.addAttribute("sessionUser",sessionUser);
+        }
+
         return "companionsDetail";
     }
     @GetMapping("/companions/postId/{postId}")
@@ -93,12 +111,23 @@ public class CompanionPageController {
             model.addAttribute("img_link",img.getPostImagesId());
         }
 
+        SessionUser sessionUser = (SessionUser) httpSession.getAttribute("user");
+        if(sessionUser != null){
+            model.addAttribute("sessionUser",sessionUser);
+        }
+
         return "companionsDetail";
     }
 
     @GetMapping("/uploadCompanion")
     public String uploadCompanion(Model model) {
         model.addAttribute("post",new PostViewResponse());
+
+        SessionUser sessionUser = (SessionUser) httpSession.getAttribute("user");
+        if(sessionUser != null){
+            model.addAttribute("sessionUser",sessionUser);
+        }
+
         return "uploadCompanion";
     }
 
@@ -106,6 +135,11 @@ public class CompanionPageController {
     public String uploadCompanionByPostId (@PathVariable String postId, Model model){
         Posts post = postsService.findById(postId);
         model.addAttribute("post",post);
+
+        SessionUser sessionUser = (SessionUser) httpSession.getAttribute("user");
+        if(sessionUser != null){
+            model.addAttribute("sessionUser",sessionUser);
+        }
 
         return "uploadCompanion";
     }

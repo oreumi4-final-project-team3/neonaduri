@@ -5,6 +5,8 @@ import com.est.neonaduri.domain.postImages.service.PostImagesService;
 import com.est.neonaduri.domain.posts.domain.Posts;
 import com.est.neonaduri.domain.posts.dto.PostViewResponse;
 import com.est.neonaduri.domain.posts.service.PostsService;
+import com.est.neonaduri.global.config.auth.dto.SessionUser;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ReviewPageController {
     private final PostsService postsService;
     private final PostImagesService postImagesService;
+    private final HttpSession httpSession;
 
     //KEC
     @GetMapping("/reviews")
@@ -29,6 +32,12 @@ public class ReviewPageController {
         model.addAttribute("reviews", postsService.getPostListByCategory("review", pageable));
         model.addAttribute("currentPage", page);
         model.addAttribute("pageType", "all");
+
+        SessionUser sessionUser = (SessionUser) httpSession.getAttribute("user");
+        if(sessionUser != null){
+            model.addAttribute("sessionUser",sessionUser);
+        }
+
         return "reviewList";
     }
 
@@ -43,6 +52,12 @@ public class ReviewPageController {
         model.addAttribute("currentPage", page);
         model.addAttribute("pageType", "region");
         model.addAttribute("areaCode", areaCode);
+
+        SessionUser sessionUser = (SessionUser) httpSession.getAttribute("user");
+        if(sessionUser != null){
+            model.addAttribute("sessionUser",sessionUser);
+        }
+
         return "reviewList";
     }
 
@@ -60,6 +75,11 @@ public class ReviewPageController {
         }
         else{
             model.addAttribute("img_link",img.getPostImagesId());
+        }
+
+        SessionUser sessionUser = (SessionUser) httpSession.getAttribute("user");
+        if(sessionUser != null){
+            model.addAttribute("sessionUser",sessionUser);
         }
 
         return "review";
