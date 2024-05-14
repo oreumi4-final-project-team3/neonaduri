@@ -48,7 +48,8 @@
 
             <div class="middle-contents">
                 <div class="companion-image-placeholder">
-                    <img id="sample-image" th:src="@{/images/companionTestImg.png}" alt="샘플이미지">
+                    <img id="sample-image" th:if="${not #strings.isEmpty(companion.imgLink)}" th:onclick="|location.href='@{/companions/id/{comtId}(comtId=${companion.comId})}'|" th:src="${companion.imgLink}" alt="동행 이미지">
+                    <img id="sample-image1" th:if="${#strings.isEmpty(companion.imgLink)}" th:onclick="|location.href='@{/companions/id/{comtId}(comtId=${companion.comId})}'|" src="/images/havenotimage.png" alt="이미지 준비중">
                 </div>
             </div>
 
@@ -75,14 +76,5 @@
 </body>
 <script src="/js/wishlist.js" defer></script>
 <script src="/js/page.js" defer></script>
-<script>
-    function getSpotIdAndNavigate(element) {
-        const spotId = element.parentNode.querySelector('.spotId').value;
-        console.log("Spot ID is: ", spotId);
-        window.location.replace("/api/spot/" + spotId);
-    }
-</script>
-
-
 </html>
 
