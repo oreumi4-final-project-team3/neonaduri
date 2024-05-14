@@ -155,7 +155,8 @@ textarea {
 }
 
 .edit-nickname {
-    background-color: #03C04A;
+    /*background-color: #03C04A;*/
+    background-color: #4FDF80;
     border-radius: 5px;
     border: none;
     width: 33px;

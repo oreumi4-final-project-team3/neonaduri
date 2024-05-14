@@ -32,10 +32,10 @@
         <div class="tourist-sites">
             <!-- 관광지 리스트가 여기에 표시됩니다. -->
             <div class="tourist-site" th:each="spot : ${spots}">
-                <img th:if="${not #strings.isEmpty(spot.spotImg)}" onclick="getPostIdAndNavigate()" th:src="${spot.spotImg}" alt="관광지 이미지">
-                <img th:if="${#strings.isEmpty(spot.spotImg)}" onclick="getPostIdAndNavigate()" src="/images/havenotimage.png" alt="이미지 준비중">
+                <img th:if="${not #strings.isEmpty(spot.spotImg)}" th:onclick="|location.href='@{/spots/id/{postId}(postId=${spot.postId})}'|" th:src="${spot.spotImg}" alt="관광지 이미지">
+                <img th:if="${#strings.isEmpty(spot.spotImg)}" th:onclick="|location.href='@{/spots/id/{postId}(postId=${spot.postId})}'|" src="/images/havenotimage.png" alt="이미지 준비중">
                 <p th:text="${spot.spotAddr}"></p>
-                <h3 id="spotName" th:text="${spot.spotName}" data-postid="${spot.postId}" onclick="getPostIdAndNavigate()"></h3>
+                <h3 id="spotName" th:text="${spot.spotName}" data-postid="${spot.postId}" th:onclick="|location.href='@{/spots/id/{postId}(postId=${spot.postId})}'|"></h3>
                 <p th:text="${#strings.length(spot.spotOverview) > 20 ? #strings.substring(spot.spotOverview,0,20)+'...': spot.spotOverview}"></p>
                 <input type="hidden" class="spotId" th:value="${spot.spotId}">
                 <input type="hidden" class="postId" th:value="${spot.postId}">
@@ -44,30 +44,23 @@
     </div>
 
     <div class="pagination" th:if="${spots.totalElements > 0}">
-        <a th:if="${pageType == 'all' and spots.hasPrevious}" th:href="@{/api/spots(page=${currentPage - 1}, size=${spots.size})}">이전</a>
-        <a th:if="${pageType == 'region' and spots.hasPrevious}" th:href="@{/api/spots/code/{areaCode}(areaCode=${areaCode},page=${currentPage - 1}, size=${spots.size})}">이전</a>
+        <a th:if="${pageType == 'all' and spots.hasPrevious}" th:href="@{/spots(page=${currentPage - 1}, size=${spots.size})}">이전</a>
+        <a th:if="${pageType == 'region' and spots.hasPrevious}" th:href="@{/spots/{areaCode}(areaCode=${areaCode},page=${currentPage - 1}, size=${spots.size})}">이전</a>
 
         <span th:each="pageNum : ${#numbers.sequence(1, spots.totalPages)}">
-            <a th:if="${pageType == 'all'}" th:href="@{/api/spots(page=${pageNum}, size=${spots.size})}" th:text="${pageNum}" th:classappend="${pageNum==currentPage} ? 'active'"></a>
-            <a th:if="${pageType == 'region'}" th:href="@{/api/spots/code/{areaCode}(areaCode=${areaCode}, page=${pageNum}, size=${spots.size})}" th:text="${pageNum}" th:classappend="${pageNum==currentPage} ? 'active'"></a>
+            <a th:if="${pageType == 'all'}" th:href="@{/spots(page=${pageNum}, size=${spots.size})}" th:text="${pageNum}" th:classappend="${pageNum==currentPage} ? 'active'"></a>
+            <a th:if="${pageType == 'region'}" th:href="@{/spots/{areaCode}(areaCode=${areaCode}, page=${pageNum}, size=${spots.size})}" th:text="${pageNum}" th:classappend="${pageNum==currentPage} ? 'active'"></a>
         </span>
 
-        <a th:if="${pageType == 'all' and spots.hasNext}" th:href="@{/api/spots(page=${currentPage + 1}, size=${spots.size})}">다음</a>
-        <a th:if="${pageType == 'region' and spots.hasNext}" th:href="@{/api/spots/code/{areaCode}(areaCode=${areaCode},page=${currentPage + 1}, size=${spots.size})}">다음</a>
+        <a th:if="${pageType == 'all' and spots.hasNext}" th:href="@{/spots(page=${currentPage + 1}, size=${spots.size})}">다음</a>
+        <a th:if="${pageType == 'region' and spots.hasNext}" th:href="@{/spots/{areaCode}(areaCode=${areaCode},page=${currentPage + 1}, size=${spots.size})}">다음</a>
     </div>
 </main>
 <div class="separator"></div>
 <footer>
-    <div class="footer">
-        <div class="footer-logo">
-            <img th:src="@{/images/logo.png}" alt="팀 로고"/>
-        </div>
-    </main>
-    <div class="separator"></div>
     <footer>
         <div th:replace="~{footer.html}"></div>
     </footer>
-    </div>
 </footer>
 </body>
 <script src="/js/here.js" defer></script>

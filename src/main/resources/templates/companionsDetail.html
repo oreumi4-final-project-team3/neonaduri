@@ -115,21 +115,18 @@
                 <p class="title-text">댓글</p>
                 <div class="tour-info-comment-form">
                     <input type="text" placeholder="댓글을 입력해주세요.">
-                    <button>게시</button>
+                    <button onclick="submitComment()">게시</button>
                 </div>
-
-                <div class="tour-info-comment-list-wrap">
-                    <div class="tour-info-comment-list">
-                        <div class="tour-info-comment-list-userInfo">
-                            <div class="tour-info-comment-list-userInfo-profileimg"></div>
-                            <div class="tour-info-comment-list-userInfo-detail">
-                                <p class="tour-info-comment-list-userInfo-userName">재원</p>
-                                <p class="tour-info-comment-list-created">2024/05/13/&nbsp;06:30:15</p>
-                            </div>
-                        </div>
-                        <p>아무도 없나요??</p>
+                <div th:each="comment : ${comments}" class="comment-container">
+                    <input type="hidden" id="user-id" th:value="${comment.writerId}">
+                    <img th:if="${comment.userImage != null}" th:src="${comment.userImage}" class="user-image" alt="User Image">
+                    <img th:if="${comment.userImage == null}" th:src="@{/images/logo.png}" class="user-image" alt="Default User Image">
+                    <div class="comment-info">
+                        <div class="writer-name" th:text="${comment.writerName}"></div>
+                        <div class="comment-content" th:text="${comment.content}"></div>
                     </div>
-
+                    <button class="button edit-button" th:attr="data-id=${comment.replyId}">수정</button>
+                    <button class="button delete-button" th:attr="data-id=${comment.replyId}">삭제</button>
                 </div>
             </div>
         </div>

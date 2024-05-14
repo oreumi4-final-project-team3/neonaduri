@@ -85,7 +85,7 @@ h3, p {
     display: flex;
     flex-direction: column; /* 세로로 요소들을 배치합니다. */
     margin-top:10px;
-    margin-left: -3300px;
+    margin-left: -1350px;
 }
 
 .github-link {
