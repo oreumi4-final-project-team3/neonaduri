@@ -99,16 +99,15 @@
     </div>
 
     <div class="pagination" th:if="${companions.totalElements > 0}">
-        <a th:if="${pageType == 'all' and companions.hasPrevious}" th:href="@{/api/spots(page=${currentPage - 1}, size=${companions.size})}">이전</a>
-        <a th:if="${pageType == 'region' and companions.hasPrevious}" th:href="@{/api/spots/code/{areaCode}(areaCode=${areaCode},page=${currentPage - 1}, size=${companions.size})}">이전</a>
+        <a th:if="${pageType == 'all' and companions.hasPrevious}" th:href="@{/companions(page=${currentPage - 1}, size=${companions.size})}">이전</a>
+        <a th:if="${pageType == 'region' and companions.hasPrevious}" th:href="@{/companions/{areaCode}(areaCode=${areaCode},page=${currentPage - 1}, size=${companions.size})}">이전</a>
 
         <span th:each="pageNum : ${#numbers.sequence(1, companions.totalPages)}">
-            <a th:if="${pageType == 'all'}" th:href="@{/api/posts(page=${pageNum}, size=${companions.size})}" th:text="${pageNum}" th:classappend="${pageNum==currentPage} ? 'active'"></a>
+            <a th:if="${pageType == 'all'}" th:href="@{/companions(page=${pageNum}, size=${companions.size})}" th:text="${pageNum}" th:classappend="${pageNum==currentPage} ? 'active'"></a>
             <a th:if="${pageType == 'region'}" th:href="@{/companions/{areaCode}(areaCode=${areaCode}, page=${pageNum}, size=${companions.size})}" th:text="${pageNum}" th:classappend="${pageNum==currentPage} ? 'active'"></a>
-
         </span>
 
-        <a th:if="${pageType == 'all' and companions.hasNext}" th:href="@{/api/posts(page=${currentPage + 1}, size=${companions.size})}">다음</a>
+        <a th:if="${pageType == 'all' and companions.hasNext}" th:href="@{/companions(page=${currentPage + 1}, size=${companions.size})}">다음</a>
         <a th:if="${pageType == 'region' and companions.hasNext}" th:href="@{/companions/{areaCode}(areaCode=${areaCode},page=${currentPage + 1}, size=${companions.size})}">다음</a>
     </div>
 </main>
