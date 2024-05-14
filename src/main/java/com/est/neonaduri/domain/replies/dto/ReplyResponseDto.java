@@ -14,6 +14,9 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class ReplyResponseDto {
     private String replyId;
+    private String writerId;
+    private String writerName;
+    private String userImage;
     private String content;
     private String postId;
     private LocalDateTime created;
@@ -22,6 +25,9 @@ public class ReplyResponseDto {
     public static ReplyResponseDto toResponse(Replies replies) {
         return new ReplyResponseDto(
                 replies.getReplyId(),
+                replies.getUsers().getUserId(),
+                replies.getUsers().getUserName(),
+                replies.getUsers().getUserImg(),
                 replies.getContent(),
                 replies.getPosts().getPostId(),
                 replies.getCreated(),
