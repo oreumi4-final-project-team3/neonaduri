@@ -86,18 +86,11 @@ public class CompanionsService {
         return companionsRepository.save(companions);
     }
 
-    public List<CompanionsDTO> getHotCompanions(){
+    public List<CompanionsResponseDTO> getHotCompanions(){
         List<Companions> companions = companionsRepository.findHotCompanions();
-        List<CompanionsDTO> dtoList = companions.stream()
-            .map(companion -> new CompanionsDTO(
-                companion.getPosts().getUsers().getUserName(),
-                companion.getPosts().getUsers().getUserBirth(),
-                companion.getPosts().getUsers().getUserGender(),
-                companion.getComStart(),
-                companion.getComEnd(),
-                companion.getPosts().getPostTitle(),
-                companion.getPosts().getPostContent()
-            )).collect(Collectors.toList());
+         List<CompanionsResponseDTO> dtoList = companions.stream()
+                .map(companion -> new CompanionsResponseDTO(companion, companion.getPosts(), companion.getPosts().getUsers(), findImgLink(companion)))
+                .collect(Collectors.toList());
         
         return dtoList;
     }
