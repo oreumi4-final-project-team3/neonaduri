@@ -24,7 +24,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
@@ -116,9 +116,10 @@ public class SpotsService {
 		)).collect(Collectors.toList());
 	}
 
-
+	@Transactional
 	public SpotPageDto getSpotPageByPostId(String postId){
 		Posts post = postsRepository.findById(postId).orElseThrow(() -> new EntityNotFoundException("해당하는 게시물을 찾을 수 없습니다."));
+		post.setPostView(post.getPostView()+1);
 		Spots spot = spotsRepository.findByPosts_PostId(postId);
 		return new SpotPageDto(
 				post.getSpotName(),

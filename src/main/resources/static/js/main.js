@@ -1,3 +1,10 @@
+document.addEventListener("DOMContentLoaded", function() {
+    const spans = document.querySelectorAll('.toptenSpots span');
+    spans.forEach((span, index) => {
+        // 각 span에 대해 0.5초 간격으로 애니메이션 시작 시간을 설정
+        span.style.animationDelay = `${index * 0.8}s`;
+    });
+});
 
 function searchSpot() {
     // 입력 필드에서 값 가져오기
@@ -17,6 +24,10 @@ function getPostIdAndNavigate() {
     const postId = document.querySelector('.postId').value;
     console.log("Post ID is: ", postId);
     window.location.replace("/api/spot/" + postId);
+}
+function getCompanionPostNavigate(){
+    const postId=document.querySelector('.postId').valueOf();
+    window.location.replace("/companions/postId/"+postId);
 }
 
 

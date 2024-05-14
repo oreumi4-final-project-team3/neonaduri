@@ -137,14 +137,18 @@ public class CompanionsService {
         }
         return "/images/companionTestImg.png";
     }
-
+    @Transactional
     public Companions findById(String comId){
-        return companionsRepository.findByCompanionId(comId);
+        Companions companions = companionsRepository.findByCompanionId(comId);
+        companions.getPosts().setPostView(companions.getPosts().getPostView()+1);
+        return companions;
     }
 
-
+    @Transactional
     public Companions findByPostId(String postId) {
-        return companionsRepository.findByPosts_PostId(postId).orElseThrow(() -> new IllegalArgumentException("해당하는 게시물이 없습니다"));
+        Companions companions = companionsRepository.findByPosts_PostId(postId).orElseThrow(() -> new IllegalArgumentException("해당하는 게시물이 없습니다"));
+        companions.getPosts().setPostView(companions.getPosts().getPostView()+1);
+        return companions;
     }
 
     @Transactional
