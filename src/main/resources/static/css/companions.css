@@ -62,6 +62,10 @@
     font-size: 16px;
 }
 
+#create-btn:hover {
+    background-color: #26c42d;
+}
+
 .tourist-sites{
     margin-top: 50px;
     display: grid;
