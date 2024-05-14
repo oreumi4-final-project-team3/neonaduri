@@ -1,0 +1,255 @@
+/* 전체 헤더 스타일링 */
+
+/* 로고 이미지 스타일링 */
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 160px;
+    margin-top: 10px;
+}
+/* 각 요소들의 스타일 */
+.logo, .header-buttons, .user-controls {
+    display: flex;
+    align-items: center; /* 세로 중앙 정렬 */
+}
+.header logo{
+    width:200px;
+    height: 200px;
+}
+.logo img{
+    cursor:pointer;
+}
+/*여기갈까? 같이갈까? 버튼 설정*/
+.header-buttons span {
+    margin-right: 50px; /* 버튼 사이의 간격 설정 */
+    font-size: 25px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.header-btn2{
+    font-weight: bold;
+}
+/*마이페이지 버튼과 찜 버튼 설정*/
+.user-controls img{
+    margin-right: 30px;
+    /*padding: 5px 10px;*/
+    cursor: pointer;
+}
+
+body {
+    width: 1920px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+}
+
+p {
+    margin: 0;
+}
+
+/*구분 선*/
+.separator {
+    border-top: 1px solid #ccc; /* 실선 구분선 */
+    /* border-top: 1px dashed #ccc; */ /* 점선 구분선 */
+    /* border-top: 1px dotted #ccc; */ /* 점선 구분선 */
+    margin-top: 20px; /* 구분선 위 여백 설정 */
+}
+
+/*중간 body 부분*/
+
+#save-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 0 20px 0
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group ::placeholder{
+    color: #cccccc;
+}
+
+.form-group label {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 25px 0;
+}
+
+.form-group #title{
+    width: 700px;
+}
+
+.form-group #title, #areaCode, #spotName, #address, #comRecruit, #comStart, #comEnd{
+    height: 45px;
+    padding: 0 0 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.form-group #title, #content, #areaCode, #spotName, #address, #comRecruit{
+    margin-left: 10px;
+}
+
+.form-group #content{
+    font-family: Arial, sans-serif;
+    margin-top: 20px;
+    line-height: 20px;
+    padding: 10px;
+    width: 690px;
+    height: 500px;
+    resize: none;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.form-group #areaCode{
+    width: 250px;
+}
+
+.form-group #spotName, #address, #comRecruit{
+    width: 350px;
+}
+
+.form-group #comStart, #comEnd{
+    width: 135px;
+}
+
+.schedule-title{
+    margin-top: 25px;
+}
+
+.form-group-schedule {
+    width: 470px;
+    margin-left: 10px;
+    display: grid;
+    grid-template-columns: 200px 1px 200px;
+    grid-gap: 0 30px;
+    place-items: center;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.form-group-schedule label {
+    margin: 0 0 5px 0;
+    font-size: 25px;
+    text-align: center;
+}
+
+hr{
+    height: 50px;
+    border: 1px solid rgba(40, 40, 40, .5);
+}
+
+.form-group-schedule-comStart, .form-group-schedule-comEnd{
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+}
+
+.form-group-schedule-comStart label{
+    color: #2AD931;
+}
+
+.form-group-schedule-comEnd label{
+    color: tomato;
+}
+
+.filebox {
+    margin-bottom: 20px;
+}
+
+.filebox .upload-name {
+    display: inline-block;
+    height: 40px;
+    padding: 0 10px;
+    line-height: 40px;
+    margin-left: 10px;
+    vertical-align: middle;
+    border: 1px solid #dddddd;
+    width: 555px;
+    color: #999999;
+    border-radius: 5px;
+}
+
+.filebox label {
+    display: inline-block;
+    padding: 0;
+    color: #fff;
+    vertical-align: middle;
+    line-height: 40px;
+    border-radius: 5px;
+    background-color: #00A3FF;;
+    cursor: pointer;
+    width: 100px;
+    height: 40px;
+    margin-left: 30px;
+    font-size: 15px;
+    text-align: center;
+}
+
+.filebox input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
+
+#create-btn{
+    margin-left: auto;
+    background-color: #2AD931;
+    border: 0;
+    width: 100px;
+    height: 50px;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    line-height: 50px;
+}
+
+
+/*footer 부분*/
+.separator-footer{
+    border-top: 1px solid #ccc; /* 실선 구분선 */
+    margin: 30px 0px 20px; /* 구분선 위아래 여백 설정 */
+}
+
+.footer {
+    display: flex;
+    align-items: center; /* 요소들을 수직 가운데 정렬합니다. */
+}
+.footer-logo{
+    margin-right: auto;
+    margin-left: 30px;
+}
+.footer-logo img{
+    width: 100px;
+    height: 100px;
+}
+
+.footer span{
+    color: #7E7E7E;
+    font-weight: bold;
+}
+
+.footer-group {
+    display: flex;
+    flex-direction: column; /* 세로로 요소들을 배치합니다. */
+    margin-top:10px;
+    margin-left: -1400px;
+}
+
+.github-link {
+    margin-left: auto; /* 우측으로 정렬합니다. */
+}
