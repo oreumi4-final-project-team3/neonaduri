@@ -31,9 +31,9 @@ public class PostViewResponse {
     }
 
     public PostViewResponse(){
-        this.areaCode = 1;
-        this.spotName = "관광지 이름을 입력해 주세요";
-        this.address = "관광지 주소를 입력해 주세요";
+        this.areaCode = 0;
+        this.spotName = "";
+        this.address = "";
     }
 
 }
