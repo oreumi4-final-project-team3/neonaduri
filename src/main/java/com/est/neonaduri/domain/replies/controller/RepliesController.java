@@ -34,15 +34,14 @@ public class RepliesController {
     /**
      * 댓글 저장 기능
      * @param postId
-     * @param userId
      * @param replyRequestDto
      * @return
      * @author lsh
      */
-    @PostMapping("api/posts/{postId}/{userId}")
+    @PostMapping("api/posts/{postId}")
     public ResponseEntity<ReplyResponseDto> saveReply(@PathVariable(name = "postId")String postId,
-                                                      @PathVariable(name = "userId")String userId,
-                                                      @RequestParam(value = "content") ReplyRequestDto replyRequestDto) {
+                                                      @RequestBody  ReplyRequestDto replyRequestDto) {
+        String userId="admin_id"; //로그인 구현 시 주입
         Replies replies = repliesService.saveReply(postId, userId, replyRequestDto);
         ReplyResponseDto response = ReplyResponseDto.toResponse(replies);
         return ResponseEntity.ok(response);
