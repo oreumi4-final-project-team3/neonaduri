@@ -322,3 +322,71 @@ h3, p {
 .github-link {
     margin-left: auto; /* 우측으로 정렬합니다. */
 }
+
+.companion-image-placeholder{
+    display: flex;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.companion-image-placeholder img:hover{
+    transform: scale(1.2, 1.2); transition-duration: 0.5s;
+}
+
+#sample-image{
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    transition-duration: 0.3s;
+}
+
+.companion-status{
+    position: absolute;
+    display: flex;
+    width: 100%;
+    bottom: 0px;
+    flex-direction: column;
+    background: rgba(255, 255, 255, .6);
+    backdrop-filter: blur(1px);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(100%);
+    transition: transform 0.3s ease, visibility 0s 0.3s;
+}
+
+.companion-status-image, .companion-status-number{
+    display: flex;
+    margin: 0px 20px 0px auto;
+}
+
+.companion-status img{
+    width: 30px;
+    height: 30px;
+    object-fit: scale-down;
+    margin: 0px 5px;
+}
+
+.middle-contents:hover .companion-status {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition: transform 0.1s ease, visibility 0s;
+}
+
+.companion-status-number p{
+    font-weight: bold;
+}
+
+.companion-status-number-recruit{
+    margin: 0px 23px 0px 10px;
+}
+
+.companion-status-number-reserve{
+    margin: 0px 20px 0px 10px;
+}
+
+.companion-status-number-wish{
+    margin: 0px 15px 0px 10px;
+}

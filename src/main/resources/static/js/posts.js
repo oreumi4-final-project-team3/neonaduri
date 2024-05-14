@@ -32,25 +32,6 @@ if (modifyReviewButton) {
     });
 }
 
-<!--
-if (createReviewButton) {
-    createReviewButton.addEventListener('click', event => {
-        fetch(`/api/posts`, {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body : JSON.stringify({
-                title: document.getElementById('title').value,
-                content: document.getElementById('content').value
-            }),
-        }).then(() => {
-            alert('등록 완료되었습니다');
-            location.replace("/reviews");
-        })
-    })
-}
--->
 if (createReviewButton) {
     createReviewButton.addEventListener('click', event => {
         event.preventDefault();
@@ -65,8 +46,6 @@ if (createReviewButton) {
         };
 
         const formData = new FormData();
-        //formData.append('data', JSON.stringify(inputData));
-        //formData.append("data",JSON.stringify(inputData));
         formData.append('data', new Blob([JSON.stringify(inputData)], {type: "application/json",}));
         const fileInput = document.getElementById('fileInput');
         formData.append('file', fileInput.files[0]);

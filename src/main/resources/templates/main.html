@@ -73,6 +73,21 @@
                 <div class="companion-image-placeholder">
                     <img id="sample-image" th:onclick="|location.href='@{/companions/id/{comtId}(comtId=${companion.comId})}'|" th:src="${companion.imgLink}" alt="업로드한 이미지">
                 </div>
+
+                <div class="companion-status">
+                    <div class="companion-status-image">
+                        <img id="recruit-image" th:src= "@{/images/recruit.png}" alt="모집인원 이미지">
+                        <img id="reserve-image" th:src= "@{/images/reserve.png}" alt="현재인원 이미지">
+                        <img id="like-image" th:src= "@{/images/like.png}" alt="좋아요 이미지">
+                    </div>
+
+                    <div class="companion-status-number">
+                        <p class="companion-status-number-recruit" th:text="${companion.comRecruit}"></p>
+                        <p class="companion-status-number-reserve" th:text="${companion.comReserve}"></p>
+                        <p class="companion-status-number-wish" th:text="${companion.comWish}"></p>
+                    </div>
+                </div>
+
             </div>
             <div class="bottom-contents">
                 <p class="bottom-contents-title" th:text="${#strings.length(companion.postTitle) > 29 ? #strings.substring(companion.postTitle,0,29) + '...' : companion.postTitle}"></p>

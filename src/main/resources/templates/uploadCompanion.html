@@ -30,7 +30,20 @@
     <div class="form-group">
 
       <label for="areaCode">🌏&nbsp;어느 ‘지역’으로 여행 가시나요?</label>
-      <input type="text" name="areaCode" id="areaCode" placeholder="여행 가시는 지역을 선택해 주세요." th:value="${post.areaCode}"/>
+      <select name="areaCode" id="areaCode" th:value="${post.areaCode}">
+        <option th:selected="${post.areaCode == 0}">여행 가시는 지역을 선택해 주세요.</option>
+        <option value="1" th:selected="${post.areaCode}=='1'">서울</option>
+        <option value="31" th:selected="${post.areaCode}=='31'">경기</option>
+        <option value="2" th:selected="${post.areaCode}=='2'">인천</option>
+        <option value="32" th:selected="${post.areaCode}=='32'">강원</option>
+        <option value="33" th:selected="${post.areaCode}=='33'">충북</option>
+        <option value="34" th:selected="${post.areaCode}=='34'">충남</option>
+        <option value="35" th:selected="${post.areaCode}=='35'">경북</option>
+        <option value="36" th:selected="${post.areaCode}=='36'">경남</option>
+        <option value="37" th:selected="${post.areaCode}=='37'">전북</option>
+        <option value="38" th:selected="${post.areaCode}=='38'">전남</option>
+        <option value="39" th:selected="${post.areaCode}=='39'">제주</option>
+      </select>
 
       <label for="spotName">🎡&nbsp;어느 ‘관광지’로 여행 가시나요?</label>
       <input type="text" name="spotName" id="spotName" placeholder="여행 가시는 관광지를 입력해 주세요." th:value="${post.spotName}"/>
@@ -72,7 +85,7 @@
   </form>
 </main>
 <footer>
-  <div class="separator-footer"></div>
+  <div class="separator"></div>
   <div class="footer">
     <div class="footer-logo">
       <img th:src="@{/images/logo.png}" alt="팀 로고"/>
@@ -95,5 +108,6 @@
 
 </body>
 <script src="/js/companions.js"></script>
+<script src="/js/page.js"></script>
 <script src="/js/uploadCompanion.js"></script>
 </html>

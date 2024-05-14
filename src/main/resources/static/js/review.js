@@ -144,13 +144,6 @@ document.querySelectorAll('.region-btn').forEach(button => {
     });
 });
 
-// 지역 이미지 업데이트 함수
-function updateRegionImage(regionCode) {
-    const imageElement = document.getElementById('regionImage');
-    const imagePath = getImagePathByRegion(regionCode);
-    imageElement.src = imagePath;
-}
-
 // 지역 코드에 따른 이미지 경로 반환 함수
 function getImagePathByRegion(region) {
     switch(region) {
@@ -181,19 +174,6 @@ function getImagePathByRegion(region) {
     }
 }
 
-// 페이지 로드 시 선택된 지역 이미지 설정
-document.addEventListener('DOMContentLoaded', function() {
-    const selectedRegion = localStorage.getItem('selectedRegion') || '1'; // 로컬 스토리지에서 선택된 지역 코드 가져오기, 기본값은 '1'
-    updateRegionImage(selectedRegion); // 가져온 지역 코드로 이미지 업데이트
-});
-
-// 전체 버튼에 대한 클릭 이벤트 처리
-document.querySelector('.region-all-btn').addEventListener('click', function(event) {
-    event.preventDefault();
-    const defaultRegion = '1'; // 서울을 나타내는 지역 코드
-    localStorage.setItem('selectedRegion', defaultRegion); // 로컬 스토리지에 저장
-    updateRegionImage(defaultRegion); // 대표 이미지 업데이트 함수 호출
-});
 
 function getAreaName(areaCode){
     switch (areaCode){

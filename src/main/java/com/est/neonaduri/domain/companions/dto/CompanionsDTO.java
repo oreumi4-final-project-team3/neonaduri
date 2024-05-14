@@ -16,10 +16,11 @@ public class CompanionsDTO {
 	private LocalDate comEnd;
 	private String postTitle;
 	private String postContent;
-	// private String img;
+	private String imgLink;
+	private String comId;
 
 	public CompanionsDTO(String userName, LocalDateTime userBirth, String userGender, LocalDate comStart,
-						 LocalDate comEnd, String postTitle, String postContent) {
+						 LocalDate comEnd, String postTitle, String postContent,String imgLink,String comId) {
 		this.userName = userName;
 		this.userBirth = userBirth;
 		this.userGender = userGender;
@@ -27,6 +28,7 @@ public class CompanionsDTO {
 		this.comEnd = comEnd;
 		this.postTitle = postTitle;
 		this.postContent = postContent;
-		// this.img = img;
+		this.imgLink = imgLink;
+		this.comId = comId;
 	}
 }
