@@ -9,8 +9,6 @@ function goToCompanionsPage() {
     window.location.href = "/api/posts";
 }
 
-
-
 function goToHerePage() {
     window.location.href = "/api/spots";
 }
