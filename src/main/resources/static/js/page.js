@@ -1,11 +1,11 @@
 function goToHerePage() {
-    window.location.href = "/api/spots";
+    window.location.href = "/spots";
 }
 function goToReviewPage(){
     window.location.href = "/reviews";
 }
 function goToMainPage() {
-    window.location.href = "/api/main";
+    window.location.href = "/neonaduri";
 }
 function goToTogetherPage(){
     window.location.href = "/companions"

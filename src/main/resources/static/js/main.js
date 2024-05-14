@@ -20,17 +20,6 @@ function searchSpot() {
     window.location.href = "/api/search?searchText=" + encodeURIComponent(searchText);
 }
 
-function getPostIdAndNavigate() {
-    const postId = document.querySelector('.postId').value;
-    console.log("Post ID is: ", postId);
-    window.location.replace("/api/spot/" + postId);
-}
-function getCompanionPostNavigate(){
-    const postId=document.querySelector('.postId').valueOf();
-    window.location.replace("/companions/postId/"+postId);
-}
-
-
 document.addEventListener("DOMContentLoaded", function() {
     const userBirthElements = document.querySelectorAll(".userBirth");
     const userAgeElements = document.querySelectorAll(".userAge");

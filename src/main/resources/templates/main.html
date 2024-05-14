@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>너나들이 메인페이지</title>
+    <title>너나들이</title>
     <link rel="stylesheet" th:href="@{/css/main.css}">
     <link rel="stylesheet" th:href="@{/css/header.css}">
 </head>
@@ -34,8 +34,6 @@
         </ul>
     </div>
 
-
-
     <!--최근 인기 동행 게시글-->
     <div class="hotCompanions">
 
@@ -49,7 +47,7 @@
     </div>
 
     <div class="tourist-sites12">
-        <!-- 관광지 리스트가 여기에 표시됩니다. -->
+        <!-- 동행 리스트가 여기에 표시됩니다. -->
         <div class="tourist-site1" th:each="companion : ${companions}">
             <div class="top-contents">
                 <div class="top-writer-profileimg"></div>
@@ -71,18 +69,14 @@
                     </div>
                 </div>
             </div>
-
-
             <div class="middle-contents">
                 <div class="companion-image-placeholder">
-                    <img id="sample-image" th:src="@{/images/companionTestImg.png}" alt="샘플이미지">
+                    <img id="sample-image" th:onclick="|location.href='@{/companions/id/{comtId}(comtId=${companion.comId})}'|" th:src="${companion.imgLink}" alt="업로드한 이미지">
                 </div>
             </div>
-
-
             <div class="bottom-contents">
-                <p class="bottom-contents-title" th:text="${companion.postTitle}"></p>
-                <p class="bottom-contents-content" th:text="${companion.postContent}"></p>
+                <p class="bottom-contents-title" th:text="${#strings.length(companion.postTitle) > 29 ? #strings.substring(companion.postTitle,0,29) + '...' : companion.postTitle}"></p>
+                <p class="bottom-contents-content" th:text="${#strings.length(companion.postContent) > 29 ? #strings.substring(companion.postContent,0,29) + '...' : companion.postContent}"></p>
             </div>
         </div>
     </div>
@@ -101,17 +95,15 @@
     <div class="tourist-sites">
         <!-- 관광지 리스트가 여기에 표시됩니다. -->
         <div class="tourist-site2" th:each="spot : ${spots}">
-            <img th:if="${not #strings.isEmpty(spot.spotImg)}" th:src="${spot.spotImg}" alt="관광지 이미지">
-            <img th:if="${#strings.isEmpty(spot.spotImg)}" src="/images/havenotimage.png" alt="이미지 준비중">
+            <img th:if="${not #strings.isEmpty(spot.spotImg)}" th:onclick="|location.href='@{/spots/id/{postId}(postId=${spot.postId})}'|" th:src="${spot.spotImg}" alt="관광지 이미지">
+            <img th:if="${#strings.isEmpty(spot.spotImg)}" th:onclick="|location.href='@{/spots/id/{postId}(postId=${spot.postId})}'|" src="/images/havenotimage.png" alt="이미지 준비중">
             <p th:text="${spot.spotAddr}"></p>
-            <h3 id="spotName" th:text="${spot.spotName}" data-postid="${spot.postId}" onclick="getPostIdAndNavigate()"></h3>
+            <h3 id="spotName" th:text="${spot.spotName}" data-postid="${spot.postId}" th:onclick="|location.href='@{/spots/id/{postId}(postId=${spot.postId})}'|"></h3>
             <p th:text="${#strings.length(spot.spotOverview) > 20 ? #strings.substring(spot.spotOverview,0,20)+'...': spot.spotOverview}"></p>
             <input type="hidden" class="spotId" th:value="${spot.spotId}">
             <input type="hidden" class="postId" th:value="${spot.postId}">
         </div>
     </div>
-
-
 </main>
 <div class="separator"></div>
 <footer>
