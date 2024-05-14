@@ -40,9 +40,24 @@
 
       <input type="hidden" id="review-id" th:value="${review.postId}">
 
-      <div class="comment">
-        <input type="text" class="comment-input" id="commentInput" placeholder="댓글을 입력해주세요">
-        <button class="comment-btn">게시</button>
+      <div class="tour-info-comment-wrap">
+        <p class="title-text">댓글</p>
+        <div class="tour-info-comment-form">
+          <input type="text" placeholder="댓글을 입력해주세요.">
+          <button id="replyButton">게시</button>
+        </div>
+        <div th:each="comment : ${comments}" class="comment-container">
+          <input type="hidden" class="user-id" th:value="${comment.writerId}">
+          <input type="hidden" class="posts-id" th:value="${comment.postId}">
+          <img th:if="${comment.userImage != null}" th:src="${comment.userImage}" class="user-image" alt="User Image">
+          <img th:if="${comment.userImage == null}" th:src="@{/images/logo.png}" class="user-image" alt="Default User Image">
+          <div class="comment-info">
+            <div class="writer-name" th:text="${comment.writerName}"></div>
+            <div class="comment-content" th:text="${comment.content}"></div>
+          </div>
+          <button class="button edit-button" th:attr="data-id=${comment.replyId}">수정</button>
+          <button class="button delete-button" th:attr="data-id=${comment.replyId}">삭제</button>
+        </div>
       </div>
 
 

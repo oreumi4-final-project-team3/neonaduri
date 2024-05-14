@@ -5,10 +5,12 @@ import com.est.neonaduri.domain.replies.dto.ReplyRequestDto;
 import com.est.neonaduri.domain.replies.dto.ReplyResponseDto;
 import com.est.neonaduri.domain.replies.service.RepliesService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -34,15 +36,14 @@ public class RepliesController {
     /**
      * 댓글 저장 기능
      * @param postId
-     * @param userId
      * @param replyRequestDto
      * @return
      * @author lsh
      */
-    @PostMapping("api/posts/{postId}/{userId}")
+    @PostMapping("api/posts/{postId}")
     public ResponseEntity<ReplyResponseDto> saveReply(@PathVariable(name = "postId")String postId,
-                                                      @PathVariable(name = "userId")String userId,
-                                                      @RequestParam(value = "content") ReplyRequestDto replyRequestDto) {
+                                                      @RequestBody  ReplyRequestDto replyRequestDto) {
+        String userId="admin_id"; //로그인 구현 시 주입
         Replies replies = repliesService.saveReply(postId, userId, replyRequestDto);
         ReplyResponseDto response = ReplyResponseDto.toResponse(replies);
         return ResponseEntity.ok(response);
@@ -60,7 +61,7 @@ public class RepliesController {
     public ResponseEntity<ReplyResponseDto> updateReply(@PathVariable(name = "postId")String postId,
                                                         @PathVariable(name = "userId")String userId,
                                                         @PathVariable(name = "replyId")String replyId,
-                                                        @RequestParam(value = "content") ReplyRequestDto replyRequestDto){
+                                                        @RequestBody ReplyRequestDto replyRequestDto){
         Replies replies = repliesService.updateReply(postId, replyId, userId, replyRequestDto);
         ReplyResponseDto response = ReplyResponseDto.toResponse(replies);
         return ResponseEntity.ok(response);
@@ -74,9 +75,9 @@ public class RepliesController {
      * @author lsh
      */
     @DeleteMapping("api/posts/{replyId}/{userId}")
-    public ResponseEntity<String> deleteReply(@PathVariable(name = "userId")String userId,
-                                              @PathVariable(name = "replyId")String replyId){
+    public ResponseEntity<?> deleteReply(@PathVariable(name = "userId") String userId,
+                                         @PathVariable(name = "replyId") String replyId) {
         String deletedReply = repliesService.deleteReply(userId, replyId);
-        return ResponseEntity.ok("댓글이 삭제 되었습니다. 댓글 id: "+deletedReply);
+        return ResponseEntity.ok(Map.of("message", "댓글이 삭제 되었습니다. 댓글 id: " + deletedReply));
     }
 }
