@@ -8,10 +8,10 @@ body {
 }
 
 .header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 160px;
+    display: grid;
+    grid-template-columns: 380px 580px 380px;
+    grid-template-rows: 160px;
+    grid-gap: 0 289px;
     margin-top: 20px;
 }
 
@@ -30,18 +30,25 @@ body {
     cursor:pointer;
 }
 
+.header-buttons {
+    justify-content: center;
+}
+
 /*여기갈까? 같이갈까? 버튼 설정*/
 .header-buttons span {
-    margin-right: 50px; /* 버튼 사이의 간격 설정 */
+    margin: auto; /* 버튼 사이의 간격 설정 */
     font-size: 25px;
     padding: 5px 10px;
     cursor: pointer;
 }
 
+.user-controls {
+    margin-left: 30px;
+}
+
 /*마이페이지 버튼과 찜 버튼 설정*/
 .user-controls img, .user-controls span{
-    margin-right: 30px;
-    /*padding: 5px 10px;*/
+    margin-left: 30px;
     cursor: pointer;
 }
 
