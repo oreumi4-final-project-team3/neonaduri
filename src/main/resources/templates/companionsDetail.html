@@ -59,24 +59,26 @@
 
             <div class="tour-info-schedule-details">
                 <div class="tour-info-schedule">
-                    <p>🗓️</p>
+                    <p>🗓️&nbsp;</p>
                     <p th:text="${companion.comStart}"></p>
                     <p>&nbsp;~&nbsp;</p>
                     <p th:text="${companion.comEnd}"></p>
                 </div>
 
                 <div class="tour-info-region">
-                    <div>
-                        <p>📍</p>
+                    <div class="tour-info-region-areaCode">
+                        <p>📍&nbsp;</p>
                         <div class="text-muted fst-italic mb-2" id="areaText"></div>
                         <input type="hidden" id="areaCode" th:value="${post.areaCode}">
                     </div>
-                    <div>
-                        <p>주소 : </p>
+
+                    <div class="tour-info-region-address">
+                        <p>주소 :&nbsp;</p>
                         <p th:text="${post.address}">&nbsp;</p>
                     </div>
-                    <div>
-                        <p>관광지명 : </p>
+
+                    <div class="tour-info-region-spotName">
+                        <p>관광지명 :&nbsp;</p>
                         <p th:text="${post.spotName}"></p>
                     </div>
                 </div>
@@ -92,14 +94,14 @@
                         <p class="tour-info-userInfo-userName" th:text="${user.userName}"></p>
                         <div class="tour-info-userInfo-details">
                             <!-- 나이 설정 필요 -->
-                            <p th:text="${user.userBirth}"></p>
+                            <p class="userBirth" th:text="${user.userBirth}"></p>
+                            <p class="userAge"></p>
                             <p>&nbsp;|&nbsp;</p>
                             <p th:text="${user.userGender}"></p>
                             <p>&nbsp;|&nbsp;</p>
                             <p th:text="${user.userRegion}"></p>
                         </div>
                     </div>
-                </div>
             </div>
         </div>
 
@@ -153,7 +155,7 @@
             </div>
             <div class="tour-info-companions-button-wrap">
                 <a class="tour-info-companions-button" id="booking-btn" th:if="${companion.comStatus}">같이갈래!</a>
-                <span th:unless="${companion.comStatus}">예약 마감!!</span>
+                <span class="tour-info-companions-deadline" th:unless="${companion.comStatus}">예약 마감!!</span>
                 <a class="tour-info-companions-button-wish" id="wishing-btn">같이 가볼까?(찜)</a>
             </div>
             <div class="tour-info-companions-map"></div>

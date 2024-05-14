@@ -6,42 +6,32 @@
     <title>너나들이 메인페이지</title>
     <link rel="stylesheet" th:href="@{/css/main.css}">
     <link rel="stylesheet" th:href="@{/css/header.css}">
-
 </head>
 <body>
 <header>
     <div th:replace="~{header.html}"></div>
 </header>
 <main>
-    <div class="search-bar">
-        <div class="search">
-            <div class="searchInput">
-                <input type="text" id="searchInput" name="searchText" placeholder="게시물을 검색해보세요!">
-            </div>
-            <button id="searchButton" class="search-button" onclick="searchSpot()"> 🔍 </button> <!-- 버튼 텍스트 수정 -->
-        </div>
-
-        <div class="background-image">
-            <img id="regionImage" th:src="@{/images/train.png}" alt="검색배경 이미지"/>
-        </div>
+    <div class="background-image">
+        <img id="regionImage" th:src="@{/images/tour.png}" alt="검색배경 이미지" />
     </div>
 
-    <div class="menu-bar">
-        <div class="menu-img">
-            <img th:src="@{/images/Spots.png}"/>
-            <img th:src="@{/images/companions.png}"/>
-            <img th:src="@{/images/spotsTop10.png}"/>
+    <div class="search-bar">
+            <div class="search">
+                <div class="searchInput">
+                    <input type="text" id="searchInput" name="searchText" placeholder="게시물을 검색해보세요!">
+                </div>
+                <button id="searchButton" class="search-button" onclick="searchSpot()"> 🔍 </button> <!-- 버튼 텍스트 수정 -->
+            </div>
         </div>
 
-        <span>인기 관광지 TOP 10</span>
-
-        <div class="toptenSpots">
-            <ul>
-                <li th:each="rank, rankStat : ${searchRank}">
-                    <span th:text="${rankStat.count} + '. ' + ${rank.keyword}"></span>
-                </li>
-            </ul>
-        </div>
+    <div class="toptenSpots">
+        <h1>인기 관광지 TOP 10</h1>
+        <ul>
+            <li th:each="rank, rankStat : ${searchRank}">
+                <span th:text="${rankStat.count} + '. ' + ${rank.keyword}"></span>
+            </li>
+        </ul>
     </div>
 
 
