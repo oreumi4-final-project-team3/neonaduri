@@ -6,26 +6,30 @@ body {
     padding: 0;
     font-family: Arial, sans-serif;
 }
+
 .header{
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 160px;
     margin-top: 20px;
-
 }
+
 /* 각 요소들의 스타일 */
 .logo, .header-buttons, .user-controls {
     display: flex;
     align-items: center; /* 세로 중앙 정렬 */
 }
+
 .header logo{
     width:200px;
     height: 200px;
 }
+
 .logo img{
     cursor:pointer;
 }
+
 /*여기갈까? 같이갈까? 버튼 설정*/
 .header-buttons span {
     margin-right: 50px; /* 버튼 사이의 간격 설정 */
@@ -34,9 +38,8 @@ body {
     cursor: pointer;
 }
 
-
 /*마이페이지 버튼과 찜 버튼 설정*/
-.user-controls img{
+.user-controls img, .user-controls span{
     margin-right: 30px;
     /*padding: 5px 10px;*/
     cursor: pointer;
