@@ -30,13 +30,13 @@
     <div class="form-group">
 
       <label for="areaCode">🌏&nbsp;어느 ‘지역’으로 여행 가시나요?</label>
-      <input type="text" name="areaCode" id="areaCode" placeholder="여행 가시는 지역을 선택해 주세요."/>
+      <input type="text" name="areaCode" id="areaCode" placeholder="여행 가시는 지역을 선택해 주세요." th:value="${post.areaCode}"/>
 
       <label for="spotName">🎡&nbsp;어느 ‘관광지’로 여행 가시나요?</label>
-      <input type="text" name="spotName" id="spotName" placeholder="여행 가시는 관광지를 입력해 주세요."/>
+      <input type="text" name="spotName" id="spotName" placeholder="여행 가시는 관광지를 입력해 주세요." th:value="${post.spotName}"/>
 
       <label for="address">🔍&nbsp;자세한 주소를 적어주세요!</label>
-      <input type="text" name="address" id="address" placeholder="예) 서울특별시 종로구 세종대로 172"/>
+      <input type="text" name="address" id="address" placeholder="예) 서울특별시 종로구 세종대로 172" th:value="${post.address}"/>
 
       <label for="comRecruit">🎇&nbsp;몇 명의 동행과 함께 하실 예정이신가요?</label>
       <input type="number" name="comRecruit" id="comRecruit" placeholder="함께 여행할 동행의 수를 입력해 주세요."/>

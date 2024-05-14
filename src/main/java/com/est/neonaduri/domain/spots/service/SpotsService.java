@@ -122,6 +122,7 @@ public class SpotsService {
 		post.setPostView(post.getPostView()+1);
 		Spots spot = spotsRepository.findByPosts_PostId(postId);
 		return new SpotPageDto(
+				post.getPostId(),
 				post.getSpotName(),
 				post.getAddress(),
 				spot.getSpotImg(),
