@@ -14,3 +14,6 @@ function goToTogetherPage(){
 function goToMyPage() {
     window.location.href = "/api/mypage/admin_id";
 }
+function goToLoginPage() {
+    window.location.href = "/login";
+}
