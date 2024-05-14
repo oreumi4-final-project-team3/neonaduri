@@ -5,6 +5,9 @@ import com.est.neonaduri.domain.companions.service.CompanionsService;
 import com.est.neonaduri.domain.postImages.domain.PostImages;
 import com.est.neonaduri.domain.postImages.service.PostImagesService;
 import com.est.neonaduri.domain.posts.domain.Posts;
+import com.est.neonaduri.domain.posts.dto.PostViewResponse;
+import com.est.neonaduri.domain.posts.service.PostsService;
+import com.est.neonaduri.domain.spots.dto.SpotPageDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -19,11 +22,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class CompanionPageController {
     private final CompanionsService companionsService;
     private final PostImagesService postImagesService;
+    private final PostsService postsService;
 
-    @GetMapping("/uploadCompanion")
-    public String uploadCompanion() {
-        return "uploadCompanion";
-    }
 
     @GetMapping("/companions")
     public String getAllCompanions(Model model,
@@ -87,6 +87,20 @@ public class CompanionPageController {
         }
 
         return "companionsDetail";
+    }
+
+    @GetMapping("/uploadCompanion")
+    public String uploadCompanion(Model model) {
+        model.addAttribute("post",new PostViewResponse());
+        return "uploadCompanion";
+    }
+
+    @GetMapping("/uploadCompanion/{postId}")
+    public String uploadCompanionByPostId (@PathVariable String postId, Model model){
+        Posts post = postsService.findById(postId);
+        model.addAttribute("post",post);
+
+        return "uploadCompanion";
     }
 
 }
