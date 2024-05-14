@@ -117,3 +117,45 @@ document.addEventListener('DOMContentLoaded', function () {
             });
     });
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    const commentContainers = document.querySelectorAll('.comment-container');
+
+    commentContainers.forEach(container => {
+        const editButton = container.querySelector('.edit-button');
+        const commentContent = container.querySelector('.comment-content');
+        const userId = container.querySelector('.user-id').value;
+        const postId = container.querySelector('.posts-id').value;
+        const replyId = editButton.getAttribute('data-id');
+
+        editButton.addEventListener('click', function () {
+            if (editButton.textContent === '수정') {
+                const currentText = commentContent.textContent;
+                commentContent.innerHTML = `<input type="text" value="${currentText}" class="edit-input">`;
+                editButton.textContent = '저장';
+            } else {
+                const updatedText = commentContent.querySelector('.edit-input').value;
+                commentContent.textContent = updatedText;
+                editButton.textContent = '수정';
+
+                // API 호출 부분
+                fetch(`/api/posts/${postId}/${replyId}/${userId}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ content: updatedText })
+                }).then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                }).then(data => {
+                    console.log('Success:', data);
+                }).catch((error) => {
+                    console.error('Error:', error);
+                });
+            }
+        });
+    });
+});
