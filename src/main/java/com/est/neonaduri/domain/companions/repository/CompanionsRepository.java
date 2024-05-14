@@ -19,10 +19,10 @@ public interface CompanionsRepository extends JpaRepository<Companions, String> 
 
     Page<Companions> findCompanionsByPosts_PostCategory(String postCategory, Pageable pageable);
 
-    @Query("SELECT c FROM Companions c JOIN c.posts p WHERE p.postCategory = 'companions' ORDER BY p.postView DESC limit 3")
+    @Query("SELECT c FROM Companions c JOIN c.posts p WHERE p.postCategory = 'companion' ORDER BY p.postView DESC limit 3")
     List<Companions> findHotCompanions();
 
-    @Query("SELECT c FROM Companions c JOIN c.posts p WHERE p.areaCode = :areaCode AND p.postCategory = 'companions'")
+    @Query("SELECT c FROM Companions c JOIN c.posts p WHERE p.areaCode = :areaCode AND p.postCategory = 'companion'")
     Page<Companions> findCompanionsByAreaCodeAndCategory(@Param("areaCode") int areaCode, Pageable pageable);
 
     //CJW
