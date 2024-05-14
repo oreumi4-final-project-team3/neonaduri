@@ -3,6 +3,7 @@ package com.est.neonaduri.domain.users.controller;
 import com.est.neonaduri.domain.userDetails.dto.UserDetailsRequestDto;
 import com.est.neonaduri.domain.userDetails.service.UserDetailsService;
 import com.est.neonaduri.domain.users.dto.UserDTO;
+import com.est.neonaduri.domain.users.repository.UserRepository;
 import com.est.neonaduri.domain.users.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -63,6 +64,10 @@ public class UserController {
         return "myMatching";
     }
 
+    // 로그인 페이지 호출
+    @GetMapping("/login")
+    public String showLoginPage() { return "login"; }
+
     // 사용자 정보 수정 API
     @PutMapping("api/users/{userId}")
     public ResponseEntity<UserDTO> updateUser(@PathVariable String userId, @RequestBody UserDTO userDto) {
@@ -83,6 +88,29 @@ public class UserController {
         UserDTO createdUser = userService.createUser(userDto);
         model.addAttribute("user", createdUser);
         return "redirect:/api/main"; // 메인으로 이동
+    }
+
+    // 사용자 정보 생성 API
+    @PostMapping("/register")
+    public String login(@ModelAttribute UserDTO userDto, @ModelAttribute UserDetailsRequestDto userDetailsDto) {
+        // 사용자 정보 생성
+        UserDTO newUser = new UserDTO();
+        newUser.setUserRegion(userDto.getUserRegion());
+        newUser.setUserGender(userDto.getUserGender());
+        newUser.setUserBirth(userDto.getUserBirth());
+
+        UserDetailsRequestDto newUserDetails = new UserDetailsRequestDto();
+        newUserDetails.setUserMbti(userDetailsDto.getUserMbti());
+        newUserDetails.setUserIntro(userDetailsDto.getUserIntro());
+        newUserDetails.setUserStyle(userDetailsDto.getUserStyle());
+
+        // 사용자 정보 저장
+        UserDTO createdUser = userService.createUser(newUser);
+        UserDetailsRequestDto createdUserDetails = userDetailsService.createUserDetails(newUserDetails);
+
+        // 로그인 후 처리 로직 추가 가능
+
+        return "redirect:/api/main"; // 로그인 후 메인 페이지로 리다이렉트
     }
 
 }

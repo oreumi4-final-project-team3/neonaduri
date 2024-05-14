@@ -4,6 +4,7 @@ import com.est.neonaduri.domain.userDetails.domain.UserDetails;
 import com.est.neonaduri.domain.userDetails.dto.UserDetailsRequestDto;
 import com.est.neonaduri.domain.userDetails.repository.UserDetailsRepository;
 import com.est.neonaduri.domain.users.domain.Users;
+import com.est.neonaduri.domain.users.dto.UserDTO;
 import com.est.neonaduri.domain.users.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +49,20 @@ public class UserDetailsService {
             // UserDetails 객체가 null인 경우에 대한 처리
             return null; // 또는 적절한 기본값을 반환할 수도 있습니다.
         }
+    }
+
+    public UserDetailsRequestDto createUserDetails (UserDetailsRequestDto userDetailsRequestDto) {
+        // 새로운 사용자 엔티티 생성
+        UserDetails newUserDetails = new UserDetails();
+        newUserDetails.setUserMbti(userDetailsRequestDto.getUserMbti());
+        newUserDetails.setUserIntro(userDetailsRequestDto.getUserIntro());
+        newUserDetails.setUserStyle(userDetailsRequestDto.getUserStyle());
+
+        // 새로운 사용자 정보 저장
+        UserDetails createdUserDetails = userDetailsRepository.save(newUserDetails);
+
+        // 저장된 사용자 정보를 DTO로 변환하여 반환
+        return convertToDTO(createdUserDetails);
     }
 
     // UserDetails를 UserDetailsRequestDto로 변환
