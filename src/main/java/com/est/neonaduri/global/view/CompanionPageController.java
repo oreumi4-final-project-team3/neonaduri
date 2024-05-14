@@ -38,7 +38,7 @@ public class CompanionPageController {
 
         model.addAttribute("companions", companionsService.getAllCompanions(pageable));
         model.addAttribute("currentPage", page);
-        model.addAttribute("pageType", "region");
+        model.addAttribute("pageType", "all");
         return "companions";
     }
 

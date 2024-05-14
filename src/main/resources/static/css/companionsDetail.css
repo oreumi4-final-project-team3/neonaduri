@@ -256,9 +256,17 @@ main {
     background-color: #2AD931;
 }
 
+#booking-btn:hover {
+    background-color: #26c42d;
+}
+
 .tour-info-companions-button-wish{
     margin-top: 15px;
     background-color: #00A3FF;
+}
+
+#wishing-btn:hover {
+    background-color: #0090e6;
 }
 
 .tour-info-companions-deadline{
