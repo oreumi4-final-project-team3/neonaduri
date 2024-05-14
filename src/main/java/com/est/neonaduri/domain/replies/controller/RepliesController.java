@@ -5,10 +5,12 @@ import com.est.neonaduri.domain.replies.dto.ReplyRequestDto;
 import com.est.neonaduri.domain.replies.dto.ReplyResponseDto;
 import com.est.neonaduri.domain.replies.service.RepliesService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -73,9 +75,9 @@ public class RepliesController {
      * @author lsh
      */
     @DeleteMapping("api/posts/{replyId}/{userId}")
-    public ResponseEntity<String> deleteReply(@PathVariable(name = "userId")String userId,
-                                              @PathVariable(name = "replyId")String replyId){
+    public ResponseEntity<?> deleteReply(@PathVariable(name = "userId") String userId,
+                                         @PathVariable(name = "replyId") String replyId) {
         String deletedReply = repliesService.deleteReply(userId, replyId);
-        return ResponseEntity.ok("댓글이 삭제 되었습니다. 댓글 id: "+deletedReply);
+        return ResponseEntity.ok(Map.of("message", "댓글이 삭제 되었습니다. 댓글 id: " + deletedReply));
     }
 }

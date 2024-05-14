@@ -103,21 +103,19 @@ document.addEventListener('DOMContentLoaded', function () {
             body: JSON.stringify(requestBody)
         }).then(response => {
             if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+                throw new Error(`HTTP 에러: ${response.status}`);
             }
             return response.json();
         })
             .then(data => {
-                console.log('Success:', data);
                 window.location.reload();
             })
             .catch((error) => {
-                console.error('Error:', error);
                 alert('댓글 등록에 실패하였습니다.');
             });
     });
 });
-
+// 댓글 수정
 document.addEventListener('DOMContentLoaded', function () {
     const commentContainers = document.querySelectorAll('.comment-container');
 
@@ -147,15 +145,44 @@ document.addEventListener('DOMContentLoaded', function () {
                     body: JSON.stringify({ content: updatedText })
                 }).then(response => {
                     if (!response.ok) {
-                        throw new Error('Network response was not ok');
+                        throw new Error('댓글 수정 실패');
                     }
                     return response.json();
                 }).then(data => {
-                    console.log('Success:', data);
                 }).catch((error) => {
-                    console.error('Error:', error);
+                    alert('예기치 못한 오류로 실패했습니다.');
                 });
             }
         });
     });
 });
+
+//댓글 삭제
+document.addEventListener('DOMContentLoaded', function () {
+    const commentContainers = document.querySelectorAll('.comment-container');
+
+    commentContainers.forEach(container => {
+        const deleteButton = container.querySelector('.delete-button');
+        const userId = container.querySelector('.user-id').value;
+        const replyId = deleteButton.getAttribute('data-id');
+
+        deleteButton.addEventListener('click', function () {
+            if (confirm('댓글을 삭제하시겠습니까?')) {
+                fetch(`/api/posts/${replyId}/${userId}`, {
+                    method: 'DELETE'
+                }).then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error('댓글 삭제 실패');
+                    }
+                }).then(data => {
+                    container.remove();
+                }).catch(error => {
+                    alert('댓글 삭제에 실패했습니다.');
+                });
+            }
+        });
+    });
+});
+
