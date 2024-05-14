@@ -59,7 +59,7 @@ public class RepliesController {
     public ResponseEntity<ReplyResponseDto> updateReply(@PathVariable(name = "postId")String postId,
                                                         @PathVariable(name = "userId")String userId,
                                                         @PathVariable(name = "replyId")String replyId,
-                                                        @RequestParam(value = "content") ReplyRequestDto replyRequestDto){
+                                                        @RequestBody ReplyRequestDto replyRequestDto){
         Replies replies = repliesService.updateReply(postId, replyId, userId, replyRequestDto);
         ReplyResponseDto response = ReplyResponseDto.toResponse(replies);
         return ResponseEntity.ok(response);

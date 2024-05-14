@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface RepliesRepository extends JpaRepository<Replies, String> {
-    List<Replies> findByPosts_PostIdOrderByModified(String postId);
+    List<Replies> findByPosts_PostIdOrderByCreated(String postId);
 }

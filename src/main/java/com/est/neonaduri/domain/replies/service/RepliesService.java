@@ -24,7 +24,7 @@ public class RepliesService {
     private final UserRepository userRepository;
 
     public List<ReplyResponseDto> getRepliesByPostId(String postId){
-        return repliesRepository.findByPosts_PostIdOrderByModified(postId).stream()
+        return repliesRepository.findByPosts_PostIdOrderByCreated(postId).stream()
                 .map(ReplyResponseDto::toResponse)
                 .collect(Collectors.toList());
     }
