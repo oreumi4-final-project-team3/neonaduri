@@ -91,6 +91,11 @@ document.addEventListener('DOMContentLoaded', function () {
         const postId = document.getElementById('post-id').value;
         const content = document.querySelector('.tour-info-comment-form input[type="text"]').value;
 
+        if (!content.trim()) {
+            alert('댓글을 입력해 주세요.');
+            return; // 함수 종료
+        }
+
         const requestBody = {
             content: content
         };
