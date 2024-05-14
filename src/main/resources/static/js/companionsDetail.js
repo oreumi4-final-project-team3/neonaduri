@@ -79,3 +79,41 @@ function calculateAgeGroup(koreanAge) {
         return "50대 이상";
     }
 }
+document.addEventListener('DOMContentLoaded', function () {
+    const replyButton = document.getElementById('replyButton');
+
+    replyButton.addEventListener('click', function(event) {
+        // 기본 동작을 방지
+        event.preventDefault();
+
+
+        const postId = document.getElementById('post-id').value;
+        const content = document.querySelector('.tour-info-comment-form input[type="text"]').value;
+
+        const requestBody = {
+            content: content
+        };
+
+        // API 요청 보내기
+        fetch(`/api/posts/${postId}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(requestBody)
+        }).then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+            .then(data => {
+                console.log('Success:', data);
+                window.location.reload();
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('댓글 등록에 실패하였습니다.');
+            });
+    });
+});
