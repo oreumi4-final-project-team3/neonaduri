@@ -36,7 +36,7 @@
             여행의 즐거움을<br>
             <span>함께</span> 나누어요
         </h1>
-        <form th:action="@{/api/user/register}" method="post" enctype="multipart/form-data">
+        <form th:action="@{/register}" method="post" enctype="multipart/form-data">
             <label for="userRegion">사는 곳은 어디인가요?</label>
             <select id="userRegion" name="userRegion">
                 <option selected>서울특별시</option>
@@ -63,7 +63,7 @@
                 <option>여성</option>
             </select>
             <label for="userBirth">생년월일이 어떻게 되세요?</label>
-            <input type="datetime-local" id="userBirth" name="userBirth">
+            <input type="date" id="userBirth" name="userBirth">
             <label for="userMbti">MBTI는요?</label>
             <input type="text" id="userMbti" name="userMbti" placeholder="MBTI">
             <label for="userIntro">자기소개 한 문장 작성해주세요:)</label>
@@ -79,7 +79,7 @@
                 <option value="spontaneous">너 P야? 무계획 즉흥 여행</option>
                 <option value="healing">힐링이 필요해.. 여유로운 일정</option>
             </select>
-            <button type="submit">회원가입</button>
+            <button type="submit" id="register">회원가입</button>
         </form>
     </div>
 </main>
