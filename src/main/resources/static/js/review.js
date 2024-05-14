@@ -1,11 +1,18 @@
 document.addEventListener('DOMContentLoaded', function () {
     const replyButton = document.getElementById('replyButton');
-    // 기본 동작을 방지
-    event.preventDefault();
 
     replyButton.addEventListener('click', function(event) {
+        // 기본 동작을 방지
+        event.preventDefault();
+
         const postId = document.getElementById('review-id').value;
         const content = document.querySelector('.tour-info-comment-form input[type="text"]').value;
+
+        if (!content.trim()) {
+            alert('댓글을 입력해 주세요.');
+            return; // 함수 종료
+        }
+
         const requestBody = {
             content: content
         };
