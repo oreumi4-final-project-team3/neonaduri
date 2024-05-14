@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>후기볼까?</title>
-    <link rel="stylesheet" th:href="@{/css/review.css}">
+    <link rel="stylesheet" th:href="@{/css/reviewList.css}">
     <link rel="stylesheet" th:href="@{/css/header.css}">
 
 </head>
@@ -14,35 +14,45 @@
 </header>
 <main>
     <div class="regions">
-        <span class="region-all-btn" onclick="goToReviewPage()">전체</span>
-        <span class="region-btn" data-area-code="1">서울</span>
-        <span class="region-btn" data-area-code="31">경기</span>
-        <span class="region-btn" data-area-code="2">인천</span>
-        <span class="region-btn" data-area-code="32">강원</span>
-        <span class="region-btn" data-area-code="33">충북</span>
-        <span class="region-btn" data-area-code="34">충남</span>
-        <span class="region-btn" data-area-code="35">경북</span>
-        <span class="region-btn" data-area-code="36">경남</span>
-        <span class="region-btn" data-area-code="37">전북</span>
-        <span class="region-btn" data-area-code="38">전남</span>
-        <span class="region-btn" data-area-code="39">제주</span>
-    </div>
-    <div class="region-image">
-        <img id="regionImage" th:src="@{/images/seoul.png}" alt="대표이미지"/>
+        <div class="regions-button-wrap">
+            <span class="region-all-btn" onclick="goToReviewPage()">전체</span>
+            <span class="region-btn" data-area-code="1">서울</span>
+            <span class="region-btn" data-area-code="31">경기</span>
+            <span class="region-btn" data-area-code="2">인천</span>
+            <span class="region-btn" data-area-code="32">강원</span>
+            <span class="region-btn" data-area-code="33">충북</span>
+            <span class="region-btn" data-area-code="34">충남</span>
+            <span class="region-btn" data-area-code="35">경북</span>
+            <span class="region-btn" data-area-code="36">경남</span>
+            <span class="region-btn" data-area-code="37">전북</span>
+            <span class="region-btn" data-area-code="38">전남</span>
+            <span class="region-btn" data-area-code="39">제주</span>
+        </div>
+        <div class="region-image">
+            <img id="regionImage" th:src="@{/images/seoul.png}" alt="대표이미지"/>
+        </div>
     </div>
 
-    <div>
+    <div class="button-wrap">
         <button type="button" id="create-btn"
-                th:onclick="|location.href='@{/uploadReview}'|">글 등록</button>
+                th:onclick="|location.href='@{/uploadReview}'|">후기 등록</button>
     </div>
 
     <div class="tourist-sites">
         <!-- 관광지 리스트가 여기에 표시됩니다. -->
         <div class="tourist-site" th:each="review : ${reviews}">
-            <img th:onclick="|location.href='@{/reviews/id/{postId}(postId=${review.postId})}'|" th:src="${review.imgLink}" alt="관광지 이미지">
-            <h3 th:onclick="|location.href='@{/reviews/id/{postId}(postId=${review.postId})}'|" th:text="${review.postTitle}"></h3>
-            <p th:text="${review.spotName}"></p>
-            <p th:text="${review.user.getUserName()}"></p>
+            <div class="review-img-content">
+                <img th:onclick="|location.href='@{/reviews/id/{postId}(postId=${review.postId})}'|" th:src="${review.imgLink}" alt="관광지 이미지">
+            </div>
+            <div class="review-contents-wrap">
+                <div class="review-contents">
+                    <p class="review-contents-userName" th:text="${review.user.getUserName()}"></p>
+                    <p class="review-contents-spotName" th:text="${review.spotName}"></p>
+                </div>
+                <div class="review-title">
+                    <h3 th:onclick="|location.href='@{/reviews/id/{postId}(postId=${review.postId})}'|" th:text="${review.postTitle}"></h3>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -61,8 +71,8 @@
     </div>
 
 </main>
-<div class="separator"></div>
 <footer>
+    <div class="separator-footer"></div>
     <div th:replace="~{footer.html}"></div>
 </footer>
 </body>
