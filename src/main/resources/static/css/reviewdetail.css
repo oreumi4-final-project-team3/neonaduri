@@ -11,7 +11,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* 화면 전체 높이에 맞추기 위해 */
+    height: auto; /* 화면 전체 높이에 맞추기 위해 */
 }
 /*article 부분*/
 article{
