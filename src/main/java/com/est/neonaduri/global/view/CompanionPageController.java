@@ -7,6 +7,8 @@ import com.est.neonaduri.domain.postImages.service.PostImagesService;
 import com.est.neonaduri.domain.posts.domain.Posts;
 import com.est.neonaduri.domain.posts.dto.PostViewResponse;
 import com.est.neonaduri.domain.posts.service.PostsService;
+import com.est.neonaduri.domain.replies.dto.ReplyResponseDto;
+import com.est.neonaduri.domain.replies.service.RepliesService;
 import com.est.neonaduri.domain.spots.dto.SpotPageDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
@@ -17,12 +19,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 @Controller
 @RequiredArgsConstructor
 public class CompanionPageController {
     private final CompanionsService companionsService;
     private final PostImagesService postImagesService;
     private final PostsService postsService;
+    private final RepliesService repliesService;
 
 
     @GetMapping("/companions")
@@ -54,10 +59,12 @@ public class CompanionPageController {
     public String showCompanion(@PathVariable String comId, Model model){
         Companions companion = companionsService.findById(comId);
         PostImages img = postImagesService.findPostImages(companion.getPosts().getPostId());
+        List<ReplyResponseDto> repliesByPostId = repliesService.getRepliesByPostId(companion.getPosts().getPostId());
 
         model.addAttribute("companion",companion);
         model.addAttribute("post",companion.getPosts());
         model.addAttribute("user",companion.getPosts().getUsers());
+        model.addAttribute("comments",repliesByPostId);
 
         if(img==null){
             //사진 없을 경우 기본 이미지

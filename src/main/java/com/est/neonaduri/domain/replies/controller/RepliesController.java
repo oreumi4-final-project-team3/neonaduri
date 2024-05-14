@@ -22,7 +22,7 @@ public class RepliesController {
      * @return
      * @author lsh
      */
-    @GetMapping("api/posts/{postId}")
+    @GetMapping("api/posts/reply/{postId}")
     @ResponseBody
     public ResponseEntity<List<ReplyResponseDto>> getRepliesByPostId(@PathVariable(name = "postId")String postId){
         List<ReplyResponseDto> replies = repliesService.getRepliesByPostId(postId);
