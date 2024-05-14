@@ -17,3 +17,6 @@ function goToMyPage() {
 function goToLoginPage() {
     window.location.href = "/login";
 }
+function goToWishListPage(){
+    window.location.href = "/api/wishlist/admin_id";
+}
