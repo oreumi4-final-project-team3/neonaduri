@@ -12,7 +12,6 @@ public class UserDTO {
     private String userEmail;
     private String userImg;
     private Integer userRegion;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDateTime userBirth;
     private String userGender;
 }

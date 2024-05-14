@@ -3,14 +3,17 @@ package com.est.neonaduri.domain.users.controller;
 import com.est.neonaduri.domain.userDetails.dto.UserDetailsRequestDto;
 import com.est.neonaduri.domain.userDetails.service.UserDetailsService;
 import com.est.neonaduri.domain.users.dto.UserDTO;
-import com.est.neonaduri.domain.users.repository.UserRepository;
 import com.est.neonaduri.domain.users.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Controller
 public class UserController {
@@ -90,27 +93,63 @@ public class UserController {
         return "redirect:/api/main"; // 메인으로 이동
     }
 
-    // 사용자 정보 생성 API
+//    @PostMapping("/register")
+//    public String register(@ModelAttribute UserDTO userDto, @RequestParam("userGender") String userGender,
+//                        @RequestParam("userBirth") LocalDateTime userBirth,
+//                        @RequestParam("userMbti") String userMbti,
+//                        @RequestParam("userStyle") String userStyle,
+//                        @RequestParam("userIntro") String userIntro) {
+//        // 사용자 정보 생성
+//        UserDTO newUser = new UserDTO();
+//        UserDetailsRequestDto userDetailsRequestDto = new UserDetailsRequestDto();
+//        newUser.setUserId("admin_id"); // 기존 사용자 아이디
+//        newUser.setUserId("example.com"); // 기존 사용자 이메일
+//        newUser.setUserGender(userGender);
+//        newUser.setUserBirth(userBirth);
+//        userDetailsRequestDto.setUserMbti(userMbti);
+//        userDetailsRequestDto.setUserStyle(userStyle);
+//        userDetailsRequestDto.setUserIntro(userIntro);
+//
+//        // 사용자 정보 저장
+//        UserDTO createdUser = userService.createUser(newUser);
+//
+//        // 로그인 후 처리 로직 추가 가능
+//
+//        return "redirect:/neonaduri"; // 로그인 후 메인 페이지로 리다이렉트
+//    }
+
     @PostMapping("/register")
-    public String login(@ModelAttribute UserDTO userDto, @ModelAttribute UserDetailsRequestDto userDetailsDto) {
+    public String register(@ModelAttribute UserDTO userDto,
+                           @RequestParam("userGender") String userGender,
+                           @RequestParam("userBirth") String userBirthString,
+                           @RequestParam("userMbti") String userMbti,
+                           @RequestParam("userStyle") String userStyle,
+                           @RequestParam("userIntro") String userIntro) {
         // 사용자 정보 생성
         UserDTO newUser = new UserDTO();
-        newUser.setUserRegion(userDto.getUserRegion());
-        newUser.setUserGender(userDto.getUserGender());
-        newUser.setUserBirth(userDto.getUserBirth());
+        UserDetailsRequestDto userDetailsRequestDto = new UserDetailsRequestDto();
 
-        UserDetailsRequestDto newUserDetails = new UserDetailsRequestDto();
-        newUserDetails.setUserMbti(userDetailsDto.getUserMbti());
-        newUserDetails.setUserIntro(userDetailsDto.getUserIntro());
-        newUserDetails.setUserStyle(userDetailsDto.getUserStyle());
+        LocalDateTime userBirth = null;
+        if(userBirthString != null && !userBirthString.isEmpty()) {
+            // String 값을 LocalDateTime으로 변환
+            userBirth = LocalDateTime.parse(userBirthString, DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+        }
+
+        newUser.setUserId("admin_id"); // 기존 사용자 아이디
+        newUser.setUserEmail("example.com"); // 기존 사용자 이메일
+        newUser.setUserName("Admin"); // 기존 사용자 닉네임
+        newUser.setUserGender(userGender);
+        newUser.setUserBirth(userBirth);
+        userDetailsRequestDto.setUserMbti(userMbti);
+        userDetailsRequestDto.setUserStyle(userStyle);
+        userDetailsRequestDto.setUserIntro(userIntro);
 
         // 사용자 정보 저장
         UserDTO createdUser = userService.createUser(newUser);
-        UserDetailsRequestDto createdUserDetails = userDetailsService.createUserDetails(newUserDetails);
 
         // 로그인 후 처리 로직 추가 가능
 
-        return "redirect:/api/main"; // 로그인 후 메인 페이지로 리다이렉트
+        return "redirect:/neonaduri"; // 로그인 후 메인 페이지로 리다이렉트
     }
 
 }
