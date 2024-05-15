@@ -26,18 +26,6 @@ public class SpotsController {
 		return new SpotsListDTO(spots.getPosts().getAddress(), spots.getPosts().getSpotName(), spots.getSpotImg(),spots.getPosts().getPostContent(),spots.getSpotId(),spots.getPosts().getPostId());
 	}
 
-	/**
-	 * 관광지를 이름으로 조회하는 API
-	 *
-	 * @return Optional<Spots> : 관광지
-	 * @author kec
-	 */
-	@GetMapping("api/spots/name/{spotName}")
-	public String getSpotByName(@PathVariable String spotName,Model model){
-		SpotPageDto spotPageDto = spotsService.getSpotPageByName(spotName);
-		model.addAttribute("spotPage",spotPageDto);
-		return "post-spot-page";
-	}
 
 	/**
 	 * 관광지 지역 코드로 조회하는 API

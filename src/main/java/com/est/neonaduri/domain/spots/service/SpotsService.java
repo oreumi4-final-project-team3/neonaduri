@@ -31,28 +31,12 @@ import org.springframework.transaction.annotation.Transactional;
 public class SpotsService {
 
 	private final SpotsRepository spotsRepository;
-	private final ApiManager apiManager;
 	private final PostsRepository postsRepository;
 
 	@Autowired
-	public SpotsService(SpotsRepository spotsRepository, ApiManager apiManager, PostsRepository postsRepository) {
+	public SpotsService(SpotsRepository spotsRepository, PostsRepository postsRepository) {
 		this.spotsRepository = spotsRepository;
-		this.apiManager = apiManager;
 		this.postsRepository = postsRepository;
-	}
-
-	//기본적인 CRUD 관련 코드들 작성
-
-	public void createSpot(Spots spots) {
-		spotsRepository.save(spots);
-	}
-
-	public void deleteSpot(Spots spots) {
-		spotsRepository.delete(spots);
-	}
-
-	public Spots getSpot(String spotName){
-		return spotsRepository.findBySpotName(spotName);
 	}
 
 	public Page<SpotsListDTO> getAllSpots(Pageable pageable) {
@@ -130,17 +114,6 @@ public class SpotsService {
 				post.getAreaCode(),
 				spot.getMapX(),
 				spot.getMapY());
-	}
-	public SpotPageDto getSpotPageByName(String spotName){
-		Spots spot = spotsRepository.findBySpotName(spotName);
-		return new SpotPageDto(
-			spot.getPosts().getSpotName(),
-			spot.getPosts().getAddress(),
-			spot.getSpotImg(),
-			spot.getPosts().getPostContent(),
-			spot.getPosts().getAreaCode(),
-			spot.getMapX(),
-			spot.getMapY());
 	}
 }
 
