@@ -18,7 +18,14 @@ article{
 
 }
 .image{
+    justify-content: center;
+    display: flex;
     margin-top: 65px;
+}
+.image img {
+    width: 433px;
+    height: 450px;
+    border: none;
 }
 .title{
     color:forestgreen;
