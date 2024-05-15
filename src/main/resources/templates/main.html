@@ -26,7 +26,7 @@
         </div>
 
     <div class="toptenSpots">
-        <h1>인기 관광지 TOP 10</h1>
+        <h1>실시간 인기 검색어 TOP 10</h1>
         <ul>
             <li th:each="rank, rankStat : ${searchRank}">
                 <span th:text="${rankStat.count} + '. ' + ${rank.keyword}"></span>
