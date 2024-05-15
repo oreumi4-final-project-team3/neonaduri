@@ -38,6 +38,7 @@ public class UserController {
 //        return userService.getUserData(userId);
 //    }
 
+//    사용자 정보 조회 API
     @GetMapping("api/users/{userId}")
     public ResponseEntity<UserDTO> getUserData(@PathVariable String userId) {
         UserDTO userData = userService.getUserData(userId);
@@ -85,37 +86,12 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
     }
 
-    // 사용자 정보 생성 API
-    @RequestMapping(value = "/api/users/register", method = RequestMethod.POST)
-    public String createUser(@RequestBody UserDTO userDto, Model model) {
-        UserDTO createdUser = userService.createUser(userDto);
-        model.addAttribute("user", createdUser);
-        return "redirect:/api/main"; // 메인으로 이동
-    }
-
-//    @PostMapping("/register")
-//    public String register(@ModelAttribute UserDTO userDto, @RequestParam("userGender") String userGender,
-//                        @RequestParam("userBirth") LocalDateTime userBirth,
-//                        @RequestParam("userMbti") String userMbti,
-//                        @RequestParam("userStyle") String userStyle,
-//                        @RequestParam("userIntro") String userIntro) {
-//        // 사용자 정보 생성
-//        UserDTO newUser = new UserDTO();
-//        UserDetailsRequestDto userDetailsRequestDto = new UserDetailsRequestDto();
-//        newUser.setUserId("admin_id"); // 기존 사용자 아이디
-//        newUser.setUserId("example.com"); // 기존 사용자 이메일
-//        newUser.setUserGender(userGender);
-//        newUser.setUserBirth(userBirth);
-//        userDetailsRequestDto.setUserMbti(userMbti);
-//        userDetailsRequestDto.setUserStyle(userStyle);
-//        userDetailsRequestDto.setUserIntro(userIntro);
-//
-//        // 사용자 정보 저장
-//        UserDTO createdUser = userService.createUser(newUser);
-//
-//        // 로그인 후 처리 로직 추가 가능
-//
-//        return "redirect:/neonaduri"; // 로그인 후 메인 페이지로 리다이렉트
+//    // 사용자 정보 생성 API
+//    @RequestMapping(value = "/api/users/register", method = RequestMethod.POST)
+//    public String createUser(@RequestBody UserDTO userDto, Model model) {
+//        UserDTO createdUser = userService.createUser(userDto);
+//        model.addAttribute("user", createdUser);
+//        return "redirect:/api/main"; // 메인으로 이동
 //    }
 
     @PostMapping("/register")

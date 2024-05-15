@@ -25,6 +25,4 @@ public interface SpotsRepository extends JpaRepository<Spots,String> {
 	@Query("SELECT s FROM Spots s JOIN s.posts p WHERE p.postCategory = 'spot' ORDER BY p.postView DESC limit 10")
 	List<Spots> findToptenSpots();
 
-	@Query("SELECT s FROM Spots s JOIN s.posts p WHERE p.spotName= :spotName AND p.postCategory = 'spot'")
-	Spots findBySpotName(@Param("spotName") String spotName);
 }

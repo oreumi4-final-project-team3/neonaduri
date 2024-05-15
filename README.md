@@ -6,7 +6,7 @@
 <br>
 ## 1. 프로젝트 소개
 **너나들이**란,<br>
-"서로 너니 나니 하고 부르며 허물없이 말을 건네거나 그런 사이"를 나타내는 순우리말 입니다.
+"서로 너니 나니 하고 부르며 허물없이 말을 건네거나 그런 사이"를 나타내는 순우리말 입니다.<br>
 우리 너나들이는 대한민국 곳곳의 정겨운 관광지들을 소개하고, 여행하는 즐거움을 함께 나눌 수 있는 서비스입니다.
 
 ## 2. 프로젝트 목표
@@ -34,7 +34,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
+    <tr style="text-align: center">
       <td style="text-align: center;"><img src="https://github.com/jeonginwoo/ormi4th-spring-project/assets/128672362/b87c72ea-4e4e-4600-ac82-32a3a3a7803a" style="width: 100px; height: 100px;">
             <br><hr style="margin-top: 10px; margin-bottom: 10px;">
         <a href="https://github.com/euichan0927">   🔗 김의찬</a><hr style="margin-top: 10px; margin-bottom: 10px;"><br> ‣ 메인페이지 기능 구현<br>‣ 여기갈까?(관광지 게시글) 페이지 기능 구현<br>‣후기볼까?(리뷰 게시글) 페이지 기능 구현<br>‣ 관심목록 페이지 기능 구현<br>‣ 게시글 조건 검색 기능 개발<br>‣마이페이지 페이징처리 적용</td>
@@ -46,7 +46,7 @@
         <a href="https://github.com/euichan0927">   🔗 최재원</a><hr style="margin-top: 10px; margin-bottom: 10px;"><br> ‣ 요구사항 및 기능 명세<br>‣ API 설계 (API 명세서)<br>‣회원가입 및 로그인 기능 개발<br>‣ 사용자 마이페이지 및 관리자페이지 기능 개발<br>‣ 게시글 조건 검색 기능 개발<br>‣마이페이지 페이징처리 적용</td>
       <td style="text-align: center;"><img src="src/main/resources/static/images/Hayoung.png" style="width: 100px; height: 100px;">
             <br><hr style="margin-top: 10px; margin-bottom: 10px;">
-        <a href="https://github.com/euichan0927">   🔗 이하영</a><hr style="margin-top: 10px; margin-bottom: 10px;"><br> ‣ 요구사항 및 기능 명세<br>‣ API 설계 (API 명세서)<br>‣회원가입 및 로그인 기능 개발<br>‣ 사용자 마이페이지 및 관리자페이지 기능 개발<br>‣ 게시글 조건 검색 기능 개발<br>‣마이페이지 페이징처리 적용</td>
+        <a href="https://github.com/emitlight">   🔗 이하영</a><hr style="margin-top: 10px; margin-bottom: 10px;"><br> ‣ 요구사항 및 기능 명세<br>‣ API 명세서<br>‣ 마이페이지 기능 구현<br>‣ 나의 매칭 페이지 기능 구현<br>‣ 로그인 페이지 기능 구현</td>
       <td style="text-align: center;"><img src="src/main/resources/static/images/Yoonho.jpg" style="width: 100px; height: 100px;">
             <br><hr style="margin-top: 10px; margin-bottom: 10px;">
         <a href="https://github.com/euichan0927">   🔗 지윤호</a><hr style="margin-top: 10px; margin-bottom: 10px;"><br> ‣ 요구사항 및 기능 명세<br>‣ API 설계 (API 명세서)<br>‣회원가입 및 로그인 기능 개발<br>‣ 사용자 마이페이지 및 관리자페이지 기능 개발<br>‣ 게시글 조건 검색 기능 개발<br>‣마이페이지 페이징처리 적용</td>
@@ -56,54 +56,45 @@
 </table>
 
 ## 6. 배포 아키텍쳐
-### CI/CD
-![배포](https://github.com/jeonginwoo/ormi4th-spring-project/assets/128672362/cb894123-8ec4-4d62-818b-de5b0bfc7b19)
------------
-<br>
-
 ### Architecture
-![아키텍처](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/ff6034bd-4b0c-4c89-9542-238ddaf6a22f)
+![neonaduri_architecture](https://github.com/oreumi4-final-project-team3/neonaduri/assets/58384329/79398395-c71a-47cc-afe0-7827b336513f)
+
 ## 7. Skills
-
 ### Languages
-
 [![My Skills](https://skillicons.dev/icons?i=spring,java,js,html,css)](https://skillicons.dev)
 
 ### Tools
-
 [![My Skills](https://skillicons.dev/icons?i=idea,gradle,github,figma,docker)](https://skillicons.dev)
 
 ### DataBase
-
 [![My Skills](https://skillicons.dev/icons?i=mysql)](https://skillicons.dev)
 
 ### OS
-
 [![My Skills](https://skillicons.dev/icons?i=windows)](https://skillicons.dev)
 
 ### Deploy
-
 [![My Skills](https://skillicons.dev/icons?i=aws,githubactions)](https://skillicons.dev)
 
 ### API
-
 - Kakao map API
 - Alan AI API
 - Google login API
 - Tour API - 한국관광공사
 - Gmail API
 - redis
+- 
 ## 8. 개발 일정
 ![schedule.png](src%2Fmain%2Fresources%2Fstatic%2Fimages%2Fschedule.png)
 
 ## 9. 플로우 차트 (Flow chart)
-
+![flowchart.png](src%2Fmain%2Fresources%2Fstatic%2Fimages%2Fflowchart.png)
 
 ## 10. 데이터베이스 모델링(ER Diagram)
-![ERD.png](src%2Fmain%2Fresources%2Fstatic%2Fimages%2FERD.png)
+![ERD](https://github.com/oreumi4-final-project-team3/neonaduri/assets/58384329/142397f2-bd1f-48e6-9eb6-16d881996c94)
 
 ## 11. 기능 명세
-![기능명세.png](src%2Fmain%2Fresources%2Fstatic%2Fimages%2F%EA%B8%B0%EB%8A%A5%EB%AA%85%EC%84%B8.png)
+![기능명세](https://github.com/oreumi4-final-project-team3/neonaduri/assets/58384329/b8e2d571-7c0a-459a-9c0d-a028a77a7d74)
+
 
 ## 14. 프로젝트 구조
 ```text
@@ -400,7 +391,7 @@
 
 ## 15. 개발 회고
 ### 👩🏻‍💻 김의찬
-#### 전체적으로
+
 ```markdown
 처음부터 끝까지 믿고 따라와준 팀원들에게 보답하기 위해 책임감을 가지고 프로젝트에 임했습니다. 그래서 그런지 기대에 부응하고자 프로젝트의 내실을 다지기 보다는 사이즈만 키우는 것에 집중해서 겉만 크고 화려한 느낌이 강합니다 하지만 2주동안 진행된 프로젝트에서 이정도 사이즈의 결과물이 나왔다는 점은 너무 만족스럽습니다.
 중간에 팀원 한 분이 개인 사정으로 이탈하면서 어려운 점도 있었지만 팀원간 적절한 소통과 업무 분담을 통해 위기를 잘헤쳐나온거 같고,  협업에 있어서 가장 중요한 것은 구성원 각각의 능력치 보다는 소통과 적절한 임무 부여라는 것을 다시 한 번 깨달을 수 있는 기회였습니다.
@@ -409,7 +400,7 @@
 
 
 ### 👩🏻‍💻 이하영
-#### 전체적으로
+
 ```markdown
 처음부터 끝까지 믿고 따라와준 팀원들에게 보답하기 위해 책임감을 가지고 프로젝트에 임했습니다. 그래서 그런지 기대에 부응하고자 프로젝트의 내실을 다지기 보다는 사이즈만 키우는 것에 집중해서 겉만 크고 화려한 느낌이 강합니다 하지만 2주동안 진행된 프로젝트에서 이정도 사이즈의 결과물이 나왔다는 점은 너무 만족스럽습니다.
 중간에 팀원 한 분이 개인 사정으로 이탈하면서 어려운 점도 있었지만 팀원간 적절한 소통과 업무 분담을 통해 위기를 잘헤쳐나온거 같고,  협업에 있어서 가장 중요한 것은 구성원 각각의 능력치 보다는 소통과 적절한 임무 부여라는 것을 다시 한 번 깨달을 수 있는 기회였습니다.
@@ -417,7 +408,7 @@
 ```
 
 ### 👩🏻‍💻 임성현
-#### 전체적으로
+
 ```markdown
 처음부터 끝까지 믿고 따라와준 팀원들에게 보답하기 위해 책임감을 가지고 프로젝트에 임했습니다. 그래서 그런지 기대에 부응하고자 프로젝트의 내실을 다지기 보다는 사이즈만 키우는 것에 집중해서 겉만 크고 화려한 느낌이 강합니다 하지만 2주동안 진행된 프로젝트에서 이정도 사이즈의 결과물이 나왔다는 점은 너무 만족스럽습니다.
 중간에 팀원 한 분이 개인 사정으로 이탈하면서 어려운 점도 있었지만 팀원간 적절한 소통과 업무 분담을 통해 위기를 잘헤쳐나온거 같고,  협업에 있어서 가장 중요한 것은 구성원 각각의 능력치 보다는 소통과 적절한 임무 부여라는 것을 다시 한 번 깨달을 수 있는 기회였습니다.
@@ -425,7 +416,7 @@
 ```
 
 ### 👩🏻‍💻 지윤호
-#### 전체적으로
+
 ```markdown
 처음부터 끝까지 믿고 따라와준 팀원들에게 보답하기 위해 책임감을 가지고 프로젝트에 임했습니다. 그래서 그런지 기대에 부응하고자 프로젝트의 내실을 다지기 보다는 사이즈만 키우는 것에 집중해서 겉만 크고 화려한 느낌이 강합니다 하지만 2주동안 진행된 프로젝트에서 이정도 사이즈의 결과물이 나왔다는 점은 너무 만족스럽습니다.
 중간에 팀원 한 분이 개인 사정으로 이탈하면서 어려운 점도 있었지만 팀원간 적절한 소통과 업무 분담을 통해 위기를 잘헤쳐나온거 같고,  협업에 있어서 가장 중요한 것은 구성원 각각의 능력치 보다는 소통과 적절한 임무 부여라는 것을 다시 한 번 깨달을 수 있는 기회였습니다.
@@ -433,9 +424,11 @@
 ```
 
 ### 👩🏻‍💻 최재원
-#### 전체적으로
+
 ```markdown
 처음부터 끝까지 믿고 따라와준 팀원들에게 보답하기 위해 책임감을 가지고 프로젝트에 임했습니다. 그래서 그런지 기대에 부응하고자 프로젝트의 내실을 다지기 보다는 사이즈만 키우는 것에 집중해서 겉만 크고 화려한 느낌이 강합니다 하지만 2주동안 진행된 프로젝트에서 이정도 사이즈의 결과물이 나왔다는 점은 너무 만족스럽습니다.
 중간에 팀원 한 분이 개인 사정으로 이탈하면서 어려운 점도 있었지만 팀원간 적절한 소통과 업무 분담을 통해 위기를 잘헤쳐나온거 같고,  협업에 있어서 가장 중요한 것은 구성원 각각의 능력치 보다는 소통과 적절한 임무 부여라는 것을 다시 한 번 깨달을 수 있는 기회였습니다.
 또, 이번 프로젝트에 확장성 좋은 주제 선정을 하였기 때문에 향후 진행되는 파이널 프로젝트에서 당 프로젝트를 이어서 했으면 좋겠다는 바람이 있습니다.
 ```
+
+

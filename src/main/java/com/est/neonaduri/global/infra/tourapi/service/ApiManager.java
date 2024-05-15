@@ -58,9 +58,7 @@ public class ApiManager {
     private String createBasedUrl(String apiUrlType){
         return ApiConst.TOUR_API_ENDPOINT+apiUrlType;
     }
-    private String createLocationInfoUrl(double mapX,double mapY,int radius,int numOfRows){
-        return createBasedUrl(ApiConst.LOCATION_INFO_BASED)+setNumOfRows(numOfRows)+ApiConst.DEFAULT_QUERY_PARAMS1 +setPosition(mapX,mapY,radius)+setServiceKey(serviceKey);
-    }
+
     private String createAreaBasedUrl(int numOfRows, int areaCode,int contentTypeCode){
         return createBasedUrl(ApiConst.AREA_BASED)+setNumOfRows(numOfRows)+ApiConst.DEFAULT_QUERY_PARAMS1 +setContentTypeId(contentTypeCode)+setAreaCode(areaCode)+setServiceKey(serviceKey);
     }
@@ -100,10 +98,6 @@ public class ApiManager {
         return "&contentTypeId=" + code;
     }
 
-    // 위치 정보 입력
-    private String setPosition(double mapX, double mapY, int radius) {
-        return "&mapX=" + mapX + "&mapY=" + mapY + "&radius=" + radius;
-    }
 
 
 
