@@ -8,33 +8,35 @@
 </head>
 <body>
 <header>
-    <div class="header_box">
-        <a th:href="@{/neonaduri}">
-            <img class="logo" th:src="@{/images/neonaduriLogo.png}" alt="너나들이 로고">
-        </a>
-    </div>
 </header>
 <main>
     <div class="login_box">
-        <h1>
-            안녕하세요!<br>
-            여행의 즐거움을<br>
-            <span>함께</span> 나누어요
-        </h1>
+        <div class="header_box">
+            <a th:href="@{/neonaduri}">
+                <img class="logo" th:src="@{/images/neonaduriLogo.png}" alt="너나들이 로고">
+            </a>
+            <h1>
+                안녕하세요!<br>
+                여행의 즐거움을<br>
+                <span>함께</span> 나누어요
+            </h1>
+        </div>
+
         <form th:action="@{/register}" method="post" enctype="multipart/form-data">
                         <label for="userRegion">사는 곳은 어디인가요?</label>
                         <select id="userRegion" name="userRegion">
-                            <option selected value=1>서울</option>
-                            <option value=2>인천</option>
-                            <option value=3>경기</option>
-                            <option value=4>강원</option>
-                            <option value=5>충북</option>
-                            <option value=6>충남</option>
-                            <option value=7>전북</option>
-                            <option value=8>전남</option>
-                            <option value=9>경북</option>
-                            <option value=10>경남</option>
-                            <option value=11>제주</option>
+                            <option selected>지역을 선택해주세요.</option>
+                            <option value="1">서울</option>
+                            <option value="31">경기</option>
+                            <option value="2">인천</option>
+                            <option value="32">강원</option>
+                            <option value="33">충북</option>
+                            <option value="34">충남</option>
+                            <option value="35">경북</option>
+                            <option value="36">경남</option>
+                            <option value="37">전북</option>
+                            <option value="38">전남</option>
+                            <option value="39">제주</option>
                         </select>
             <label for="userGender">성별이 무엇인가요?</label>
             <select id="userGender" name="userGender">

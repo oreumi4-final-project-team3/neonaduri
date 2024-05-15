@@ -26,16 +26,6 @@ a {
 
 /*헤더*/
 
-.logo {
-    margin: 36px 36px 41px 45px;
-    width: 170px;
-    height: 173px;
-}
-
-.header_box {
-    display: flex;
-}
-
 .nav_box {
     display: flex;
     align-items: center;
@@ -70,6 +60,16 @@ li {
 
 /*메인*/
 
+.logo {
+    width: 170px;
+    height: 173px;
+}
+
+.header_box {
+    display: flex;
+    align-items: center;
+}
+
 .login_box {
     width: 680px;
     padding: 78px 83px 97px 83px;
@@ -86,8 +86,7 @@ li {
     font-size: 40px;
     font-weight: 500;
     text-align: left;
-    position: relative;
-    left: -67px;
+    margin-left: 5px;
 }
 
 .login_box span {
