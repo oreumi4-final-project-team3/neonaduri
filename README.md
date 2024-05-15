@@ -23,37 +23,15 @@
 
 ## 5. 개발 인원 및 역할
 ## 🙌 안녕하세요.
-<table>
-  <thead>
-    <tr>
-      <th>김의찬</th>
-      <th>임성현</th>
-      <th>최재원</th>
-      <th>이하영</th>
-      <th>지윤호</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr style="text-align: center">
-      <td style="text-align: center;"><img src="https://github.com/jeonginwoo/ormi4th-spring-project/assets/128672362/b87c72ea-4e4e-4600-ac82-32a3a3a7803a" style="width: 100px; height: 100px;">
-            <br><hr style="margin-top: 10px; margin-bottom: 10px;">
-        <a href="https://github.com/euichan0927">   🔗 김의찬</a><hr style="margin-top: 10px; margin-bottom: 10px;"> <br>‣ 메인페이지 기능 구현<br>‣ 여기갈까?(관광지 게시글) 페이지 기능 구현<br>‣ 후기볼까?(리뷰 게시글) 페이지 기능 구현<br>‣ 관심목록 페이지 기능 구현<br></td>
-      <td style="text-align: center;"><img src="src/main/resources/static/images/Sunghyun.jpg" style="width: 100px; height: 100px;">
-            <br><hr style="margin-top: 10px; margin-bottom: 10px;">
-        <a href="https://github.com/shlim0287">   🔗 임성현</a><hr style="margin-top: 10px; margin-bottom: 10px;"><br>‣공공데이터 API 크롤러 구현<br>‣ Alan-SSE API구현<br>‣검색 기능 구현<br>‣실시간 인기 검색어 기능 구현<br>‣댓글 API 구현 <br>‣관광지 상세 페이지 구현<br>‣Email API 구현<br></td>
-      <td style="text-align: center;"><img src="src/main/resources/static/images/Jaewon.jpg" style="width: 100px; height: 100px;">
-            <br><hr style="margin-top: 10px; margin-bottom: 10px;">
-        <a href="https://github.com/bbabbungtting">   🔗 최재원</a><hr style="margin-top: 10px; margin-bottom: 10px;"><br> ‣ 요구사항 및 기능 명세<br>‣ API 설계 (API 명세서)<br>‣회원가입 및 로그인 기능 개발<br>‣ 사용자 마이페이지 및 관리자페이지 기능 개발<br>‣ 게시글 조건 검색 기능 개발<br>‣마이페이지 페이징처리 적용</td>
-      <td style="text-align: center;"><img src="src/main/resources/static/images/Hayoung.png" style="width: 100px; height: 100px;">
-            <br><hr style="margin-top: 10px; margin-bottom: 10px;">
-        <a href="https://github.com/emitlight">   🔗 이하영</a><hr style="margin-top: 10px; margin-bottom: 10px;"><br>‣ 마이페이지 기능 구현<br>‣ 나의 매칭 페이지 기능 구현<br>‣ 로그인 페이지 기능 구현</td>
-      <td style="text-align: center;"><img src="src/main/resources/static/images/Yoonho.jpg" style="width: 100px; height: 100px;">
-            <br><hr style="margin-top: 10px; margin-bottom: 10px;">
-        <a href="https://github.com/UUUUUKnow">   🔗 지윤호</a><hr style="margin-top: 10px; margin-bottom: 10px;"><br> ‣ 같이갈까?(동행 게시글) 페이지 디자인 구현<br>‣ 후기볼까?(후기 게시글 리스트 및 생성) 페이지 디자인 구현</td>
-    </tr>
-    
-  </tbody>
-</table>
+
+
+|                                                                             김의찬                                                                             |                                                                                                                                                               임성현                                                                                                                                                               |                                                                            최재원                                                                             |                                                                            이하영                                                                             |                                                                            지윤호                                                                             |
+|:-----------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/jeonginwoo/ormi4th-spring-project/assets/128672362/b87c72ea-4e4e-4600-ac82-32a3a3a7803a" width="100" height="100"> | <img src="src/main/resources/static/images/Sunghyun.jpg" style="width: 100px; height: 100px;"> | <img src="src/main/resources/static/images/Jaewon.jpg" style="width: 100px; height: 100px;"> | <img src="src/main/resources/static/images/Hayoung.png" style="width: 100px; height: 100px;"> | <img src="src/main/resources/static/images/Yoonho.jpg" style="width: 100px; height: 100px;"> |
+|                                                     <a href="https://github.com/euichan0927">🔗 김의찬</a>                                                     |                                                                                                                                      <a href="https://github.com/shlim0287">🔗 임성현</a>                                                                                                                                      |                                                     <a href="https://github.com/bbabbungtting">🔗 최재원</a>                                                     |                                                     <a href="https://github.com/emitlight">🔗 이하영</a>                                                     |                                                     <a href="https://github.com/UUUUUKnow">🔗 지윤호</a>                                                     |
+|              ‣ 메인페이지 기능 구현 <br><br> ‣ 여기갈까?(관광지 게시글) 페이지 기능 구현<br><br> ‣후기볼까?(리뷰 게시글) 페이지 기능 구현<br><br> ‣ 관심목록 페이지 기능 구현<br><br>              | ‣공공데이터 API 크롤러 구현<br>‣ Alan-SSE API구현<br><br> ‣검색 기능 구현<br><br> ‣실시간 인기 검색어 기능 구현<br><br> ‣댓글 API 구현 <br><br> ‣관광지 상세 페이지 구현<br><br> >‣Email API 구현<br><br> |      ‣ 게시판 api 개발<br>‣ 댓글 api 개발<br>‣ 게시글에 댓글 & 답글 적용<br>‣ 게시글, 댓글 좋아요 기능 개발<br>‣ toast ui editor 적용<br>‣ 게시판 페이징처리 적용<br>‣Flow Chart 설계<br>‣개발 일정 기록      |                                      ‣ 요구사항 및 기능 명세<br><br> ‣ API 명세서<br><br> ‣ 마이페이지 기능 구현<br><br> ‣ 나의 매칭 페이지 기능 구현<br><br> ‣ 로그인 페이지 기능 구현                                      |                                      ‣ 같이갈까?(동행 게시글) 페이지 디자인 구현<br><br> ‣ 후기볼까?(후기 게시글 리스트 및 생성) 페이지 디자인 구현                                      |
+
+
 
 ## 6. 배포 아키텍쳐
 ### Architecture
@@ -190,7 +168,7 @@
 | '/companions'                                    | GET         | 동행 게시글페이지 조회         |     ✅     |           |          |
 | '/companions/{areaCode}'                         | GET         | 지역 별 동행 게시글 조회       |     ✅     |           |          |
 | '/companions/id/{comId}'                         | GET         | 동행 게시글 상세 조회         |     ✅     |           |          |
-| '/uploadComapnion'                               | POST        | 동행 게시글 작성            |     ✅     |           |          |
+| '/uploadComapnion'                               | POST        | 동행 게시글 작성              |     ✅     |           |          |
 | '/uploadCompanion/{postId}'                      | GET         | 관광지 정보를 통한 동행 게시글 작성 |     ✅     |           |          |
 | '/reviews'                                       | GET         | 리뷰 전체 리스트 조회         |     ✅     |           |          |
 | '/reviews/{areaCode}'                            | GET         | 지역별 리뷰 게시글 조회        |     ✅     |           |          |
@@ -202,6 +180,22 @@
 
 <br>
 
+## 13. 화면설계서
+
+|                                                                                                                                           |                                                                                                                                              |
+|:------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------|
+| 로그인<br/>![로그인](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/f68d815e-ac76-4469-8dd5-fb66879c7a50)                 | 회원가입<br/>![회원가입](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/bea6365b-c146-4b57-9381-626e40b1fd83)                  |
+| 홈(경기 없을 때)<br/>![홈](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/4b3b9dcb-d19d-4400-99e1-836dd937581f)            | 홈(경기 있을 때)<br/>![홈(경기 있을 때)](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/6120ebd0-b65d-4fd7-b186-83dfaeee1234) |
+| 게시판(KT)<br/>![KT](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/bb9f4a20-fca8-4f61-aad2-6652f6d449e4)              | 게시판(SSG)<br/>![SSG](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/47904e37-7cf8-43d0-aa62-31f9ea562809)               |
+| 게시판(NC)<br/>![NC](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/4d5752ae-f25c-4075-95de-8efe62f797dd)              | 게시판(두산)<br/>![두산](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/34f20276-53dd-4727-9f00-f288d3249d30)                 |
+| 게시판(KIA)<br/>![KIA](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/7e8863c8-9e76-4a69-ba70-bdd4778aab05)            | 게시판(롯데)<br/>![롯데](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/b8a2c175-4308-4efb-8aeb-4ccc50322cca)                 |
+| 게시판(삼성)<br/>![삼성](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/18c562c8-a8f4-45e4-8397-6dcd018ff8e6)              | 게시판(한화)<br/>![한화](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/e45ec601-a641-4222-870b-b1dddd6a4828)                 |
+| 게시판(키움)<br/>![키움](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/2286f51c-b921-41ca-b2e8-d07b736693b9)              | 게시판(LG)<br/>![LG](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/03a81133-cf35-492d-9d28-fb063149b237)                 |
+| 게시글<br/>![게시글](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/f1ed1832-265e-467e-b396-f6f91baef92e)                 | 마이페이지<br/>![마이페이지](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/92010b54-bed4-49b9-9912-6acb82668f96)                |
+| 게시글 등록/수정<br/>![게시글 등록 수정](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/10009eb9-7639-4647-b7e5-f3ae3d451ed2)     | 마이페이지 > 정보 수정<br/>![정보 수정](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/871a1990-3e0d-4bb9-8e75-c10abb5c2496)        |
+| 일정/결과 > 기록<br/>![기록](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/e6dab8f9-b922-4f61-83c1-f3b93e3f7240)           | 일정/결과<br/>![일정 결과](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/1692e19c-d6f1-4073-bf26-5d6483c6af1d)                |
+| 기록/순위<br/>![기록 순위](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/fa447964-c91a-42cf-8181-f475359b7e12)             | 일정/결과 > 기록 > 라인업 추가<br/>![라인업 추가](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/4cdb889a-1495-4009-99fb-caacd550c7fc) |
+| 기록/순위 > 선수 세부정보<br/>![선수 세부정보](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/ca3cece8-c6af-470a-9cf2-eefa0441ca1c) | 관리자 페이지<br/>![관리자 페이지](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/4e81fe48-b05c-4cc9-9085-e712545e464d)            |
 
 ## 14. 프로젝트 구조
 ```text
