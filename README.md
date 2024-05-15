@@ -84,7 +84,7 @@
 - redis
 - 
 ## 8. 개발 일정
-![schedule.png](src%2Fmain%2Fresources%2Fstatic%2Fimages%2Fschedule.png)
+![image](https://github.com/oreumi4-final-project-team3/neonaduri/assets/58384329/97b76165-005c-4150-a0fe-44fb0b0e3b68)
 
 ## 9. 플로우 차트 (Flow chart)
 ![flowchart.png](src%2Fmain%2Fresources%2Fstatic%2Fimages%2Fflowchart.png)
