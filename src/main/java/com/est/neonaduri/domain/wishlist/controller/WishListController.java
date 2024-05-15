@@ -1,9 +1,11 @@
 package com.est.neonaduri.domain.wishlist.controller;
 
+import com.est.neonaduri.domain.companions.dto.CompanionsDTO;
 import com.est.neonaduri.domain.wishlist.domain.Wishlist;
 import com.est.neonaduri.domain.wishlist.service.WishListService;
 import lombok.RequiredArgsConstructor;
 
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -17,13 +19,13 @@ import org.springframework.web.bind.annotation.*;
 public class WishListController {
     private final WishListService wishListService;
 
-    @GetMapping("/api/wishlist/{admin_id}")
-    public String getWishlist(@PathVariable("admin_id") String adminId, Model model
+    @GetMapping("/api/wishlist/{userId}")
+    public String getWishlist(@PathVariable("userId") String userId, Model model
         ,@RequestParam(defaultValue = "1")int page
         ,@RequestParam(defaultValue = "4")int size){
 
         Pageable pageable = PageRequest.of( Math.max(page-1, 0),size);
-        model.addAttribute("companions",wishListService.getWishlists(adminId,pageable));
+        model.addAttribute("companions",wishListService.getWishlists(userId,pageable));
         model.addAttribute("currentPage",page);
         return "wishlist";
     }
