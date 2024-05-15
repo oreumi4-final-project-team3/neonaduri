@@ -13,7 +13,6 @@ public class ApiConst {
 
     public static final String DEFAULT_INFO_PARAMS="&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y";
 
-    public static final String LOCATION_INFO_BASED = "/locationBasedList1";
     public static final String AREA_BASED="/areaBasedList1";
     public static final String COMMON_INFO_BASED="/detailCommon1";
 }
