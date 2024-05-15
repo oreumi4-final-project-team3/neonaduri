@@ -30,19 +30,7 @@ public class CompanionsController {
     private final PostsService postsService;
     private final PostImagesService postImagesService;
 
-    /**
-     * 같이갈까? 게시글(Posts + Companions)을 생성하는 API
-     *
-     * @return ResponseEntity<Companions> : 같이갈까? 게시글 생성
-     * @author jyh
-     */
-    @PostMapping("api/posts/companions/{userId}")
-    public ResponseEntity<Companions> createCompanions(@PathVariable(name = "userId") String userId,
-                                                       @RequestBody CreatePostDTO createPostDTO) {
-        log.info("입력된 사용자 : {}",userId);
-        Companions createdCompanions = companionsService.createCompanions(userId, createPostDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdCompanions);
-    }
+
 
     /**
      * 같이갈까? 게시글을 수정하는 API

@@ -44,7 +44,6 @@ public class ApiManager {
         return fetchForAreaBasedContentId(areaBasedUrl);
     }
 
-
     //공통 정보 조회 -> contentId로 단건 조회만 가능
     public List<TourApiDto> fetchByCommonInfo(String contentId,int contentTypeId){
         String commonInfoUrl = createCommonInfoUrl(contentId, contentTypeId);
@@ -65,7 +64,6 @@ public class ApiManager {
     private String createCommonInfoUrl(String contentId,int contentTypeId){
         return createBasedUrl(ApiConst.COMMON_INFO_BASED)+ApiConst.DEFAULT_QUERY_PARAMS2 +setContentId(contentId)+setContentTypeId(contentTypeId)+ApiConst.DEFAULT_INFO_PARAMS+setServiceKey(serviceKey);
     }
-
 
     /**
      * 요청 쿼리 처리
@@ -171,7 +169,7 @@ public class ApiManager {
 
             for(Object o :jsonItemList){
                 JSONObject item = (JSONObject) o;
-                TourApiDto tourApiDto = makeLocationDto2(item);
+                TourApiDto tourApiDto = makeLocationBasedSpotDto(item);
                 if(tourApiDto==null) continue;
                 result.add(tourApiDto);
             }
@@ -185,11 +183,11 @@ public class ApiManager {
     }
 
     /**
-     * 콘텐츠 정보 직렬화 (JSON -> DTO)
+     * 콘텐츠 정보 역직렬화 (JSON -> DTO)
      * @author lsh
      */
 
-    private TourApiDto makeLocationDto2(JSONObject item) {
+    private TourApiDto makeLocationBasedSpotDto(JSONObject item) {
 
         return TourApiDto.builder()
                 .contentId((String) item.get("contentid"))
