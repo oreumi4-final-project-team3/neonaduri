@@ -56,13 +56,9 @@
 </table>
 
 ## 6. 배포 아키텍쳐
-### CI/CD
-![배포](https://github.com/jeonginwoo/ormi4th-spring-project/assets/128672362/cb894123-8ec4-4d62-818b-de5b0bfc7b19)
------------
-<br>
-
 ### Architecture
-![아키텍처](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/ff6034bd-4b0c-4c89-9542-238ddaf6a22f)
+![neonaduri_architecture](https://github.com/oreumi4-final-project-team3/neonaduri/assets/58384329/79398395-c71a-47cc-afe0-7827b336513f)
+
 ## 7. Skills
 
 ### Languages
