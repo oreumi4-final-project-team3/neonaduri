@@ -34,7 +34,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
+    <tr style="text-align: center">
       <td style="text-align: center;"><img src="https://github.com/jeonginwoo/ormi4th-spring-project/assets/128672362/b87c72ea-4e4e-4600-ac82-32a3a3a7803a" style="width: 100px; height: 100px;">
             <br><hr style="margin-top: 10px; margin-bottom: 10px;">
         <a href="https://github.com/euichan0927">   🔗 김의찬</a><hr style="margin-top: 10px; margin-bottom: 10px;"><br> ‣ 메인페이지 기능 구현<br>‣ 여기갈까?(관광지 게시글) 페이지 기능 구현<br>‣후기볼까?(리뷰 게시글) 페이지 기능 구현<br>‣ 관심목록 페이지 기능 구현<br>‣ 게시글 조건 검색 기능 개발<br>‣마이페이지 페이징처리 적용</td>
@@ -98,6 +98,7 @@
 
 ## 9. 플로우 차트 (Flow chart)
 
+![flowchart.png](src%2Fmain%2Fresources%2Fstatic%2Fimages%2Fflowchart.png)
 
 ## 10. 데이터베이스 모델링(ER Diagram)
 ![ERD.png](src%2Fmain%2Fresources%2Fstatic%2Fimages%2FERD.png)
@@ -439,3 +440,5 @@
 중간에 팀원 한 분이 개인 사정으로 이탈하면서 어려운 점도 있었지만 팀원간 적절한 소통과 업무 분담을 통해 위기를 잘헤쳐나온거 같고,  협업에 있어서 가장 중요한 것은 구성원 각각의 능력치 보다는 소통과 적절한 임무 부여라는 것을 다시 한 번 깨달을 수 있는 기회였습니다.
 또, 이번 프로젝트에 확장성 좋은 주제 선정을 하였기 때문에 향후 진행되는 파이널 프로젝트에서 당 프로젝트를 이어서 했으면 좋겠다는 바람이 있습니다.
 ```
+
+
