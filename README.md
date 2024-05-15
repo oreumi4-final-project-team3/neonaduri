@@ -92,8 +92,11 @@
 ## 10. 데이터베이스 모델링(ER Diagram)
 ![ERD.png](src%2Fmain%2Fresources%2Fstatic%2Fimages%2FERD.png)
 
+
+
 ## 11. 기능 명세
 ![기능명세](https://github.com/oreumi4-final-project-team3/neonaduri/assets/58384329/b8e2d571-7c0a-459a-9c0d-a028a77a7d74)
+![ERD](https://github.com/oreumi4-final-project-team3/neonaduri/assets/58384329/142397f2-bd1f-48e6-9eb6-16d881996c94)
 
 ## 14. 프로젝트 구조
 ```text
