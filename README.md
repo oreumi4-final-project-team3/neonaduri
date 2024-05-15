@@ -60,47 +60,40 @@
 ![neonaduri_architecture](https://github.com/oreumi4-final-project-team3/neonaduri/assets/58384329/79398395-c71a-47cc-afe0-7827b336513f)
 
 ## 7. Skills
-
 ### Languages
-
 [![My Skills](https://skillicons.dev/icons?i=spring,java,js,html,css)](https://skillicons.dev)
 
 ### Tools
-
 [![My Skills](https://skillicons.dev/icons?i=idea,gradle,github,figma,docker)](https://skillicons.dev)
 
 ### DataBase
-
 [![My Skills](https://skillicons.dev/icons?i=mysql)](https://skillicons.dev)
 
 ### OS
-
 [![My Skills](https://skillicons.dev/icons?i=windows)](https://skillicons.dev)
 
 ### Deploy
-
 [![My Skills](https://skillicons.dev/icons?i=aws,githubactions)](https://skillicons.dev)
 
 ### API
-
 - Kakao map API
 - Alan AI API
 - Google login API
 - Tour API - 한국관광공사
 - Gmail API
 - redis
+- 
 ## 8. 개발 일정
 ![schedule.png](src%2Fmain%2Fresources%2Fstatic%2Fimages%2Fschedule.png)
 
 ## 9. 플로우 차트 (Flow chart)
-
 ![flowchart.png](src%2Fmain%2Fresources%2Fstatic%2Fimages%2Fflowchart.png)
 
 ## 10. 데이터베이스 모델링(ER Diagram)
 ![ERD.png](src%2Fmain%2Fresources%2Fstatic%2Fimages%2FERD.png)
 
 ## 11. 기능 명세
-![기능명세.png](src%2Fmain%2Fresources%2Fstatic%2Fimages%2F%EA%B8%B0%EB%8A%A5%EB%AA%85%EC%84%B8.png)
+![기능명세](https://github.com/oreumi4-final-project-team3/neonaduri/assets/58384329/b8e2d571-7c0a-459a-9c0d-a028a77a7d74)
 
 ## 14. 프로젝트 구조
 ```text
