@@ -23,7 +23,9 @@
             <a href="#" onclick="goToMyPage()">
                 <img th:src="@{/images/mypage.png}" alt="마이페이지로 이동"/>
             </a>
-            <img th:src="@{/images/like.png}" alt="찜"/>
+            <a href="#" onclick="goToWishListPage()">
+                <img th:src="@{/images/like.png}" alt="찜"/>
+            </a>
         </div>
     </div>
     <div class="separator"></div>
@@ -90,18 +92,18 @@
 
             <div class="tour-info-userInfo-wrap">
                 <div class="profileimg"></div>
-                    <div class="tour-info-userInfo-detail">
-                        <p class="tour-info-userInfo-userName" th:text="${user.userName}"></p>
-                        <div class="tour-info-userInfo-details">
-                            <p class="userBirth" th:text="${user.userBirth}"></p>
-                            <p class="userAge"></p>
-                            <p>&nbsp;|&nbsp;</p>
-                            <p th:text="${user.userGender}"></p>
-                            <p>&nbsp;|&nbsp;</p>
-                            <p id="userRegionText"></p>
-                            <input type="hidden" id="userRegion" th:value="${user.userRegion}">
-                        </div>
+                <div class="tour-info-userInfo-detail">
+                    <p class="tour-info-userInfo-userName" th:text="${user.userName}"></p>
+                    <div class="tour-info-userInfo-details">
+                        <p class="userBirth" th:text="${user.userBirth}"></p>
+                        <p class="userAge"></p>
+                        <p>&nbsp;|&nbsp;</p>
+                        <p th:text="${user.userGender}"></p>
+                        <p>&nbsp;|&nbsp;</p>
+                        <p id="userRegionText"></p>
+                        <input type="hidden" id="userRegion" th:value="${user.userRegion}">
                     </div>
+                </div>
             </div>
         </div>
 
