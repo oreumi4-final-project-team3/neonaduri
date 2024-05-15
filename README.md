@@ -40,16 +40,16 @@
         <a href="https://github.com/euichan0927">   🔗 김의찬</a><hr style="margin-top: 10px; margin-bottom: 10px;"> <br> ‣ 메인페이지 기능 구현<br>‣ 여기갈까?(관광지 게시글) 페이지 기능 구현<br>‣후기볼까?(리뷰 게시글) 페이지 기능 구현<br>‣ 관심목록 페이지 기능 구현<br></td>
       <td style="text-align: center;"><img src="src/main/resources/static/images/Sunghyun.jpg" style="width: 100px; height: 100px;">
             <br><hr style="margin-top: 10px; margin-bottom: 10px;">
-        <a href="https://github.com/euichan0927">   🔗 임성현</a><hr style="margin-top: 10px; margin-bottom: 10px;"><br> ‣ 요구사항 및 기능 명세<br>‣ API 설계 (API 명세서)<br>‣회원가입 및 로그인 기능 개발<br>‣ 사용자 마이페이지 및 관리자페이지 기능 개발<br>‣ 게시글 조건 검색 기능 개발<br>‣마이페이지 페이징처리 적용</td>
+        <a href="https://github.com/shlim0287"   🔗 임성현</a><hr style="margin-top: 10px; margin-bottom: 10px;"><br> ‣ 요구사항 및 기능 명세<br>‣ API 설계 (API 명세서)<br>‣회원가입 및 로그인 기능 개발<br>‣ 사용자 마이페이지 및 관리자페이지 기능 개발<br>‣ 게시글 조건 검색 기능 개발<br>‣마이페이지 페이징처리 적용</td>
       <td style="text-align: center;"><img src="src/main/resources/static/images/Jaewon.jpg" style="width: 100px; height: 100px;">
             <br><hr style="margin-top: 10px; margin-bottom: 10px;">
-        <a href="https://github.com/euichan0927">   🔗 최재원</a><hr style="margin-top: 10px; margin-bottom: 10px;"><br> ‣ 요구사항 및 기능 명세<br>‣ API 설계 (API 명세서)<br>‣회원가입 및 로그인 기능 개발<br>‣ 사용자 마이페이지 및 관리자페이지 기능 개발<br>‣ 게시글 조건 검색 기능 개발<br>‣마이페이지 페이징처리 적용</td>
+        <a href="https://github.com/bbabbungtting">   🔗 최재원</a><hr style="margin-top: 10px; margin-bottom: 10px;"><br> ‣ 요구사항 및 기능 명세<br>‣ API 설계 (API 명세서)<br>‣회원가입 및 로그인 기능 개발<br>‣ 사용자 마이페이지 및 관리자페이지 기능 개발<br>‣ 게시글 조건 검색 기능 개발<br>‣마이페이지 페이징처리 적용</td>
       <td style="text-align: center;"><img src="src/main/resources/static/images/Hayoung.png" style="width: 100px; height: 100px;">
             <br><hr style="margin-top: 10px; margin-bottom: 10px;">
         <a href="https://github.com/emitlight">   🔗 이하영</a><hr style="margin-top: 10px; margin-bottom: 10px;"><br> ‣ 요구사항 및 기능 명세<br>‣ API 명세서<br>‣ 마이페이지 기능 구현<br>‣ 나의 매칭 페이지 기능 구현<br>‣ 로그인 페이지 기능 구현</td>
       <td style="text-align: center;"><img src="src/main/resources/static/images/Yoonho.jpg" style="width: 100px; height: 100px;">
             <br><hr style="margin-top: 10px; margin-bottom: 10px;">
-        <a href="https://github.com/euichan0927">   🔗 지윤호</a><hr style="margin-top: 10px; margin-bottom: 10px;"><br> ‣ 같이갈까?(동행 게시글) 페이지 디자인 구현<br>‣ 후기볼까?(후기 게시글 리스트 및 생성) 페이지 디자인 구현</td>
+        <a href="https://github.com/UUUUUKnow">   🔗 지윤호</a><hr style="margin-top: 10px; margin-bottom: 10px;"><br> ‣ 같이갈까?(동행 게시글) 페이지 디자인 구현<br>‣ 후기볼까?(후기 게시글 리스트 및 생성) 페이지 디자인 구현</td>
     </tr>
     
   </tbody>
