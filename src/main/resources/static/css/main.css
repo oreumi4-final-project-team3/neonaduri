@@ -21,6 +21,10 @@
     display: flex;
     flex-direction: row;
 }
+#searchInput {
+    font-size: 23px;
+    font-weight: bold;
+}
 .search-bar {
     position: absolute;
     left: 50%;
