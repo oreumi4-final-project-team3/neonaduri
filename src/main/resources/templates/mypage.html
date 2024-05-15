@@ -40,20 +40,40 @@
                 <img th:src="@{/images/edit_pencil.png}" alt="수정하기">
             </button>
             <!--너나두리 회원가입 시 입력한 데이터-->
-            <label for="userRegion">지역코드</label>
-            <input type="text" id="userRegion" th:value="${user.userRegion}">
-            <button class="edit" onclick="updateUser()">
-                <img th:src="@{/images/edit_pencil.png}" alt="수정하기">
-            </button>
+            <label for="userRegion">지역</label>
+            <div class="userRegion_wrap">
+                <select type="text" id="userRegion" th:value="${user.userRegion}">
+                    <option>지역을 선택해 주세요.</option>
+                    <option value="1" th:selected="${user.userRegion}=='1'">서울</option>
+                    <option value="31" th:selected="${user.userRegion}=='31'">경기</option>
+                    <option value="2" th:selected="${user.userRegion}=='2'">인천</option>
+                    <option value="32" th:selected="${user.userRegion}=='32'">강원</option>
+                    <option value="33" th:selected="${user.userRegion}=='33'">충북</option>
+                    <option value="34" th:selected="${user.userRegion}=='34'">충남</option>
+                    <option value="35" th:selected="${user.userRegion}=='35'">경북</option>
+                    <option value="36" th:selected="${user.userRegion}=='36'">경남</option>
+                    <option value="37" th:selected="${user.userRegion}=='37'">전북</option>
+                    <option value="38" th:selected="${user.userRegion}=='38'">전남</option>
+                    <option value="39" th:selected="${user.userRegion}=='39'">제주</option>
+                </select>
+                <button class="edit_userRegion" onclick="updateUser()">
+                    <img th:src="@{/images/edit_pencil.png}" alt="수정하기">
+                </button>
+            </div>
             <div class="birth_gender">
                 <label for="userBirth">생년월일:&nbsp;&nbsp;</label>
-                <p id="userBirth" th:text="${user.userBirth}"></p>
+                <p id="userBirth" th:text="${#temporals.format(user.userBirth, 'yyyy-MM-dd')}"></p>
                 <label for="userGender">성별:&nbsp;&nbsp;</label>
                 <p id="userGender" th:text="${user.userGender}"></p>
             </div>
             <!--UserDetails 테이블의 데이터-->
             <!--MBTI 레이블-->
             <label class="userMbti">MBTI</label>
+            <!--MBTI 데이터-->
+            <input class="mbti_input" type="text" id="userMbti" name="userMbti" th:value="${userDetails.userMbti}">
+            <button class="edit" onclick="updateUserDetails()">
+                <img th:src="@{/images/edit_pencil.png}" alt="수정하기">
+            </button>
         </div>
         <div class="main_right">
             <!--오른쪽 프로필 모달-->
@@ -74,11 +94,6 @@
             </button>
         </div>
     </div>
-    <!--MBTI 데이터-->
-    <input class="mbti_input" type="text" id="userMbti" name="userMbti" th:value="${userDetails.userMbti}">
-    <button class="edit" onclick="updateUserDetails()">
-        <img th:src="@{/images/edit_pencil.png}" alt="수정하기">
-    </button>
     <hr class="second_hr">
     <!--UserDetails 테이블의 데이터-->
     <div class="main_box_bottom">
@@ -102,7 +117,7 @@
         </select>
     </div>
 </main>
-<hr id="last_line">
+<div class="separator"></div>
 <footer>
     <button class="goup" onclick="scrollToTop()">
         <img th:src="@{/images/mini_logo.png}" alt="Logo">
