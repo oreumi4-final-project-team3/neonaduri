@@ -49,7 +49,7 @@
         <a href="https://github.com/emitlight">   🔗 이하영</a><hr style="margin-top: 10px; margin-bottom: 10px;"><br> ‣ 요구사항 및 기능 명세<br>‣ API 명세서<br>‣ 마이페이지 기능 구현<br>‣ 나의 매칭 페이지 기능 구현<br>‣ 로그인 페이지 기능 구현</td>
       <td style="text-align: center;"><img src="src/main/resources/static/images/Yoonho.jpg" style="width: 100px; height: 100px;">
             <br><hr style="margin-top: 10px; margin-bottom: 10px;">
-        <a href="https://github.com/euichan0927">   🔗 지윤호</a><hr style="margin-top: 10px; margin-bottom: 10px;"><br> ‣ 요구사항 및 기능 명세<br>‣ API 설계 (API 명세서)<br>‣회원가입 및 로그인 기능 개발<br>‣ 사용자 마이페이지 및 관리자페이지 기능 개발<br>‣ 게시글 조건 검색 기능 개발<br>‣마이페이지 페이징처리 적용</td>
+        <a href="https://github.com/euichan0927">   🔗 지윤호</a><hr style="margin-top: 10px; margin-bottom: 10px;"><br> ‣ 같이갈까?(동행 게시글) 페이지 디자인 구현<br>‣ 후기볼까?(후기 게시글 리스트 및 생성) 페이지 디자인 구현</td>
     </tr>
     
   </tbody>
@@ -84,7 +84,7 @@
 - redis
 - 
 ## 8. 개발 일정
-![schedule.png](src%2Fmain%2Fresources%2Fstatic%2Fimages%2Fschedule.png)
+![간트](https://github.com/oreumi4-final-project-team3/neonaduri/assets/128894133/1deda9ac-95de-4715-a724-b71247c456ca)
 
 ## 9. 플로우 차트 (Flow chart)
 ![flowchart.png](src%2Fmain%2Fresources%2Fstatic%2Fimages%2Fflowchart.png)
