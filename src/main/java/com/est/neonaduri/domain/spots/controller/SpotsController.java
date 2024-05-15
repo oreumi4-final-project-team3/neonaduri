@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequiredArgsConstructor
 public class SpotsController {
 	private final SpotsService spotsService;
-
 	/**
 	 * 관광지 지역 코드로 조회하는 API
 	 *
@@ -29,7 +28,6 @@ public class SpotsController {
 	 * @author kec
 	 */
 	@GetMapping("api/spots/code/{areaCode}")
-	@ResponseBody
 	public String getSameAreaSpot(@PathVariable int areaCode
 			,Model model
 			,@RequestParam(defaultValue = "1")int page
