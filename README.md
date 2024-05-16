@@ -7,21 +7,21 @@
 
 ### 목차
 
-- [1. 프로젝트 소개](#1프로젝트-소개)
-- [2. 프로젝트 목표](#2프로젝트-목표)
-- [3. 프로젝트 진행기간](#3프로젝트-진행-기간)
-- [4. 배포 주소](#4배포-주소)
-- [5. 개발 인원 및 역할](#5개발-인원-및-역할)
-- [6. 배포 아키텍쳐](#6배포-아키텍쳐)
-- [7. 사용 기술](#7skills)
-- [8. 개발 일정](#8개발-일정)
-- [9. 플로우차트](#9플로우차트flow-chart)
-- [10. 데이터베이스 모델링](#10데이터베이스-모델링er-diagram)
-- [11. 요구사항 및 기능명세](#11요구사항-및-기능명세)
-- [12. API 명세서](#12api-명세서)
-- [13. 화면설계서](#13화면설계서)
-- [14. 프로젝트 구조](#14프로젝트-구조)
-- [15. 개발 회고](#15-개발-회고)
+- [1. 프로젝트 소개](#1-프로젝트-소개)
+- [2. 프로젝트 목표](#2-프로젝트-목표)
+- [3. 프로젝트 진행기간](#3-프로젝트-진행-기간)
+- [4. 배포 주소](#4-배포-주소)
+- [5. 개발 인원 및 역할](#5-개발-인원-및-역할)
+- [6. 배포 아키텍쳐](#6-배포-아키텍쳐)
+- [7. 사용 기술](#7-skills)
+- [8. 개발 일정](#8-개발-일정)
+- [9. 플로우차트](#9-플로우차트flow-chart)
+- [10. 데이터베이스 모델링](#10-데이터베이스-모델링er-diagram)
+- [11. 요구사항 및 기능명세](#11-요구사항-및-기능명세)
+- [12. API 명세서](#12-api-명세서)
+- [13. 화면설계서](#13-화면설계서)
+- [14. 프로젝트 구조](#14-프로젝트-구조)
+
   
 ## 1. 프로젝트 소개
 **너나들이**란,<br>
@@ -44,11 +44,11 @@
 ## 🙌 안녕하세요.
 
 
-|                                                                             김의찬                                                                             |                                                                                                                                                               임성현                                                                                                                                                               |                                                                            최재원                                                                             |                                                                            이하영                                                                             |                                                                            지윤호                                                                             |
-|:-----------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/jeonginwoo/ormi4th-spring-project/assets/128672362/b87c72ea-4e4e-4600-ac82-32a3a3a7803a" width="100" height="100"> | <img src="src/main/resources/static/images/Sunghyun.jpg" style="width: 100px; height: 100px;"> | <img src="src/main/resources/static/images/Jaewon.jpg" style="width: 100px; height: 100px;"> | <img src="src/main/resources/static/images/Hayoung.png" style="width: 100px; height: 100px;"> | <img src="src/main/resources/static/images/Yoonho.jpg" style="width: 100px; height: 100px;"> |
+|                                                                             김의찬                                                                             |                                                                                                                                                               임성현                                                                                                                                                               |                                                                            최재원                                                                             |                                                                            이하영                                                                             |                                                                    지윤호                                                                     |
+|:-----------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/jeonginwoo/ormi4th-spring-project/assets/128672362/b87c72ea-4e4e-4600-ac82-32a3a3a7803a" style="width: 100px; height: 100px;"> | <img src="src/main/resources/static/images/Sunghyun.jpg" style="width: 100px; height: 100px;"> | <img src="src/main/resources/static/images/Jaewon.jpg" style="width: 100px; height: 100px;"> | <img src="src/main/resources/static/images/Hayoung.png" style="width: 100px; height: 100px;"> | <img src="src/main/resources/static/images/Yoonho.jpg" style="width: 100px; height: 100px;"> |
 |                                                     <a href="https://github.com/euichan0927">🔗 김의찬</a>                                                     |                                                                                                                                      <a href="https://github.com/shlim0287">🔗 임성현</a>                                                                                                                                      |                                                     <a href="https://github.com/bbabbungtting">🔗 최재원</a>                                                     |                                                     <a href="https://github.com/emitlight">🔗 이하영</a>                                                     |                                                     <a href="https://github.com/UUUUUKnow">🔗 지윤호</a>                                                     |
-|              ‣ 메인페이지 기능 구현 <br><br> ‣ 여기갈까?(관광지 게시글) 페이지 기능 구현<br><br> ‣후기볼까?(리뷰 게시글) 페이지 기능 구현<br><br> ‣ 관심목록 페이지 기능 구현<br><br>              | ‣공공데이터 API 크롤러 구현<br>‣ Alan-SSE API구현<br><br> ‣검색 기능 구현<br><br> ‣실시간 인기 검색어 기능 구현<br><br> ‣댓글 API 구현 <br><br> ‣관광지 상세 페이지 구현<br><br> >‣Email API 구현<br><br> |      ‣ 게시판 api 개발<br>‣ 댓글 api 개발<br>‣ 게시글에 댓글 & 답글 적용<br>‣ 게시글, 댓글 좋아요 기능 개발<br>‣ toast ui editor 적용<br>‣ 게시판 페이징처리 적용<br>‣Flow Chart 설계<br>‣개발 일정 기록      |                                       ‣ 마이페이지 기능 구현<br><br> ‣ 나의 매칭 페이지 기능 구현<br><br> ‣ 로그인 페이지 기능 구현                                      |                                      ‣ 같이갈까?(동행 게시글) 페이지 디자인 구현<br><br> ‣ 후기볼까?(후기 게시글 리스트 및 생성) 페이지 디자인 구현                                      |
+|              ‣ 메인페이지 기능 구현 <br><br> ‣ 여기갈까?(관광지 게시글) 페이지 기능 구현<br><br> ‣후기볼까?(리뷰 게시글) 페이지 기능 구현<br><br> ‣ 관심목록 페이지 기능 구현<br><br>              | ‣공공데이터 API 크롤러 구현<br>‣ Alan-SSE API구현<br><br> ‣검색 기능 구현<br><br> ‣실시간 인기 검색어 기능 구현<br><br> ‣댓글 API 구현 <br><br> ‣관광지 상세 페이지 구현<br><br>‣Email API 구현<br>‣프로젝트 배포<br><br> |      ‣ S3 사용 이미지 관련 기능 구현<br><br> ‣ 게시물 관련 기능 구현<br><br> ‣ 퍼블리싱 구현<br><br> ‣ Security 구현<br><br>      |                                       ‣ 마이페이지 기능 구현<br><br> ‣ 나의 매칭 페이지 기능 구현<br><br> ‣ 로그인 페이지 기능 구현                                      |                           ‣ 같이갈까?(동행 게시글) 페이지 디자인 구현<br><br> ‣ 후기볼까?(후기 게시글 리스트 및 생성) 페이지 디자인 구현                                      |
 
 
 
@@ -203,30 +203,21 @@
 
 |                                                                                                                                           |                                                                                                                                              |
 |:------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------|
-| 로그인<br/>![로그인](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/f68d815e-ac76-4469-8dd5-fb66879c7a50)                 | 회원가입<br/>![회원가입](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/bea6365b-c146-4b57-9381-626e40b1fd83)                  |
+| 회원가입<br/>![1-2 사용자-회원가입](https://github.com/oreumi4-final-project-team3/neonaduri/assets/128672362/3585136c-0f9b-47f4-bde9-2c4f2ed6a92e)                 | 로그인<br/>![1  사용자-로그인](https://github.com/oreumi4-final-project-team3/neonaduri/assets/128672362/5099c7bb-327e-4d73-a0a4-46dfb393b72d)                |
+| 마이페이지<br/>![2-2 사용자-마이페이지-상세](https://github.com/oreumi4-final-project-team3/neonaduri/assets/128672362/b6b0613a-afbf-4767-95d4-c110294defb8)     | 관심있는 매칭<br/>![3-2 사용자-관심있는 매칭-상세](https://github.com/oreumi4-final-project-team3/neonaduri/assets/128672362/0934a144-4e08-4988-982d-3712fb776709)        |
+| 메인페이지<br/>![1  메인](https://github.com/oreumi4-final-project-team3/neonaduri/assets/128672362/8ede4a22-354c-4fe8-add7-bc0ee2112979)              | 메인페이지-실시간 인기 검색어<br/>![2-3  메인-검색-실시간 인기검색어](https://github.com/oreumi4-final-project-team3/neonaduri/assets/128672362/a554b16e-7601-411a-b203-b08e092ce4e7)                 |
 | 여기갈까?-관광지 전체지역 조회<br/>![여기갈까?-관광지 전체지역 조회](https://github.com/jeonginwoo/ormi4th-spring-project/assets/128672362/c1a9f885-8310-49e2-ada1-99226cdfb070)            | 여기갈까?-관광지 제주지역 조회<br/>![여기갈까-조회-지역-제주](https://github.com/jeonginwoo/ormi4th-spring-project/assets/128672362/270cd3bb-6723-4603-9df4-68ac8c895726) |
-| 여기갈까?-관광지 상세조회 ai 답변 전<br/>![5  여기갈까-상세조회-제주-ai답변 전](https://github.com/jeonginwoo/ormi4th-spring-project/assets/128672362/4084bfb8-0487-4bd9-b0d9-851581831d43)              | 여기갈까?-관광지 상세조회 ai 답변 후<br/>![6  여기갈까-상세조회-제주-ai답변 후](https://github.com/jeonginwoo/ormi4th-spring-project/assets/128672362/ee9f6593-ef22-4ed1-9604-d34a67290a26)               |
-| 여기갈까?-관광지 예약하기<br/>![6-1  여기갈까-상세조회-제주-예약하기](https://github.com/jeonginwoo/ormi4th-spring-project/assets/128672362/c7f6538a-9779-4a0e-9031-b6144a6b0e6b)              | 게시판(두산)<br/>![두산](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/34f20276-53dd-4727-9f00-f288d3249d30)                 |
-| 게시판(KIA)<br/>![KIA](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/7e8863c8-9e76-4a69-ba70-bdd4778aab05)            | 게시판(롯데)<br/>![롯데](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/b8a2c175-4308-4efb-8aeb-4ccc50322cca)                 |
-| 게시판(삼성)<br/>![삼성](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/18c562c8-a8f4-45e4-8397-6dcd018ff8e6)              | 게시판(한화)<br/>![한화](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/e45ec601-a641-4222-870b-b1dddd6a4828)                 |
-| 게시판(키움)<br/>![키움](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/2286f51c-b921-41ca-b2e8-d07b736693b9)              | 게시판(LG)<br/>![LG](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/03a81133-cf35-492d-9d28-fb063149b237)                 |
-| 게시글<br/>![게시글](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/f1ed1832-265e-467e-b396-f6f91baef92e)                 | 마이페이지<br/>![마이페이지](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/92010b54-bed4-49b9-9912-6acb82668f96)                |
-| 게시글 등록/수정<br/>![게시글 등록 수정](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/10009eb9-7639-4647-b7e5-f3ae3d451ed2)     | 마이페이지 > 정보 수정<br/>![정보 수정](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/871a1990-3e0d-4bb9-8e75-c10abb5c2496)        |
-| 일정/결과 > 기록<br/>![기록](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/e6dab8f9-b922-4f61-83c1-f3b93e3f7240)           | 일정/결과<br/>![일정 결과](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/1692e19c-d6f1-4073-bf26-5d6483c6af1d)                |
-| 기록/순위<br/>![기록 순위](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/fa447964-c91a-42cf-8181-f475359b7e12)             | 일정/결과 > 기록 > 라인업 추가<br/>![라인업 추가](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/4cdb889a-1495-4009-99fb-caacd550c7fc) |
-| 기록/순위 > 선수 세부정보<br/>![선수 세부정보](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/ca3cece8-c6af-470a-9cf2-eefa0441ca1c) | 관리자 페이지<br/>![관리자 페이지](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/4e81fe48-b05c-4cc9-9085-e712545e464d)            |
-| 로그인<br/>![로그인](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/f68d815e-ac76-4469-8dd5-fb66879c7a50)                 | 회원가입<br/>![회원가입](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/bea6365b-c146-4b57-9381-626e40b1fd83)                  |
-| 홈(경기 없을 때)<br/>![홈](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/4b3b9dcb-d19d-4400-99e1-836dd937581f)            | 홈(경기 있을 때)<br/>![홈(경기 있을 때)](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/6120ebd0-b65d-4fd7-b186-83dfaeee1234) |
-| 게시판(KT)<br/>![KT](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/bb9f4a20-fca8-4f61-aad2-6652f6d449e4)              | 게시판(SSG)<br/>![SSG](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/47904e37-7cf8-43d0-aa62-31f9ea562809)               |
-| 게시판(NC)<br/>![NC](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/4d5752ae-f25c-4075-95de-8efe62f797dd)              | 게시판(두산)<br/>![두산](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/34f20276-53dd-4727-9f00-f288d3249d30)                 |
-| 게시판(KIA)<br/>![KIA](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/7e8863c8-9e76-4a69-ba70-bdd4778aab05)            | 게시판(롯데)<br/>![롯데](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/b8a2c175-4308-4efb-8aeb-4ccc50322cca)                 |
-| 게시판(삼성)<br/>![삼성](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/18c562c8-a8f4-45e4-8397-6dcd018ff8e6)              | 게시판(한화)<br/>![한화](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/e45ec601-a641-4222-870b-b1dddd6a4828)                 |
-| 게시판(키움)<br/>![키움](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/2286f51c-b921-41ca-b2e8-d07b736693b9)              | 게시판(LG)<br/>![LG](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/03a81133-cf35-492d-9d28-fb063149b237)                 |
-| 게시글<br/>![게시글](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/f1ed1832-265e-467e-b396-f6f91baef92e)                 | 마이페이지<br/>![마이페이지](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/92010b54-bed4-49b9-9912-6acb82668f96)                |
-| 게시글 등록/수정<br/>![게시글 등록 수정](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/10009eb9-7639-4647-b7e5-f3ae3d451ed2)     | 마이페이지 > 정보 수정<br/>![정보 수정](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/871a1990-3e0d-4bb9-8e75-c10abb5c2496)        |
-| 일정/결과 > 기록<br/>![기록](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/e6dab8f9-b922-4f61-83c1-f3b93e3f7240)           | 일정/결과<br/>![일정 결과](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/1692e19c-d6f1-4073-bf26-5d6483c6af1d)                |
-| 기록/순위<br/>![기록 순위](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/fa447964-c91a-42cf-8181-f475359b7e12)             | 일정/결과 > 기록 > 라인업 추가<br/>![라인업 추가](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/4cdb889a-1495-4009-99fb-caacd550c7fc) |
-| 기록/순위 > 선수 세부정보<br/>![선수 세부정보](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/ca3cece8-c6af-470a-9cf2-eefa0441ca1c) | 관리자 페이지<br/>![관리자 페이지](https://github.com/jeonginwoo/ormi4th-spring-project/assets/96004205/4e81fe48-b05c-4cc9-9085-e712545e464d)            |
+| 여기갈까?-관광지 상세조회 ai 답변 전<br/>![6  여기갈까-상세조회-제주-ai답변 후](https://github.com/jeonginwoo/ormi4th-spring-project/assets/128672362/ee9f6593-ef22-4ed1-9604-d34a67290a26)              | 여기갈까?-관광지 상세조회 ai 답변 후<br/>![5  여기갈까-상세조회-제주-ai답변 전](https://github.com/jeonginwoo/ormi4th-spring-project/assets/128672362/4084bfb8-0487-4bd9-b0d9-851581831d43)               |
+| 여기갈까?-관광지 예약하기<br/>![6-1  여기갈까-상세조회-제주-예약하기](https://github.com/jeonginwoo/ormi4th-spring-project/assets/128672362/c7f6538a-9779-4a0e-9031-b6144a6b0e6b)              | 같이갈까?-동행 전체지역 조회<br/>![1  같이갈까-조회-지역-전체](https://github.com/oreumi4-final-project-team3/neonaduri/assets/128672362/9cec5082-6c92-491d-8720-b7fc5ac2bfb0)                 |
+| 같이갈까?-동행 경북지역 조회<br/>![3  같이갈까-조회-지역-경북](https://github.com/oreumi4-final-project-team3/neonaduri/assets/128672362/7e0f2eb2-749c-4804-8697-cfa4687d5d06)            | 같이갈까?-상세페이지(마감 전)<br/>![1  같이갈까-상세 조회-동행 마감 전](https://github.com/oreumi4-final-project-team3/neonaduri/assets/128672362/9f6abbdd-9412-4ac0-84b1-0f47fddf8351)                 |
+| 같이갈까?-상세페이지(마감 후)<br/>![2  같이갈까-상세 조회-동행 마감 후-댓글 생성](https://github.com/oreumi4-final-project-team3/neonaduri/assets/128672362/6f111c7a-80ec-43b4-bda9-0e32676e2259)              | 같이갈까?-동행게시글 생성<br/>![1  같이갈까-동행 생성](https://github.com/oreumi4-final-project-team3/neonaduri/assets/128672362/508731ff-8ad1-4085-93de-31fb97df56a4)                 |
+| 후기볼까?-전체지역 조회)<br/>![1  후기볼까-조회-지역-전체](https://github.com/oreumi4-final-project-team3/neonaduri/assets/128672362/a8003f66-1634-4eda-a286-35fbc90bb376)              | 후기볼까?-서울 지역 조회<br/>![2  후기볼까-조회-지역-서울](https://github.com/oreumi4-final-project-team3/neonaduri/assets/128672362/345e93a2-3387-46b6-9ce6-2bb925b90ba0)                 |
+| 후기볼까?-상세조회<br/>![1  후기볼까-상세조회](https://github.com/oreumi4-final-project-team3/neonaduri/assets/128672362/bdeaa5be-260e-41c1-900f-6a787fa21889)                 | 후기볼까?-후기 생성<br/>![1-2  후기볼까-후기 생성](https://github.com/oreumi4-final-project-team3/neonaduri/assets/128672362/e73f14c6-a52b-4d1a-b525-327430405f51)                |
+
+
+
+
+
 ## 14. 프로젝트 구조
 ```text
 └───📁src
@@ -520,46 +511,6 @@
 
 ```
 
-## 15. 개발 회고
-### 👩🏻‍💻 김의찬
 
-```markdown
-처음부터 끝까지 믿고 따라와준 팀원들에게 보답하기 위해 책임감을 가지고 프로젝트에 임했습니다. 그래서 그런지 기대에 부응하고자 프로젝트의 내실을 다지기 보다는 사이즈만 키우는 것에 집중해서 겉만 크고 화려한 느낌이 강합니다 하지만 2주동안 진행된 프로젝트에서 이정도 사이즈의 결과물이 나왔다는 점은 너무 만족스럽습니다.
-중간에 팀원 한 분이 개인 사정으로 이탈하면서 어려운 점도 있었지만 팀원간 적절한 소통과 업무 분담을 통해 위기를 잘헤쳐나온거 같고,  협업에 있어서 가장 중요한 것은 구성원 각각의 능력치 보다는 소통과 적절한 임무 부여라는 것을 다시 한 번 깨달을 수 있는 기회였습니다.
-또, 이번 프로젝트에 확장성 좋은 주제 선정을 하였기 때문에 향후 진행되는 파이널 프로젝트에서 당 프로젝트를 이어서 했으면 좋겠다는 바람이 있습니다.
-```
-
-
-### 👩🏻‍💻 이하영
-
-```markdown
-처음부터 끝까지 믿고 따라와준 팀원들에게 보답하기 위해 책임감을 가지고 프로젝트에 임했습니다. 그래서 그런지 기대에 부응하고자 프로젝트의 내실을 다지기 보다는 사이즈만 키우는 것에 집중해서 겉만 크고 화려한 느낌이 강합니다 하지만 2주동안 진행된 프로젝트에서 이정도 사이즈의 결과물이 나왔다는 점은 너무 만족스럽습니다.
-중간에 팀원 한 분이 개인 사정으로 이탈하면서 어려운 점도 있었지만 팀원간 적절한 소통과 업무 분담을 통해 위기를 잘헤쳐나온거 같고,  협업에 있어서 가장 중요한 것은 구성원 각각의 능력치 보다는 소통과 적절한 임무 부여라는 것을 다시 한 번 깨달을 수 있는 기회였습니다.
-또, 이번 프로젝트에 확장성 좋은 주제 선정을 하였기 때문에 향후 진행되는 파이널 프로젝트에서 당 프로젝트를 이어서 했으면 좋겠다는 바람이 있습니다.
-```
-
-### 👩🏻‍💻 임성현
-
-```markdown
-처음부터 끝까지 믿고 따라와준 팀원들에게 보답하기 위해 책임감을 가지고 프로젝트에 임했습니다. 그래서 그런지 기대에 부응하고자 프로젝트의 내실을 다지기 보다는 사이즈만 키우는 것에 집중해서 겉만 크고 화려한 느낌이 강합니다 하지만 2주동안 진행된 프로젝트에서 이정도 사이즈의 결과물이 나왔다는 점은 너무 만족스럽습니다.
-중간에 팀원 한 분이 개인 사정으로 이탈하면서 어려운 점도 있었지만 팀원간 적절한 소통과 업무 분담을 통해 위기를 잘헤쳐나온거 같고,  협업에 있어서 가장 중요한 것은 구성원 각각의 능력치 보다는 소통과 적절한 임무 부여라는 것을 다시 한 번 깨달을 수 있는 기회였습니다.
-또, 이번 프로젝트에 확장성 좋은 주제 선정을 하였기 때문에 향후 진행되는 파이널 프로젝트에서 당 프로젝트를 이어서 했으면 좋겠다는 바람이 있습니다.
-```
-
-### 👩🏻‍💻 지윤호
-
-```markdown
-처음부터 끝까지 믿고 따라와준 팀원들에게 보답하기 위해 책임감을 가지고 프로젝트에 임했습니다. 그래서 그런지 기대에 부응하고자 프로젝트의 내실을 다지기 보다는 사이즈만 키우는 것에 집중해서 겉만 크고 화려한 느낌이 강합니다 하지만 2주동안 진행된 프로젝트에서 이정도 사이즈의 결과물이 나왔다는 점은 너무 만족스럽습니다.
-중간에 팀원 한 분이 개인 사정으로 이탈하면서 어려운 점도 있었지만 팀원간 적절한 소통과 업무 분담을 통해 위기를 잘헤쳐나온거 같고,  협업에 있어서 가장 중요한 것은 구성원 각각의 능력치 보다는 소통과 적절한 임무 부여라는 것을 다시 한 번 깨달을 수 있는 기회였습니다.
-또, 이번 프로젝트에 확장성 좋은 주제 선정을 하였기 때문에 향후 진행되는 파이널 프로젝트에서 당 프로젝트를 이어서 했으면 좋겠다는 바람이 있습니다.
-```
-
-### 👩🏻‍💻 최재원
-
-```markdown
-처음부터 끝까지 믿고 따라와준 팀원들에게 보답하기 위해 책임감을 가지고 프로젝트에 임했습니다. 그래서 그런지 기대에 부응하고자 프로젝트의 내실을 다지기 보다는 사이즈만 키우는 것에 집중해서 겉만 크고 화려한 느낌이 강합니다 하지만 2주동안 진행된 프로젝트에서 이정도 사이즈의 결과물이 나왔다는 점은 너무 만족스럽습니다.
-중간에 팀원 한 분이 개인 사정으로 이탈하면서 어려운 점도 있었지만 팀원간 적절한 소통과 업무 분담을 통해 위기를 잘헤쳐나온거 같고,  협업에 있어서 가장 중요한 것은 구성원 각각의 능력치 보다는 소통과 적절한 임무 부여라는 것을 다시 한 번 깨달을 수 있는 기회였습니다.
-또, 이번 프로젝트에 확장성 좋은 주제 선정을 하였기 때문에 향후 진행되는 파이널 프로젝트에서 당 프로젝트를 이어서 했으면 좋겠다는 바람이 있습니다.
-```
 
 
